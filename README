@@ -1,0 +1,30 @@
+cleanbkz is a library to find short vectors in a lattice. Once finished 
+it will contain an improved enumeration algorithm using extreme pruning,
+the bkz2.0 and probably an improved random sampler algorithm. 
+
+To compile and test it, you can follow these steps:
+
+------------------------
+1. Compile cleanbkz sources
+------------------------
+
+cleanbkz requires the NTL library. Version 5.4.2 (or higher) is needed. 
+Once you have NTL installed, execute:
+
+$ cmake .
+$ make
+
+Now both the library and the tests are compiled. You can find the test
+executables in the bin/ folder.
+
+
+------------------------
+2. Generate documentation 
+------------------------
+
+The source files are annotated for doxygen documentation. To generate
+the documentation, first install doxygen and then execute:
+
+$ make doc
+
+Now the documentation is in the doc/ folder.
