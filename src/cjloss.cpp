@@ -151,7 +151,7 @@ void cjloss::print_solution(const vec_RR& shortest){
 
 	cout << "Solution coordinates in the cjloss basis: " << shortest << endl;
 	cout << "Scaled coordinates in the cjloss lattice: [";
-	for(int i= 0; i< basis.NumCols()-2 ; i++) 
+	for(int i= 0; i< basis.NumCols()-1 ; i++) 
 		cout << sol[i] << " "; 	
 	cout << sol[basis.NumCols()-1] << "]" << endl; 
 	
@@ -161,12 +161,12 @@ void cjloss::print_solution(const vec_RR& shortest){
 		sol[i]= -(sol[i]-1)/2;
 	}
  
-	cout << "Squared length (found/solution): " << sqrdLength << " / " << basis.NumCols() << endl << endl; 
+	cout << "Squared length (found/solution): " << sqrdLength << " / " << basis.NumCols()-1 << endl << endl; 
 
 	cout << "Original solution: " << solution << endl;
 	cout << "Solution: ["; 
 	for(int i= 0; i< basis.NumCols()-2 ; i++) 
 		cout << sol[i] << " "; 	
-	cout << sol[basis.NumCols()-1] << "]" << endl; 
+	cout << sol[basis.NumCols()-2] << "]" << endl; 
 }
 

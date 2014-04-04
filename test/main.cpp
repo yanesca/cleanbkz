@@ -39,12 +39,11 @@ int main(int argc, char** argv) {
 	ss >> dimension;
 
   	cjloss m(dimension,density);
-	mat_ZZ basis= m.get_basis();
 
-	cout << "Original knapsack problem : "  << endl << m << endl;
+	//cout << "Original knapsack problem : "  << endl << m << endl;
 
 	vec_RR result;
-	enumerate(basis,NULL,result);
+	enumerate(m.basis,NULL,result);
 
 	m.print_solution(result);
 

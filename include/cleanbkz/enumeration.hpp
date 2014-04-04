@@ -29,4 +29,15 @@ using namespace NTL;
 /** Searches for shortest vector with pruned enumeration. The inputs are the lattice basis and the pruning function and a container for the result (short vector int the lattice defined by the basis). */
 void enumerate(mat_ZZ& basis, double* pruning, vec_RR& result); 	
 
+/** Low level enumeration algorithm planed for using in BKZ. It is based on the NTL's enumeration algorithm, it is slightly optimized and extended with extreme pruning. */ 
+void enumerate(
+	double** mu, //!< The Gram-Schmidt coefficients of the basis 
+	double *c, //!< The lengths of the Gram-Schmidt vectors 
+	double* prune, //!< The bounding function for pruning 
+	int jj, //!< Start index 
+	int kk, //!< End index 
+	int m, //!< Number of vectors in the basis 
+	vec_RR& result //!< Container for the return value
+	); 
+
 #endif

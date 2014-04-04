@@ -29,13 +29,13 @@ using namespace NTL;
 /** Class representing a knapsack problem with the purpose to solve it with enumeration and be able to check if the result is correct */
 class cjloss {
 	private:
-		mat_ZZ basis;
 		vec_ZZ solution;
 		vec_ZZ values;
 		ZZ sum;
 		void randomize(long, ZZ);
 		bool check();
 	public:
+		mat_ZZ basis;
 		cjloss(long,double);
 		mat_ZZ get_basis();
 		double get_density() const;
