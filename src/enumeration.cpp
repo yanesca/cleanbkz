@@ -27,31 +27,7 @@
 
 using namespace std;
 
-
-void enumerate(mat_ZZ& basis, double* prune, vec_RR& result) {
-	
-	BKZ_QP1(basis, 0.99, 30);		
-
-	mat_RR mu1;
-	vec_RR c1;
-	ComputeGS(basis,mu1,c1);
-
-	double** mu= new double*[mu1.NumRows()];
-	for(int i= 0; i < mu1.NumRows(); i++)
-		mu[i]= new double[mu1.NumCols()]; 
-	for(int i= 0; i < mu1.NumRows(); i++)
-		for(int j= 0; j < mu1.NumCols(); j++)
-			conv(mu[i][j], mu1[i][j]);
-
-	double* c= new double[mu1.NumRows()];
-	for(int i= 0; i < mu1.NumRows(); i++)
-			conv(c[i], c1[i]);
-
-	enumerate(mu, c, NULL, 0, mu1.NumRows()-1, mu1.NumRows(), result);
-}
-
-
-void enumerate(double** mu, double *c, double* prune, int jj, int kk, int m, vec_RR& result) {
+static void enumerate_ntl(double** mu, double *c, double* prune, int jj, int kk, int m, vec_RR& result) {
 	int s, t;
    	double cbar, t1, eta;
 
@@ -99,10 +75,8 @@ void enumerate(double** mu, double *c, double* prune, int jj, int kk, int m, vec
             deltavec[i] = 1;
          }
 
-         long enum_cnt = 0;
-   
          while (t <= kk) {
-         
+        
             ctilda[t] = ctilda[t+1] + 
                (yvec[t]+utildavec[t])*(yvec[t]+utildavec[t])*c[t];
 
@@ -162,3 +136,152 @@ void enumerate(double** mu, double *c, double* prune, int jj, int kk, int m, vec
    delete [] deltavec;
 } 
 
+void enumerate_ntl(mat_ZZ& basis, double* prune, vec_RR& result) {
+	
+	//BKZ_QP1(basis, 0.99, 30);		
+
+	mat_RR mu1;
+	vec_RR c1;
+	ComputeGS(basis,mu1,c1);
+
+	double** mu= new double*[mu1.NumRows()];
+	for(int i= 0; i < mu1.NumRows(); i++)
+		mu[i]= new double[mu1.NumCols()]; 
+	for(int i= 0; i < mu1.NumRows(); i++)
+		for(int j= 0; j < mu1.NumCols(); j++)
+			conv(mu[i][j], mu1[i][j]);
+
+	double* c= new double[mu1.NumRows()];
+	for(int i= 0; i < mu1.NumRows(); i++)
+			conv(c[i], c1[i]);
+
+	enumerate_ntl(mu, c, prune, 0, mu1.NumRows()-1, mu1.NumRows(), result);
+}
+
+static void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result) {
+	bool pruning= true; 
+	if(Rvec==NULL) {
+		pruning= false;
+		Rvec= new double[n];
+		for(int i= 0; i < n; i++)
+			Rvec[i]= b[0];
+		}
+
+	double** sigmamat= new double*[n+1];
+	for(int i= 0; i < n+1; i++)
+		sigmamat[i]= new double[n]; 
+	for(int i= 0; i < n+1; i++)
+		for(int j= 0; j < n; j++)
+			sigmamat[i][j]= 0;
+
+	int* rvec= new int[n+1];
+	for(int i= 0; i < n+1; i++)
+		rvec[i]= i-1;
+
+	double* rhovec= new double[n+1];
+	for(int i= 0; i < n+1; i++)
+		rhovec[i]= 0;
+		
+	int* vvec= new int[n];	
+	vvec[0]= 1;
+	for(int i= 1; i < n; i++)
+		vvec[i]= 0;
+
+	double* cvec= new double[n];	
+	for(int i= 0; i < n; i++)
+		cvec[i]= 0;
+
+	int* wvec= new int[n];	
+	for(int i= 0; i < n; i++)
+		wvec[i]= 0;
+
+	int last_nonzero= 0;
+
+	int k= 0;
+
+	while(true) {
+		rhovec[k]= rhovec[k+1]+(vvec[k]-cvec[k])*(vvec[k]-cvec[k])*b[k];	
+
+		if(rhovec[k] < Rvec[n-k-1]) {
+			if(k==0) 
+				break;
+			else {
+				k--;
+				rvec[k]= rvec[k]>rvec[k+1]?rvec[k]:rvec[k+1];		
+				for(int i= rvec[k+1]; i>k; i--)
+					sigmamat[i][k]= sigmamat[i+1][k] + vvec[i]*mu[i][k];
+				cvec[k]= -sigmamat[k+1][k];
+
+				/* Check
+				double guard= 0;
+				for(int i= k+1; i<=last_nonzero; i++) 
+					guard-= vvec[i]*mu[i][k];	
+
+				if(cvec[k]-guard > 0.00001) {
+					cout << "cvec[" << k << "]= " << cvec[k] <<  endl;
+					cout << "guard= " << guard <<  endl;
+					break;
+					}*/
+						
+				vvec[k]= lround(cvec[k]);
+				wvec[k]= 1;
+			}
+		} else {
+			k++;
+			if(k==n)
+				break;
+			rvec[k]= k;
+
+			if(k>=last_nonzero){
+				last_nonzero= k;
+				vvec[k]++;
+			} else {
+				if(vvec[k]>cvec[k])
+					vvec[k]-= wvec[k];
+				else
+					vvec[k]+= wvec[k];
+				wvec[k]++;
+			}
+		}
+	}
+
+	if(k==0) {
+		result.SetLength(n);
+		for(int i= 0; i < result.length(); i++) 
+			conv(result[i],vvec[i]);
+	} else
+		result.SetLength(0);
+
+	if(!pruning)
+		delete [] Rvec;
+	for(int i= 0; i < n+1; i++)
+		delete [] sigmamat[i]; 
+	delete [] sigmamat;
+	delete [] rvec; 
+	delete [] vvec;
+	delete [] wvec;
+	delete [] cvec;
+	delete [] rhovec;
+}
+
+void enumerate_epr(mat_ZZ& basis, double* prune, vec_RR& result) {
+	
+	//BKZ_QP1(basis, 0.99, 30);		
+
+	mat_RR mu1;
+	vec_RR c1;
+	ComputeGS(basis,mu1,c1);
+
+	double** mu= new double*[mu1.NumRows()];
+	for(int i= 0; i < mu1.NumRows(); i++)
+		mu[i]= new double[mu1.NumCols()]; 
+	for(int i= 0; i < mu1.NumRows(); i++)
+		for(int j= 0; j < mu1.NumCols(); j++)
+			conv(mu[i][j], mu1[i][j]);
+
+	double* c= new double[mu1.NumRows()];
+	for(int i= 0; i < mu1.NumRows(); i++)
+			conv(c[i], c1[i]);
+
+	enumerate_epr(mu, c, prune, mu1.NumRows(), result);
+}

@@ -5,18 +5,18 @@
 + a doxygen-es doksikészitést tesztelni 
 + GPL- licencet a GNU conventionnek megfelelően hozzáadni és gitbe feltolni
 + kioperálni az NTL-es enumerationt (egy az egyben a schnor-euchnert adaptálja)
-- pruningot belerakni
-- végrehajtani rajta a Phong féle optimalizálást
++ végrehajtani rajta a Phong féle optimalizálást - máshogyvolt szervezve ezért újraprogramoztam a pszeudokódjuk alapján
++ pruningot belerakni
 - lemérni a BKZ és az enumeration futási idejét
 - a Rob által ajánlott cikkekben utánanézni a GS méreteknek és ha kell méréseket is végezni
 - migrálni a polytópszámolót és unit tesztet irni hozzá (vincivel generálni tesztértékeket)
-- a cjlossos tesztprogramból automatikus tesztet irni 
 - megirni a bounding function keresőket
-- saját namespace-t csinálni hasonlón dinmikusan mint az NTL-ben
+- a cjlossos tesztprogramból automatikus tesztet irni, cjlosst áttenni a test könyvtárba
+- saját namespace-t csinálni hasonlón dinamikusan mint az NTL-ben
 
 
 Problémák:
 - az NTL szabványos függvényeit használva külön kell kiszámolni a GS együtthatókat, pedig azokat már a redukcióhoz kiszámolja. Lehetséges megoldások:
 	- igy hagyni és a számitásokat úgy végezni mintha nem lenne ott (ugyanis magas dimenziókban tényleg elhanyagolható a költsége)
 	- duplikálni és módositani a szükséges NTL függvényeket
-- a cjloss bázisát publikussá kellett tennem, hogy működjenek a dolgok, lehet, hogy át kéne szerveznem, hogy a bázis ne csak adattag legyen, hanem a mat_ZZ kiterjesztése
+- a cjloss bázisát publikussá kellett tennem, hogy működjenek a dolgok, lehet, hogy át kéne szerveznem, hogy a bázis ne csak adattag legyen, hanem a mat_ZZ kiterjesztése - vagy nem: az egész csak egy teszt, nem is kell a libbe, át fogom tenni a tests könyvtárba

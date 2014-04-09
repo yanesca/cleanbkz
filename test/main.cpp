@@ -42,8 +42,13 @@ int main(int argc, char** argv) {
 
 	//cout << "Original knapsack problem : "  << endl << m << endl;
 
+	double* Rvec= new double[dimension];
+	for(int i= 0; i < dimension; i++)
+		Rvec[i]= dimension;
+
 	vec_RR result;
-	enumerate(m.basis,NULL,result);
+	enumerate_epr(m.basis,Rvec,result);
+	//enumerate_ntl(m.basis,NULL,result);
 
 	m.print_solution(result);
 
