@@ -22,15 +22,18 @@
 #include <iostream>
 #include <NTL/LLL.h>
 #include <NTL/mat_RR.h>
-#include "cjloss.hpp"
-#include "enumeration.hpp"
+#include <cleanbkz/cjloss.hpp>
+#include <cleanbkz/enumeration.hpp>
+#include <cleanbkz/boundtools.hpp>
 
 using namespace std;
 using namespace NTL;
 
 int main(int argc, char** argv) {
   	int dimension= 0;
-	double density= 0.94;
+	//double density= 0.94;
+	int method= 0; 
+	int bkz_blocksize= 2;
 
   	if(argc<2)
 		return 1;  
@@ -38,7 +41,17 @@ int main(int argc, char** argv) {
 	stringstream ss(argv[1]);
 	ss >> dimension;
 
-  	cjloss m(dimension,density);
+	if (argc==3) {
+		stringstream ss2(argv[2]);
+		ss2 >> method;
+		}
+
+	if (argc==4) {
+		stringstream ss3(argv[3]);
+		ss3 >> bkz_blocksize;
+		}
+
+  	/*cjloss m(dimension,density);
 
 	//cout << "Original knapsack problem : "  << endl << m << endl;
 
@@ -47,10 +60,17 @@ int main(int argc, char** argv) {
 		Rvec[i]= dimension;
 
 	vec_RR result;
-	enumerate_epr(m.basis,Rvec,result);
-	//enumerate_ntl(m.basis,NULL,result);
+	if(method==0)	
+		enumerate_epr(m.basis,bkz_blocksize,Rvec,result);
+	else
+		enumerate_ntl(m.basis,bkz_blocksize,Rvec,result);
 
-	m.print_solution(result);
+	m.print_solution(result);*/
+
+	double t_node, t_reduc;
+	measure_epr(dimension, 2, 10000, 1000000, t_node, t_reduc); 
+	cout << "t_node= " << t_node << endl;
+	cout << "t_reduc= " << t_reduc << endl;
 
 	return 0;
 }

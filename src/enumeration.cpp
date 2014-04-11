@@ -23,7 +23,7 @@
 #include <NTL/vec_double.h>
 #include <NTL/new.h>
 #include <iostream>
-#include "enumeration.hpp"
+#include <cleanbkz/enumeration.hpp>
 
 using namespace std;
 
@@ -136,9 +136,9 @@ static void enumerate_ntl(double** mu, double *c, double* prune, int jj, int kk,
    delete [] deltavec;
 } 
 
-void enumerate_ntl(mat_ZZ& basis, double* prune, vec_RR& result) {
+void enumerate_ntl(mat_ZZ& basis, int beta, double* prune, vec_RR& result) {
 	
-	//BKZ_QP1(basis, 0.99, 30);		
+	BKZ_QP1(basis, 0.99, beta);		
 
 	mat_RR mu1;
 	vec_RR c1;
@@ -158,7 +158,8 @@ void enumerate_ntl(mat_ZZ& basis, double* prune, vec_RR& result) {
 	enumerate_ntl(mu, c, prune, 0, mu1.NumRows()-1, mu1.NumRows(), result);
 }
 
-static void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result) {
+//static
+void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, const unsigned long termination, double &time) {
 	bool pruning= true; 
 	if(Rvec==NULL) {
 		pruning= false;
@@ -198,11 +199,14 @@ static void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& r
 	int last_nonzero= 0;
 
 	int k= 0;
+	unsigned long nodes= 0;
+	clock_t end,begin= clock();	
 
-	while(true) {
+	while((termination==0)||(nodes < termination)) {
 		rhovec[k]= rhovec[k+1]+(vvec[k]-cvec[k])*(vvec[k]-cvec[k])*b[k];	
 
-		if(rhovec[k] < Rvec[n-k-1]) {
+		nodes++;
+		if(rhovec[k] <= Rvec[n-k-1]) {
 			if(k==0) 
 				break;
 			else {
@@ -212,17 +216,6 @@ static void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& r
 					sigmamat[i][k]= sigmamat[i+1][k] + vvec[i]*mu[i][k];
 				cvec[k]= -sigmamat[k+1][k];
 
-				/* Check
-				double guard= 0;
-				for(int i= k+1; i<=last_nonzero; i++) 
-					guard-= vvec[i]*mu[i][k];	
-
-				if(cvec[k]-guard > 0.00001) {
-					cout << "cvec[" << k << "]= " << cvec[k] <<  endl;
-					cout << "guard= " << guard <<  endl;
-					break;
-					}*/
-						
 				vvec[k]= lround(cvec[k]);
 				wvec[k]= 1;
 			}
@@ -245,6 +238,11 @@ static void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& r
 		}
 	}
 
+	end= clock();
+	time= (double) (end-begin) / CLOCKS_PER_SEC / nodes;
+
+	//cout << "nodes: " << nodes << endl;
+
 	if(k==0) {
 		result.SetLength(n);
 		for(int i= 0; i < result.length(); i++) 
@@ -264,9 +262,10 @@ static void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& r
 	delete [] rhovec;
 }
 
-void enumerate_epr(mat_ZZ& basis, double* prune, vec_RR& result) {
+void enumerate_epr(mat_ZZ& basis, int beta, double* prune, vec_RR& result) {
+	double time;
 	
-	//BKZ_QP1(basis, 0.99, 30);		
+	BKZ_QP1(basis, 0.99, beta);		
 
 	mat_RR mu1;
 	vec_RR c1;
@@ -283,5 +282,5 @@ void enumerate_epr(mat_ZZ& basis, double* prune, vec_RR& result) {
 	for(int i= 0; i < mu1.NumRows(); i++)
 			conv(c[i], c1[i]);
 
-	enumerate_epr(mu, c, prune, mu1.NumRows(), result);
+	enumerate_epr(mu, c, prune, mu1.NumRows(), result, 0, time);
 }

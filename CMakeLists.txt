@@ -6,7 +6,7 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 SUBDIRS(src test)
 
-set(CMAKE_CXX_FLAGS "-O0 -gstabs -Wall")
+set(CMAKE_CXX_FLAGS "-O9 -Wall")
 
 # add a target to generate API documentation with Doxygen
 find_package(Doxygen)
@@ -19,4 +19,4 @@ if(DOXYGEN_FOUND)
 		)
 endif(DOXYGEN_FOUND)
 
-set(CMAKE_BUILD_TYPE debug)
+set(CMAKE_BUILD_TYPE release)

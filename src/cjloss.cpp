@@ -21,12 +21,11 @@
 #include <cmath>
 #include <ctime>
 #include <iostream>
-#include "cjloss.hpp"
+#include <cleanbkz/cjloss.hpp>
 
 using namespace std;
 
-/** Generates a random knapsack problem with maxlength bit long numbers and whose corresponding lattice has dimension dimension and density= dimension/maxlength */
-cjloss::cjloss(long dimension, double density) {
+cjloss::cjloss(long dimension, double density, long seed) {
 	basis.SetDims(dimension, dimension);	
 	values.SetLength(dimension-1);
 	solution.SetLength(dimension-1);
@@ -34,9 +33,9 @@ cjloss::cjloss(long dimension, double density) {
 	ZZ max;
 	conv(max,floor(pow(2, (dimension-1)/density)));
 
-	ZZ seed;
-	conv(seed,time(NULL)); 
-	SetSeed(seed);
+	ZZ s;
+	conv(s,seed); 
+	SetSeed(s);
 	randomize(dimension-1,max);
 	while(!check())
 		randomize(dimension-1,max);
@@ -142,6 +141,7 @@ void cjloss::print_solution(const vec_RR& shortest){
 	if(basis.NumRows()!=shortest.length()) {
 		cout << "Invalid solution length: " <<  shortest.length()  << endl;
 		cout << "Number of basis vectors: " << basis.NumRows()  << endl;
+		return;
 	}
 
 	for(int j= 0; j< basis.NumCols(); j++)	

@@ -36,7 +36,8 @@ class cjloss {
 		bool check();
 	public:
 		mat_ZZ basis;
-		cjloss(long,double);
+		/** Generates a random (with the given seed) knapsack problem with maxlength bit long numbers and whose corresponding lattice has dimension dimension and density= dimension/maxlength */
+		cjloss(long dimension, double density, long seed); 
 		mat_ZZ get_basis();
 		double get_density() const;
 		void print_solution(const vec_RR& shortest);
