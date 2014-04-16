@@ -15,7 +15,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+    along with cleanbkz.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -158,8 +158,7 @@ void enumerate_ntl(mat_ZZ& basis, int beta, double* prune, vec_RR& result) {
 	enumerate_ntl(mu, c, prune, 0, mu1.NumRows()-1, mu1.NumRows(), result);
 }
 
-//static
-void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, const unsigned long termination, double &time) {
+void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, unsigned long &termination, double &time) {
 	bool pruning= true; 
 	if(Rvec==NULL) {
 		pruning= false;
@@ -240,8 +239,8 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 
 	end= clock();
 	time= (double) (end-begin) / CLOCKS_PER_SEC / nodes;
-
-	//cout << "nodes: " << nodes << endl;
+	if(termination!=0)
+		termination-= nodes;
 
 	if(k==0) {
 		result.SetLength(n);
@@ -282,5 +281,6 @@ void enumerate_epr(mat_ZZ& basis, int beta, double* prune, vec_RR& result) {
 	for(int i= 0; i < mu1.NumRows(); i++)
 			conv(c[i], c1[i]);
 
-	enumerate_epr(mu, c, prune, mu1.NumRows(), result, 0, time);
+	unsigned long termination= 0;
+	enumerate_epr(mu, c, prune, mu1.NumRows(), result, termination, time);
 }

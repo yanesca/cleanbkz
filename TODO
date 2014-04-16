@@ -10,20 +10,24 @@
 + lemérni a BKZ és az enumeration futási idejét - nem praktikus, mert BKZ-30 (amivel próbálkoztam) meg BKZ-35 (amit ők használtak) nagyon lassú és még magas dimenzióban is (65) megtalálja a legrövidebb vektort (nem hagy munkát az enumerationnek)
 + a töréspont valószinüleg 65 és 70 között van, meg kellene keresni - Igen, a 67 az első ami nem 1 node-ot vizsgál és full enumerationnal fut 45 percig
 - LLL -el redukálni bkz helyett és úgy lemérni az időket (10000000 node kell a viszonylagos stabilitáshoz és 45-nél már elég gyakran nem éri ezt el, szóval az az eredmény nem lesz olyan pontos)
+	+ paraméterezni a programot a sample mérettel (hogy tudjam becsülni a magas mintás futási időt alacsony mintamérettel), futási időket megbecsülni
 	- 50 dimenzióval kikisérletezni a sample méretet ami kell a 3 stabil tizedesjegyhez
-	- lemérni 45, 50, 55, 60, 65, 70, 75, 80 -ra 
-	- extrapolálni 30, 35, 40 -re
-- a Rob által ajánlott cikkekben utánanézni a GS méreteknek és ha kell méréseket is végezni
+	- lemérni 50, 55, 60, 65, 70, 75, 80 -ra  (automatizálva)
+	- extrapolálni 40, 45 -re (automatizálni) 
++ a Rob által ajánlott cikkekben utánanézni a GS méreteknek és ha kell méréseket is végezni
 - migrálni a polytópszámolót és unit tesztet irni hozzá (vincivel generálni tesztértékeket)
 - megirni a bounding function keresőket, paraméter az első gs vektor hossza (jegyzet, hermite faktorok a füzetben). 
-- tesztelni, hogy hogyan változik a bounding function a gs hossz változtatásával
 - a cjlossos tesztprogramból automatikus tesztet irni, cjlosst áttenni a test könyvtárba
+- tesztelni a bounding function-öket
+- tesztelni, hogy hogyan változik a bounding function a gs hossz változtatásával
 - Megirni a pruningos BKZ-t, enumerationt külön függvénybe tenni
 - Minden enumeration hivást és a vonatkozó unit teszteket átirni az új enumeration-re 
 - pruning function-öket számolni (LLL-es bemenetet feltételezve) 5-ös lépésközzel 30 és 80 között, a többit meg approximálni (ahogy a bkz 2.0-ás cikk is irja)
 - Implementálni a radius reductiont és az early terminationt 
 - Implementálni az unexpected early terminationt (mindig kiirja lemezre, hogy hanyadik iterációnál jár és hogy mi az aktuális bázis)
-- a rekurzive hivás hermite-faktorait megvizsgálni (early terminatiönnel és anélkül)
+- a rekurzive hivás paramétereit kikisérletezni :
+	- Hermite faktorokat lemérni (early terminatiönnel és anélkül)
+	- várható futási időket a bounding function számolóval összevetni
 - random lattice-ekre is elvégezni a méréseket és összehasonlitani a cjlossosokkal (ehhez előtte megnézni Gama-Nguyent)
 - saját namespace-t csinálni hasonlón dinamikusan mint az NTL-ben
 
