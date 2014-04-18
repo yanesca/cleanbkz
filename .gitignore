@@ -38,3 +38,8 @@ doc/
 
 # Ignore generated polytope files
 *.ine
+
+# Ignore generated lattices and boundary functions
+*.dat
+*.lat
+*.bnd

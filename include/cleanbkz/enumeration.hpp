@@ -25,7 +25,8 @@
 
 using namespace NTL;
 
-/** @file Contains enumeration algorithms for finding the shortest vector in a lattice. */
+/** 	@file 
+	@brief Contains enumeration algorithms for finding the shortest vector in a lattice. */
 
 /** Searches for the shortest vector with pruned enumeration. It performs an enumeration and returns with the SHORTEST vector found in the domain determined by the boundary function. It is based on the NTL's enumeration algorithm, extended with extreme pruning. (This i probably the algorithm published in this paper:  C. P. Schnorr and M. Euchner "Lattice basis reduction: Improved practical algorithms and solving subset sum problems", Mathematical Programming, 2 August 1994, Volume 66, Issue 1-3, pp 181-199. */
 void enumerate_ntl(

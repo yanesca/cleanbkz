@@ -21,7 +21,8 @@
 #ifndef BOUNDTOOLS_H_
 #define BOUNDTOOLS_H_
 
-/** @file Contains tools for constructing boundary functions for pruned enumeration. */
+/** 	@file 
+	@brief Contains tools for constructing boundary functions for pruned enumeration. */
 
 /**  Measures the processing time of a node and the basis reduction enumerate_epr function. Generates random lattices, prerocesses the bases with the prescribed blocksize and terminates the enumeration after processig \p nodes nodes. Computes the sample means of the runing times after /p samples experiments. */ 
 
