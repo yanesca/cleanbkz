@@ -26,7 +26,9 @@
 
 using namespace NTL;
 
-/** Class representing a knapsack problem with the purpose to solve it with enumeration and be able to check if the result is correct */
+/** 	@class
+ 	@brief class representing a knapsack problem with the purpose to solve it with enumeration and be able to check if the result is correct */
+
 class cjloss {
 	private:
 		vec_ZZ solution;
@@ -35,12 +37,19 @@ class cjloss {
 		void randomize(long, ZZ);
 		bool check();
 	public:
+		/** Basis of the lattice */
 		mat_ZZ basis;
-		/** Generates a random (with the given seed) knapsack problem with maxlength bit long numbers and whose corresponding lattice has dimension dimension and density= dimension/maxlength */
+
+		/** Generates (with the given seed) a random knapsack problem with maxlength bit long numbers and whose corresponding lattice has dimension dimension and density= dimension/maxlength */
 		cjloss(long dimension, double density, long seed); 
-		mat_ZZ get_basis();
+
+		/** Computes the density of the generated lattice. */ 
 		double get_density() const;
+
+		/** Given the shortest vector in the scaled cjloss lattice, it computes and prints the solution to the corresponding subset sum problem */
 		void print_solution(const vec_RR& shortest);
+
+		/** Puts the cjloss lattice in question to the given output stream. */
 		friend std::ostream& operator<<(std::ostream&, const cjloss&);
 };
 

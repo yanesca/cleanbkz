@@ -56,7 +56,7 @@ cjloss::cjloss(long dimension, double density, long seed) {
 	basis[dimension-1][dimension-1]= sum*N;
 	}
 
-/** generates a random knapsack problem with equally many zeroes and ones in the solution (condition applied in the extreme pruning article) */ 
+/* generates a random knapsack problem with equally many zeroes and ones in the solution (condition applied in the extreme pruning article) */ 
 void cjloss::randomize(long dimension, ZZ max){
 	values[0]= max;
 	solution[0]= 0;
@@ -85,7 +85,7 @@ void cjloss::randomize(long dimension, ZZ max){
 		sum+= solution[i]*values[i];
 	}
 
-/** Checks if t/n < s < (n-1)t/n holds. This is condition sugested by the cjloss article. */ 
+/* Checks if t/n < s < (n-1)t/n holds. This is condition sugested by the cjloss article. */ 
 bool cjloss::check() {
 	ZZ right;	
 	ZZ first;
@@ -103,12 +103,6 @@ bool cjloss::check() {
 	return true;
 } 
 
-/** Returns the basis of the corresponding lattice. */
-mat_ZZ cjloss::get_basis() {
-	return basis;
-}
-
-/** Computes the density of the generated lattice. */ 
 double cjloss::get_density() const {
 	ZZ max;	
 
@@ -122,7 +116,6 @@ double cjloss::get_density() const {
 	return values.length()/log2(dmax);
 }
 
-/** Puts the cjloss lattice in question to the given output stream. */
 ostream& operator<<(ostream& os, const cjloss& obj) {
 	os << obj.basis << endl << endl;
 
@@ -133,7 +126,6 @@ ostream& operator<<(ostream& os, const cjloss& obj) {
 	return os;
 }
 
-/** Given the shortest vector in the scaled cjloss lattice, it computes and prints the solution to the corresponding subset sum problem */
 void cjloss::print_solution(const vec_RR& shortest){
 	double* sol= new double[basis.NumCols()];
 	double dbase, dsol;
@@ -166,7 +158,7 @@ void cjloss::print_solution(const vec_RR& shortest){
 		sol[i]= -(sol[i]-1)/2;
 	}
  
-	cout << "Squared length (found/solution): " << sqrdLength << " / " << basis.NumCols()-1 << endl << endl; 
+	cout << "Squared length (found/solution): " << sqrdLength << " / " << basis.NumRows()-1 << endl << endl; 
 
 	cout << "Original solution: " << solution << endl;
 	cout << "Solution: ["; 

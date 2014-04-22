@@ -26,19 +26,9 @@
 
 using namespace std;
 
-char* get_cmd_option(char** begin, char** end, const string& option) {
-    char** itr= find(begin, end, option);
-
-    if (itr != end && ++itr != end) {
-        return *itr;
-    }
-
-    return 0;
-}
-
-bool cmd_option_exists(char** begin, char** end, const string& option) {
-    return find(begin, end, option) != end;
-}
+// Defined in tools.cpp
+char* get_cmd_option(char** begin, char** end, const string& option); 
+bool cmd_option_exists(char** begin, char** end, const string& option);
 
 int main(int argc, char** argv) {
   	int dimension= 0;
@@ -53,9 +43,10 @@ int main(int argc, char** argv) {
 
 	if (argc==1 || cmd_option_exists(argv, argv+argc, "-h")) {
 		cout << "This program measures the parameters t_node and t_reduc required for the computation of boundary functions. These are the running time of the enumeration and reduction algorithms on the current platform. Program options:" << endl
+ 			<< "\t-h \t\tPrint this help." << endl
  			<< "\t-d n\t\tMeasure running times in dimension n." << endl
- 			<< "\t-s n\t\tStart the measurements in dimension n. It is ignored when -d is given" << endl
- 			<< "\t-e n\t\tContinue measuring in all dimensions until dimension n with a step five. It is ignored when -d is given" << endl
+ 			<< "\t-s n\t\tStart the measurements in dimension n. It is ignored when -d is given." << endl
+ 			<< "\t-e n\t\tContinue measuring in all dimensions until dimension n with a step five. It is ignored when -d is given." << endl
 			<< "\t-b n\t\tAbort enumeration after processing n nodes. (default: 10,000,000)" << endl
 			<< "\t-n n\t\tNumber of experiments to make. (default: 1000)" << endl
 			<< "\t-k n\t\tThe blocksize of BKZ used for preprocessing. (default: 2)" << endl;

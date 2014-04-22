@@ -13,17 +13,27 @@
 + migrálni a polytópszámolót és unit tesztet irni hozzá (vincivel generálni tesztértékeket)
 + megirni a bounding function keresőket, paraméter az első gs vektor hossza (jegyzet, hermite faktorok a füzetben). - fölösleges, egyszerűbb, ha a paraméter a bázis 
 + pruning function-öket számolni (LLL-es bemenetet feltételezve) 5-ös lépésközzel 30 és 80 között, a többit meg approximálni (ahogy a bkz 2.0-ás cikk is irja) - nem lehet a bázis ismerete nélkül
-- kitenni a bounding function keresőt egy külön alkalmazásba
++ kitenni a bounding function keresőt egy külön alkalmazásba
 - lattice I/O-t implementálni és letisztázni a bounding function kereső alkalmazást
-- kideriteni, hogy miért lesz a mu mátrixom első sora nulla és miért nem lesz bázismátrix első sora nulla
+	- expected running time és success probability-t commentben beleirni
++ kideriteni, hogy miért lesz a mu mátrixom első sora nulla és miért nem lesz bázismátrix első sora nulla
+	+ Válasz: az NTL kispórolja a mu főátlójából az 1-eseket
++ kideriteni, hogy miért n-1 hosszú a legrövidebb vektor és nem n/2 
+	+ Válasz: mert egyrészt független a hossz a megoldásban lévő egyesek számától, másrészt meg valóban igy jön ki a skálázás után (itt vektorokat skálázunk ez teljesen másképp viselkedik mint a térfogat. Tényleg kijön, számitás a füzetben.
+- kideriteni, hogy mi a baj a bounding function keresővel
+	- miért lesz az első vágás olyan magas? (gyanús, hogy a polytópszámolóban van elrontva a legalacsonyabb dimenzió)
+	- miért megy cikkcakban ha sokáig futtatom?
 - megirni a bounding function kereső unit tesztjeit
+- Megnézni, hogy milyen hatással van a mu korrigálása az enumerationra 
+	- valszeg semmilyen, mert a főátlót eleve 1-nek veszi. Megkeresni a vonatkozó részt az algoritmusban
+- tesztadatokat generálni majd tesztelni a bounding function-t (BKZ 30 vagy 35, dimenzió 80)
 - a cjlossos tesztprogramból automatikus tesztet irni,  
-- tesztelni a bounding function-t (BKZ 30 vagy 35, dimenzió 80)
 - Megirni a pruningos BKZ-t, enumerationt külön függvénybe tenni
 - Minden enumeration hivást és a vonatkozó unit teszteket átirni az új enumeration-re 
 - kikisérletezni a paramétereket a bkz automatikus bounding function keresőjéhez
 - Implementálni a radius reductiont és az early terminationt 
 - Implementálni az unexpected early terminationt (mindig kiirja lemezre, hogy hanyadik iterációnál jár és hogy mi az aktuális bázis)
+- refaktorálni a toolok paraméterfeldolgozását
 ******** Itt lesz kész a BKZ1.5 **********
 - a rekurzive hivás paramétereit kikisérletezni :
 	- Hermite faktorokat lemérni (early terminatiönnel és anélkül)
