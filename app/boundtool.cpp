@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 	act_arg= get_cmd_option(argv, argv + argc, "-r");	
 	if (act_arg) {
 		ss << act_arg;
-		ss >> t_node;
+		ss >> t_reduc;
 		ss.clear();
 		if(t_reduc < 0) {
 			cerr << "ERROR: invalid t_reduc. The running time should be greater than or equal to zero. Aborting." << endl;
@@ -140,15 +140,19 @@ int main(int argc, char** argv) {
 
 	double* c= new double[mu1.NumRows()];
 	for(int i= 0; i < mu1.NumRows(); i++)
-			conv(c[i], c1[i]);
+			conv(c[i], SqrRoot(c1[i]));
 
 	int dim= mu1.NumRows();
 	double* boundary= new double[dim];	
 
 	// TODO: csinálni egy változatot, ahol nem iterationt hanem thressholdot adunk meg
-	generate_boundary(c, t_node, t_reduc, dim, boundary, dim-1, delta, iterations); 
+	double p_succ;
+	double t_enum;	
+	generate_boundary(c, t_node, t_reduc, dim, boundary, dim-1, delta, iterations, p_succ, t_enum); 
 
 	cout << "# basis: '" << act_arg << "' " << endl
+	<< "# estimated enumeration time: " << t_enum << endl  
+	<< "# success probability: " << p_succ << endl  
 	<< "# boudary function: " << endl << endl;
 	for(int i= 0; i < dim; i++)
 		cout << i << " " << boundary[i] << endl;

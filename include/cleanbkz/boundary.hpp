@@ -42,7 +42,9 @@ void generate_boundary(
 	double Rvec[], 		//!< Container with enough space reserved for the result (n double values) 
 	double R,		//!< The length of the vector the enumeration is looking for 
 	double delta,		//!< The step of the random modifications  
-	unsigned long iterations//!< The number of random modifications to test
+	unsigned long iterations,	//!< The number of random modifications to test
+	double& p_succ,		//!< Container for the success probability of the resulting function
+	double& t_enum		//!< Container for the estimated running time of the resulting function
 	); 
 
 #endif

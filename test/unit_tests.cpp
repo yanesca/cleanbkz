@@ -19,14 +19,15 @@
 */
 
 #include <iostream>
-#include <sstream>
-#include <cleanbkz/boundary.hpp>
 #include <cleanbkz/cjloss.hpp>
 #include <NTL/LLL.h>
 
 using namespace std;
 
-double polytope_volume(double vols[], double bounds[], int dim);
+extern double t_extreme_reference(double boundary[], double b_star_norm[], double t_node, double t_reduc, int n); 
+extern double t_extreme(double boundary[], double b_star_norm[], double t_node, double t_reduc, int n); 
+
+extern double polytope_volume(double vols[], double bounds[], int dim);
 
 int main(int argc, char** argv) {
 	double* vols= new double[15];
@@ -62,5 +63,37 @@ int main(int argc, char** argv) {
 		cout << "PASSED" << endl;
 	else cout << "FAILED" << endl;
 
+
+	// Unit tests for the enumeration running time estimator function
+	//TODO: cjloss destruktort megirni és itt meghivni
+	//TODO: setupot és teardownt irni a teszthez
+
+/*	
+	cjloss l(80, 0.94, 0);
+	BKZ_QP1(l.basis, 0.99, 2);		
+
+	mat_RR mu1;
+	vec_RR c1;
+	ComputeGS(l.basis,mu1,c1);
+
+	double* c= new double[mu1.NumRows()];
+	for(int i= 0; i < mu1.NumRows(); i++)
+			conv(c[i], SqrRoot(c1[i]));
+
+	double* boundary= new double[mu1.NumRows()];	
+	boundary[0]= boundary[1]= 2;
+	for(int i= 2; i < mu1.NumRows()-1; i+=2)
+		boundary[i]= boundary[i+1]= boundary[i-1]+boundary[0];
+	boundary[mu1.NumRows()-1]= mu1.NumRows();
+
+	double t_node= 3.47193e-08;
+	double t_reduc= 0.101471;
+	if(t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows())-t_extreme_reference(boundary, c, t_node, t_reduc, mu1.NumRows()) < 1e+62)
+		cout << "PASSED" << endl;
+	else cout << "FAILED" << endl;
+
+	cout << "Production: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows()) << endl;
+	cout << "Reference: " << t_extreme_reference(boundary, c, t_node, t_reduc, mu1.NumRows()) << endl;
+*/
 	return 0;
 }

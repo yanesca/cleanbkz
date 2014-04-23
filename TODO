@@ -14,19 +14,28 @@
 + megirni a bounding function keresőket, paraméter az első gs vektor hossza (jegyzet, hermite faktorok a füzetben). - fölösleges, egyszerűbb, ha a paraméter a bázis 
 + pruning function-öket számolni (LLL-es bemenetet feltételezve) 5-ös lépésközzel 30 és 80 között, a többit meg approximálni (ahogy a bkz 2.0-ás cikk is irja) - nem lehet a bázis ismerete nélkül
 + kitenni a bounding function keresőt egy külön alkalmazásba
-- lattice I/O-t implementálni és letisztázni a bounding function kereső alkalmazást
-	- expected running time és success probability-t commentben beleirni
++ lattice I/O-t implementálni és letisztázni a bounding function kereső alkalmazást
+- expected running time és success probability-t commentben beleirni
 + kideriteni, hogy miért lesz a mu mátrixom első sora nulla és miért nem lesz bázismátrix első sora nulla
 	+ Válasz: az NTL kispórolja a mu főátlójából az 1-eseket
 + kideriteni, hogy miért n-1 hosszú a legrövidebb vektor és nem n/2 
 	+ Válasz: mert egyrészt független a hossz a megoldásban lévő egyesek számától, másrészt meg valóban igy jön ki a skálázás után (itt vektorokat skálázunk ez teljesen másképp viselkedik mint a térfogat. Tényleg kijön, számitás a füzetben.
-- kideriteni, hogy mi a baj a bounding function keresővel
-	- miért lesz az első vágás olyan magas? (gyanús, hogy a polytópszámolóban van elrontva a legalacsonyabb dimenzió)
-	- miért megy cikkcakban ha sokáig futtatom?
++ kideriteni, hogy mi a baj a bounding function keresővel
+	+ miért lesz az első vágás olyan magas? (gyanús, hogy a polytópszámolóban van elrontva a legalacsonyabb dimenzió)
+	+ miért megy cikkcakban ha sokáig futtatom?
+	+ Válasz mindkettőre: nem monoton bounding functionnek nincs értelme és nem is működik rá a módszer, és a random változások megengedték
+	+ Volt benne egy másik bug is: rangen kivüli indexből olvasta a siker valószinűségét
+	+ az elején számol gyanús nullákat meg talán infet is, érdemes lenne debuggolni -ebben is az indexelés volt a ludas
+- kisérleteket végezni a konvergencia sebességéről 0.1 -es delta esetén (lineáris kisérletszám növeléssel a becsült idő javulása)
+- az alkalmazásba betenni egy opcionális adaptiv lépcsőt, mert a 0.1 nagyon durva, a 0.01 meg nagyon lassan konvergál
 - megirni a bounding function kereső unit tesztjeit
+- tesztadatokat generálni a 80 dimenziós blokkmérethez 30 vagy 35-ös előfeldolgozásal
 - Megnézni, hogy milyen hatással van a mu korrigálása az enumerationra 
 	- valszeg semmilyen, mert a főátlót eleve 1-nek veszi. Megkeresni a vonatkozó részt az algoritmusban
-- tesztadatokat generálni majd tesztelni a bounding function-t (BKZ 30 vagy 35, dimenzió 80)
+- tesztelni a bounding function-t (BKZ 30 vagy 35, dimenzió 80)
+- feljavitani a keresést:
+	- thresshold: addig megy amig x körig sikertelen volt a változtatás (nem pedig fix körig)
+	- adaptiv: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább
 - a cjlossos tesztprogramból automatikus tesztet irni,  
 - Megirni a pruningos BKZ-t, enumerationt külön függvénybe tenni
 - Minden enumeration hivást és a vonatkozó unit teszteket átirni az új enumeration-re 
