@@ -21,6 +21,10 @@
 #ifndef BOUNDARY_H_
 #define BOUNDARY_H_
 
+#include <NTL/RR.h>
+
+#define RR_PRECISION 200
+
 /** 	@file 
 	@brief Contains algorithms for finding the optimal bounding function for a lattice. */
 
@@ -35,7 +39,7 @@ double t_extreme(
 
 /**  Generates an optimal boundary function for enumeration with extreme pruning. Uses numerical optimization with random changes as briefly explained in: Nicolas Gama, Phong Q. Nguyen and Oded Regev "Lattice Enumeration using Extreme Pruning", Advances in Cryptology – EUROCRYPT 2010 Lecture Notes in Computer Science Volume 6110, 2010, pp 257-278. */ 
 void generate_boundary(	
-	double b_star_norm[],	//!< The lengths of the vectors in the Gram-Schmidt basis 
+	NTL::RR b_star_norm[],	//!< The lengths of the vectors in the Gram-Schmidt basis 
 	double t_node,		//!< The time the enumeration spends with processing a single node 
 	double t_reduc, 	//!< The running time of the basis reduction algorithm used
 	int n, 			//!< The dimension of the lattice

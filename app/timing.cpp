@@ -49,7 +49,8 @@ int main(int argc, char** argv) {
  			<< "\t-e n\t\tContinue measuring in all dimensions until dimension n with a step five. It is ignored when -d is given." << endl
 			<< "\t-b n\t\tAbort enumeration after processing n nodes. (default: 10,000,000)" << endl
 			<< "\t-n n\t\tNumber of experiments to make. (default: 1000)" << endl
-			<< "\t-k n\t\tThe blocksize of BKZ used for preprocessing. (default: 2)" << endl;
+			<< "\t-k n\t\tThe blocksize of BKZ used for preprocessing. (default: 2)" << endl
+			<< "\t-t n\t\tPredict the running time of the experiments." << endl;
 		return 0;
 	}
 

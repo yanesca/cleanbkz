@@ -15,7 +15,7 @@
 + pruning function-öket számolni (LLL-es bemenetet feltételezve) 5-ös lépésközzel 30 és 80 között, a többit meg approximálni (ahogy a bkz 2.0-ás cikk is irja) - nem lehet a bázis ismerete nélkül
 + kitenni a bounding function keresőt egy külön alkalmazásba
 + lattice I/O-t implementálni és letisztázni a bounding function kereső alkalmazást
-- expected running time és success probability-t commentben beleirni
++ expected running time és success probability-t commentben beleirni
 + kideriteni, hogy miért lesz a mu mátrixom első sora nulla és miért nem lesz bázismátrix első sora nulla
 	+ Válasz: az NTL kispórolja a mu főátlójából az 1-eseket
 + kideriteni, hogy miért n-1 hosszú a legrövidebb vektor és nem n/2 
@@ -26,16 +26,27 @@
 	+ Válasz mindkettőre: nem monoton bounding functionnek nincs értelme és nem is működik rá a módszer, és a random változások megengedték
 	+ Volt benne egy másik bug is: rangen kivüli indexből olvasta a siker valószinűségét
 	+ az elején számol gyanús nullákat meg talán infet is, érdemes lenne debuggolni -ebben is az indexelés volt a ludas
-- kisérleteket végezni a konvergencia sebességéről 0.1 -es delta esetén (lineáris kisérletszám növeléssel a becsült idő javulása)
-- az alkalmazásba betenni egy opcionális adaptiv lépcsőt, mert a 0.1 nagyon durva, a 0.01 meg nagyon lassan konvergál
-- megirni a bounding function kereső unit tesztjeit
-- tesztadatokat generálni a 80 dimenziós blokkmérethez 30 vagy 35-ös előfeldolgozásal
-- Megnézni, hogy milyen hatással van a mu korrigálása az enumerationra 
-	- valszeg semmilyen, mert a főátlót eleve 1-nek veszi. Megkeresni a vonatkozó részt az algoritmusban
-- tesztelni a bounding function-t (BKZ 30 vagy 35, dimenzió 80)
++ t_extreme naiv implementáció más, hihetőbb eredményt ad mint az optimalizált, mi  hiba? Rossz volt az osztás a végén.
++ a success probability számitásánál bele kell számitani, hogy ha csökken a legutolsó bound akkor már jóval rövidebb vektort keresünk (az algoritmus feltételezi, hogy az a legrövidebb vektor hossza: 
+	+ ha R_n nagyobb mint a hossz akkor az egynél magasabb boundokat egyre kellene csökkenteni, de az egész tárgytalan, mert ha az R_n -t növelnénk, akkor az algoritmus R-nél hosszabb vektorokat is elfogadna 
+	+ ha R_n kisebb mint a hossz (és az tényleg a legrövidebb vektor hossza) akkor a p_succ mindenképpen nulla
+	+ ha az alacsonyabb R_i-k nagyobbak, akkor túlbecsül, végig kell gondolni - ez megintcsak nem lehet mert ha az R_ik nagyobbak az R_n=R -nél akkor az ellentmond a monotonitásnak
+	+ implementálni  számitást, képlet a füzetben
++ Javitani a t_extreme számitást, ugyanis a jelenleg csak polytope volummal számol, de a valószinűséghez ezt még 1/(i+1)! -al (az egységszimplex térfogata) osztani kell
++ unit testet irni a polytop számitóhoz csupa 1-es boundokkal, azaz az n-dimenziós szimplexet és az eredményt összevetni n! -al
++ alacsony dimenzióban még egyezik a simplex képlet és a polytóp függvény, de 25 körül elkezd pontatlankodni aztán szépen fokozatosan elszáll és a végén negativ értékek is kijönnek. Valószinűleg numerikusan instabil, vagy csak nem elég a pontosság:
+	+ Megirni mindkettőt az NTL RR -jével és megnézni, hogy stabilizálódik-e
+	+ fontos, hogy a politóp dimenziója csak fele a blokkméretnek, tehát a legnagyobb érték amivel számolni kell majd az 60-70, amire meg első körben szükség lesz az csak 40
++ megirni a bounding function kereső unit tesztjeit
++ tesztadatokat generálni a 80 dimenziós blokkmérethez 30 vagy 35-ös előfeldolgozásal, 
+- és kideriteni, hogy mi nem stimmel
 - feljavitani a keresést:
 	- thresshold: addig megy amig x körig sikertelen volt a változtatás (nem pedig fix körig)
 	- adaptiv: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább
+- Megnézni, hogy milyen hatással van a mu korrigálása az enumerationra 
+	- valszeg semmilyen, mert a főátlót eleve 1-nek veszi. Megkeresni a vonatkozó részt az algoritmusban
+- tesztelni a bounding function-t (BKZ 30 vagy 35, dimenzió 80)
+? hermite faktoros optimalizálást implementálni  
 - a cjlossos tesztprogramból automatikus tesztet irni,  
 - Megirni a pruningos BKZ-t, enumerationt külön függvénybe tenni
 - Minden enumeration hivást és a vonatkozó unit teszteket átirni az új enumeration-re 
@@ -43,6 +54,9 @@
 - Implementálni a radius reductiont és az early terminationt 
 - Implementálni az unexpected early terminationt (mindig kiirja lemezre, hogy hanyadik iterációnál jár és hogy mi az aktuális bázis)
 - refaktorálni a toolok paraméterfeldolgozását
+- letisztázni és kibőviteni a unit teszteket
+- a unit tesztekhez használt referenciaimplementációkat kiszedni a libből a teszt könyvtárba
+- a boundtool.cpp -ek és a boundary.cpp -nek értelmesebb neveket találni
 ******** Itt lesz kész a BKZ1.5 **********
 - a rekurzive hivás paramétereit kikisérletezni :
 	- Hermite faktorokat lemérni (early terminatiönnel és anélkül)

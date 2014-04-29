@@ -138,9 +138,11 @@ int main(int argc, char** argv) {
 	vec_RR c1;
 	ComputeGS(basis,mu1,c1);
 
-	double* c= new double[mu1.NumRows()];
-	for(int i= 0; i < mu1.NumRows(); i++)
-			conv(c[i], SqrRoot(c1[i]));
+	RR* c= new RR[mu1.NumRows()];
+	for(int i= 0; i < mu1.NumRows(); i++) {
+		c[i]= SqrRoot(c1[i]);
+		c[i].SetPrecision(RR_PRECISION);
+	}
 
 	int dim= mu1.NumRows();
 	double* boundary= new double[dim];	
@@ -148,7 +150,7 @@ int main(int argc, char** argv) {
 	// TODO: csinálni egy változatot, ahol nem iterationt hanem thressholdot adunk meg
 	double p_succ;
 	double t_enum;	
-	generate_boundary(c, t_node, t_reduc, dim, boundary, dim-1, delta, iterations, p_succ, t_enum); 
+	generate_boundary(c, t_node, t_reduc, dim, boundary, sqrt(dim-1), delta, iterations, p_succ, t_enum); 
 
 	cout << "# basis: '" << act_arg << "' " << endl
 	<< "# estimated enumeration time: " << t_enum << endl  
