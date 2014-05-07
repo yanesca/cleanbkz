@@ -1,62 +1,48 @@
-+ cjloss-t NTL-re átirni
-+ az NTL beépitett GS -ével kiszámolni és kiiratni a GS-ét
-+ az NTL beépitett BKZ-jével redukálni a cjlosst
-+ egy dummy enumerationt irni és tesztelni (nyilván el fog hasalni a teszten) 
-+ a doxygen-es doksikészitést tesztelni 
-+ GPL- licencet a GNU conventionnek megfelelően hozzáadni és gitbe feltolni
-+ kioperálni az NTL-es enumerationt (egy az egyben a schnor-euchnert adaptálja)
-+ végrehajtani rajta a Phong féle optimalizálást - máshogyvolt szervezve ezért újraprogramoztam a pszeudokódjuk alapján
-+ pruningot belerakni
-+ lemérni a BKZ és az enumeration futási idejét - nem praktikus, mert BKZ-30 (amivel próbálkoztam) meg BKZ-35 (amit ők használtak) nagyon lassú és még magas dimenzióban is (65) megtalálja a legrövidebb vektort (nem hagy munkát az enumerationnek)
-+ a töréspont valószinüleg 65 és 70 között van, meg kellene keresni - Igen, a 67 az első ami nem 1 node-ot vizsgál és full enumerationnal fut 45 percig
-+ a Rob által ajánlott cikkekben utánanézni a GS méreteknek és ha kell méréseket is végezni
-+ migrálni a polytópszámolót és unit tesztet irni hozzá (vincivel generálni tesztértékeket)
-+ megirni a bounding function keresőket, paraméter az első gs vektor hossza (jegyzet, hermite faktorok a füzetben). - fölösleges, egyszerűbb, ha a paraméter a bázis 
-+ pruning function-öket számolni (LLL-es bemenetet feltételezve) 5-ös lépésközzel 30 és 80 között, a többit meg approximálni (ahogy a bkz 2.0-ás cikk is irja) - nem lehet a bázis ismerete nélkül
-+ kitenni a bounding function keresőt egy külön alkalmazásba
-+ lattice I/O-t implementálni és letisztázni a bounding function kereső alkalmazást
-+ expected running time és success probability-t commentben beleirni
-+ kideriteni, hogy miért lesz a mu mátrixom első sora nulla és miért nem lesz bázismátrix első sora nulla
-	+ Válasz: az NTL kispórolja a mu főátlójából az 1-eseket
-+ kideriteni, hogy miért n-1 hosszú a legrövidebb vektor és nem n/2 
-	+ Válasz: mert egyrészt független a hossz a megoldásban lévő egyesek számától, másrészt meg valóban igy jön ki a skálázás után (itt vektorokat skálázunk ez teljesen másképp viselkedik mint a térfogat. Tényleg kijön, számitás a füzetben.
-+ kideriteni, hogy mi a baj a bounding function keresővel
-	+ miért lesz az első vágás olyan magas? (gyanús, hogy a polytópszámolóban van elrontva a legalacsonyabb dimenzió)
-	+ miért megy cikkcakban ha sokáig futtatom?
-	+ Válasz mindkettőre: nem monoton bounding functionnek nincs értelme és nem is működik rá a módszer, és a random változások megengedték
-	+ Volt benne egy másik bug is: rangen kivüli indexből olvasta a siker valószinűségét
-	+ az elején számol gyanús nullákat meg talán infet is, érdemes lenne debuggolni -ebben is az indexelés volt a ludas
-+ t_extreme naiv implementáció más, hihetőbb eredményt ad mint az optimalizált, mi  hiba? Rossz volt az osztás a végén.
-+ a success probability számitásánál bele kell számitani, hogy ha csökken a legutolsó bound akkor már jóval rövidebb vektort keresünk (az algoritmus feltételezi, hogy az a legrövidebb vektor hossza: 
-	+ ha R_n nagyobb mint a hossz akkor az egynél magasabb boundokat egyre kellene csökkenteni, de az egész tárgytalan, mert ha az R_n -t növelnénk, akkor az algoritmus R-nél hosszabb vektorokat is elfogadna 
-	+ ha R_n kisebb mint a hossz (és az tényleg a legrövidebb vektor hossza) akkor a p_succ mindenképpen nulla
-	+ ha az alacsonyabb R_i-k nagyobbak, akkor túlbecsül, végig kell gondolni - ez megintcsak nem lehet mert ha az R_ik nagyobbak az R_n=R -nél akkor az ellentmond a monotonitásnak
-	+ implementálni  számitást, képlet a füzetben
-+ Javitani a t_extreme számitást, ugyanis a jelenleg csak polytope volummal számol, de a valószinűséghez ezt még 1/(i+1)! -al (az egységszimplex térfogata) osztani kell
-+ unit testet irni a polytop számitóhoz csupa 1-es boundokkal, azaz az n-dimenziós szimplexet és az eredményt összevetni n! -al
-+ alacsony dimenzióban még egyezik a simplex képlet és a polytóp függvény, de 25 körül elkezd pontatlankodni aztán szépen fokozatosan elszáll és a végén negativ értékek is kijönnek. Valószinűleg numerikusan instabil, vagy csak nem elég a pontosság:
-	+ Megirni mindkettőt az NTL RR -jével és megnézni, hogy stabilizálódik-e
-	+ fontos, hogy a politóp dimenziója csak fele a blokkméretnek, tehát a legnagyobb érték amivel számolni kell majd az 60-70, amire meg első körben szükség lesz az csak 40
-+ megirni a bounding function kereső unit tesztjeit
-+ tesztadatokat generálni a 80 dimenziós blokkmérethez 30 vagy 35-ös előfeldolgozásal, 
-- és kideriteni, hogy mi nem stimmel
-- feljavitani a keresést:
-	- thresshold: addig megy amig x körig sikertelen volt a változtatás (nem pedig fix körig)
-	- adaptiv: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább
-- Megnézni, hogy milyen hatással van a mu korrigálása az enumerationra 
-	- valszeg semmilyen, mert a főátlót eleve 1-nek veszi. Megkeresni a vonatkozó részt az algoritmusban
-- tesztelni a bounding function-t (BKZ 30 vagy 35, dimenzió 80)
-? hermite faktoros optimalizálást implementálni  
++ Bounding function inputot implementálni, hogy gyorsabban lehessen tesztelni (kapcsoló, hogy milyen legyen a kimenet NTL vagy gnuplot)
++ A korlát gyökvonásánál biztositani, hogy felfelé kerekitse double-ra (RR-ben gyököt vonni és azt kerekiteni felfelé double-ra)
+	+ nem, illetve nem úgy működik az RR felfelé kerekités, kézzel kell implementálni double-el is rendesen működik dolog, nem kell kinlódni
+- tesztelni a bounding function-t (BKZ 30, dimenzió 80)
+	- tesztelni jól kerekitett R-el és kitalálni, hogy miért nem működik 
+		+ az egyik hiba az volt, hogy az algoritmus az R_i^2-eket várja én meg az R_i-ket adom meg neki.
+		- most viszont sokkal tovább fut mint igérte. Lehetséges okok:
+			+ Végtelen ciklusba esett amiatt amit az NTL megpróbál kiküszübülni -nem ez a gond, az NTL-es változat is sokáig fut
+			- Rosszul számolja a node-ok számát
+				+ paramétereket keresni, ahol az LLL lineáris pruninggal mérhető ideig fut
+				+ tesztadatokat generálni vele és más alacsony success rate-űvel (hogy végig kelljen mennie) leszámolni a node-okat
+				+ összevetni a gyakorlatban tapasztalt node- számot az előrejelzettel
+				- R_k val kell normalizálni az egyes körökben, de én R_n-el normalizáltam
+					- először egy robosztus referenciaimplementációt csinálni (pvolandscale függvénybe kitenni a skálázást és a volume számitást)	
+					- Nagyon lassit vele, meg kellene próbálni skálázásal kiváltani
+			- Valami el van cseszve az enumeration algoritmusban
+	- Implementálni a bázis randomizálást
+- debugolni a node predikálót:
+	+ olyan cjloss lattice-t konstruálni ahol nagyjából egybeesik a gauss heurisztika és a tényleges legrövidebb vektor és azzal letesztelni - továbbra is alulbecsül függetlenül a gaus heuristika pontosságától.
+	+ letesztelni random lattice-okkal - azokat is alulbecsli a leszámlálás vége meg elszáll
+	- utánanézni a gauss heurisztikának, hogy mit írnak róla és annak alapján finomítani a teszteket
+	- Alaposabban megérteni az enumeration algoritmusát és debugolni
+	- Ellenőrizni és debugolni a gauss heurisztika számítását (a cjloss lattice-re a grafikonom laposabb volt mint Phongé)
 - a cjlossos tesztprogramból automatikus tesztet irni,  
+- elküldeni a többieknek a linket a github projektre
+- implementálni az adaptiv a keresést: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább (betenni a unit tesztbe)
+- Megnézni az early termination-ös cikkeket, hogy milyen blokkméretet lenne érdemes használni egy 128 dimenziós bázis előfeldolgozásához 
 - Megirni a pruningos BKZ-t, enumerationt külön függvénybe tenni
 - Minden enumeration hivást és a vonatkozó unit teszteket átirni az új enumeration-re 
 - kikisérletezni a paramétereket a bkz automatikus bounding function keresőjéhez
 - Implementálni a radius reductiont és az early terminationt 
 - Implementálni az unexpected early terminationt (mindig kiirja lemezre, hogy hanyadik iterációnál jár és hogy mi az aktuális bázis)
+Kérdések:
+- miért használt a bkz 2.0-nál 10%-os sikeresélyűt, amikor nekem 95% körüliek sikerülnek és az is baromi gyorsra igéri magát?
+- miért más a formája az én boundary functionjeimnek?
+Opcionálisan:
+- Megnézni, hogy milyen hatással van a mu korrigálása az enumerationra 
+	- valszeg semmilyen, mert a főátlót eleve 1-nek veszi. Megkeresni a vonatkozó részt az algoritmusban
++ átirni, hogy mindig az R_i négyzetekkel dolgozzon és ne kelljen gyököt vonogatni. - Nem éri meg: ugyanolyan macerás, mert a gömbök sugaránál R_i kell.
+- hermite faktoros optimalizálást implementálni  
 - refaktorálni a toolok paraméterfeldolgozását
 - letisztázni és kibőviteni a unit teszteket
 - a unit tesztekhez használt referenciaimplementációkat kiszedni a libből a teszt könyvtárba
 - a boundtool.cpp -ek és a boundary.cpp -nek értelmesebb neveket találni
+- Tesztet irni, hogy a double sqrt négyzete egyezik-e az eredetivel (különbség 0)
 ******** Itt lesz kész a BKZ1.5 **********
 - a rekurzive hivás paramétereit kikisérletezni :
 	- Hermite faktorokat lemérni (early terminatiönnel és anélkül)

@@ -29,7 +29,8 @@ using namespace std;
 
 static void enumerate_ntl(double** mu, double *c, double* prune, int jj, int kk, int m, vec_RR& result) {
 	int s, t;
-   	double cbar, t1, eta;
+   	//double cbar, eta;
+	double t1;
 
    double *ctilda;
    ctilda = NTL_NEW_OP double[m+2];
@@ -59,7 +60,7 @@ static void enumerate_ntl(double** mu, double *c, double* prune, int jj, int kk,
    deltavec = NTL_NEW_OP long[m+2];
    if (!deltavec) Error("ENUMERATE: out of memory");
 
-         cbar = c[jj];
+         //cbar = c[jj];
          utildavec[jj] = uvec[jj] = 1;
    
          yvec[jj] = vvec[jj] = 0;
@@ -75,21 +76,20 @@ static void enumerate_ntl(double** mu, double *c, double* prune, int jj, int kk,
             deltavec[i] = 1;
          }
 
+	int nodes= 0;
          while (t <= kk) {
-        
+       
+		nodes++; 
             ctilda[t] = ctilda[t+1] + 
                (yvec[t]+utildavec[t])*(yvec[t]+utildavec[t])*c[t];
 
+		//cout << nodes << "\tt: " << t << "\tctilda: " << ctilda[t] << "\tprune (kk-t-1): " << prune[kk-t-2] << endl; 
+
             ForceToMem(&ctilda[t]);  // prevents an infinite loop
    
-            if (prune != NULL) {
-               eta = 0;
-            }
-            else
-               eta = 0;
-   
-            if (ctilda[t] < cbar - eta) {
-               if (t > jj) {
+            if ((t>jj) && (ctilda[t] <= prune[kk-t])) {
+            // if (ctilda[t] <= prune[kk-t]) {
+               //if (t > jj) {
                   t--;
                   t1 = 0;
                   for (int i = t+1; i <= s; i++)
@@ -106,13 +106,14 @@ static void enumerate_ntl(double** mu, double *c, double* prune, int jj, int kk,
                      deltavec[t] = -1;
                   else
                      deltavec[t] = 1;
-               }
+               /*}
                else {
-                  cbar = ctilda[jj];
+                  //cbar = ctilda[jj];
+		  break;
                   for (int i = jj; i <= kk; i++) {
                      uvec[i] = utildavec[i];
                   }
-               }
+               }*/
             }
             else {
                t++;
@@ -126,6 +127,8 @@ static void enumerate_ntl(double** mu, double *c, double* prune, int jj, int kk,
 	result.SetLength(m);
 	for(int i= 0; i < result.length(); i++) 
 		conv(result[i],uvec[i]);
+
+	cout << "# NTL nodes: " << nodes << endl;
 
    delete [] ctilda;
    delete [] vvec;
@@ -159,6 +162,15 @@ void enumerate_ntl(mat_ZZ& basis, int beta, double* prune, vec_RR& result) {
 }
 
 void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, unsigned long &termination, double &time) {
+
+	cout << "# Enumerate: " << endl << "# GS-squares: [ ";
+	for(int i= 0; i < n; i++)
+		cout << b[i] << " ";	
+	cout << "]" << endl << "# Bound squares: [ ";
+	for(int i= 0; i < n; i++)
+		cout << Rvec[i] << " ";	
+	cout << "]" << endl << "#" << endl;
+
 	bool pruning= true; 
 	if(Rvec==NULL) {
 		pruning= false;
@@ -197,18 +209,32 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 
 	int last_nonzero= 0;
 
-	int k= 0;
 	unsigned long nodes= 0;
+	unsigned long* prof= new unsigned long[n];
+	for(int i= 0; i < n; i++)
+		prof[i]= 0;
+
+	int k= 0;
 	clock_t end,begin= clock();	
+
+	cout << "\"Measured\"" << endl << endl;
 
 	while((termination==0)||(nodes < termination)) {
 		rhovec[k]= rhovec[k+1]+(vvec[k]-cvec[k])*(vvec[k]-cvec[k])*b[k];	
 
 		nodes++;
-		if(rhovec[k] <= Rvec[n-k-1]) {
-			if(k==0) 
+		prof[n-k-1]++;
+		//cout << nodes << "\tk: " << k << "\trhovec: " << rhovec[k] << "\tRvec (n-k-1): " << Rvec[n-k-1] << endl; 
+		/*cout << "vvec: " << endl;
+		for(int i= 0; i < n; i++)
+			cout << vvec[i] << " ";
+		cout << endl;*/
+
+		//if(rhovec[k] <= Rvec[n-k-1]) {
+		if((k!=0) && (rhovec[k] <= Rvec[n-k-1])) {
+			/*if(k==0) 
 				break;
-			else {
+			else {*/
 				k--;
 				rvec[k]= rvec[k]>rvec[k+1]?rvec[k]:rvec[k+1];		
 				for(int i= rvec[k+1]; i>k; i--)
@@ -217,7 +243,8 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 
 				vvec[k]= lround(cvec[k]);
 				wvec[k]= 1;
-			}
+
+			//}
 		} else {
 			k++;
 			if(k==n)
@@ -237,10 +264,15 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 		}
 	}
 
+	cout << "# Nodes: " << nodes << endl;
+
 	end= clock();
 	time= (double) (end-begin) / CLOCKS_PER_SEC / nodes;
-	if(termination!=0)
+	//if(termination!=0)
 		termination-= nodes;
+
+	for(int i= 0; i < n; i++)
+		cout << i << " " << prof[i] << endl;
 
 	if(k==0) {
 		result.SetLength(n);
@@ -263,24 +295,39 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 
 void enumerate_epr(mat_ZZ& basis, int beta, double* prune, vec_RR& result) {
 	double time;
+
 	
+//	cout << "Original: " << endl << basis << endl;
+
 	BKZ_QP1(basis, 0.99, beta);		
+	
+//	cout << "Rank: " << rank << endl;
+//	cout << "Reduced: " << endl << basis << endl;
+
+	//cout << "Basis: " << endl << basis;
 
 	mat_RR mu1;
 	vec_RR c1;
 	ComputeGS(basis,mu1,c1);
+
+//	cout << "Reduced: " << endl << mu1 << endl;
 
 	double** mu= new double*[mu1.NumRows()];
 	for(int i= 0; i < mu1.NumRows(); i++)
 		mu[i]= new double[mu1.NumCols()]; 
 	for(int i= 0; i < mu1.NumRows(); i++)
 		for(int j= 0; j < mu1.NumCols(); j++)
-			conv(mu[i][j], mu1[i][j]);
+			if(i==j)
+				mu[i][j]= 1;
+			else
+				conv(mu[i][j], mu1[i][j]);
 
 	double* c= new double[mu1.NumRows()];
 	for(int i= 0; i < mu1.NumRows(); i++)
-			conv(c[i], c1[i]);
+		conv(c[i], c1[i]);
 
 	unsigned long termination= 0;
 	enumerate_epr(mu, c, prune, mu1.NumRows(), result, termination, time);
+	
+	cout << "# Nodes processed: " << -termination << endl;
 }

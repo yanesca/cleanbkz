@@ -24,6 +24,7 @@
 #include <cleanbkz/boundary.hpp>
 #include <cleanbkz/cjloss.hpp>
 #include <cleanbkz/version.hpp>
+#include <cleanbkz/tools.hpp>
 #include <NTL/LLL.h>
 
 using namespace std;
@@ -130,14 +131,11 @@ int main(int argc, char** argv) {
 			}
 		}
 
-	cout << "# Generated with cleanbkz " << CBKZ_VERSION << endl 
-	<< "# Copyright (C) 2014 Janos Follath" << endl 
-	<< "# This is free software with ABSOLUTELY NO WARRANTY." << endl << "#" << endl; 
-
 	mat_RR mu1;
 	vec_RR c1;
 	ComputeGS(basis,mu1,c1);
 
+	//lengths of the GS basis vectors
 	RR* c= new RR[mu1.NumRows()];
 	for(int i= 0; i < mu1.NumRows(); i++) {
 		c[i]= SqrRoot(c1[i]);
@@ -146,19 +144,33 @@ int main(int argc, char** argv) {
 
 	int dim= mu1.NumRows();
 	double* boundary= new double[dim];	
+	
+	//length of the shortest vector in the cjloss latticr
+	double R= sqrt(dim-1);
 
 	// TODO: csinálni egy változatot, ahol nem iterationt hanem thressholdot adunk meg
 	double p_succ;
 	double t_enum;	
-	generate_boundary(c, t_node, t_reduc, dim, boundary, sqrt(dim-1), delta, iterations, p_succ, t_enum); 
+	generate_boundary(c, t_node, t_reduc, dim, boundary, R, delta, iterations, p_succ, t_enum, false); 
 
-	cout << "# basis: '" << act_arg << "' " << endl
-	<< "# estimated enumeration time: " << t_enum << endl  
-	<< "# success probability: " << p_succ << endl  
-	<< "# boudary function: " << endl << endl;
-	for(int i= 0; i < dim; i++)
-		cout << i << " " << boundary[i] << endl;
-	cout << endl;
+		cout << "# Generated with cleanbkz " << CBKZ_VERSION << endl 
+		<< "# Copyright (C) 2014 Janos Follath" << endl 
+		<< "# This is free software with ABSOLUTELY NO WARRANTY." << endl << "#" << endl; 
+
+		cout << "# basis: '" << act_arg << "' " << endl
+		<< "# estimated enumeration time: " << t_enum << endl  
+		<< "# success probability: " << p_succ << endl  
+		<< "# boudary function: " << endl;
+
+		vec_RR out;
+		out.SetLength(dim);
+		for(int i= 0; i < dim; i++)
+			out[i]= boundary[i];		
+		cout << "# " << out << endl << endl;
+
+		for(int i= 0; i < dim; i++)
+			cout << i << " " << boundary[i] << endl;
+		cout << endl;
 
 	return 0;
 }

@@ -201,8 +201,8 @@ int main(int argc, char** argv) {
 	//cout << "Production (double): " << t_extreme(boundary_d, c_d, t_node, t_reduc, mu1.NumRows()) << endl;
 	cout << "Reference: " << t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl; 
 	cout << "Reference (double): " << t_extreme_reference(boundary_d, c_d, t_node, t_reduc, mu1.NumRows()) << endl; 
-	cout << "Production: " << t_extreme_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl;
-	cout << "Diff: " << t_extreme_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) - t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl;
+	cout << "Production: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl;
+	cout << "Diff: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) - t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl;
 
 	return 0;
 }

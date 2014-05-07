@@ -1,0 +1,18 @@
+Érvek amik amellett szólnak, hogy a heurisztika számitással van a gond:
+- Mindkét enumeration algoritmus ugyanazt az eredményt adja.
+- Már a pruned esetben is ugyanazt adták és hasonló volt az eltérés mint a teljes esetben
+- A 110 dimenziós esetben számolt gauss heurisztikám gráfja összevetve Phongéval hasonlóan néz ki mint ahogy az alacsony dimenziós gráfjaim a mért értékekhez képest
+
+Puha érvek:
+- Mellette: elég jellemző rám az egyszerű és alapvető dolgok elnézése
+- Ellene: Rengetegszer ellenőriztem és tényleg nagyon egyszerű a képlet
+
+Ha mégis az enumerationben van a hiba akkor:
+- Az valami alapvető, ami már a módositás előtt is élt
+
+Ötletek:
+- megnézni, hogy milyen sugár kellene, hogy jól működjön
+- megnézni, hogy milyen bázisvektorok kellenének, hogy passzoljon
+- kiíratni és grafikonon megnézni a full enumeration útvonalát
+- megnézni az Ajtai féle Gauss heurisztikás cikket
+- matlabban vagy sage-ben implementálni a számitásokat

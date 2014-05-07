@@ -26,7 +26,6 @@
 #include <cleanbkz/boundary.hpp>
 
 using namespace std;
-using namespace NTL;
 
 inline double fact(double x) {
 	return (x < 2 ? 1 : x * fact(x - 1));
@@ -90,6 +89,14 @@ RR ball_vol_RR(int k, RR r, int prec) {
 }
 
 double ball_vol(int k, double r) {
+
+	/*cout << "#" << endl << "# ball_vol: R= " << r << " dim= " << k << endl;	
+	cout << "# Gamma: " << pow(M_PI, k/2.0) / tgamma(k/2.0+1) * pow(r, k) << endl;
+	if (k%2==0) 
+		cout << "# Form: " << pow(M_PI, k/2) / fact(k/2) * pow(r, k) << endl;
+	else
+		cout << "# Form: " << 2 * pow(4*M_PI, k/2) * fact(k/2) / fact(k) * pow(r, k) << endl << "#" << endl;*/ 
+
 	if (k%2==0) 
 		return pow(M_PI, k/2) / fact(k/2) * pow(r, k);
 	else
@@ -127,7 +134,7 @@ RR t_full_RR(RR R, RR b_star_norm[], double t_node, double t_reduc, int n, int p
 	return t_reduc+t_node*N; 
 	}
 
-RR t_extreme_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, int prec) {
+RR t_extreme_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, long prec) {
 	int pdim= (n%2==0)?n/2:n/2+1;
 	RR p_succ;
 	p_succ.SetPrecision(prec);
@@ -174,6 +181,10 @@ RR t_extreme_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int 
 	return (t_reduc+t_node*N)/p_succ; 
 }
 
+RR t_extreme(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, long prec){ 
+	return t_extreme_RR(Rvec, b_star_norm, t_node, t_reduc, n, prec);
+	}
+
 RR t_extreme_reference_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, int prec) {
 	int pdim= (n%2==0)?n/2:n/2+1;
 	RR p_succ;
@@ -214,33 +225,142 @@ RR t_extreme_reference_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_r
 	return (t_reduc+t_node*N)/p_succ; 
 }
 
-double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n) {
-	int pdim= (n%2==0)?n/2:n/2+1;
-	
-	double* polytope_vols= new double[pdim+1];
-	double* bounds= new double[pdim];
 
-	for(int i= 0; i< n; i+=2)
-		bounds[i/2]= Rvec[i]*Rvec[i]/(Rvec[n-1]*Rvec[n-1]);
+double n_full(double R, double b_star_norm[], int n) {
+	double N, V_act, denom;
 
-	double N= 0;
-	double V_act, denom;
-	polytope_vols[pdim]= polytope_volume(polytope_vols, bounds, pdim);
+	N= 0;
+	denom= 1;
 	for(int i= 1; i<= n; i++) {
-		if(i%2==0)
-			V_act= ball_vol(i, Rvec[i-1]) * polytope_vols[i/2] * fact(i/2); 
-		else
-			V_act= ball_vol(i, Rvec[i-1]) * (polytope_vols[i/2]*fact(i/2) + polytope_vols[i/2+1]*fact(i/2+1)) / 2; 
+		V_act= ball_vol(i, R); 
 
-		denom= 1;
-		for(int j= n-i; j < n; j++) 
-			denom*= b_star_norm[j];
-
+		//cout << n-i << "bstar: " << b_star_norm[n-i] << endl;
+		//denom*= b_star_norm[i-1];
+		denom*= b_star_norm[n-i];
 		N+= V_act/denom;
 	}
+	//cout << endl;
 
 	N/= 2;
-	return (t_reduc+t_node*N)/(polytope_vols[pdim-1]*fact(pdim-1)); 
+	return N; 
+	}
+
+
+double n_full_gsa(double R, double b1_norm, double alpha, int n) {
+	double N, V_act, denom;
+
+	N= 0;
+	denom= 1;
+	for(int i= 1; i<= n; i++) {
+		V_act= ball_vol(i, R); 
+
+		//cout << n-i << "gsa: " <<  b1_norm*pow(alpha,n-i) << endl;
+		//cout << n-i << "alpha: " <<  alpha << " pow: " << pow(alpha,n-i) << endl;
+		denom*= b1_norm*pow(alpha,n-i);
+		N+= V_act/denom;
+	}
+	//cout << endl;
+
+	N/= 2;
+	return N; 
+}
+
+double pvol_and_scale(double Rvec[], int k) {
+	double ret;
+	int l= (k+1)/2-1;
+	double* bounds= new double[l];
+	double* polytope_vols= new double[l];
+
+
+/*	cout << "khalf: " << khalf << endl;
+	cout << "Rvec: [ ";
+	for(int i= 0; i< 2*khalf; i++)
+		cout << Rvec[i] << " ";	
+	cout << "] "<< endl;*/
+
+	for(int i= 0; i< l; i++)
+		bounds[i]= Rvec[2*i]*Rvec[2*i]/(Rvec[k-1]*Rvec[k-1]);
+
+	/*cout << "bounds: [ ";
+	for(int i= 0; i< khalf; i++)
+		cout << bounds[i] << " ";	
+	cout << "] "<< endl << endl;*/
+
+	ret= polytope_volume(polytope_vols, bounds, l);
+
+	delete [] bounds;
+	delete [] polytope_vols;
+
+	return ret;
+}
+
+// The case where n is even
+double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n) {
+	double N= 0;
+	double V_act; 	
+	double denom;
+	//double N_next, N_prev;
+
+	cout << "# T_extreme: " << endl << "# GS-lengths: [ ";
+	for(int i= 0; i < n; i++)
+		cout << b_star_norm[i] << " ";	
+	cout << "]" << endl << "# Bounds: [ ";
+	for(int i= 0; i < n; i++)
+		cout << Rvec[i] << " ";	
+	cout << "]" << endl << "#" << endl;
+
+	cout << "\"Predicted\"" << endl << endl;
+
+//	N_next= 0;
+//	N_prev= 1/b_star_norm[n-1];
+	for(int k= 1; k<= n; k++) {
+		/*if(k%2==0) {
+			//V_act= ball_vol(k, Rvec[k-1]) * pvol_and_scale(Rvec, k/2) * fact(k/2); 
+			N_prev= N_next;
+			N+= N_prev;
+			cout << k-1 << " " << N_prev << endl; 
+		} else {
+			denom= 1;
+			for(int i= n-k-1; i < n; i++) 
+				denom*= b_star_norm[i];
+
+			N_next= ball_vol(k+1, Rvec[k]) * pvol_and_scale(Rvec, k/2+1) * fact(k/2+1) / denom;  
+			N+= (N_prev+N_next)/2;
+			cout << k-1 << " " << (N_prev+N_next)/2 << endl; 
+
+			//V_act= ball_vol(k-1, Rvec[k-2]) * pvol_and_scale(Rvec, k/2)*fact(k/2) * 2 * Rvec[k]; // upper bound: V_{k-1}*2*R_k 
+			//V_act= ball_vol(k, Rvec[k-1]) * ( pvol_and_scale(Rvec, k/2)*fact(k/2) +  pvol_and_scale(Rvec, k/2+1)*fact(k/2+1)) / 2; 
+
+			cout << "# Simvol_" << k/2+1 << " = " <<  fact(k/2+1) << endl;
+			cout << "# Polvol_" << k/2+1 << " = " <<  pvol_and_scale(Rvec, k/2+1) << endl;
+			cout << "# V_ball(" << k+1 << ", " << Rvec[k] << ") = " << ball_vol(k+1, Rvec[k]) << endl;
+			cout << "# |b^*_" << n-k-1 << "| = " << b_star_norm[n-k-1] << endl;
+			cout << "# V_" << k+1 << " = " << ball_vol(k+1, Rvec[k]) * pvol_and_scale(Rvec, k/2+1) * fact(k/2+1) << endl;
+			cout << "# denom_" << k << " = " << denom << endl;
+//		}*/
+		denom= 1;
+		//for(int i= 0; i < k; i++) 
+		for(int i= n-k; i < n; i++) 
+			denom*= b_star_norm[i]; 
+
+		int psd= (k+1)/2-1;
+		V_act= ball_vol(k, Rvec[k-1]) * pvol_and_scale(Rvec, k) * fact(psd); 
+
+		N+= V_act/denom/2;
+
+		/*cout << "# Simvol_" << psd << " = " <<  fact(psd) << endl;
+		cout << "# Polvol_" << psd << " = " <<  pvol_and_scale(Rvec, k) << endl;
+		cout << "# V_ball(" << k << ", " << Rvec[k-1] << ") = " << ball_vol(k, Rvec[k-1]) << endl;
+		cout << "# |b^*_" << n-k << "| = " << b_star_norm[n-k] << endl;
+		cout << "# V_" << k << " = " << V_act << endl;
+		cout << "# denom_" << k << " = " << denom << endl;
+		cout << "# N_" << k << " = " << V_act/denom/2 << endl; */
+		cout << k-1 << " " << V_act/denom/2 << endl; 
+	}
+
+	//N/= 2;
+	cout << "# Predicted nodes: " << N << endl;
+	return (t_reduc+t_node*N)/(pvol_and_scale(Rvec, n/2)*fact(n/2)); 
 }
 
 double t_extreme(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n) {
@@ -263,12 +383,22 @@ double t_extreme(double Rvec[], double b_star_norm[], double t_node, double t_re
 			V_act= ball_vol(i, Rvec[i-1]) * polytope_vols[i/2] * fact(i/2); 
 		else
 			V_act= ball_vol(i, Rvec[i-1]) * (polytope_vols[i/2] + polytope_vols[i/2+1])*fact(i/2+1) / 2; 
+			//V_act= ball_vol(i, Rvec[i-1]) * (polytope_vols[i/2] + polytope_vols[i/2+1])*fact(i/2+1) / 2; 
 
 		denom*= b_star_norm[n-i];
 		N+= V_act/denom;
+		/*cout << "Simvol_" << i/2 << " = " <<  fact(i/2) << endl;
+		cout << "Polvol_" << i/2 << " = " <<  polytope_vols[i/2] << endl;
+		cout << "V_ball(" << i << ", " << Rvec[i-1] << ") = " << ball_vol(i, Rvec[i-1])<< endl;
+		cout << "|b^*_" << n-i << "| = " << b_star_norm[n-i] << endl;
+		cout << "V_" << i << " = " << V_act << endl;
+		cout << "denom_" << i << " = " << denom << endl;
+		cout << "N_" << i << " = " << V_act/denom << endl << endl;*/
 	}
 	
 	N/= 2;
+
+	cout << "Predicted nodes: " << N << endl;
 	return (t_reduc+t_node*N)/(polytope_vols[pdim-1]*fact(pdim-1)); 
 }
 
@@ -295,52 +425,21 @@ RR compute_p_succ(RR Rvec[], int n, int prec){
 	return p_succ;
 }
 
-void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, RR Rvec[], double R, double delta, unsigned long iterations, double& p_succ, double& t_enum_d) {
-}
+RR p_succ(RR Rvec[], int n, int prec){
+	return compute_p_succ(Rvec, n, prec);
+	}
 
-void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, double Rvec[], double R, double delta, unsigned long iterations, double& p_succ, double& t_enum_d) {
-	RR* act= new RR[n];
+static 
+void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int n, RR* act, double delta, unsigned long iterations, RR& t_enum, int& changes) {
 	RR* mod= new RR[n];
 	
-	RR_PI.SetPrecision(RR_PRECISION);
-	RR_PI= ComputePi_RR();	
-
-	RR t_enum;
-	
-	act[0].SetPrecision(RR_PRECISION);
-	act[1].SetPrecision(RR_PRECISION);
-	act[0]= act[1]= 2*R/n;
-	for(int i= 2; i < n; i+=2) {
-		act[i].SetPrecision(RR_PRECISION);
-		act[i+1].SetPrecision(RR_PRECISION);
-		act[i]= act[i+1]= act[i-1]+act[0];
-	}
-	act[n-1].SetPrecision(RR_PRECISION);
-	act[n-1]= R;
-	t_enum= t_extreme_RR(act, b_star_norm, t_node, t_reduc, n, RR_PRECISION);
-
-	// BEGIN Printing full and double step linear enumeration time
-	// TODO: Conditional compilation, the changes line too	
-	RR full;
-	full.SetPrecision(RR_PRECISION);
-	full= R;
-	for(int j= 0; j < n; j++)
-		mod[j]= full; 
-
-	cout << "# Full enumeration time: " << t_extreme_RR(mod, b_star_norm, t_node, t_reduc, n, RR_PRECISION) << endl;
-	cout << "# t_full= " << t_full_RR(full, b_star_norm, t_node, t_reduc, n, RR_PRECISION) << endl;
-	cout << "# Double step linear pruning: " << t_enum << endl;
-	// END	
-
 	for(int j= 0; j < n; j++)
 		mod[j]= act[j]; 
 	
-	srand(time(NULL));
-
 	int change;
 	int sign;
 	RR time;
-	int counter= 0;
+	changes= 0;
 	for(unsigned long i= 0; i < iterations; i++) {
 		bool flag= true;	
 		while(flag) {
@@ -375,7 +474,6 @@ void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, d
 					 
 
 		time= t_extreme_RR(mod, b_star_norm, t_node, t_reduc, n, RR_PRECISION);
-		//cout << "# t_" << i << ": " << time << " \t\t// t_enum: " << t_enum << endl;
 
 		if(time < t_enum) {
 			t_enum= time;
@@ -383,21 +481,56 @@ void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, d
 			for(int j= 0; j < n; j++)
 				act[j]= mod[j]; 
 	
-			counter++;
+			changes++;
 		} else
 			for(int j= 0; j < n; j++)
 				mod[j]= act[j]; 
 			
 	}
 
+	delete [] mod;
+}
+
+void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, double Rvec[], double R, double delta, unsigned long iterations, double& p_succ, double& t_enum_d, bool quiet) {
+	int changes;
+	RR* act= new RR[n];
+	
+	RR_PI.SetPrecision(RR_PRECISION);
+	RR_PI= ComputePi_RR();	
+
+	RR t_enum;
+	
+	act[0].SetPrecision(RR_PRECISION);
+	act[1].SetPrecision(RR_PRECISION);
+	act[0]= act[1]= 2*R/n;
+	for(int i= 2; i < n; i+=2) {
+		act[i].SetPrecision(RR_PRECISION);
+		act[i+1].SetPrecision(RR_PRECISION);
+		act[i]= act[i+1]= act[i-1]+act[0];
+	}
+	act[n-1].SetPrecision(RR_PRECISION);
+	act[n-1]= R;
+	t_enum= t_extreme_RR(act, b_star_norm, t_node, t_reduc, n, RR_PRECISION);
+
+	if(!quiet) {
+		RR tmp;
+		tmp= R;
+		cout << "# Full enumeration time: " << t_full_RR(tmp, b_star_norm, t_node, t_reduc, n, RR_PRECISION) << endl;
+		cout << "# Double step linear pruning: " << t_enum << endl;
+	}
+
+	srand(time(NULL));
+
+	generate_boundary_step(b_star_norm, t_node, t_reduc, n, act, delta, iterations, t_enum, changes);
+	
 	for(int j= 0; j < n; j++)
 		conv(Rvec[j], act[j]); 
 			
-	cout << "# Changes: " << counter << endl;
+	if(!quiet) 
+		cout << "# Changes: " << changes << endl;
 
 	conv(p_succ, compute_p_succ(act, n, RR_PRECISION));
 	conv(t_enum_d, t_enum);
 
 	delete [] act;
-	delete [] mod;
 }

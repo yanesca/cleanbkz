@@ -20,6 +20,7 @@
 
 #include <string>
 #include <algorithm>
+#include <cleanbkz/tools.hpp>
 
 using namespace std;
 
@@ -37,4 +38,23 @@ bool cmd_option_exists(char** begin, char** end, const string& option) {
     return find(begin, end, option) != end;
 }
 
+void ceilPrec(RR& x, const RR& a, long p) {
+	if (p < 1 || NTL_OVERFLOW(p, 1, 0))
+		Error("CeilPrec: bad precision");
+
+ 	ConvPrec(x,a,p);
+
+	cout << "x = " << x << endl;
+	
+	RR epsilon;
+	epsilon= 10;
+	RR exp;
+	exp= (x.exponent()+15);
+	cout << "exponent = " << x.exponent() << endl;
+	cout << "precision = " << x.precision() << endl;
+	epsilon= pow(epsilon, exp); 
+	cout << "epsilon = " << epsilon << endl;
+
+	x+= epsilon;
+}
 

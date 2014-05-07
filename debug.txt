@@ -1,0 +1,2432 @@
+1	t: 0	ctilda: 64	prune (kk-t-1): 37.05
+2	t: 1	ctilda: 48	prune (kk-t-1): 37.05
+3	t: 2	ctilda: 60	prune (kk-t-1): 35.1
+4	t: 3	ctilda: 47.6	prune (kk-t-1): 35.1
+5	t: 4	ctilda: 43.2494	prune (kk-t-1): 33.15
+6	t: 5	ctilda: 42.1537	prune (kk-t-1): 33.15
+7	t: 6	ctilda: 39.6881	prune (kk-t-1): 31.2
+8	t: 7	ctilda: 39.2737	prune (kk-t-1): 31.2
+9	t: 8	ctilda: 35.5789	prune (kk-t-1): 29.25
+10	t: 9	ctilda: 34.4483	prune (kk-t-1): 29.25
+11	t: 10	ctilda: 36.5854	prune (kk-t-1): 27.3
+12	t: 11	ctilda: 33.0491	prune (kk-t-1): 27.3
+13	t: 12	ctilda: 26.0289	prune (kk-t-1): 25.35
+14	t: 11	ctilda: 33.8674	prune (kk-t-1): 27.3
+15	t: 12	ctilda: 104.116	prune (kk-t-1): 25.35
+16	t: 13	ctilda: 26.7703	prune (kk-t-1): 25.35
+17	t: 12	ctilda: 26.7713	prune (kk-t-1): 25.35
+18	t: 11	ctilda: 33.3207	prune (kk-t-1): 27.3
+19	t: 12	ctilda: 52.4829	prune (kk-t-1): 25.35
+20	t: 13	ctilda: 107.081	prune (kk-t-1): 25.35
+21	t: 14	ctilda: 22.1024	prune (kk-t-1): 23.4
+22	t: 13	ctilda: 28.5051	prune (kk-t-1): 25.35
+23	t: 14	ctilda: 88.4097	prune (kk-t-1): 23.4
+24	t: 15	ctilda: 19.2899	prune (kk-t-1): 23.4
+25	t: 14	ctilda: 22.9001	prune (kk-t-1): 23.4
+26	t: 13	ctilda: 27.0235	prune (kk-t-1): 25.35
+27	t: 12	ctilda: 33.2212	prune (kk-t-1): 25.35
+28	t: 13	ctilda: 32.781	prune (kk-t-1): 25.35
+29	t: 14	ctilda: 27.137	prune (kk-t-1): 23.4
+30	t: 15	ctilda: 77.1595	prune (kk-t-1): 23.4
+31	t: 16	ctilda: 20.0556	prune (kk-t-1): 21.45
+32	t: 15	ctilda: 21.5088	prune (kk-t-1): 23.4
+33	t: 14	ctilda: 26.4176	prune (kk-t-1): 23.4
+34	t: 15	ctilda: 30.2098	prune (kk-t-1): 23.4
+35	t: 16	ctilda: 80.2226	prune (kk-t-1): 21.45
+36	t: 17	ctilda: 15.7711	prune (kk-t-1): 21.45
+37	t: 16	ctilda: 20.0134	prune (kk-t-1): 21.45
+38	t: 15	ctilda: 23.1224	prune (kk-t-1): 23.4
+39	t: 14	ctilda: 24.1985	prune (kk-t-1): 23.4
+40	t: 13	ctilda: 27.4068	prune (kk-t-1): 25.35
+41	t: 14	ctilda: 36.5472	prune (kk-t-1): 23.4
+42	t: 15	ctilda: 26.9239	prune (kk-t-1): 23.4
+43	t: 16	ctilda: 21.621	prune (kk-t-1): 21.45
+44	t: 15	ctilda: 21.9321	prune (kk-t-1): 23.4
+45	t: 14	ctilda: 23.3203	prune (kk-t-1): 23.4
+46	t: 13	ctilda: 24.6207	prune (kk-t-1): 25.35
+47	t: 12	ctilda: 28.508	prune (kk-t-1): 25.35
+48	t: 13	ctilda: 39.5907	prune (kk-t-1): 25.35
+49	t: 14	ctilda: 34.3442	prune (kk-t-1): 23.4
+50	t: 15	ctilda: 36.3225	prune (kk-t-1): 23.4
+51	t: 16	ctilda: 58.5171	prune (kk-t-1): 21.45
+52	t: 17	ctilda: 63.0842	prune (kk-t-1): 21.45
+53	t: 18	ctilda: 16.121	prune (kk-t-1): 19.5
+54	t: 17	ctilda: 16.8204	prune (kk-t-1): 21.45
+55	t: 16	ctilda: 18.4758	prune (kk-t-1): 21.45
+56	t: 15	ctilda: 18.4873	prune (kk-t-1): 23.4
+57	t: 14	ctilda: 18.5451	prune (kk-t-1): 23.4
+58	t: 13	ctilda: 23.6253	prune (kk-t-1): 25.35
+59	t: 12	ctilda: 23.6253	prune (kk-t-1): 25.35
+60	t: 11	ctilda: 25.4237	prune (kk-t-1): 27.3
+61	t: 10	ctilda: 25.4297	prune (kk-t-1): 27.3
+62	t: 9	ctilda: 30.4276	prune (kk-t-1): 29.25
+63	t: 8	ctilda: 30.6841	prune (kk-t-1): 29.25
+64	t: 7	ctilda: 33.527	prune (kk-t-1): 31.2
+65	t: 8	ctilda: 60.2215	prune (kk-t-1): 29.25
+66	t: 9	ctilda: 38.6332	prune (kk-t-1): 29.25
+67	t: 10	ctilda: 61.0795	prune (kk-t-1): 27.3
+68	t: 11	ctilda: 43.0539	prune (kk-t-1): 27.3
+69	t: 12	ctilda: 49.5966	prune (kk-t-1): 25.35
+70	t: 13	ctilda: 27.0719	prune (kk-t-1): 25.35
+71	t: 12	ctilda: 27.0732	prune (kk-t-1): 25.35
+72	t: 11	ctilda: 30.4905	prune (kk-t-1): 27.3
+73	t: 12	ctilda: 52.7272	prune (kk-t-1): 25.35
+74	t: 13	ctilda: 73.7193	prune (kk-t-1): 25.35
+75	t: 14	ctilda: 38.3872	prune (kk-t-1): 23.4
+76	t: 15	ctilda: 36.8379	prune (kk-t-1): 23.4
+77	t: 16	ctilda: 27.0076	prune (kk-t-1): 21.45
+78	t: 17	ctilda: 25.9491	prune (kk-t-1): 21.45
+79	t: 18	ctilda: 64.4841	prune (kk-t-1): 19.5
+80	t: 19	ctilda: 13.9016	prune (kk-t-1): 19.5
+81	t: 18	ctilda: 17.6303	prune (kk-t-1): 19.5
+82	t: 17	ctilda: 20.6782	prune (kk-t-1): 21.45
+83	t: 16	ctilda: 24.858	prune (kk-t-1): 21.45
+84	t: 17	ctilda: 22.5831	prune (kk-t-1): 21.45
+85	t: 16	ctilda: 22.5833	prune (kk-t-1): 21.45
+86	t: 15	ctilda: 26.233	prune (kk-t-1): 23.4
+87	t: 16	ctilda: 42.5026	prune (kk-t-1): 21.45
+88	t: 17	ctilda: 50.3154	prune (kk-t-1): 21.45
+89	t: 18	ctilda: 18.2451	prune (kk-t-1): 19.5
+90	t: 17	ctilda: 19.0723	prune (kk-t-1): 21.45
+91	t: 16	ctilda: 19.6466	prune (kk-t-1): 21.45
+92	t: 15	ctilda: 19.7112	prune (kk-t-1): 23.4
+93	t: 14	ctilda: 23.0356	prune (kk-t-1): 23.4
+94	t: 13	ctilda: 25.0026	prune (kk-t-1): 25.35
+95	t: 12	ctilda: 25.0257	prune (kk-t-1): 25.35
+96	t: 11	ctilda: 25.5818	prune (kk-t-1): 27.3
+97	t: 10	ctilda: 25.6775	prune (kk-t-1): 27.3
+98	t: 9	ctilda: 26.9153	prune (kk-t-1): 29.25
+99	t: 8	ctilda: 34.4351	prune (kk-t-1): 29.25
+100	t: 9	ctilda: 48.3035	prune (kk-t-1): 29.25
+101	t: 10	ctilda: 58.5202	prune (kk-t-1): 27.3
+102	t: 11	ctilda: 50.057	prune (kk-t-1): 27.3
+103	t: 12	ctilda: 49.506	prune (kk-t-1): 25.35
+104	t: 13	ctilda: 37.2596	prune (kk-t-1): 25.35
+105	t: 14	ctilda: 27.9943	prune (kk-t-1): 23.4
+106	t: 15	ctilda: 36.7691	prune (kk-t-1): 23.4
+107	t: 16	ctilda: 32.9144	prune (kk-t-1): 21.45
+108	t: 17	ctilda: 27.6196	prune (kk-t-1): 21.45
+109	t: 18	ctilda: 49.2576	prune (kk-t-1): 19.5
+110	t: 19	ctilda: 55.6064	prune (kk-t-1): 19.5
+111	t: 20	ctilda: 14.6458	prune (kk-t-1): 17.55
+112	t: 19	ctilda: 16.3121	prune (kk-t-1): 19.5
+113	t: 18	ctilda: 16.5655	prune (kk-t-1): 19.5
+114	t: 17	ctilda: 18.9682	prune (kk-t-1): 21.45
+115	t: 16	ctilda: 19.8678	prune (kk-t-1): 21.45
+116	t: 15	ctilda: 24.5772	prune (kk-t-1): 23.4
+117	t: 14	ctilda: 26.3149	prune (kk-t-1): 23.4
+118	t: 15	ctilda: 24.8047	prune (kk-t-1): 23.4
+119	t: 14	ctilda: 25.1433	prune (kk-t-1): 23.4
+120	t: 13	ctilda: 25.3712	prune (kk-t-1): 25.35
+121	t: 12	ctilda: 26.365	prune (kk-t-1): 25.35
+122	t: 11	ctilda: 26.402	prune (kk-t-1): 27.3
+123	t: 10	ctilda: 29.6992	prune (kk-t-1): 27.3
+124	t: 11	ctilda: 57.2389	prune (kk-t-1): 27.3
+125	t: 12	ctilda: 42.2219	prune (kk-t-1): 25.35
+126	t: 13	ctilda: 47.201	prune (kk-t-1): 25.35
+127	t: 14	ctilda: 41.775	prune (kk-t-1): 23.4
+128	t: 15	ctilda: 62.9294	prune (kk-t-1): 23.4
+129	t: 16	ctilda: 31.4282	prune (kk-t-1): 21.45
+130	t: 17	ctilda: 22.4277	prune (kk-t-1): 21.45
+131	t: 16	ctilda: 23.6624	prune (kk-t-1): 21.45
+132	t: 17	ctilda: 47.0509	prune (kk-t-1): 21.45
+133	t: 18	ctilda: 28.6443	prune (kk-t-1): 19.5
+134	t: 19	ctilda: 20.5879	prune (kk-t-1): 19.5
+135	t: 18	ctilda: 23.0866	prune (kk-t-1): 19.5
+136	t: 19	ctilda: 39.8395	prune (kk-t-1): 19.5
+137	t: 20	ctilda: 58.5832	prune (kk-t-1): 17.55
+138	t: 21	ctilda: 14.9	prune (kk-t-1): 17.55
+139	t: 20	ctilda: 16.4074	prune (kk-t-1): 17.55
+140	t: 19	ctilda: 17.5176	prune (kk-t-1): 19.5
+141	t: 18	ctilda: 19.5718	prune (kk-t-1): 19.5
+142	t: 17	ctilda: 23.2654	prune (kk-t-1): 21.45
+143	t: 16	ctilda: 28.0408	prune (kk-t-1): 21.45
+144	t: 17	ctilda: 23.7719	prune (kk-t-1): 21.45
+145	t: 18	ctilda: 24.1835	prune (kk-t-1): 19.5
+146	t: 19	ctilda: 23.562	prune (kk-t-1): 19.5
+147	t: 20	ctilda: 21.656	prune (kk-t-1): 17.55
+148	t: 21	ctilda: 59.6	prune (kk-t-1): 17.55
+149	t: 22	ctilda: 15.0738	prune (kk-t-1): 15.6
+150	t: 21	ctilda: 15.479	prune (kk-t-1): 17.55
+151	t: 20	ctilda: 17.5594	prune (kk-t-1): 17.55
+152	t: 19	ctilda: 18.788	prune (kk-t-1): 19.5
+153	t: 18	ctilda: 18.7994	prune (kk-t-1): 19.5
+154	t: 17	ctilda: 20.1609	prune (kk-t-1): 21.45
+155	t: 16	ctilda: 23.1321	prune (kk-t-1): 21.45
+156	t: 15	ctilda: 23.3875	prune (kk-t-1): 23.4
+157	t: 14	ctilda: 24.1826	prune (kk-t-1): 23.4
+158	t: 13	ctilda: 28.43	prune (kk-t-1): 25.35
+159	t: 14	ctilda: 37.901	prune (kk-t-1): 23.4
+160	t: 15	ctilda: 38.2378	prune (kk-t-1): 23.4
+161	t: 16	ctilda: 27.749	prune (kk-t-1): 21.45
+162	t: 17	ctilda: 26.6642	prune (kk-t-1): 21.45
+163	t: 18	ctilda: 34.0647	prune (kk-t-1): 19.5
+164	t: 19	ctilda: 24.4242	prune (kk-t-1): 19.5
+165	t: 20	ctilda: 21.1655	prune (kk-t-1): 17.55
+166	t: 21	ctilda: 25.4645	prune (kk-t-1): 17.55
+167	t: 22	ctilda: 60.2952	prune (kk-t-1): 15.6
+168	t: 23	ctilda: 15.4146	prune (kk-t-1): 15.6
+169	t: 22	ctilda: 18.6637	prune (kk-t-1): 15.6
+170	t: 23	ctilda: 61.6583	prune (kk-t-1): 15.6
+171	t: 24	ctilda: 11.8679	prune (kk-t-1): 13.65
+172	t: 23	ctilda: 15.3111	prune (kk-t-1): 15.6
+173	t: 22	ctilda: 17.9542	prune (kk-t-1): 15.6
+174	t: 23	ctilda: 16.155	prune (kk-t-1): 15.6
+175	t: 22	ctilda: 16.1862	prune (kk-t-1): 15.6
+176	t: 21	ctilda: 16.6151	prune (kk-t-1): 17.55
+177	t: 20	ctilda: 17.1228	prune (kk-t-1): 17.55
+178	t: 19	ctilda: 17.389	prune (kk-t-1): 19.5
+179	t: 18	ctilda: 17.7995	prune (kk-t-1): 19.5
+180	t: 17	ctilda: 20.9564	prune (kk-t-1): 21.45
+181	t: 16	ctilda: 23.8118	prune (kk-t-1): 21.45
+182	t: 17	ctilda: 22.6155	prune (kk-t-1): 21.45
+183	t: 16	ctilda: 23.1468	prune (kk-t-1): 21.45
+184	t: 15	ctilda: 23.3497	prune (kk-t-1): 23.4
+185	t: 14	ctilda: 26.9865	prune (kk-t-1): 23.4
+186	t: 15	ctilda: 38.6825	prune (kk-t-1): 23.4
+187	t: 16	ctilda: 36.6741	prune (kk-t-1): 21.45
+188	t: 17	ctilda: 50.8394	prune (kk-t-1): 21.45
+189	t: 18	ctilda: 28.7754	prune (kk-t-1): 19.5
+190	t: 19	ctilda: 27.4431	prune (kk-t-1): 19.5
+191	t: 20	ctilda: 26.3152	prune (kk-t-1): 17.55
+192	t: 21	ctilda: 26.4591	prune (kk-t-1): 17.55
+193	t: 22	ctilda: 29.8873	prune (kk-t-1): 15.6
+194	t: 23	ctilda: 45.2964	prune (kk-t-1): 15.6
+195	t: 24	ctilda: 47.4714	prune (kk-t-1): 13.65
+196	t: 25	ctilda: 11.4146	prune (kk-t-1): 13.65
+197	t: 24	ctilda: 13.0849	prune (kk-t-1): 13.65
+198	t: 23	ctilda: 16.5013	prune (kk-t-1): 15.6
+199	t: 22	ctilda: 18.7761	prune (kk-t-1): 15.6
+200	t: 23	ctilda: 17.4021	prune (kk-t-1): 15.6
+201	t: 22	ctilda: 17.4887	prune (kk-t-1): 15.6
+202	t: 21	ctilda: 20.1313	prune (kk-t-1): 17.55
+203	t: 22	ctilda: 30.2774	prune (kk-t-1): 15.6
+204	t: 23	ctilda: 46.4297	prune (kk-t-1): 15.6
+205	t: 24	ctilda: 16.0482	prune (kk-t-1): 13.65
+206	t: 25	ctilda: 45.6585	prune (kk-t-1): 13.65
+207	t: 26	ctilda: 8.86591	prune (kk-t-1): 11.7
+208	t: 25	ctilda: 11.6453	prune (kk-t-1): 13.65
+209	t: 24	ctilda: 14.587	prune (kk-t-1): 13.65
+210	t: 23	ctilda: 14.9358	prune (kk-t-1): 15.6
+211	t: 22	ctilda: 16.4773	prune (kk-t-1): 15.6
+212	t: 21	ctilda: 16.6349	prune (kk-t-1): 17.55
+213	t: 20	ctilda: 17.0257	prune (kk-t-1): 17.55
+214	t: 19	ctilda: 17.477	prune (kk-t-1): 19.5
+215	t: 18	ctilda: 19.0167	prune (kk-t-1): 19.5
+216	t: 17	ctilda: 19.4421	prune (kk-t-1): 21.45
+217	t: 16	ctilda: 20.9222	prune (kk-t-1): 21.45
+218	t: 15	ctilda: 23.0151	prune (kk-t-1): 23.4
+219	t: 14	ctilda: 24.5922	prune (kk-t-1): 23.4
+220	t: 13	ctilda: 25.4307	prune (kk-t-1): 25.35
+221	t: 12	ctilda: 25.5182	prune (kk-t-1): 25.35
+222	t: 11	ctilda: 27.2012	prune (kk-t-1): 27.3
+223	t: 10	ctilda: 30.5995	prune (kk-t-1): 27.3
+224	t: 11	ctilda: 45.3346	prune (kk-t-1): 27.3
+225	t: 12	ctilda: 48.5275	prune (kk-t-1): 25.35
+226	t: 13	ctilda: 42.7253	prune (kk-t-1): 25.35
+227	t: 14	ctilda: 34.8866	prune (kk-t-1): 23.4
+228	t: 15	ctilda: 29.5973	prune (kk-t-1): 23.4
+229	t: 16	ctilda: 30.0811	prune (kk-t-1): 21.45
+230	t: 17	ctilda: 30.0328	prune (kk-t-1): 21.45
+231	t: 18	ctilda: 25.1734	prune (kk-t-1): 19.5
+232	t: 19	ctilda: 26.3695	prune (kk-t-1): 19.5
+233	t: 20	ctilda: 26.8862	prune (kk-t-1): 17.55
+234	t: 21	ctilda: 28.4703	prune (kk-t-1): 17.55
+235	t: 22	ctilda: 21.9104	prune (kk-t-1): 15.6
+236	t: 23	ctilda: 25.7129	prune (kk-t-1): 15.6
+237	t: 24	ctilda: 14.6377	prune (kk-t-1): 13.65
+238	t: 23	ctilda: 16.238	prune (kk-t-1): 15.6
+239	t: 22	ctilda: 17.2686	prune (kk-t-1): 15.6
+240	t: 21	ctilda: 19.3672	prune (kk-t-1): 17.55
+241	t: 20	ctilda: 20.5015	prune (kk-t-1): 17.55
+242	t: 21	ctilda: 23.0834	prune (kk-t-1): 17.55
+243	t: 22	ctilda: 24.4594	prune (kk-t-1): 15.6
+244	t: 23	ctilda: 21.7194	prune (kk-t-1): 15.6
+245	t: 24	ctilda: 38.272	prune (kk-t-1): 13.65
+246	t: 25	ctilda: 11.7948	prune (kk-t-1): 13.65
+247	t: 24	ctilda: 11.9735	prune (kk-t-1): 13.65
+248	t: 23	ctilda: 13.5554	prune (kk-t-1): 15.6
+249	t: 22	ctilda: 14.8384	prune (kk-t-1): 15.6
+250	t: 21	ctilda: 16.914	prune (kk-t-1): 17.55
+251	t: 20	ctilda: 19.7953	prune (kk-t-1): 17.55
+252	t: 21	ctilda: 20.6917	prune (kk-t-1): 17.55
+253	t: 22	ctilda: 21.1169	prune (kk-t-1): 15.6
+254	t: 23	ctilda: 19.0937	prune (kk-t-1): 15.6
+255	t: 24	ctilda: 20.9287	prune (kk-t-1): 13.65
+256	t: 25	ctilda: 34.3252	prune (kk-t-1): 13.65
+257	t: 26	ctilda: 35.4636	prune (kk-t-1): 11.7
+258	t: 27	ctilda: 9.55931	prune (kk-t-1): 11.7
+259	t: 26	ctilda: 11.5496	prune (kk-t-1): 11.7
+260	t: 25	ctilda: 13.1474	prune (kk-t-1): 13.65
+261	t: 24	ctilda: 14.7134	prune (kk-t-1): 13.65
+262	t: 23	ctilda: 17.6678	prune (kk-t-1): 15.6
+263	t: 24	ctilda: 17.9592	prune (kk-t-1): 13.65
+264	t: 25	ctilda: 16.0208	prune (kk-t-1): 13.65
+265	t: 26	ctilda: 12.0141	prune (kk-t-1): 11.7
+266	t: 25	ctilda: 12.1767	prune (kk-t-1): 13.65
+267	t: 24	ctilda: 12.4056	prune (kk-t-1): 13.65
+268	t: 23	ctilda: 12.6115	prune (kk-t-1): 15.6
+269	t: 22	ctilda: 12.6222	prune (kk-t-1): 15.6
+270	t: 21	ctilda: 13.4008	prune (kk-t-1): 17.55
+271	t: 20	ctilda: 14.6925	prune (kk-t-1): 17.55
+272	t: 19	ctilda: 17.4591	prune (kk-t-1): 19.5
+273	t: 18	ctilda: 19.0539	prune (kk-t-1): 19.5
+274	t: 17	ctilda: 21.3488	prune (kk-t-1): 21.45
+275	t: 16	ctilda: 22.9342	prune (kk-t-1): 21.45
+276	t: 15	ctilda: 26.1007	prune (kk-t-1): 23.4
+277	t: 16	ctilda: 31.7124	prune (kk-t-1): 21.45
+278	t: 17	ctilda: 25.0877	prune (kk-t-1): 21.45
+279	t: 18	ctilda: 25.034	prune (kk-t-1): 19.5
+280	t: 19	ctilda: 18.9574	prune (kk-t-1): 19.5
+281	t: 18	ctilda: 19.4039	prune (kk-t-1): 19.5
+282	t: 17	ctilda: 19.4572	prune (kk-t-1): 21.45
+283	t: 16	ctilda: 20.074	prune (kk-t-1): 21.45
+284	t: 15	ctilda: 22.7384	prune (kk-t-1): 23.4
+285	t: 14	ctilda: 26.1973	prune (kk-t-1): 23.4
+286	t: 15	ctilda: 27.69	prune (kk-t-1): 23.4
+287	t: 16	ctilda: 33.0953	prune (kk-t-1): 21.45
+288	t: 17	ctilda: 33.3943	prune (kk-t-1): 21.45
+289	t: 18	ctilda: 30.1596	prune (kk-t-1): 19.5
+290	t: 19	ctilda: 43.764	prune (kk-t-1): 19.5
+291	t: 20	ctilda: 20.6392	prune (kk-t-1): 17.55
+292	t: 21	ctilda: 21.489	prune (kk-t-1): 17.55
+293	t: 22	ctilda: 26.8925	prune (kk-t-1): 15.6
+294	t: 23	ctilda: 24.4625	prune (kk-t-1): 15.6
+295	t: 24	ctilda: 20.9769	prune (kk-t-1): 13.65
+296	t: 25	ctilda: 20.8673	prune (kk-t-1): 13.65
+297	t: 26	ctilda: 28.8169	prune (kk-t-1): 11.7
+298	t: 27	ctilda: 38.2372	prune (kk-t-1): 11.7
+299	t: 28	ctilda: 7.65214	prune (kk-t-1): 9.75
+300	t: 27	ctilda: 9.96159	prune (kk-t-1): 11.7
+301	t: 26	ctilda: 11.6026	prune (kk-t-1): 11.7
+302	t: 25	ctilda: 11.692	prune (kk-t-1): 13.65
+303	t: 24	ctilda: 12.079	prune (kk-t-1): 13.65
+304	t: 23	ctilda: 12.7103	prune (kk-t-1): 15.6
+305	t: 22	ctilda: 14.7767	prune (kk-t-1): 15.6
+306	t: 21	ctilda: 14.9498	prune (kk-t-1): 17.55
+307	t: 20	ctilda: 15.2143	prune (kk-t-1): 17.55
+308	t: 19	ctilda: 15.3991	prune (kk-t-1): 19.5
+309	t: 18	ctilda: 17.9436	prune (kk-t-1): 19.5
+310	t: 17	ctilda: 18.7618	prune (kk-t-1): 21.45
+311	t: 16	ctilda: 18.8944	prune (kk-t-1): 21.45
+312	t: 15	ctilda: 18.9048	prune (kk-t-1): 23.4
+313	t: 14	ctilda: 22.1617	prune (kk-t-1): 23.4
+314	t: 13	ctilda: 24.2985	prune (kk-t-1): 25.35
+315	t: 12	ctilda: 24.3204	prune (kk-t-1): 25.35
+316	t: 11	ctilda: 24.4572	prune (kk-t-1): 27.3
+317	t: 10	ctilda: 25.605	prune (kk-t-1): 27.3
+318	t: 9	ctilda: 25.7551	prune (kk-t-1): 29.25
+319	t: 8	ctilda: 25.8716	prune (kk-t-1): 29.25
+320	t: 7	ctilda: 28.4477	prune (kk-t-1): 31.2
+321	t: 6	ctilda: 28.4477	prune (kk-t-1): 31.2
+322	t: 5	ctilda: 34.6312	prune (kk-t-1): 33.15
+323	t: 4	ctilda: 45.2018	prune (kk-t-1): 33.15
+324	t: 5	ctilda: 44.4951	prune (kk-t-1): 33.15
+325	t: 6	ctilda: 68.0341	prune (kk-t-1): 31.2
+326	t: 7	ctilda: 47.6046	prune (kk-t-1): 31.2
+327	t: 8	ctilda: 57.3792	prune (kk-t-1): 29.25
+328	t: 9	ctilda: 55.6543	prune (kk-t-1): 29.25
+329	t: 10	ctilda: 49.2305	prune (kk-t-1): 27.3
+330	t: 11	ctilda: 53.2524	prune (kk-t-1): 27.3
+331	t: 12	ctilda: 48.8396	prune (kk-t-1): 25.35
+332	t: 13	ctilda: 35.9424	prune (kk-t-1): 25.35
+333	t: 14	ctilda: 27.2952	prune (kk-t-1): 23.4
+334	t: 15	ctilda: 37.2997	prune (kk-t-1): 23.4
+335	t: 16	ctilda: 35.6892	prune (kk-t-1): 21.45
+336	t: 17	ctilda: 27.3484	prune (kk-t-1): 21.45
+337	t: 18	ctilda: 21.2553	prune (kk-t-1): 19.5
+338	t: 17	ctilda: 21.26	prune (kk-t-1): 21.45
+339	t: 16	ctilda: 23.9847	prune (kk-t-1): 21.45
+340	t: 17	ctilda: 36.4889	prune (kk-t-1): 21.45
+341	t: 18	ctilda: 46.874	prune (kk-t-1): 19.5
+342	t: 19	ctilda: 26.0948	prune (kk-t-1): 19.5
+343	t: 20	ctilda: 25.9238	prune (kk-t-1): 17.55
+344	t: 21	ctilda: 26.6375	prune (kk-t-1): 17.55
+345	t: 22	ctilda: 18.6884	prune (kk-t-1): 15.6
+346	t: 23	ctilda: 21.886	prune (kk-t-1): 15.6
+347	t: 24	ctilda: 19.6605	prune (kk-t-1): 13.65
+348	t: 25	ctilda: 21.0861	prune (kk-t-1): 13.65
+349	t: 26	ctilda: 12.8399	prune (kk-t-1): 11.7
+350	t: 25	ctilda: 14.8347	prune (kk-t-1): 13.65
+351	t: 24	ctilda: 15.9264	prune (kk-t-1): 13.65
+352	t: 25	ctilda: 16.7058	prune (kk-t-1): 13.65
+353	t: 26	ctilda: 28.0971	prune (kk-t-1): 11.7
+354	t: 27	ctilda: 10.1237	prune (kk-t-1): 11.7
+355	t: 26	ctilda: 10.2054	prune (kk-t-1): 11.7
+356	t: 25	ctilda: 10.6984	prune (kk-t-1): 13.65
+357	t: 24	ctilda: 10.719	prune (kk-t-1): 13.65
+358	t: 23	ctilda: 12.2775	prune (kk-t-1): 15.6
+359	t: 22	ctilda: 14.057	prune (kk-t-1): 15.6
+360	t: 21	ctilda: 14.2744	prune (kk-t-1): 17.55
+361	t: 20	ctilda: 16.9996	prune (kk-t-1): 17.55
+362	t: 19	ctilda: 18.5209	prune (kk-t-1): 19.5
+363	t: 18	ctilda: 18.6313	prune (kk-t-1): 19.5
+364	t: 17	ctilda: 19.0038	prune (kk-t-1): 21.45
+365	t: 16	ctilda: 21.6385	prune (kk-t-1): 21.45
+366	t: 15	ctilda: 24.4529	prune (kk-t-1): 23.4
+367	t: 14	ctilda: 25.5073	prune (kk-t-1): 23.4
+368	t: 15	ctilda: 29.0066	prune (kk-t-1): 23.4
+369	t: 16	ctilda: 27.1559	prune (kk-t-1): 21.45
+370	t: 17	ctilda: 29.9272	prune (kk-t-1): 21.45
+371	t: 18	ctilda: 32.0839	prune (kk-t-1): 19.5
+372	t: 19	ctilda: 23.2251	prune (kk-t-1): 19.5
+373	t: 20	ctilda: 19.01	prune (kk-t-1): 17.55
+374	t: 19	ctilda: 20.4603	prune (kk-t-1): 19.5
+375	t: 18	ctilda: 22.0189	prune (kk-t-1): 19.5
+376	t: 19	ctilda: 25.3818	prune (kk-t-1): 19.5
+377	t: 20	ctilda: 44.2808	prune (kk-t-1): 17.55
+378	t: 21	ctilda: 25.5749	prune (kk-t-1): 17.55
+379	t: 22	ctilda: 18.7723	prune (kk-t-1): 15.6
+380	t: 23	ctilda: 17.8895	prune (kk-t-1): 15.6
+381	t: 24	ctilda: 21.597	prune (kk-t-1): 13.65
+382	t: 25	ctilda: 17.3686	prune (kk-t-1): 13.65
+383	t: 26	ctilda: 17.3694	prune (kk-t-1): 11.7
+384	t: 27	ctilda: 28.9181	prune (kk-t-1): 11.7
+385	t: 28	ctilda: 30.6086	prune (kk-t-1): 9.75
+386	t: 29	ctilda: 7.08917	prune (kk-t-1): 9.75
+387	t: 28	ctilda: 7.83529	prune (kk-t-1): 9.75
+388	t: 27	ctilda: 9.8034	prune (kk-t-1): 11.7
+389	t: 26	ctilda: 11.9114	prune (kk-t-1): 11.7
+390	t: 25	ctilda: 12.0472	prune (kk-t-1): 13.65
+391	t: 24	ctilda: 12.3421	prune (kk-t-1): 13.65
+392	t: 23	ctilda: 13.0605	prune (kk-t-1): 15.6
+393	t: 22	ctilda: 13.4482	prune (kk-t-1): 15.6
+394	t: 21	ctilda: 15.7992	prune (kk-t-1): 17.55
+395	t: 20	ctilda: 15.8637	prune (kk-t-1): 17.55
+396	t: 19	ctilda: 16.2867	prune (kk-t-1): 19.5
+397	t: 18	ctilda: 16.4076	prune (kk-t-1): 19.5
+398	t: 17	ctilda: 16.7488	prune (kk-t-1): 21.45
+399	t: 16	ctilda: 20.4911	prune (kk-t-1): 21.45
+400	t: 15	ctilda: 25.2823	prune (kk-t-1): 23.4
+401	t: 14	ctilda: 26.3307	prune (kk-t-1): 23.4
+402	t: 15	ctilda: 25.3451	prune (kk-t-1): 23.4
+403	t: 14	ctilda: 26.1126	prune (kk-t-1): 23.4
+404	t: 15	ctilda: 63.7992	prune (kk-t-1): 23.4
+405	t: 16	ctilda: 23.2198	prune (kk-t-1): 21.45
+406	t: 15	ctilda: 24.1869	prune (kk-t-1): 23.4
+407	t: 14	ctilda: 25.6069	prune (kk-t-1): 23.4
+408	t: 15	ctilda: 34.8386	prune (kk-t-1): 23.4
+409	t: 16	ctilda: 57.8738	prune (kk-t-1): 21.45
+410	t: 17	ctilda: 27.8807	prune (kk-t-1): 21.45
+411	t: 18	ctilda: 29.7368	prune (kk-t-1): 19.5
+412	t: 19	ctilda: 25.3382	prune (kk-t-1): 19.5
+413	t: 20	ctilda: 28.5648	prune (kk-t-1): 17.55
+414	t: 21	ctilda: 18.8622	prune (kk-t-1): 17.55
+415	t: 20	ctilda: 21.058	prune (kk-t-1): 17.55
+416	t: 21	ctilda: 42.5361	prune (kk-t-1): 17.55
+417	t: 22	ctilda: 23.6871	prune (kk-t-1): 15.6
+418	t: 23	ctilda: 21.8193	prune (kk-t-1): 15.6
+419	t: 24	ctilda: 20.4683	prune (kk-t-1): 13.65
+420	t: 25	ctilda: 20.9725	prune (kk-t-1): 13.65
+421	t: 26	ctilda: 12.131	prune (kk-t-1): 11.7
+422	t: 25	ctilda: 13.9347	prune (kk-t-1): 13.65
+423	t: 24	ctilda: 13.9492	prune (kk-t-1): 13.65
+424	t: 23	ctilda: 14.1174	prune (kk-t-1): 15.6
+425	t: 22	ctilda: 14.3775	prune (kk-t-1): 15.6
+426	t: 21	ctilda: 15.1627	prune (kk-t-1): 17.55
+427	t: 20	ctilda: 15.2091	prune (kk-t-1): 17.55
+428	t: 19	ctilda: 15.2252	prune (kk-t-1): 19.5
+429	t: 18	ctilda: 17.2213	prune (kk-t-1): 19.5
+430	t: 17	ctilda: 19.5142	prune (kk-t-1): 21.45
+431	t: 16	ctilda: 19.6367	prune (kk-t-1): 21.45
+432	t: 15	ctilda: 20.5777	prune (kk-t-1): 23.4
+433	t: 14	ctilda: 22.1324	prune (kk-t-1): 23.4
+434	t: 13	ctilda: 23.2027	prune (kk-t-1): 25.35
+435	t: 12	ctilda: 25.7795	prune (kk-t-1): 25.35
+436	t: 11	ctilda: 32.5773	prune (kk-t-1): 27.3
+437	t: 12	ctilda: 35.4288	prune (kk-t-1): 25.35
+438	t: 13	ctilda: 39.2677	prune (kk-t-1): 25.35
+439	t: 14	ctilda: 32.5109	prune (kk-t-1): 23.4
+440	t: 15	ctilda: 31.3466	prune (kk-t-1): 23.4
+441	t: 16	ctilda: 36.5577	prune (kk-t-1): 21.45
+442	t: 17	ctilda: 23.2584	prune (kk-t-1): 21.45
+443	t: 16	ctilda: 27.5378	prune (kk-t-1): 21.45
+444	t: 17	ctilda: 47.3122	prune (kk-t-1): 21.45
+445	t: 18	ctilda: 21.9971	prune (kk-t-1): 19.5
+446	t: 19	ctilda: 28.1805	prune (kk-t-1): 19.5
+447	t: 20	ctilda: 28.2047	prune (kk-t-1): 17.55
+448	t: 21	ctilda: 23.222	prune (kk-t-1): 17.55
+449	t: 22	ctilda: 25.4909	prune (kk-t-1): 15.6
+450	t: 23	ctilda: 26.3115	prune (kk-t-1): 15.6
+451	t: 24	ctilda: 24.988	prune (kk-t-1): 13.65
+452	t: 25	ctilda: 16.2745	prune (kk-t-1): 13.65
+453	t: 26	ctilda: 29.4237	prune (kk-t-1): 11.7
+454	t: 27	ctilda: 10.6877	prune (kk-t-1): 11.7
+455	t: 26	ctilda: 10.7009	prune (kk-t-1): 11.7
+456	t: 25	ctilda: 11.2962	prune (kk-t-1): 13.65
+457	t: 24	ctilda: 12.3396	prune (kk-t-1): 13.65
+458	t: 23	ctilda: 14.0334	prune (kk-t-1): 15.6
+459	t: 22	ctilda: 14.303	prune (kk-t-1): 15.6
+460	t: 21	ctilda: 16.3894	prune (kk-t-1): 17.55
+461	t: 20	ctilda: 17.8501	prune (kk-t-1): 17.55
+462	t: 19	ctilda: 17.9878	prune (kk-t-1): 19.5
+463	t: 18	ctilda: 17.9952	prune (kk-t-1): 19.5
+464	t: 17	ctilda: 19.4037	prune (kk-t-1): 21.45
+465	t: 16	ctilda: 19.4113	prune (kk-t-1): 21.45
+466	t: 15	ctilda: 19.4518	prune (kk-t-1): 23.4
+467	t: 14	ctilda: 19.9988	prune (kk-t-1): 23.4
+468	t: 13	ctilda: 23.6426	prune (kk-t-1): 25.35
+469	t: 12	ctilda: 23.7859	prune (kk-t-1): 25.35
+470	t: 11	ctilda: 30.5362	prune (kk-t-1): 27.3
+471	t: 12	ctilda: 45.9521	prune (kk-t-1): 25.35
+472	t: 13	ctilda: 30.6597	prune (kk-t-1): 25.35
+473	t: 14	ctilda: 35.1473	prune (kk-t-1): 23.4
+474	t: 15	ctilda: 36.9749	prune (kk-t-1): 23.4
+475	t: 16	ctilda: 38.682	prune (kk-t-1): 21.45
+476	t: 17	ctilda: 25.7487	prune (kk-t-1): 21.45
+477	t: 18	ctilda: 33.4262	prune (kk-t-1): 19.5
+478	t: 19	ctilda: 29.1223	prune (kk-t-1): 19.5
+479	t: 20	ctilda: 23.2453	prune (kk-t-1): 17.55
+480	t: 21	ctilda: 20.1381	prune (kk-t-1): 17.55
+481	t: 22	ctilda: 25.3454	prune (kk-t-1): 15.6
+482	t: 23	ctilda: 19.2286	prune (kk-t-1): 15.6
+483	t: 24	ctilda: 17.1694	prune (kk-t-1): 13.65
+484	t: 25	ctilda: 17.4976	prune (kk-t-1): 13.65
+485	t: 26	ctilda: 18.8827	prune (kk-t-1): 11.7
+486	t: 27	ctilda: 28.0377	prune (kk-t-1): 11.7
+487	t: 28	ctilda: 10.7085	prune (kk-t-1): 9.75
+488	t: 27	ctilda: 10.7222	prune (kk-t-1): 11.7
+489	t: 26	ctilda: 10.7514	prune (kk-t-1): 11.7
+490	t: 25	ctilda: 10.7562	prune (kk-t-1): 13.65
+491	t: 24	ctilda: 12.1138	prune (kk-t-1): 13.65
+492	t: 23	ctilda: 12.1167	prune (kk-t-1): 15.6
+493	t: 22	ctilda: 12.7806	prune (kk-t-1): 15.6
+494	t: 21	ctilda: 16.4314	prune (kk-t-1): 17.55
+495	t: 20	ctilda: 17.3675	prune (kk-t-1): 17.55
+496	t: 19	ctilda: 18.0617	prune (kk-t-1): 19.5
+497	t: 18	ctilda: 19.8422	prune (kk-t-1): 19.5
+498	t: 17	ctilda: 22.1941	prune (kk-t-1): 21.45
+499	t: 16	ctilda: 22.2192	prune (kk-t-1): 21.45
+500	t: 15	ctilda: 23.5786	prune (kk-t-1): 23.4
+501	t: 14	ctilda: 24.7461	prune (kk-t-1): 23.4
+502	t: 13	ctilda: 28.7549	prune (kk-t-1): 25.35
+503	t: 14	ctilda: 36.689	prune (kk-t-1): 23.4
+504	t: 15	ctilda: 32.6266	prune (kk-t-1): 23.4
+505	t: 16	ctilda: 40.8574	prune (kk-t-1): 21.45
+506	t: 17	ctilda: 25.7846	prune (kk-t-1): 21.45
+507	t: 18	ctilda: 25.248	prune (kk-t-1): 19.5
+508	t: 19	ctilda: 25.7503	prune (kk-t-1): 19.5
+509	t: 20	ctilda: 24.6078	prune (kk-t-1): 17.55
+510	t: 21	ctilda: 16.5806	prune (kk-t-1): 17.55
+511	t: 20	ctilda: 16.6483	prune (kk-t-1): 17.55
+512	t: 19	ctilda: 16.6969	prune (kk-t-1): 19.5
+513	t: 18	ctilda: 18.2531	prune (kk-t-1): 19.5
+514	t: 17	ctilda: 18.3558	prune (kk-t-1): 21.45
+515	t: 16	ctilda: 20.8222	prune (kk-t-1): 21.45
+516	t: 15	ctilda: 25.1777	prune (kk-t-1): 23.4
+517	t: 14	ctilda: 28.6846	prune (kk-t-1): 23.4
+518	t: 15	ctilda: 26.1354	prune (kk-t-1): 23.4
+519	t: 16	ctilda: 26.8117	prune (kk-t-1): 21.45
+520	t: 17	ctilda: 31.5814	prune (kk-t-1): 21.45
+521	t: 18	ctilda: 24.3567	prune (kk-t-1): 19.5
+522	t: 19	ctilda: 28.9543	prune (kk-t-1): 19.5
+523	t: 20	ctilda: 29.3025	prune (kk-t-1): 17.55
+524	t: 21	ctilda: 46.0821	prune (kk-t-1): 17.55
+525	t: 22	ctilda: 21.5273	prune (kk-t-1): 15.6
+526	t: 23	ctilda: 27.1143	prune (kk-t-1): 15.6
+527	t: 24	ctilda: 15.9537	prune (kk-t-1): 13.65
+528	t: 25	ctilda: 21.7021	prune (kk-t-1): 13.65
+529	t: 26	ctilda: 18.5996	prune (kk-t-1): 11.7
+530	t: 27	ctilda: 19.5593	prune (kk-t-1): 11.7
+531	t: 28	ctilda: 20.2663	prune (kk-t-1): 9.75
+532	t: 29	ctilda: 28.3567	prune (kk-t-1): 9.75
+533	t: 30	ctilda: 6.8532	prune (kk-t-1): 7.8
+534	t: 29	ctilda: 7.83643	prune (kk-t-1): 9.75
+535	t: 28	ctilda: 8.68236	prune (kk-t-1): 9.75
+536	t: 27	ctilda: 10.2536	prune (kk-t-1): 11.7
+537	t: 26	ctilda: 12.3505	prune (kk-t-1): 11.7
+538	t: 25	ctilda: 15.15	prune (kk-t-1): 13.65
+539	t: 24	ctilda: 15.2347	prune (kk-t-1): 13.65
+540	t: 23	ctilda: 15.6069	prune (kk-t-1): 15.6
+541	t: 22	ctilda: 15.6516	prune (kk-t-1): 15.6
+542	t: 21	ctilda: 18.4705	prune (kk-t-1): 17.55
+543	t: 20	ctilda: 19.2172	prune (kk-t-1): 17.55
+544	t: 19	ctilda: 19.9545	prune (kk-t-1): 19.5
+545	t: 18	ctilda: 20.0698	prune (kk-t-1): 19.5
+546	t: 17	ctilda: 21.8976	prune (kk-t-1): 21.45
+547	t: 16	ctilda: 22.6445	prune (kk-t-1): 21.45
+548	t: 15	ctilda: 22.6446	prune (kk-t-1): 23.4
+549	t: 14	ctilda: 27.9359	prune (kk-t-1): 23.4
+550	t: 15	ctilda: 41.8465	prune (kk-t-1): 23.4
+551	t: 16	ctilda: 34.9593	prune (kk-t-1): 21.45
+552	t: 17	ctilda: 26.9307	prune (kk-t-1): 21.45
+553	t: 18	ctilda: 33.4642	prune (kk-t-1): 19.5
+554	t: 19	ctilda: 27.4532	prune (kk-t-1): 19.5
+555	t: 20	ctilda: 27.2491	prune (kk-t-1): 17.55
+556	t: 21	ctilda: 20.4087	prune (kk-t-1): 17.55
+557	t: 22	ctilda: 29.0826	prune (kk-t-1): 15.6
+558	t: 23	ctilda: 26.2312	prune (kk-t-1): 15.6
+559	t: 24	ctilda: 25.0978	prune (kk-t-1): 13.65
+560	t: 25	ctilda: 15.2588	prune (kk-t-1): 13.65
+561	t: 24	ctilda: 16.2617	prune (kk-t-1): 13.65
+562	t: 25	ctilda: 37.8705	prune (kk-t-1): 13.65
+563	t: 26	ctilda: 12.5929	prune (kk-t-1): 11.7
+564	t: 25	ctilda: 12.5943	prune (kk-t-1): 13.65
+565	t: 24	ctilda: 13.1037	prune (kk-t-1): 13.65
+566	t: 23	ctilda: 13.5232	prune (kk-t-1): 15.6
+567	t: 22	ctilda: 14.3717	prune (kk-t-1): 15.6
+568	t: 21	ctilda: 14.9199	prune (kk-t-1): 17.55
+569	t: 20	ctilda: 16.6989	prune (kk-t-1): 17.55
+570	t: 19	ctilda: 19.3753	prune (kk-t-1): 19.5
+571	t: 18	ctilda: 19.9018	prune (kk-t-1): 19.5
+572	t: 17	ctilda: 20.1733	prune (kk-t-1): 21.45
+573	t: 16	ctilda: 20.7063	prune (kk-t-1): 21.45
+574	t: 15	ctilda: 21.1489	prune (kk-t-1): 23.4
+575	t: 14	ctilda: 23.6884	prune (kk-t-1): 23.4
+576	t: 13	ctilda: 23.7392	prune (kk-t-1): 25.35
+577	t: 12	ctilda: 23.7844	prune (kk-t-1): 25.35
+578	t: 11	ctilda: 27.8633	prune (kk-t-1): 27.3
+579	t: 10	ctilda: 29.2989	prune (kk-t-1): 27.3
+580	t: 11	ctilda: 37.6913	prune (kk-t-1): 27.3
+581	t: 12	ctilda: 47.6441	prune (kk-t-1): 25.35
+582	t: 13	ctilda: 48.1781	prune (kk-t-1): 25.35
+583	t: 14	ctilda: 30.8071	prune (kk-t-1): 23.4
+584	t: 15	ctilda: 34.5946	prune (kk-t-1): 23.4
+585	t: 16	ctilda: 34.2227	prune (kk-t-1): 21.45
+586	t: 17	ctilda: 31.8062	prune (kk-t-1): 21.45
+587	t: 18	ctilda: 30.1962	prune (kk-t-1): 19.5
+588	t: 19	ctilda: 21.0776	prune (kk-t-1): 19.5
+589	t: 18	ctilda: 22.9231	prune (kk-t-1): 19.5
+590	t: 19	ctilda: 45.4763	prune (kk-t-1): 19.5
+591	t: 20	ctilda: 21.1358	prune (kk-t-1): 17.55
+592	t: 21	ctilda: 24.104	prune (kk-t-1): 17.55
+593	t: 22	ctilda: 22.2929	prune (kk-t-1): 15.6
+594	t: 23	ctilda: 23.8517	prune (kk-t-1): 15.6
+595	t: 24	ctilda: 20.0542	prune (kk-t-1): 13.65
+596	t: 25	ctilda: 23.7507	prune (kk-t-1): 13.65
+597	t: 26	ctilda: 29.84	prune (kk-t-1): 11.7
+598	t: 27	ctilda: 12.0618	prune (kk-t-1): 11.7
+599	t: 26	ctilda: 12.0759	prune (kk-t-1): 11.7
+600	t: 25	ctilda: 13.7718	prune (kk-t-1): 13.65
+601	t: 24	ctilda: 15.9618	prune (kk-t-1): 13.65
+602	t: 25	ctilda: 16.387	prune (kk-t-1): 13.65
+603	t: 26	ctilda: 20.235	prune (kk-t-1): 11.7
+604	t: 27	ctilda: 27.5639	prune (kk-t-1): 11.7
+605	t: 28	ctilda: 11.246	prune (kk-t-1): 9.75
+606	t: 27	ctilda: 11.3169	prune (kk-t-1): 11.7
+607	t: 26	ctilda: 11.3448	prune (kk-t-1): 11.7
+608	t: 25	ctilda: 13.2331	prune (kk-t-1): 13.65
+609	t: 24	ctilda: 13.3428	prune (kk-t-1): 13.65
+610	t: 23	ctilda: 13.3768	prune (kk-t-1): 15.6
+611	t: 22	ctilda: 14.8797	prune (kk-t-1): 15.6
+612	t: 21	ctilda: 17.9949	prune (kk-t-1): 17.55
+613	t: 20	ctilda: 18.0176	prune (kk-t-1): 17.55
+614	t: 19	ctilda: 19.9393	prune (kk-t-1): 19.5
+615	t: 18	ctilda: 22.0042	prune (kk-t-1): 19.5
+616	t: 19	ctilda: 23.5037	prune (kk-t-1): 19.5
+617	t: 20	ctilda: 31.5103	prune (kk-t-1): 17.55
+618	t: 21	ctilda: 19.269	prune (kk-t-1): 17.55
+619	t: 20	ctilda: 21.169	prune (kk-t-1): 17.55
+620	t: 21	ctilda: 46.5209	prune (kk-t-1): 17.55
+621	t: 22	ctilda: 20.4342	prune (kk-t-1): 15.6
+622	t: 23	ctilda: 27.3427	prune (kk-t-1): 15.6
+623	t: 24	ctilda: 22.929	prune (kk-t-1): 13.65
+624	t: 25	ctilda: 15.3624	prune (kk-t-1): 13.65
+625	t: 24	ctilda: 17.9983	prune (kk-t-1): 13.65
+626	t: 25	ctilda: 33.9331	prune (kk-t-1): 13.65
+627	t: 26	ctilda: 19.2158	prune (kk-t-1): 11.7
+628	t: 27	ctilda: 19.23	prune (kk-t-1): 11.7
+629	t: 28	ctilda: 21.423	prune (kk-t-1): 9.75
+630	t: 29	ctilda: 9.64534	prune (kk-t-1): 9.75
+631	t: 28	ctilda: 10.6111	prune (kk-t-1): 9.75
+632	t: 27	ctilda: 11.9031	prune (kk-t-1): 11.7
+633	t: 26	ctilda: 13.7489	prune (kk-t-1): 11.7
+634	t: 27	ctilda: 14.4336	prune (kk-t-1): 11.7
+635	t: 28	ctilda: 12.8263	prune (kk-t-1): 9.75
+636	t: 29	ctilda: 20.2059	prune (kk-t-1): 9.75
+637	t: 30	ctilda: 27.4128	prune (kk-t-1): 7.8
+638	t: 31	ctilda: 6.25296	prune (kk-t-1): 7.8
+639	t: 30	ctilda: 7.4019	prune (kk-t-1): 7.8
+640	t: 29	ctilda: 8.34281	prune (kk-t-1): 9.75
+641	t: 28	ctilda: 9.5905	prune (kk-t-1): 9.75
+642	t: 27	ctilda: 10.0808	prune (kk-t-1): 11.7
+643	t: 26	ctilda: 10.863	prune (kk-t-1): 11.7
+644	t: 25	ctilda: 11.4706	prune (kk-t-1): 13.65
+645	t: 24	ctilda: 13.965	prune (kk-t-1): 13.65
+646	t: 23	ctilda: 14.4418	prune (kk-t-1): 15.6
+647	t: 22	ctilda: 15.419	prune (kk-t-1): 15.6
+648	t: 21	ctilda: 17.1459	prune (kk-t-1): 17.55
+649	t: 20	ctilda: 17.1653	prune (kk-t-1): 17.55
+650	t: 19	ctilda: 20.266	prune (kk-t-1): 19.5
+651	t: 18	ctilda: 22.405	prune (kk-t-1): 19.5
+652	t: 19	ctilda: 21.0368	prune (kk-t-1): 19.5
+653	t: 18	ctilda: 21.4232	prune (kk-t-1): 19.5
+654	t: 17	ctilda: 21.6344	prune (kk-t-1): 21.45
+655	t: 16	ctilda: 23.9095	prune (kk-t-1): 21.45
+656	t: 17	ctilda: 33.7551	prune (kk-t-1): 21.45
+657	t: 18	ctilda: 32.5528	prune (kk-t-1): 19.5
+658	t: 19	ctilda: 47.2984	prune (kk-t-1): 19.5
+659	t: 20	ctilda: 30.7453	prune (kk-t-1): 17.55
+660	t: 21	ctilda: 21.9006	prune (kk-t-1): 17.55
+661	t: 22	ctilda: 22.8169	prune (kk-t-1): 15.6
+662	t: 23	ctilda: 24.4341	prune (kk-t-1): 15.6
+663	t: 24	ctilda: 14.9511	prune (kk-t-1): 13.65
+664	t: 23	ctilda: 16.8555	prune (kk-t-1): 15.6
+665	t: 22	ctilda: 18.2134	prune (kk-t-1): 15.6
+666	t: 23	ctilda: 21.4339	prune (kk-t-1): 15.6
+667	t: 24	ctilda: 36.7146	prune (kk-t-1): 13.65
+668	t: 25	ctilda: 17.6184	prune (kk-t-1): 13.65
+669	t: 26	ctilda: 14.4621	prune (kk-t-1): 11.7
+670	t: 27	ctilda: 15.3102	prune (kk-t-1): 11.7
+671	t: 28	ctilda: 11.0628	prune (kk-t-1): 9.75
+672	t: 27	ctilda: 11.7344	prune (kk-t-1): 11.7
+673	t: 26	ctilda: 12.3939	prune (kk-t-1): 11.7
+674	t: 25	ctilda: 13.8023	prune (kk-t-1): 13.65
+675	t: 24	ctilda: 14.0247	prune (kk-t-1): 13.65
+676	t: 23	ctilda: 15.3726	prune (kk-t-1): 15.6
+677	t: 22	ctilda: 15.6933	prune (kk-t-1): 15.6
+678	t: 21	ctilda: 16.1572	prune (kk-t-1): 17.55
+679	t: 20	ctilda: 16.2023	prune (kk-t-1): 17.55
+680	t: 19	ctilda: 19.4622	prune (kk-t-1): 19.5
+681	t: 18	ctilda: 20.3566	prune (kk-t-1): 19.5
+682	t: 17	ctilda: 22.4048	prune (kk-t-1): 21.45
+683	t: 16	ctilda: 25.776	prune (kk-t-1): 21.45
+684	t: 17	ctilda: 26.809	prune (kk-t-1): 21.45
+685	t: 18	ctilda: 28.8832	prune (kk-t-1): 19.5
+686	t: 19	ctilda: 19.9001	prune (kk-t-1): 19.5
+687	t: 18	ctilda: 21.196	prune (kk-t-1): 19.5
+688	t: 17	ctilda: 23.855	prune (kk-t-1): 21.45
+689	t: 18	ctilda: 28.1757	prune (kk-t-1): 19.5
+690	t: 19	ctilda: 46.8275	prune (kk-t-1): 19.5
+691	t: 20	ctilda: 29.223	prune (kk-t-1): 17.55
+692	t: 21	ctilda: 25.7986	prune (kk-t-1): 17.55
+693	t: 22	ctilda: 26.3703	prune (kk-t-1): 15.6
+694	t: 23	ctilda: 21.6707	prune (kk-t-1): 15.6
+695	t: 24	ctilda: 22.643	prune (kk-t-1): 13.65
+696	t: 25	ctilda: 17.198	prune (kk-t-1): 13.65
+697	t: 26	ctilda: 16.4235	prune (kk-t-1): 11.7
+698	t: 27	ctilda: 16.2265	prune (kk-t-1): 11.7
+699	t: 28	ctilda: 23.4224	prune (kk-t-1): 9.75
+700	t: 29	ctilda: 10.2666	prune (kk-t-1): 9.75
+701	t: 28	ctilda: 10.3307	prune (kk-t-1): 9.75
+702	t: 27	ctilda: 10.8244	prune (kk-t-1): 11.7
+703	t: 26	ctilda: 11.2356	prune (kk-t-1): 11.7
+704	t: 25	ctilda: 12.8134	prune (kk-t-1): 13.65
+705	t: 24	ctilda: 13.2944	prune (kk-t-1): 13.65
+706	t: 23	ctilda: 14.5219	prune (kk-t-1): 15.6
+707	t: 22	ctilda: 16.4292	prune (kk-t-1): 15.6
+708	t: 21	ctilda: 17.941	prune (kk-t-1): 17.55
+709	t: 20	ctilda: 19.3331	prune (kk-t-1): 17.55
+710	t: 19	ctilda: 20.2785	prune (kk-t-1): 19.5
+711	t: 18	ctilda: 20.4295	prune (kk-t-1): 19.5
+712	t: 17	ctilda: 21.4427	prune (kk-t-1): 21.45
+713	t: 16	ctilda: 21.9915	prune (kk-t-1): 21.45
+714	t: 15	ctilda: 23.2862	prune (kk-t-1): 23.4
+715	t: 14	ctilda: 25.0517	prune (kk-t-1): 23.4
+716	t: 13	ctilda: 29.1078	prune (kk-t-1): 25.35
+717	t: 14	ctilda: 34.6605	prune (kk-t-1): 23.4
+718	t: 15	ctilda: 32.5813	prune (kk-t-1): 23.4
+719	t: 16	ctilda: 35.4119	prune (kk-t-1): 21.45
+720	t: 17	ctilda: 29.2191	prune (kk-t-1): 21.45
+721	t: 18	ctilda: 33.4299	prune (kk-t-1): 19.5
+722	t: 19	ctilda: 26.9294	prune (kk-t-1): 19.5
+723	t: 20	ctilda: 24.9482	prune (kk-t-1): 17.55
+724	t: 21	ctilda: 23.3488	prune (kk-t-1): 17.55
+725	t: 22	ctilda: 20.7791	prune (kk-t-1): 15.6
+726	t: 23	ctilda: 21.2368	prune (kk-t-1): 15.6
+727	t: 24	ctilda: 20.3838	prune (kk-t-1): 13.65
+728	t: 25	ctilda: 15.7404	prune (kk-t-1): 13.65
+729	t: 26	ctilda: 16.2829	prune (kk-t-1): 11.7
+730	t: 27	ctilda: 16.0388	prune (kk-t-1): 11.7
+731	t: 28	ctilda: 16.582	prune (kk-t-1): 9.75
+732	t: 29	ctilda: 20.5974	prune (kk-t-1): 9.75
+733	t: 30	ctilda: 8.643	prune (kk-t-1): 7.8
+734	t: 29	ctilda: 9.13435	prune (kk-t-1): 9.75
+735	t: 28	ctilda: 9.57861	prune (kk-t-1): 9.75
+736	t: 27	ctilda: 10.8684	prune (kk-t-1): 11.7
+737	t: 26	ctilda: 11.4459	prune (kk-t-1): 11.7
+738	t: 25	ctilda: 11.448	prune (kk-t-1): 13.65
+739	t: 24	ctilda: 13.0649	prune (kk-t-1): 13.65
+740	t: 23	ctilda: 13.0662	prune (kk-t-1): 15.6
+741	t: 22	ctilda: 14.9997	prune (kk-t-1): 15.6
+742	t: 21	ctilda: 15.13	prune (kk-t-1): 17.55
+743	t: 20	ctilda: 15.1368	prune (kk-t-1): 17.55
+744	t: 19	ctilda: 15.9253	prune (kk-t-1): 19.5
+745	t: 18	ctilda: 18.6548	prune (kk-t-1): 19.5
+746	t: 17	ctilda: 18.6564	prune (kk-t-1): 21.45
+747	t: 16	ctilda: 18.6954	prune (kk-t-1): 21.45
+748	t: 15	ctilda: 18.7801	prune (kk-t-1): 23.4
+749	t: 14	ctilda: 22.52	prune (kk-t-1): 23.4
+750	t: 13	ctilda: 29.1014	prune (kk-t-1): 25.35
+751	t: 14	ctilda: 26.4387	prune (kk-t-1): 23.4
+752	t: 15	ctilda: 35.5132	prune (kk-t-1): 23.4
+753	t: 16	ctilda: 36.9834	prune (kk-t-1): 21.45
+754	t: 17	ctilda: 34.1091	prune (kk-t-1): 21.45
+755	t: 18	ctilda: 21.5091	prune (kk-t-1): 19.5
+756	t: 19	ctilda: 23.2052	prune (kk-t-1): 19.5
+757	t: 20	ctilda: 29.1517	prune (kk-t-1): 17.55
+758	t: 21	ctilda: 27.2425	prune (kk-t-1): 17.55
+759	t: 22	ctilda: 19.2764	prune (kk-t-1): 15.6
+760	t: 23	ctilda: 28.1919	prune (kk-t-1): 15.6
+761	t: 24	ctilda: 16.1717	prune (kk-t-1): 13.65
+762	t: 25	ctilda: 22.5508	prune (kk-t-1): 13.65
+763	t: 26	ctilda: 15.7863	prune (kk-t-1): 11.7
+764	t: 27	ctilda: 13.4051	prune (kk-t-1): 11.7
+765	t: 26	ctilda: 14.0561	prune (kk-t-1): 11.7
+766	t: 27	ctilda: 27.4503	prune (kk-t-1): 11.7
+767	t: 28	ctilda: 13.5432	prune (kk-t-1): 9.75
+768	t: 29	ctilda: 12.4908	prune (kk-t-1): 9.75
+769	t: 30	ctilda: 19.8672	prune (kk-t-1): 7.8
+770	t: 31	ctilda: 25.0118	prune (kk-t-1): 7.8
+771	t: 32	ctilda: 5.11488	prune (kk-t-1): 5.85
+772	t: 31	ctilda: 6.33634	prune (kk-t-1): 7.8
+773	t: 30	ctilda: 7.76712	prune (kk-t-1): 7.8
+774	t: 29	ctilda: 7.78526	prune (kk-t-1): 9.75
+775	t: 28	ctilda: 9.50679	prune (kk-t-1): 9.75
+776	t: 27	ctilda: 10.8483	prune (kk-t-1): 11.7
+777	t: 26	ctilda: 10.963	prune (kk-t-1): 11.7
+778	t: 25	ctilda: 12.1547	prune (kk-t-1): 13.65
+779	t: 24	ctilda: 12.2558	prune (kk-t-1): 13.65
+780	t: 23	ctilda: 15.0315	prune (kk-t-1): 15.6
+781	t: 22	ctilda: 17.2169	prune (kk-t-1): 15.6
+782	t: 21	ctilda: 18.4855	prune (kk-t-1): 17.55
+783	t: 20	ctilda: 18.4999	prune (kk-t-1): 17.55
+784	t: 19	ctilda: 18.7122	prune (kk-t-1): 19.5
+785	t: 18	ctilda: 21.8822	prune (kk-t-1): 19.5
+786	t: 19	ctilda: 29.1781	prune (kk-t-1): 19.5
+787	t: 20	ctilda: 32.2276	prune (kk-t-1): 17.55
+788	t: 21	ctilda: 24.6901	prune (kk-t-1): 17.55
+789	t: 22	ctilda: 20.8115	prune (kk-t-1): 15.6
+790	t: 23	ctilda: 17.3638	prune (kk-t-1): 15.6
+791	t: 22	ctilda: 17.469	prune (kk-t-1): 15.6
+792	t: 21	ctilda: 17.9603	prune (kk-t-1): 17.55
+793	t: 20	ctilda: 17.9892	prune (kk-t-1): 17.55
+794	t: 19	ctilda: 19.1074	prune (kk-t-1): 19.5
+795	t: 18	ctilda: 21.3842	prune (kk-t-1): 19.5
+796	t: 17	ctilda: 24.7124	prune (kk-t-1): 21.45
+797	t: 18	ctilda: 25.3885	prune (kk-t-1): 19.5
+798	t: 19	ctilda: 25.1235	prune (kk-t-1): 19.5
+799	t: 20	ctilda: 31.3333	prune (kk-t-1): 17.55
+800	t: 21	ctilda: 27.4489	prune (kk-t-1): 17.55
+801	t: 22	ctilda: 30.0253	prune (kk-t-1): 15.6
+802	t: 23	ctilda: 43.5282	prune (kk-t-1): 15.6
+803	t: 24	ctilda: 21.9334	prune (kk-t-1): 13.65
+804	t: 25	ctilda: 16.1928	prune (kk-t-1): 13.65
+805	t: 26	ctilda: 17.8118	prune (kk-t-1): 11.7
+806	t: 27	ctilda: 13.2456	prune (kk-t-1): 11.7
+807	t: 26	ctilda: 14.3949	prune (kk-t-1): 11.7
+808	t: 27	ctilda: 27.5695	prune (kk-t-1): 11.7
+809	t: 28	ctilda: 9.8999	prune (kk-t-1): 9.75
+810	t: 27	ctilda: 10.0712	prune (kk-t-1): 11.7
+811	t: 26	ctilda: 10.4612	prune (kk-t-1): 11.7
+812	t: 25	ctilda: 10.6129	prune (kk-t-1): 13.65
+813	t: 24	ctilda: 10.826	prune (kk-t-1): 13.65
+814	t: 23	ctilda: 11.0004	prune (kk-t-1): 15.6
+815	t: 22	ctilda: 12.1457	prune (kk-t-1): 15.6
+816	t: 21	ctilda: 12.1463	prune (kk-t-1): 17.55
+817	t: 20	ctilda: 12.8752	prune (kk-t-1): 17.55
+818	t: 19	ctilda: 13.0083	prune (kk-t-1): 19.5
+819	t: 18	ctilda: 13.7821	prune (kk-t-1): 19.5
+820	t: 17	ctilda: 13.8077	prune (kk-t-1): 21.45
+821	t: 16	ctilda: 16.0354	prune (kk-t-1): 21.45
+822	t: 15	ctilda: 19.6479	prune (kk-t-1): 23.4
+823	t: 14	ctilda: 21.6626	prune (kk-t-1): 23.4
+824	t: 13	ctilda: 23.291	prune (kk-t-1): 25.35
+825	t: 12	ctilda: 24.3299	prune (kk-t-1): 25.35
+826	t: 11	ctilda: 26.9461	prune (kk-t-1): 27.3
+827	t: 10	ctilda: 29.7225	prune (kk-t-1): 27.3
+828	t: 11	ctilda: 41.3979	prune (kk-t-1): 27.3
+829	t: 12	ctilda: 39.9585	prune (kk-t-1): 25.35
+830	t: 13	ctilda: 36.8566	prune (kk-t-1): 25.35
+831	t: 14	ctilda: 30.4188	prune (kk-t-1): 23.4
+832	t: 15	ctilda: 22.2424	prune (kk-t-1): 23.4
+833	t: 14	ctilda: 22.4734	prune (kk-t-1): 23.4
+834	t: 13	ctilda: 23.0427	prune (kk-t-1): 25.35
+835	t: 12	ctilda: 25.2044	prune (kk-t-1): 25.35
+836	t: 11	ctilda: 32.8381	prune (kk-t-1): 27.3
+837	t: 12	ctilda: 36.2313	prune (kk-t-1): 25.35
+838	t: 13	ctilda: 42.0048	prune (kk-t-1): 25.35
+839	t: 14	ctilda: 40.0565	prune (kk-t-1): 23.4
+840	t: 15	ctilda: 55.6332	prune (kk-t-1): 23.4
+841	t: 16	ctilda: 22.7227	prune (kk-t-1): 21.45
+842	t: 15	ctilda: 23.206	prune (kk-t-1): 23.4
+843	t: 14	ctilda: 23.8399	prune (kk-t-1): 23.4
+844	t: 13	ctilda: 26.5805	prune (kk-t-1): 25.35
+845	t: 12	ctilda: 30.4051	prune (kk-t-1): 25.35
+846	t: 13	ctilda: 36.22	prune (kk-t-1): 25.35
+847	t: 14	ctilda: 38.4563	prune (kk-t-1): 23.4
+848	t: 15	ctilda: 36.3894	prune (kk-t-1): 23.4
+849	t: 16	ctilda: 49.4594	prune (kk-t-1): 21.45
+850	t: 17	ctilda: 28.308	prune (kk-t-1): 21.45
+851	t: 18	ctilda: 22.8393	prune (kk-t-1): 19.5
+852	t: 19	ctilda: 24.1888	prune (kk-t-1): 19.5
+853	t: 20	ctilda: 20.9864	prune (kk-t-1): 17.55
+854	t: 21	ctilda: 26.8648	prune (kk-t-1): 17.55
+855	t: 22	ctilda: 18.9096	prune (kk-t-1): 15.6
+856	t: 23	ctilda: 23.1353	prune (kk-t-1): 15.6
+857	t: 24	ctilda: 19.5137	prune (kk-t-1): 13.65
+858	t: 25	ctilda: 19.3955	prune (kk-t-1): 13.65
+859	t: 26	ctilda: 15.6082	prune (kk-t-1): 11.7
+860	t: 27	ctilda: 17.0711	prune (kk-t-1): 11.7
+861	t: 28	ctilda: 24.418	prune (kk-t-1): 9.75
+862	t: 29	ctilda: 14.1572	prune (kk-t-1): 9.75
+863	t: 30	ctilda: 8.3576	prune (kk-t-1): 7.8
+864	t: 29	ctilda: 9.09185	prune (kk-t-1): 9.75
+865	t: 28	ctilda: 9.37748	prune (kk-t-1): 9.75
+866	t: 27	ctilda: 11.4065	prune (kk-t-1): 11.7
+867	t: 26	ctilda: 11.6623	prune (kk-t-1): 11.7
+868	t: 25	ctilda: 12.4954	prune (kk-t-1): 13.65
+869	t: 24	ctilda: 14.756	prune (kk-t-1): 13.65
+870	t: 23	ctilda: 16.9725	prune (kk-t-1): 15.6
+871	t: 22	ctilda: 18.0977	prune (kk-t-1): 15.6
+872	t: 23	ctilda: 20.6967	prune (kk-t-1): 15.6
+873	t: 24	ctilda: 16.2646	prune (kk-t-1): 13.65
+874	t: 25	ctilda: 17.7426	prune (kk-t-1): 13.65
+875	t: 26	ctilda: 17.5161	prune (kk-t-1): 11.7
+876	t: 27	ctilda: 12.1576	prune (kk-t-1): 11.7
+877	t: 26	ctilda: 12.9766	prune (kk-t-1): 11.7
+878	t: 25	ctilda: 13.1	prune (kk-t-1): 13.65
+879	t: 24	ctilda: 13.1636	prune (kk-t-1): 13.65
+880	t: 23	ctilda: 13.2165	prune (kk-t-1): 15.6
+881	t: 22	ctilda: 13.2388	prune (kk-t-1): 15.6
+882	t: 21	ctilda: 13.7527	prune (kk-t-1): 17.55
+883	t: 20	ctilda: 13.9831	prune (kk-t-1): 17.55
+884	t: 19	ctilda: 15.5987	prune (kk-t-1): 19.5
+885	t: 18	ctilda: 15.6224	prune (kk-t-1): 19.5
+886	t: 17	ctilda: 16.0862	prune (kk-t-1): 21.45
+887	t: 16	ctilda: 16.6675	prune (kk-t-1): 21.45
+888	t: 15	ctilda: 20.002	prune (kk-t-1): 23.4
+889	t: 14	ctilda: 24.3044	prune (kk-t-1): 23.4
+890	t: 13	ctilda: 24.5845	prune (kk-t-1): 25.35
+891	t: 12	ctilda: 27.4165	prune (kk-t-1): 25.35
+892	t: 13	ctilda: 45.878	prune (kk-t-1): 25.35
+893	t: 14	ctilda: 26.9037	prune (kk-t-1): 23.4
+894	t: 15	ctilda: 23.2517	prune (kk-t-1): 23.4
+895	t: 14	ctilda: 23.282	prune (kk-t-1): 23.4
+896	t: 13	ctilda: 25.5361	prune (kk-t-1): 25.35
+897	t: 12	ctilda: 26.1868	prune (kk-t-1): 25.35
+898	t: 11	ctilda: 30.6462	prune (kk-t-1): 27.3
+899	t: 12	ctilda: 43.9846	prune (kk-t-1): 25.35
+900	t: 13	ctilda: 36.7704	prune (kk-t-1): 25.35
+901	t: 14	ctilda: 43.747	prune (kk-t-1): 23.4
+902	t: 15	ctilda: 55.3321	prune (kk-t-1): 23.4
+903	t: 16	ctilda: 29.8941	prune (kk-t-1): 21.45
+904	t: 17	ctilda: 26.4484	prune (kk-t-1): 21.45
+905	t: 18	ctilda: 30.5064	prune (kk-t-1): 19.5
+906	t: 19	ctilda: 20.0221	prune (kk-t-1): 19.5
+907	t: 18	ctilda: 23.1796	prune (kk-t-1): 19.5
+908	t: 19	ctilda: 38.9785	prune (kk-t-1): 19.5
+909	t: 20	ctilda: 24.9545	prune (kk-t-1): 17.55
+910	t: 21	ctilda: 23.1183	prune (kk-t-1): 17.55
+911	t: 22	ctilda: 27.1552	prune (kk-t-1): 15.6
+912	t: 23	ctilda: 26.8247	prune (kk-t-1): 15.6
+913	t: 24	ctilda: 23.2943	prune (kk-t-1): 13.65
+914	t: 25	ctilda: 22.1409	prune (kk-t-1): 13.65
+915	t: 26	ctilda: 16.4533	prune (kk-t-1): 11.7
+916	t: 27	ctilda: 29.7739	prune (kk-t-1): 11.7
+917	t: 28	ctilda: 14.0728	prune (kk-t-1): 9.75
+918	t: 29	ctilda: 11.618	prune (kk-t-1): 9.75
+919	t: 28	ctilda: 11.7265	prune (kk-t-1): 9.75
+920	t: 29	ctilda: 20.744	prune (kk-t-1): 9.75
+921	t: 30	ctilda: 20.883	prune (kk-t-1): 7.8
+922	t: 31	ctilda: 7.06201	prune (kk-t-1): 7.8
+923	t: 30	ctilda: 7.07745	prune (kk-t-1): 7.8
+924	t: 29	ctilda: 8.29782	prune (kk-t-1): 9.75
+925	t: 28	ctilda: 8.41151	prune (kk-t-1): 9.75
+926	t: 27	ctilda: 9.65283	prune (kk-t-1): 11.7
+927	t: 26	ctilda: 9.72039	prune (kk-t-1): 11.7
+928	t: 25	ctilda: 11.0869	prune (kk-t-1): 13.65
+929	t: 24	ctilda: 13.0582	prune (kk-t-1): 13.65
+930	t: 23	ctilda: 13.9843	prune (kk-t-1): 15.6
+931	t: 22	ctilda: 16.697	prune (kk-t-1): 15.6
+932	t: 21	ctilda: 18.2121	prune (kk-t-1): 17.55
+933	t: 20	ctilda: 18.5131	prune (kk-t-1): 17.55
+934	t: 19	ctilda: 21.1908	prune (kk-t-1): 19.5
+935	t: 18	ctilda: 21.8908	prune (kk-t-1): 19.5
+936	t: 19	ctilda: 22.89	prune (kk-t-1): 19.5
+937	t: 20	ctilda: 28.9598	prune (kk-t-1): 17.55
+938	t: 21	ctilda: 23.6095	prune (kk-t-1): 17.55
+939	t: 22	ctilda: 18.9816	prune (kk-t-1): 15.6
+940	t: 23	ctilda: 21.8424	prune (kk-t-1): 15.6
+941	t: 24	ctilda: 15.2523	prune (kk-t-1): 13.65
+942	t: 23	ctilda: 16.4804	prune (kk-t-1): 15.6
+943	t: 22	ctilda: 19.8067	prune (kk-t-1): 15.6
+944	t: 23	ctilda: 23.193	prune (kk-t-1): 15.6
+945	t: 24	ctilda: 34.5998	prune (kk-t-1): 13.65
+946	t: 25	ctilda: 14.6027	prune (kk-t-1): 13.65
+947	t: 24	ctilda: 14.6151	prune (kk-t-1): 13.65
+948	t: 23	ctilda: 15.8594	prune (kk-t-1): 15.6
+949	t: 22	ctilda: 19.6276	prune (kk-t-1): 15.6
+950	t: 23	ctilda: 22.5151	prune (kk-t-1): 15.6
+951	t: 24	ctilda: 25.7137	prune (kk-t-1): 13.65
+952	t: 25	ctilda: 30.4004	prune (kk-t-1): 13.65
+953	t: 26	ctilda: 17.0384	prune (kk-t-1): 11.7
+954	t: 27	ctilda: 12.3227	prune (kk-t-1): 11.7
+955	t: 26	ctilda: 13.6472	prune (kk-t-1): 11.7
+956	t: 25	ctilda: 13.6562	prune (kk-t-1): 13.65
+957	t: 24	ctilda: 14.2796	prune (kk-t-1): 13.65
+958	t: 23	ctilda: 15.4876	prune (kk-t-1): 15.6
+959	t: 22	ctilda: 16.2804	prune (kk-t-1): 15.6
+960	t: 21	ctilda: 18.1906	prune (kk-t-1): 17.55
+961	t: 20	ctilda: 18.3369	prune (kk-t-1): 17.55
+962	t: 19	ctilda: 19.0859	prune (kk-t-1): 19.5
+963	t: 18	ctilda: 19.2232	prune (kk-t-1): 19.5
+964	t: 17	ctilda: 19.4898	prune (kk-t-1): 21.45
+965	t: 16	ctilda: 19.5221	prune (kk-t-1): 21.45
+966	t: 15	ctilda: 19.5454	prune (kk-t-1): 23.4
+967	t: 14	ctilda: 21.8936	prune (kk-t-1): 23.4
+968	t: 13	ctilda: 27.7408	prune (kk-t-1): 25.35
+969	t: 14	ctilda: 29.5875	prune (kk-t-1): 23.4
+970	t: 15	ctilda: 37.4959	prune (kk-t-1): 23.4
+971	t: 16	ctilda: 37.9671	prune (kk-t-1): 21.45
+972	t: 17	ctilda: 31.1602	prune (kk-t-1): 21.45
+973	t: 18	ctilda: 32.3688	prune (kk-t-1): 19.5
+974	t: 19	ctilda: 26.5335	prune (kk-t-1): 19.5
+975	t: 20	ctilda: 30.0558	prune (kk-t-1): 17.55
+976	t: 21	ctilda: 22.4207	prune (kk-t-1): 17.55
+977	t: 22	ctilda: 24.4401	prune (kk-t-1): 15.6
+978	t: 23	ctilda: 22.2717	prune (kk-t-1): 15.6
+979	t: 24	ctilda: 20.7076	prune (kk-t-1): 13.65
+980	t: 25	ctilda: 24.4284	prune (kk-t-1): 13.65
+981	t: 26	ctilda: 15.6596	prune (kk-t-1): 11.7
+982	t: 27	ctilda: 26.1016	prune (kk-t-1): 11.7
+983	t: 28	ctilda: 14.1982	prune (kk-t-1): 9.75
+984	t: 29	ctilda: 9.50433	prune (kk-t-1): 9.75
+985	t: 28	ctilda: 10.9467	prune (kk-t-1): 9.75
+986	t: 27	ctilda: 11.03	prune (kk-t-1): 11.7
+987	t: 26	ctilda: 12.6321	prune (kk-t-1): 11.7
+988	t: 25	ctilda: 13.3831	prune (kk-t-1): 13.65
+989	t: 24	ctilda: 13.4369	prune (kk-t-1): 13.65
+990	t: 23	ctilda: 15.7643	prune (kk-t-1): 15.6
+991	t: 22	ctilda: 17.8128	prune (kk-t-1): 15.6
+992	t: 23	ctilda: 19.1996	prune (kk-t-1): 15.6
+993	t: 24	ctilda: 23.7065	prune (kk-t-1): 13.65
+994	t: 25	ctilda: 18.9421	prune (kk-t-1): 13.65
+995	t: 26	ctilda: 13.9604	prune (kk-t-1): 11.7
+996	t: 27	ctilda: 18.8038	prune (kk-t-1): 11.7
+997	t: 28	ctilda: 11.9544	prune (kk-t-1): 9.75
+998	t: 29	ctilda: 21.2696	prune (kk-t-1): 9.75
+999	t: 30	ctilda: 13.28	prune (kk-t-1): 7.8
+1000	t: 31	ctilda: 18.1166	prune (kk-t-1): 7.8
+1001	t: 32	ctilda: 20.4595	prune (kk-t-1): 5.85
+1002	t: 33	ctilda: 6.31443	prune (kk-t-1): 5.85
+1003	t: 32	ctilda: 7.28045	prune (kk-t-1): 5.85
+1004	t: 31	ctilda: 8.30101	prune (kk-t-1): 7.8
+1005	t: 30	ctilda: 8.3121	prune (kk-t-1): 7.8
+1006	t: 29	ctilda: 9.54933	prune (kk-t-1): 9.75
+1007	t: 28	ctilda: 10.3007	prune (kk-t-1): 9.75
+1008	t: 27	ctilda: 10.8515	prune (kk-t-1): 11.7
+1009	t: 26	ctilda: 11.1443	prune (kk-t-1): 11.7
+1010	t: 25	ctilda: 12.3644	prune (kk-t-1): 13.65
+1011	t: 24	ctilda: 12.4883	prune (kk-t-1): 13.65
+1012	t: 23	ctilda: 13.0531	prune (kk-t-1): 15.6
+1013	t: 22	ctilda: 14.4214	prune (kk-t-1): 15.6
+1014	t: 21	ctilda: 14.9909	prune (kk-t-1): 17.55
+1015	t: 20	ctilda: 15.2307	prune (kk-t-1): 17.55
+1016	t: 19	ctilda: 16.3571	prune (kk-t-1): 19.5
+1017	t: 18	ctilda: 16.5577	prune (kk-t-1): 19.5
+1018	t: 17	ctilda: 17.894	prune (kk-t-1): 21.45
+1019	t: 16	ctilda: 22.7063	prune (kk-t-1): 21.45
+1020	t: 15	ctilda: 24.0318	prune (kk-t-1): 23.4
+1021	t: 14	ctilda: 24.5168	prune (kk-t-1): 23.4
+1022	t: 13	ctilda: 29.0898	prune (kk-t-1): 25.35
+1023	t: 14	ctilda: 40.0711	prune (kk-t-1): 23.4
+1024	t: 15	ctilda: 33.2085	prune (kk-t-1): 23.4
+1025	t: 16	ctilda: 23.1137	prune (kk-t-1): 21.45
+1026	t: 15	ctilda: 27.256	prune (kk-t-1): 23.4
+1027	t: 16	ctilda: 62.4101	prune (kk-t-1): 21.45
+1028	t: 17	ctilda: 24.4836	prune (kk-t-1): 21.45
+1029	t: 18	ctilda: 29.0823	prune (kk-t-1): 19.5
+1030	t: 19	ctilda: 22.3446	prune (kk-t-1): 19.5
+1031	t: 20	ctilda: 26.1282	prune (kk-t-1): 17.55
+1032	t: 21	ctilda: 24.0651	prune (kk-t-1): 17.55
+1033	t: 22	ctilda: 20.4121	prune (kk-t-1): 15.6
+1034	t: 23	ctilda: 22.5664	prune (kk-t-1): 15.6
+1035	t: 24	ctilda: 21.9313	prune (kk-t-1): 13.65
+1036	t: 25	ctilda: 16.3151	prune (kk-t-1): 13.65
+1037	t: 26	ctilda: 16.7882	prune (kk-t-1): 11.7
+1038	t: 27	ctilda: 15.8213	prune (kk-t-1): 11.7
+1039	t: 28	ctilda: 13.1573	prune (kk-t-1): 9.75
+1040	t: 29	ctilda: 10.7153	prune (kk-t-1): 9.75
+1041	t: 28	ctilda: 11.788	prune (kk-t-1): 9.75
+1042	t: 29	ctilda: 22.5616	prune (kk-t-1): 9.75
+1043	t: 30	ctilda: 14.6141	prune (kk-t-1): 7.8
+1044	t: 31	ctilda: 9.50163	prune (kk-t-1): 7.8
+1045	t: 30	ctilda: 10.436	prune (kk-t-1): 7.8
+1046	t: 31	ctilda: 19.6063	prune (kk-t-1): 7.8
+1047	t: 32	ctilda: 7.94962	prune (kk-t-1): 5.85
+1048	t: 33	ctilda: 25.2577	prune (kk-t-1): 5.85
+1049	t: 34	ctilda: 6.14791	prune (kk-t-1): 3.9
+1050	t: 35	ctilda: 6.32131	prune (kk-t-1): 3.9
+1051	t: 36	ctilda: 5.23532	prune (kk-t-1): 1.95
+1052	t: 37	ctilda: 6.11224	prune (kk-t-1): 1.95
+1053	t: 38	ctilda: 5.95265	prune (kk-t-1): 1.665e-321
+1054	t: 39	ctilda: 81	prune (kk-t-1): 0
+NTL nodes: 1054
+1	k: 0	rhovec: 64	Rvec (n-k-1): 39
+2	k: 1	rhovec: 48	Rvec (n-k-1): 39
+3	k: 2	rhovec: 60	Rvec (n-k-1): 37.05
+4	k: 3	rhovec: 47.6	Rvec (n-k-1): 37.05
+5	k: 4	rhovec: 43.2494	Rvec (n-k-1): 35.1
+6	k: 5	rhovec: 42.1537	Rvec (n-k-1): 35.1
+7	k: 6	rhovec: 39.6881	Rvec (n-k-1): 33.15
+8	k: 7	rhovec: 39.2737	Rvec (n-k-1): 33.15
+9	k: 8	rhovec: 35.5789	Rvec (n-k-1): 31.2
+10	k: 9	rhovec: 34.4483	Rvec (n-k-1): 31.2
+11	k: 10	rhovec: 36.5854	Rvec (n-k-1): 29.25
+12	k: 11	rhovec: 33.0491	Rvec (n-k-1): 29.25
+13	k: 12	rhovec: 26.0289	Rvec (n-k-1): 27.3
+14	k: 11	rhovec: 33.8674	Rvec (n-k-1): 29.25
+15	k: 12	rhovec: 104.116	Rvec (n-k-1): 27.3
+16	k: 13	rhovec: 26.7703	Rvec (n-k-1): 27.3
+17	k: 12	rhovec: 26.7713	Rvec (n-k-1): 27.3
+18	k: 11	rhovec: 33.3207	Rvec (n-k-1): 29.25
+19	k: 12	rhovec: 52.4829	Rvec (n-k-1): 27.3
+20	k: 13	rhovec: 107.081	Rvec (n-k-1): 27.3
+21	k: 14	rhovec: 22.1024	Rvec (n-k-1): 25.35
+22	k: 13	rhovec: 28.5051	Rvec (n-k-1): 27.3
+23	k: 14	rhovec: 88.4097	Rvec (n-k-1): 25.35
+24	k: 15	rhovec: 19.2899	Rvec (n-k-1): 25.35
+25	k: 14	rhovec: 22.9001	Rvec (n-k-1): 25.35
+26	k: 13	rhovec: 27.0235	Rvec (n-k-1): 27.3
+27	k: 12	rhovec: 33.2212	Rvec (n-k-1): 27.3
+28	k: 13	rhovec: 32.781	Rvec (n-k-1): 27.3
+29	k: 14	rhovec: 27.137	Rvec (n-k-1): 25.35
+30	k: 15	rhovec: 77.1595	Rvec (n-k-1): 25.35
+31	k: 16	rhovec: 20.0556	Rvec (n-k-1): 23.4
+32	k: 15	rhovec: 21.5088	Rvec (n-k-1): 25.35
+33	k: 14	rhovec: 26.4176	Rvec (n-k-1): 25.35
+34	k: 15	rhovec: 30.2098	Rvec (n-k-1): 25.35
+35	k: 16	rhovec: 80.2226	Rvec (n-k-1): 23.4
+36	k: 17	rhovec: 15.7711	Rvec (n-k-1): 23.4
+37	k: 16	rhovec: 20.0134	Rvec (n-k-1): 23.4
+38	k: 15	rhovec: 23.1224	Rvec (n-k-1): 25.35
+39	k: 14	rhovec: 24.1985	Rvec (n-k-1): 25.35
+40	k: 13	rhovec: 27.4068	Rvec (n-k-1): 27.3
+41	k: 14	rhovec: 36.5472	Rvec (n-k-1): 25.35
+42	k: 15	rhovec: 26.9239	Rvec (n-k-1): 25.35
+43	k: 16	rhovec: 21.621	Rvec (n-k-1): 23.4
+44	k: 15	rhovec: 21.9321	Rvec (n-k-1): 25.35
+45	k: 14	rhovec: 23.3203	Rvec (n-k-1): 25.35
+46	k: 13	rhovec: 24.6207	Rvec (n-k-1): 27.3
+47	k: 12	rhovec: 28.508	Rvec (n-k-1): 27.3
+48	k: 13	rhovec: 39.5907	Rvec (n-k-1): 27.3
+49	k: 14	rhovec: 34.3442	Rvec (n-k-1): 25.35
+50	k: 15	rhovec: 36.3225	Rvec (n-k-1): 25.35
+51	k: 16	rhovec: 58.5171	Rvec (n-k-1): 23.4
+52	k: 17	rhovec: 63.0842	Rvec (n-k-1): 23.4
+53	k: 18	rhovec: 16.121	Rvec (n-k-1): 21.45
+54	k: 17	rhovec: 16.8204	Rvec (n-k-1): 23.4
+55	k: 16	rhovec: 18.4758	Rvec (n-k-1): 23.4
+56	k: 15	rhovec: 18.4873	Rvec (n-k-1): 25.35
+57	k: 14	rhovec: 18.5451	Rvec (n-k-1): 25.35
+58	k: 13	rhovec: 23.6253	Rvec (n-k-1): 27.3
+59	k: 12	rhovec: 23.6253	Rvec (n-k-1): 27.3
+60	k: 11	rhovec: 25.4237	Rvec (n-k-1): 29.25
+61	k: 10	rhovec: 25.4297	Rvec (n-k-1): 29.25
+62	k: 9	rhovec: 30.4276	Rvec (n-k-1): 31.2
+63	k: 8	rhovec: 30.6841	Rvec (n-k-1): 31.2
+64	k: 7	rhovec: 33.527	Rvec (n-k-1): 33.15
+65	k: 8	rhovec: 60.2215	Rvec (n-k-1): 31.2
+66	k: 9	rhovec: 38.6332	Rvec (n-k-1): 31.2
+67	k: 10	rhovec: 61.0795	Rvec (n-k-1): 29.25
+68	k: 11	rhovec: 43.0539	Rvec (n-k-1): 29.25
+69	k: 12	rhovec: 49.5966	Rvec (n-k-1): 27.3
+70	k: 13	rhovec: 27.0719	Rvec (n-k-1): 27.3
+71	k: 12	rhovec: 27.0732	Rvec (n-k-1): 27.3
+72	k: 11	rhovec: 30.4905	Rvec (n-k-1): 29.25
+73	k: 12	rhovec: 52.7272	Rvec (n-k-1): 27.3
+74	k: 13	rhovec: 73.7193	Rvec (n-k-1): 27.3
+75	k: 14	rhovec: 38.3872	Rvec (n-k-1): 25.35
+76	k: 15	rhovec: 36.8379	Rvec (n-k-1): 25.35
+77	k: 16	rhovec: 27.0076	Rvec (n-k-1): 23.4
+78	k: 17	rhovec: 25.9491	Rvec (n-k-1): 23.4
+79	k: 18	rhovec: 64.4841	Rvec (n-k-1): 21.45
+80	k: 19	rhovec: 13.9016	Rvec (n-k-1): 21.45
+81	k: 18	rhovec: 17.6303	Rvec (n-k-1): 21.45
+82	k: 17	rhovec: 20.6782	Rvec (n-k-1): 23.4
+83	k: 16	rhovec: 24.858	Rvec (n-k-1): 23.4
+84	k: 17	rhovec: 22.5831	Rvec (n-k-1): 23.4
+85	k: 16	rhovec: 22.5833	Rvec (n-k-1): 23.4
+86	k: 15	rhovec: 26.233	Rvec (n-k-1): 25.35
+87	k: 16	rhovec: 42.5026	Rvec (n-k-1): 23.4
+88	k: 17	rhovec: 50.3154	Rvec (n-k-1): 23.4
+89	k: 18	rhovec: 18.2451	Rvec (n-k-1): 21.45
+90	k: 17	rhovec: 19.0723	Rvec (n-k-1): 23.4
+91	k: 16	rhovec: 19.6466	Rvec (n-k-1): 23.4
+92	k: 15	rhovec: 19.7112	Rvec (n-k-1): 25.35
+93	k: 14	rhovec: 23.0356	Rvec (n-k-1): 25.35
+94	k: 13	rhovec: 25.0026	Rvec (n-k-1): 27.3
+95	k: 12	rhovec: 25.0257	Rvec (n-k-1): 27.3
+96	k: 11	rhovec: 25.5818	Rvec (n-k-1): 29.25
+97	k: 10	rhovec: 25.6775	Rvec (n-k-1): 29.25
+98	k: 9	rhovec: 26.9153	Rvec (n-k-1): 31.2
+99	k: 8	rhovec: 34.4351	Rvec (n-k-1): 31.2
+100	k: 9	rhovec: 48.3035	Rvec (n-k-1): 31.2
+101	k: 10	rhovec: 58.5202	Rvec (n-k-1): 29.25
+102	k: 11	rhovec: 50.057	Rvec (n-k-1): 29.25
+103	k: 12	rhovec: 49.506	Rvec (n-k-1): 27.3
+104	k: 13	rhovec: 37.2596	Rvec (n-k-1): 27.3
+105	k: 14	rhovec: 27.9943	Rvec (n-k-1): 25.35
+106	k: 15	rhovec: 36.7691	Rvec (n-k-1): 25.35
+107	k: 16	rhovec: 32.9144	Rvec (n-k-1): 23.4
+108	k: 17	rhovec: 27.6196	Rvec (n-k-1): 23.4
+109	k: 18	rhovec: 49.2576	Rvec (n-k-1): 21.45
+110	k: 19	rhovec: 55.6064	Rvec (n-k-1): 21.45
+111	k: 20	rhovec: 14.6458	Rvec (n-k-1): 19.5
+112	k: 19	rhovec: 16.3121	Rvec (n-k-1): 21.45
+113	k: 18	rhovec: 16.5655	Rvec (n-k-1): 21.45
+114	k: 17	rhovec: 18.9682	Rvec (n-k-1): 23.4
+115	k: 16	rhovec: 19.8678	Rvec (n-k-1): 23.4
+116	k: 15	rhovec: 24.5772	Rvec (n-k-1): 25.35
+117	k: 14	rhovec: 26.3149	Rvec (n-k-1): 25.35
+118	k: 15	rhovec: 24.8047	Rvec (n-k-1): 25.35
+119	k: 14	rhovec: 25.1433	Rvec (n-k-1): 25.35
+120	k: 13	rhovec: 25.3712	Rvec (n-k-1): 27.3
+121	k: 12	rhovec: 26.365	Rvec (n-k-1): 27.3
+122	k: 11	rhovec: 26.402	Rvec (n-k-1): 29.25
+123	k: 10	rhovec: 29.6992	Rvec (n-k-1): 29.25
+124	k: 11	rhovec: 57.2389	Rvec (n-k-1): 29.25
+125	k: 12	rhovec: 42.2219	Rvec (n-k-1): 27.3
+126	k: 13	rhovec: 47.201	Rvec (n-k-1): 27.3
+127	k: 14	rhovec: 41.775	Rvec (n-k-1): 25.35
+128	k: 15	rhovec: 62.9294	Rvec (n-k-1): 25.35
+129	k: 16	rhovec: 31.4282	Rvec (n-k-1): 23.4
+130	k: 17	rhovec: 22.4277	Rvec (n-k-1): 23.4
+131	k: 16	rhovec: 23.6624	Rvec (n-k-1): 23.4
+132	k: 17	rhovec: 47.0509	Rvec (n-k-1): 23.4
+133	k: 18	rhovec: 28.6443	Rvec (n-k-1): 21.45
+134	k: 19	rhovec: 20.5879	Rvec (n-k-1): 21.45
+135	k: 18	rhovec: 23.0866	Rvec (n-k-1): 21.45
+136	k: 19	rhovec: 39.8395	Rvec (n-k-1): 21.45
+137	k: 20	rhovec: 58.5832	Rvec (n-k-1): 19.5
+138	k: 21	rhovec: 14.9	Rvec (n-k-1): 19.5
+139	k: 20	rhovec: 16.4074	Rvec (n-k-1): 19.5
+140	k: 19	rhovec: 17.5176	Rvec (n-k-1): 21.45
+141	k: 18	rhovec: 19.5718	Rvec (n-k-1): 21.45
+142	k: 17	rhovec: 23.2654	Rvec (n-k-1): 23.4
+143	k: 16	rhovec: 28.0408	Rvec (n-k-1): 23.4
+144	k: 17	rhovec: 23.7719	Rvec (n-k-1): 23.4
+145	k: 18	rhovec: 24.1835	Rvec (n-k-1): 21.45
+146	k: 19	rhovec: 23.562	Rvec (n-k-1): 21.45
+147	k: 20	rhovec: 21.656	Rvec (n-k-1): 19.5
+148	k: 21	rhovec: 59.6	Rvec (n-k-1): 19.5
+149	k: 22	rhovec: 15.0738	Rvec (n-k-1): 17.55
+150	k: 21	rhovec: 15.479	Rvec (n-k-1): 19.5
+151	k: 20	rhovec: 17.5594	Rvec (n-k-1): 19.5
+152	k: 19	rhovec: 18.788	Rvec (n-k-1): 21.45
+153	k: 18	rhovec: 18.7994	Rvec (n-k-1): 21.45
+154	k: 17	rhovec: 20.1609	Rvec (n-k-1): 23.4
+155	k: 16	rhovec: 23.1321	Rvec (n-k-1): 23.4
+156	k: 15	rhovec: 23.3875	Rvec (n-k-1): 25.35
+157	k: 14	rhovec: 24.1826	Rvec (n-k-1): 25.35
+158	k: 13	rhovec: 28.43	Rvec (n-k-1): 27.3
+159	k: 14	rhovec: 37.901	Rvec (n-k-1): 25.35
+160	k: 15	rhovec: 38.2378	Rvec (n-k-1): 25.35
+161	k: 16	rhovec: 27.749	Rvec (n-k-1): 23.4
+162	k: 17	rhovec: 26.6642	Rvec (n-k-1): 23.4
+163	k: 18	rhovec: 34.0647	Rvec (n-k-1): 21.45
+164	k: 19	rhovec: 24.4242	Rvec (n-k-1): 21.45
+165	k: 20	rhovec: 21.1655	Rvec (n-k-1): 19.5
+166	k: 21	rhovec: 25.4645	Rvec (n-k-1): 19.5
+167	k: 22	rhovec: 60.2952	Rvec (n-k-1): 17.55
+168	k: 23	rhovec: 15.4146	Rvec (n-k-1): 17.55
+169	k: 22	rhovec: 18.6637	Rvec (n-k-1): 17.55
+170	k: 23	rhovec: 61.6583	Rvec (n-k-1): 17.55
+171	k: 24	rhovec: 11.8679	Rvec (n-k-1): 15.6
+172	k: 23	rhovec: 15.3111	Rvec (n-k-1): 17.55
+173	k: 22	rhovec: 17.9542	Rvec (n-k-1): 17.55
+174	k: 23	rhovec: 16.155	Rvec (n-k-1): 17.55
+175	k: 22	rhovec: 16.1862	Rvec (n-k-1): 17.55
+176	k: 21	rhovec: 16.6151	Rvec (n-k-1): 19.5
+177	k: 20	rhovec: 17.1228	Rvec (n-k-1): 19.5
+178	k: 19	rhovec: 17.389	Rvec (n-k-1): 21.45
+179	k: 18	rhovec: 17.7995	Rvec (n-k-1): 21.45
+180	k: 17	rhovec: 20.9564	Rvec (n-k-1): 23.4
+181	k: 16	rhovec: 23.8118	Rvec (n-k-1): 23.4
+182	k: 17	rhovec: 22.6155	Rvec (n-k-1): 23.4
+183	k: 16	rhovec: 23.1468	Rvec (n-k-1): 23.4
+184	k: 15	rhovec: 23.3497	Rvec (n-k-1): 25.35
+185	k: 14	rhovec: 26.9865	Rvec (n-k-1): 25.35
+186	k: 15	rhovec: 38.6825	Rvec (n-k-1): 25.35
+187	k: 16	rhovec: 36.6741	Rvec (n-k-1): 23.4
+188	k: 17	rhovec: 50.8394	Rvec (n-k-1): 23.4
+189	k: 18	rhovec: 28.7754	Rvec (n-k-1): 21.45
+190	k: 19	rhovec: 27.4431	Rvec (n-k-1): 21.45
+191	k: 20	rhovec: 26.3152	Rvec (n-k-1): 19.5
+192	k: 21	rhovec: 26.4591	Rvec (n-k-1): 19.5
+193	k: 22	rhovec: 29.8873	Rvec (n-k-1): 17.55
+194	k: 23	rhovec: 45.2964	Rvec (n-k-1): 17.55
+195	k: 24	rhovec: 47.4714	Rvec (n-k-1): 15.6
+196	k: 25	rhovec: 11.4146	Rvec (n-k-1): 15.6
+197	k: 24	rhovec: 13.0849	Rvec (n-k-1): 15.6
+198	k: 23	rhovec: 16.5013	Rvec (n-k-1): 17.55
+199	k: 22	rhovec: 18.7761	Rvec (n-k-1): 17.55
+200	k: 23	rhovec: 17.4021	Rvec (n-k-1): 17.55
+201	k: 22	rhovec: 17.4887	Rvec (n-k-1): 17.55
+202	k: 21	rhovec: 20.1313	Rvec (n-k-1): 19.5
+203	k: 22	rhovec: 30.2774	Rvec (n-k-1): 17.55
+204	k: 23	rhovec: 46.4297	Rvec (n-k-1): 17.55
+205	k: 24	rhovec: 16.0482	Rvec (n-k-1): 15.6
+206	k: 25	rhovec: 45.6585	Rvec (n-k-1): 15.6
+207	k: 26	rhovec: 8.86591	Rvec (n-k-1): 13.65
+208	k: 25	rhovec: 11.6453	Rvec (n-k-1): 15.6
+209	k: 24	rhovec: 14.587	Rvec (n-k-1): 15.6
+210	k: 23	rhovec: 14.9358	Rvec (n-k-1): 17.55
+211	k: 22	rhovec: 16.4773	Rvec (n-k-1): 17.55
+212	k: 21	rhovec: 16.6349	Rvec (n-k-1): 19.5
+213	k: 20	rhovec: 17.0257	Rvec (n-k-1): 19.5
+214	k: 19	rhovec: 17.477	Rvec (n-k-1): 21.45
+215	k: 18	rhovec: 19.0167	Rvec (n-k-1): 21.45
+216	k: 17	rhovec: 19.4421	Rvec (n-k-1): 23.4
+217	k: 16	rhovec: 20.9222	Rvec (n-k-1): 23.4
+218	k: 15	rhovec: 23.0151	Rvec (n-k-1): 25.35
+219	k: 14	rhovec: 24.5922	Rvec (n-k-1): 25.35
+220	k: 13	rhovec: 25.4307	Rvec (n-k-1): 27.3
+221	k: 12	rhovec: 25.5182	Rvec (n-k-1): 27.3
+222	k: 11	rhovec: 27.2012	Rvec (n-k-1): 29.25
+223	k: 10	rhovec: 30.5995	Rvec (n-k-1): 29.25
+224	k: 11	rhovec: 45.3346	Rvec (n-k-1): 29.25
+225	k: 12	rhovec: 48.5275	Rvec (n-k-1): 27.3
+226	k: 13	rhovec: 42.7253	Rvec (n-k-1): 27.3
+227	k: 14	rhovec: 34.8866	Rvec (n-k-1): 25.35
+228	k: 15	rhovec: 29.5973	Rvec (n-k-1): 25.35
+229	k: 16	rhovec: 30.0811	Rvec (n-k-1): 23.4
+230	k: 17	rhovec: 30.0328	Rvec (n-k-1): 23.4
+231	k: 18	rhovec: 25.1734	Rvec (n-k-1): 21.45
+232	k: 19	rhovec: 26.3695	Rvec (n-k-1): 21.45
+233	k: 20	rhovec: 26.8862	Rvec (n-k-1): 19.5
+234	k: 21	rhovec: 28.4703	Rvec (n-k-1): 19.5
+235	k: 22	rhovec: 21.9104	Rvec (n-k-1): 17.55
+236	k: 23	rhovec: 25.7129	Rvec (n-k-1): 17.55
+237	k: 24	rhovec: 14.6377	Rvec (n-k-1): 15.6
+238	k: 23	rhovec: 16.238	Rvec (n-k-1): 17.55
+239	k: 22	rhovec: 17.2686	Rvec (n-k-1): 17.55
+240	k: 21	rhovec: 19.3672	Rvec (n-k-1): 19.5
+241	k: 20	rhovec: 20.5015	Rvec (n-k-1): 19.5
+242	k: 21	rhovec: 23.0834	Rvec (n-k-1): 19.5
+243	k: 22	rhovec: 24.4594	Rvec (n-k-1): 17.55
+244	k: 23	rhovec: 21.7194	Rvec (n-k-1): 17.55
+245	k: 24	rhovec: 38.272	Rvec (n-k-1): 15.6
+246	k: 25	rhovec: 11.7948	Rvec (n-k-1): 15.6
+247	k: 24	rhovec: 11.9735	Rvec (n-k-1): 15.6
+248	k: 23	rhovec: 13.5554	Rvec (n-k-1): 17.55
+249	k: 22	rhovec: 14.8384	Rvec (n-k-1): 17.55
+250	k: 21	rhovec: 16.914	Rvec (n-k-1): 19.5
+251	k: 20	rhovec: 19.7953	Rvec (n-k-1): 19.5
+252	k: 21	rhovec: 20.6917	Rvec (n-k-1): 19.5
+253	k: 22	rhovec: 21.1169	Rvec (n-k-1): 17.55
+254	k: 23	rhovec: 19.0937	Rvec (n-k-1): 17.55
+255	k: 24	rhovec: 20.9287	Rvec (n-k-1): 15.6
+256	k: 25	rhovec: 34.3252	Rvec (n-k-1): 15.6
+257	k: 26	rhovec: 35.4636	Rvec (n-k-1): 13.65
+258	k: 27	rhovec: 9.55931	Rvec (n-k-1): 13.65
+259	k: 26	rhovec: 11.5496	Rvec (n-k-1): 13.65
+260	k: 25	rhovec: 13.1474	Rvec (n-k-1): 15.6
+261	k: 24	rhovec: 14.7134	Rvec (n-k-1): 15.6
+262	k: 23	rhovec: 17.6678	Rvec (n-k-1): 17.55
+263	k: 24	rhovec: 17.9592	Rvec (n-k-1): 15.6
+264	k: 25	rhovec: 16.0208	Rvec (n-k-1): 15.6
+265	k: 26	rhovec: 12.0141	Rvec (n-k-1): 13.65
+266	k: 25	rhovec: 12.1767	Rvec (n-k-1): 15.6
+267	k: 24	rhovec: 12.4056	Rvec (n-k-1): 15.6
+268	k: 23	rhovec: 12.6115	Rvec (n-k-1): 17.55
+269	k: 22	rhovec: 12.6222	Rvec (n-k-1): 17.55
+270	k: 21	rhovec: 13.4008	Rvec (n-k-1): 19.5
+271	k: 20	rhovec: 14.6925	Rvec (n-k-1): 19.5
+272	k: 19	rhovec: 17.4591	Rvec (n-k-1): 21.45
+273	k: 18	rhovec: 19.0539	Rvec (n-k-1): 21.45
+274	k: 17	rhovec: 21.3488	Rvec (n-k-1): 23.4
+275	k: 16	rhovec: 22.9342	Rvec (n-k-1): 23.4
+276	k: 15	rhovec: 26.1007	Rvec (n-k-1): 25.35
+277	k: 16	rhovec: 31.7124	Rvec (n-k-1): 23.4
+278	k: 17	rhovec: 25.0877	Rvec (n-k-1): 23.4
+279	k: 18	rhovec: 25.034	Rvec (n-k-1): 21.45
+280	k: 19	rhovec: 18.9574	Rvec (n-k-1): 21.45
+281	k: 18	rhovec: 19.4039	Rvec (n-k-1): 21.45
+282	k: 17	rhovec: 19.4572	Rvec (n-k-1): 23.4
+283	k: 16	rhovec: 20.074	Rvec (n-k-1): 23.4
+284	k: 15	rhovec: 22.7384	Rvec (n-k-1): 25.35
+285	k: 14	rhovec: 26.1973	Rvec (n-k-1): 25.35
+286	k: 15	rhovec: 27.69	Rvec (n-k-1): 25.35
+287	k: 16	rhovec: 33.0953	Rvec (n-k-1): 23.4
+288	k: 17	rhovec: 33.3943	Rvec (n-k-1): 23.4
+289	k: 18	rhovec: 30.1596	Rvec (n-k-1): 21.45
+290	k: 19	rhovec: 43.764	Rvec (n-k-1): 21.45
+291	k: 20	rhovec: 20.6392	Rvec (n-k-1): 19.5
+292	k: 21	rhovec: 21.489	Rvec (n-k-1): 19.5
+293	k: 22	rhovec: 26.8925	Rvec (n-k-1): 17.55
+294	k: 23	rhovec: 24.4625	Rvec (n-k-1): 17.55
+295	k: 24	rhovec: 20.9769	Rvec (n-k-1): 15.6
+296	k: 25	rhovec: 20.8673	Rvec (n-k-1): 15.6
+297	k: 26	rhovec: 28.8169	Rvec (n-k-1): 13.65
+298	k: 27	rhovec: 38.2372	Rvec (n-k-1): 13.65
+299	k: 28	rhovec: 7.65214	Rvec (n-k-1): 11.7
+300	k: 27	rhovec: 9.96159	Rvec (n-k-1): 13.65
+301	k: 26	rhovec: 11.6026	Rvec (n-k-1): 13.65
+302	k: 25	rhovec: 11.692	Rvec (n-k-1): 15.6
+303	k: 24	rhovec: 12.079	Rvec (n-k-1): 15.6
+304	k: 23	rhovec: 12.7103	Rvec (n-k-1): 17.55
+305	k: 22	rhovec: 14.7767	Rvec (n-k-1): 17.55
+306	k: 21	rhovec: 14.9498	Rvec (n-k-1): 19.5
+307	k: 20	rhovec: 15.2143	Rvec (n-k-1): 19.5
+308	k: 19	rhovec: 15.3991	Rvec (n-k-1): 21.45
+309	k: 18	rhovec: 17.9436	Rvec (n-k-1): 21.45
+310	k: 17	rhovec: 18.7618	Rvec (n-k-1): 23.4
+311	k: 16	rhovec: 18.8944	Rvec (n-k-1): 23.4
+312	k: 15	rhovec: 18.9048	Rvec (n-k-1): 25.35
+313	k: 14	rhovec: 22.1617	Rvec (n-k-1): 25.35
+314	k: 13	rhovec: 24.2985	Rvec (n-k-1): 27.3
+315	k: 12	rhovec: 24.3204	Rvec (n-k-1): 27.3
+316	k: 11	rhovec: 24.4572	Rvec (n-k-1): 29.25
+317	k: 10	rhovec: 25.605	Rvec (n-k-1): 29.25
+318	k: 9	rhovec: 25.7551	Rvec (n-k-1): 31.2
+319	k: 8	rhovec: 25.8716	Rvec (n-k-1): 31.2
+320	k: 7	rhovec: 28.4477	Rvec (n-k-1): 33.15
+321	k: 6	rhovec: 28.4477	Rvec (n-k-1): 33.15
+322	k: 5	rhovec: 34.6312	Rvec (n-k-1): 35.1
+323	k: 4	rhovec: 45.2018	Rvec (n-k-1): 35.1
+324	k: 5	rhovec: 44.4951	Rvec (n-k-1): 35.1
+325	k: 6	rhovec: 68.0341	Rvec (n-k-1): 33.15
+326	k: 7	rhovec: 47.6046	Rvec (n-k-1): 33.15
+327	k: 8	rhovec: 57.3792	Rvec (n-k-1): 31.2
+328	k: 9	rhovec: 55.6543	Rvec (n-k-1): 31.2
+329	k: 10	rhovec: 49.2305	Rvec (n-k-1): 29.25
+330	k: 11	rhovec: 53.2524	Rvec (n-k-1): 29.25
+331	k: 12	rhovec: 48.8396	Rvec (n-k-1): 27.3
+332	k: 13	rhovec: 35.9424	Rvec (n-k-1): 27.3
+333	k: 14	rhovec: 27.2952	Rvec (n-k-1): 25.35
+334	k: 15	rhovec: 37.2997	Rvec (n-k-1): 25.35
+335	k: 16	rhovec: 35.6892	Rvec (n-k-1): 23.4
+336	k: 17	rhovec: 27.3484	Rvec (n-k-1): 23.4
+337	k: 18	rhovec: 21.2553	Rvec (n-k-1): 21.45
+338	k: 17	rhovec: 21.26	Rvec (n-k-1): 23.4
+339	k: 16	rhovec: 23.9847	Rvec (n-k-1): 23.4
+340	k: 17	rhovec: 36.4889	Rvec (n-k-1): 23.4
+341	k: 18	rhovec: 46.874	Rvec (n-k-1): 21.45
+342	k: 19	rhovec: 26.0948	Rvec (n-k-1): 21.45
+343	k: 20	rhovec: 25.9238	Rvec (n-k-1): 19.5
+344	k: 21	rhovec: 26.6375	Rvec (n-k-1): 19.5
+345	k: 22	rhovec: 18.6884	Rvec (n-k-1): 17.55
+346	k: 23	rhovec: 21.886	Rvec (n-k-1): 17.55
+347	k: 24	rhovec: 19.6605	Rvec (n-k-1): 15.6
+348	k: 25	rhovec: 21.0861	Rvec (n-k-1): 15.6
+349	k: 26	rhovec: 12.8399	Rvec (n-k-1): 13.65
+350	k: 25	rhovec: 14.8347	Rvec (n-k-1): 15.6
+351	k: 24	rhovec: 15.9264	Rvec (n-k-1): 15.6
+352	k: 25	rhovec: 16.7058	Rvec (n-k-1): 15.6
+353	k: 26	rhovec: 28.0971	Rvec (n-k-1): 13.65
+354	k: 27	rhovec: 10.1237	Rvec (n-k-1): 13.65
+355	k: 26	rhovec: 10.2054	Rvec (n-k-1): 13.65
+356	k: 25	rhovec: 10.6984	Rvec (n-k-1): 15.6
+357	k: 24	rhovec: 10.719	Rvec (n-k-1): 15.6
+358	k: 23	rhovec: 12.2775	Rvec (n-k-1): 17.55
+359	k: 22	rhovec: 14.057	Rvec (n-k-1): 17.55
+360	k: 21	rhovec: 14.2744	Rvec (n-k-1): 19.5
+361	k: 20	rhovec: 16.9996	Rvec (n-k-1): 19.5
+362	k: 19	rhovec: 18.5209	Rvec (n-k-1): 21.45
+363	k: 18	rhovec: 18.6313	Rvec (n-k-1): 21.45
+364	k: 17	rhovec: 19.0038	Rvec (n-k-1): 23.4
+365	k: 16	rhovec: 21.6385	Rvec (n-k-1): 23.4
+366	k: 15	rhovec: 24.4529	Rvec (n-k-1): 25.35
+367	k: 14	rhovec: 25.5073	Rvec (n-k-1): 25.35
+368	k: 15	rhovec: 29.0066	Rvec (n-k-1): 25.35
+369	k: 16	rhovec: 27.1559	Rvec (n-k-1): 23.4
+370	k: 17	rhovec: 29.9272	Rvec (n-k-1): 23.4
+371	k: 18	rhovec: 32.0839	Rvec (n-k-1): 21.45
+372	k: 19	rhovec: 23.2251	Rvec (n-k-1): 21.45
+373	k: 20	rhovec: 19.01	Rvec (n-k-1): 19.5
+374	k: 19	rhovec: 20.4603	Rvec (n-k-1): 21.45
+375	k: 18	rhovec: 22.0189	Rvec (n-k-1): 21.45
+376	k: 19	rhovec: 25.3818	Rvec (n-k-1): 21.45
+377	k: 20	rhovec: 44.2808	Rvec (n-k-1): 19.5
+378	k: 21	rhovec: 25.5749	Rvec (n-k-1): 19.5
+379	k: 22	rhovec: 18.7723	Rvec (n-k-1): 17.55
+380	k: 23	rhovec: 17.8895	Rvec (n-k-1): 17.55
+381	k: 24	rhovec: 21.597	Rvec (n-k-1): 15.6
+382	k: 25	rhovec: 17.3686	Rvec (n-k-1): 15.6
+383	k: 26	rhovec: 17.3694	Rvec (n-k-1): 13.65
+384	k: 27	rhovec: 28.9181	Rvec (n-k-1): 13.65
+385	k: 28	rhovec: 30.6086	Rvec (n-k-1): 11.7
+386	k: 29	rhovec: 7.08917	Rvec (n-k-1): 11.7
+387	k: 28	rhovec: 7.83529	Rvec (n-k-1): 11.7
+388	k: 27	rhovec: 9.8034	Rvec (n-k-1): 13.65
+389	k: 26	rhovec: 11.9114	Rvec (n-k-1): 13.65
+390	k: 25	rhovec: 12.0472	Rvec (n-k-1): 15.6
+391	k: 24	rhovec: 12.3421	Rvec (n-k-1): 15.6
+392	k: 23	rhovec: 13.0605	Rvec (n-k-1): 17.55
+393	k: 22	rhovec: 13.4482	Rvec (n-k-1): 17.55
+394	k: 21	rhovec: 15.7992	Rvec (n-k-1): 19.5
+395	k: 20	rhovec: 15.8637	Rvec (n-k-1): 19.5
+396	k: 19	rhovec: 16.2867	Rvec (n-k-1): 21.45
+397	k: 18	rhovec: 16.4076	Rvec (n-k-1): 21.45
+398	k: 17	rhovec: 16.7488	Rvec (n-k-1): 23.4
+399	k: 16	rhovec: 20.4911	Rvec (n-k-1): 23.4
+400	k: 15	rhovec: 25.2823	Rvec (n-k-1): 25.35
+401	k: 14	rhovec: 26.3307	Rvec (n-k-1): 25.35
+402	k: 15	rhovec: 25.3451	Rvec (n-k-1): 25.35
+403	k: 14	rhovec: 26.1126	Rvec (n-k-1): 25.35
+404	k: 15	rhovec: 63.7992	Rvec (n-k-1): 25.35
+405	k: 16	rhovec: 23.2198	Rvec (n-k-1): 23.4
+406	k: 15	rhovec: 24.1869	Rvec (n-k-1): 25.35
+407	k: 14	rhovec: 25.6069	Rvec (n-k-1): 25.35
+408	k: 15	rhovec: 34.8386	Rvec (n-k-1): 25.35
+409	k: 16	rhovec: 57.8738	Rvec (n-k-1): 23.4
+410	k: 17	rhovec: 27.8807	Rvec (n-k-1): 23.4
+411	k: 18	rhovec: 29.7368	Rvec (n-k-1): 21.45
+412	k: 19	rhovec: 25.3382	Rvec (n-k-1): 21.45
+413	k: 20	rhovec: 28.5648	Rvec (n-k-1): 19.5
+414	k: 21	rhovec: 18.8622	Rvec (n-k-1): 19.5
+415	k: 20	rhovec: 21.058	Rvec (n-k-1): 19.5
+416	k: 21	rhovec: 42.5361	Rvec (n-k-1): 19.5
+417	k: 22	rhovec: 23.6871	Rvec (n-k-1): 17.55
+418	k: 23	rhovec: 21.8193	Rvec (n-k-1): 17.55
+419	k: 24	rhovec: 20.4683	Rvec (n-k-1): 15.6
+420	k: 25	rhovec: 20.9725	Rvec (n-k-1): 15.6
+421	k: 26	rhovec: 12.131	Rvec (n-k-1): 13.65
+422	k: 25	rhovec: 13.9347	Rvec (n-k-1): 15.6
+423	k: 24	rhovec: 13.9492	Rvec (n-k-1): 15.6
+424	k: 23	rhovec: 14.1174	Rvec (n-k-1): 17.55
+425	k: 22	rhovec: 14.3775	Rvec (n-k-1): 17.55
+426	k: 21	rhovec: 15.1627	Rvec (n-k-1): 19.5
+427	k: 20	rhovec: 15.2091	Rvec (n-k-1): 19.5
+428	k: 19	rhovec: 15.2252	Rvec (n-k-1): 21.45
+429	k: 18	rhovec: 17.2213	Rvec (n-k-1): 21.45
+430	k: 17	rhovec: 19.5142	Rvec (n-k-1): 23.4
+431	k: 16	rhovec: 19.6367	Rvec (n-k-1): 23.4
+432	k: 15	rhovec: 20.5777	Rvec (n-k-1): 25.35
+433	k: 14	rhovec: 22.1324	Rvec (n-k-1): 25.35
+434	k: 13	rhovec: 23.2027	Rvec (n-k-1): 27.3
+435	k: 12	rhovec: 25.7795	Rvec (n-k-1): 27.3
+436	k: 11	rhovec: 32.5773	Rvec (n-k-1): 29.25
+437	k: 12	rhovec: 35.4288	Rvec (n-k-1): 27.3
+438	k: 13	rhovec: 39.2677	Rvec (n-k-1): 27.3
+439	k: 14	rhovec: 32.5109	Rvec (n-k-1): 25.35
+440	k: 15	rhovec: 31.3466	Rvec (n-k-1): 25.35
+441	k: 16	rhovec: 36.5577	Rvec (n-k-1): 23.4
+442	k: 17	rhovec: 23.2584	Rvec (n-k-1): 23.4
+443	k: 16	rhovec: 27.5378	Rvec (n-k-1): 23.4
+444	k: 17	rhovec: 47.3122	Rvec (n-k-1): 23.4
+445	k: 18	rhovec: 21.9971	Rvec (n-k-1): 21.45
+446	k: 19	rhovec: 28.1805	Rvec (n-k-1): 21.45
+447	k: 20	rhovec: 28.2047	Rvec (n-k-1): 19.5
+448	k: 21	rhovec: 23.222	Rvec (n-k-1): 19.5
+449	k: 22	rhovec: 25.4909	Rvec (n-k-1): 17.55
+450	k: 23	rhovec: 26.3115	Rvec (n-k-1): 17.55
+451	k: 24	rhovec: 24.988	Rvec (n-k-1): 15.6
+452	k: 25	rhovec: 16.2745	Rvec (n-k-1): 15.6
+453	k: 26	rhovec: 29.4237	Rvec (n-k-1): 13.65
+454	k: 27	rhovec: 10.6877	Rvec (n-k-1): 13.65
+455	k: 26	rhovec: 10.7009	Rvec (n-k-1): 13.65
+456	k: 25	rhovec: 11.2962	Rvec (n-k-1): 15.6
+457	k: 24	rhovec: 12.3396	Rvec (n-k-1): 15.6
+458	k: 23	rhovec: 14.0334	Rvec (n-k-1): 17.55
+459	k: 22	rhovec: 14.303	Rvec (n-k-1): 17.55
+460	k: 21	rhovec: 16.3894	Rvec (n-k-1): 19.5
+461	k: 20	rhovec: 17.8501	Rvec (n-k-1): 19.5
+462	k: 19	rhovec: 17.9878	Rvec (n-k-1): 21.45
+463	k: 18	rhovec: 17.9952	Rvec (n-k-1): 21.45
+464	k: 17	rhovec: 19.4037	Rvec (n-k-1): 23.4
+465	k: 16	rhovec: 19.4113	Rvec (n-k-1): 23.4
+466	k: 15	rhovec: 19.4518	Rvec (n-k-1): 25.35
+467	k: 14	rhovec: 19.9988	Rvec (n-k-1): 25.35
+468	k: 13	rhovec: 23.6426	Rvec (n-k-1): 27.3
+469	k: 12	rhovec: 23.7859	Rvec (n-k-1): 27.3
+470	k: 11	rhovec: 30.5362	Rvec (n-k-1): 29.25
+471	k: 12	rhovec: 45.9521	Rvec (n-k-1): 27.3
+472	k: 13	rhovec: 30.6597	Rvec (n-k-1): 27.3
+473	k: 14	rhovec: 35.1473	Rvec (n-k-1): 25.35
+474	k: 15	rhovec: 36.9749	Rvec (n-k-1): 25.35
+475	k: 16	rhovec: 38.682	Rvec (n-k-1): 23.4
+476	k: 17	rhovec: 25.7487	Rvec (n-k-1): 23.4
+477	k: 18	rhovec: 33.4262	Rvec (n-k-1): 21.45
+478	k: 19	rhovec: 29.1223	Rvec (n-k-1): 21.45
+479	k: 20	rhovec: 23.2453	Rvec (n-k-1): 19.5
+480	k: 21	rhovec: 20.1381	Rvec (n-k-1): 19.5
+481	k: 22	rhovec: 25.3454	Rvec (n-k-1): 17.55
+482	k: 23	rhovec: 19.2286	Rvec (n-k-1): 17.55
+483	k: 24	rhovec: 17.1694	Rvec (n-k-1): 15.6
+484	k: 25	rhovec: 17.4976	Rvec (n-k-1): 15.6
+485	k: 26	rhovec: 18.8827	Rvec (n-k-1): 13.65
+486	k: 27	rhovec: 28.0377	Rvec (n-k-1): 13.65
+487	k: 28	rhovec: 10.7085	Rvec (n-k-1): 11.7
+488	k: 27	rhovec: 10.7222	Rvec (n-k-1): 13.65
+489	k: 26	rhovec: 10.7514	Rvec (n-k-1): 13.65
+490	k: 25	rhovec: 10.7562	Rvec (n-k-1): 15.6
+491	k: 24	rhovec: 12.1138	Rvec (n-k-1): 15.6
+492	k: 23	rhovec: 12.1167	Rvec (n-k-1): 17.55
+493	k: 22	rhovec: 12.7806	Rvec (n-k-1): 17.55
+494	k: 21	rhovec: 16.4314	Rvec (n-k-1): 19.5
+495	k: 20	rhovec: 17.3675	Rvec (n-k-1): 19.5
+496	k: 19	rhovec: 18.0617	Rvec (n-k-1): 21.45
+497	k: 18	rhovec: 19.8422	Rvec (n-k-1): 21.45
+498	k: 17	rhovec: 22.1941	Rvec (n-k-1): 23.4
+499	k: 16	rhovec: 22.2192	Rvec (n-k-1): 23.4
+500	k: 15	rhovec: 23.5786	Rvec (n-k-1): 25.35
+501	k: 14	rhovec: 24.7461	Rvec (n-k-1): 25.35
+502	k: 13	rhovec: 28.7549	Rvec (n-k-1): 27.3
+503	k: 14	rhovec: 36.689	Rvec (n-k-1): 25.35
+504	k: 15	rhovec: 32.6266	Rvec (n-k-1): 25.35
+505	k: 16	rhovec: 40.8574	Rvec (n-k-1): 23.4
+506	k: 17	rhovec: 25.7846	Rvec (n-k-1): 23.4
+507	k: 18	rhovec: 25.248	Rvec (n-k-1): 21.45
+508	k: 19	rhovec: 25.7503	Rvec (n-k-1): 21.45
+509	k: 20	rhovec: 24.6078	Rvec (n-k-1): 19.5
+510	k: 21	rhovec: 16.5806	Rvec (n-k-1): 19.5
+511	k: 20	rhovec: 16.6483	Rvec (n-k-1): 19.5
+512	k: 19	rhovec: 16.6969	Rvec (n-k-1): 21.45
+513	k: 18	rhovec: 18.2531	Rvec (n-k-1): 21.45
+514	k: 17	rhovec: 18.3558	Rvec (n-k-1): 23.4
+515	k: 16	rhovec: 20.8222	Rvec (n-k-1): 23.4
+516	k: 15	rhovec: 25.1777	Rvec (n-k-1): 25.35
+517	k: 14	rhovec: 28.6846	Rvec (n-k-1): 25.35
+518	k: 15	rhovec: 26.1354	Rvec (n-k-1): 25.35
+519	k: 16	rhovec: 26.8117	Rvec (n-k-1): 23.4
+520	k: 17	rhovec: 31.5814	Rvec (n-k-1): 23.4
+521	k: 18	rhovec: 24.3567	Rvec (n-k-1): 21.45
+522	k: 19	rhovec: 28.9543	Rvec (n-k-1): 21.45
+523	k: 20	rhovec: 29.3025	Rvec (n-k-1): 19.5
+524	k: 21	rhovec: 46.0821	Rvec (n-k-1): 19.5
+525	k: 22	rhovec: 21.5273	Rvec (n-k-1): 17.55
+526	k: 23	rhovec: 27.1143	Rvec (n-k-1): 17.55
+527	k: 24	rhovec: 15.9537	Rvec (n-k-1): 15.6
+528	k: 25	rhovec: 21.7021	Rvec (n-k-1): 15.6
+529	k: 26	rhovec: 18.5996	Rvec (n-k-1): 13.65
+530	k: 27	rhovec: 19.5593	Rvec (n-k-1): 13.65
+531	k: 28	rhovec: 20.2663	Rvec (n-k-1): 11.7
+532	k: 29	rhovec: 28.3567	Rvec (n-k-1): 11.7
+533	k: 30	rhovec: 6.8532	Rvec (n-k-1): 9.75
+534	k: 29	rhovec: 7.83643	Rvec (n-k-1): 11.7
+535	k: 28	rhovec: 8.68236	Rvec (n-k-1): 11.7
+536	k: 27	rhovec: 10.2536	Rvec (n-k-1): 13.65
+537	k: 26	rhovec: 12.3505	Rvec (n-k-1): 13.65
+538	k: 25	rhovec: 15.15	Rvec (n-k-1): 15.6
+539	k: 24	rhovec: 15.2347	Rvec (n-k-1): 15.6
+540	k: 23	rhovec: 15.6069	Rvec (n-k-1): 17.55
+541	k: 22	rhovec: 15.6516	Rvec (n-k-1): 17.55
+542	k: 21	rhovec: 18.4705	Rvec (n-k-1): 19.5
+543	k: 20	rhovec: 19.2172	Rvec (n-k-1): 19.5
+544	k: 19	rhovec: 19.9545	Rvec (n-k-1): 21.45
+545	k: 18	rhovec: 20.0698	Rvec (n-k-1): 21.45
+546	k: 17	rhovec: 21.8976	Rvec (n-k-1): 23.4
+547	k: 16	rhovec: 22.6445	Rvec (n-k-1): 23.4
+548	k: 15	rhovec: 22.6446	Rvec (n-k-1): 25.35
+549	k: 14	rhovec: 27.9359	Rvec (n-k-1): 25.35
+550	k: 15	rhovec: 41.8465	Rvec (n-k-1): 25.35
+551	k: 16	rhovec: 34.9593	Rvec (n-k-1): 23.4
+552	k: 17	rhovec: 26.9307	Rvec (n-k-1): 23.4
+553	k: 18	rhovec: 33.4642	Rvec (n-k-1): 21.45
+554	k: 19	rhovec: 27.4532	Rvec (n-k-1): 21.45
+555	k: 20	rhovec: 27.2491	Rvec (n-k-1): 19.5
+556	k: 21	rhovec: 20.4087	Rvec (n-k-1): 19.5
+557	k: 22	rhovec: 29.0826	Rvec (n-k-1): 17.55
+558	k: 23	rhovec: 26.2312	Rvec (n-k-1): 17.55
+559	k: 24	rhovec: 25.0978	Rvec (n-k-1): 15.6
+560	k: 25	rhovec: 15.2588	Rvec (n-k-1): 15.6
+561	k: 24	rhovec: 16.2617	Rvec (n-k-1): 15.6
+562	k: 25	rhovec: 37.8705	Rvec (n-k-1): 15.6
+563	k: 26	rhovec: 12.5929	Rvec (n-k-1): 13.65
+564	k: 25	rhovec: 12.5943	Rvec (n-k-1): 15.6
+565	k: 24	rhovec: 13.1037	Rvec (n-k-1): 15.6
+566	k: 23	rhovec: 13.5232	Rvec (n-k-1): 17.55
+567	k: 22	rhovec: 14.3717	Rvec (n-k-1): 17.55
+568	k: 21	rhovec: 14.9199	Rvec (n-k-1): 19.5
+569	k: 20	rhovec: 16.6989	Rvec (n-k-1): 19.5
+570	k: 19	rhovec: 19.3753	Rvec (n-k-1): 21.45
+571	k: 18	rhovec: 19.9018	Rvec (n-k-1): 21.45
+572	k: 17	rhovec: 20.1733	Rvec (n-k-1): 23.4
+573	k: 16	rhovec: 20.7063	Rvec (n-k-1): 23.4
+574	k: 15	rhovec: 21.1489	Rvec (n-k-1): 25.35
+575	k: 14	rhovec: 23.6884	Rvec (n-k-1): 25.35
+576	k: 13	rhovec: 23.7392	Rvec (n-k-1): 27.3
+577	k: 12	rhovec: 23.7844	Rvec (n-k-1): 27.3
+578	k: 11	rhovec: 27.8633	Rvec (n-k-1): 29.25
+579	k: 10	rhovec: 29.2989	Rvec (n-k-1): 29.25
+580	k: 11	rhovec: 37.6913	Rvec (n-k-1): 29.25
+581	k: 12	rhovec: 47.6441	Rvec (n-k-1): 27.3
+582	k: 13	rhovec: 48.1781	Rvec (n-k-1): 27.3
+583	k: 14	rhovec: 30.8071	Rvec (n-k-1): 25.35
+584	k: 15	rhovec: 34.5946	Rvec (n-k-1): 25.35
+585	k: 16	rhovec: 34.2227	Rvec (n-k-1): 23.4
+586	k: 17	rhovec: 31.8062	Rvec (n-k-1): 23.4
+587	k: 18	rhovec: 30.1962	Rvec (n-k-1): 21.45
+588	k: 19	rhovec: 21.0776	Rvec (n-k-1): 21.45
+589	k: 18	rhovec: 22.9231	Rvec (n-k-1): 21.45
+590	k: 19	rhovec: 45.4763	Rvec (n-k-1): 21.45
+591	k: 20	rhovec: 21.1358	Rvec (n-k-1): 19.5
+592	k: 21	rhovec: 24.104	Rvec (n-k-1): 19.5
+593	k: 22	rhovec: 22.2929	Rvec (n-k-1): 17.55
+594	k: 23	rhovec: 23.8517	Rvec (n-k-1): 17.55
+595	k: 24	rhovec: 20.0542	Rvec (n-k-1): 15.6
+596	k: 25	rhovec: 23.7507	Rvec (n-k-1): 15.6
+597	k: 26	rhovec: 29.84	Rvec (n-k-1): 13.65
+598	k: 27	rhovec: 12.0618	Rvec (n-k-1): 13.65
+599	k: 26	rhovec: 12.0759	Rvec (n-k-1): 13.65
+600	k: 25	rhovec: 13.7718	Rvec (n-k-1): 15.6
+601	k: 24	rhovec: 15.9618	Rvec (n-k-1): 15.6
+602	k: 25	rhovec: 16.387	Rvec (n-k-1): 15.6
+603	k: 26	rhovec: 20.235	Rvec (n-k-1): 13.65
+604	k: 27	rhovec: 27.5639	Rvec (n-k-1): 13.65
+605	k: 28	rhovec: 11.246	Rvec (n-k-1): 11.7
+606	k: 27	rhovec: 11.3169	Rvec (n-k-1): 13.65
+607	k: 26	rhovec: 11.3448	Rvec (n-k-1): 13.65
+608	k: 25	rhovec: 13.2331	Rvec (n-k-1): 15.6
+609	k: 24	rhovec: 13.3428	Rvec (n-k-1): 15.6
+610	k: 23	rhovec: 13.3768	Rvec (n-k-1): 17.55
+611	k: 22	rhovec: 14.8797	Rvec (n-k-1): 17.55
+612	k: 21	rhovec: 17.9949	Rvec (n-k-1): 19.5
+613	k: 20	rhovec: 18.0176	Rvec (n-k-1): 19.5
+614	k: 19	rhovec: 19.9393	Rvec (n-k-1): 21.45
+615	k: 18	rhovec: 22.0042	Rvec (n-k-1): 21.45
+616	k: 19	rhovec: 23.5037	Rvec (n-k-1): 21.45
+617	k: 20	rhovec: 31.5103	Rvec (n-k-1): 19.5
+618	k: 21	rhovec: 19.269	Rvec (n-k-1): 19.5
+619	k: 20	rhovec: 21.169	Rvec (n-k-1): 19.5
+620	k: 21	rhovec: 46.5209	Rvec (n-k-1): 19.5
+621	k: 22	rhovec: 20.4342	Rvec (n-k-1): 17.55
+622	k: 23	rhovec: 27.3427	Rvec (n-k-1): 17.55
+623	k: 24	rhovec: 22.929	Rvec (n-k-1): 15.6
+624	k: 25	rhovec: 15.3624	Rvec (n-k-1): 15.6
+625	k: 24	rhovec: 17.9983	Rvec (n-k-1): 15.6
+626	k: 25	rhovec: 33.9331	Rvec (n-k-1): 15.6
+627	k: 26	rhovec: 19.2158	Rvec (n-k-1): 13.65
+628	k: 27	rhovec: 19.23	Rvec (n-k-1): 13.65
+629	k: 28	rhovec: 21.423	Rvec (n-k-1): 11.7
+630	k: 29	rhovec: 9.64534	Rvec (n-k-1): 11.7
+631	k: 28	rhovec: 10.6111	Rvec (n-k-1): 11.7
+632	k: 27	rhovec: 11.9031	Rvec (n-k-1): 13.65
+633	k: 26	rhovec: 13.7489	Rvec (n-k-1): 13.65
+634	k: 27	rhovec: 14.4336	Rvec (n-k-1): 13.65
+635	k: 28	rhovec: 12.8263	Rvec (n-k-1): 11.7
+636	k: 29	rhovec: 20.2059	Rvec (n-k-1): 11.7
+637	k: 30	rhovec: 27.4128	Rvec (n-k-1): 9.75
+638	k: 31	rhovec: 6.25296	Rvec (n-k-1): 9.75
+639	k: 30	rhovec: 7.4019	Rvec (n-k-1): 9.75
+640	k: 29	rhovec: 8.34281	Rvec (n-k-1): 11.7
+641	k: 28	rhovec: 9.5905	Rvec (n-k-1): 11.7
+642	k: 27	rhovec: 10.0808	Rvec (n-k-1): 13.65
+643	k: 26	rhovec: 10.863	Rvec (n-k-1): 13.65
+644	k: 25	rhovec: 11.4706	Rvec (n-k-1): 15.6
+645	k: 24	rhovec: 13.965	Rvec (n-k-1): 15.6
+646	k: 23	rhovec: 14.4418	Rvec (n-k-1): 17.55
+647	k: 22	rhovec: 15.419	Rvec (n-k-1): 17.55
+648	k: 21	rhovec: 17.1459	Rvec (n-k-1): 19.5
+649	k: 20	rhovec: 17.1653	Rvec (n-k-1): 19.5
+650	k: 19	rhovec: 20.266	Rvec (n-k-1): 21.45
+651	k: 18	rhovec: 22.405	Rvec (n-k-1): 21.45
+652	k: 19	rhovec: 21.0368	Rvec (n-k-1): 21.45
+653	k: 18	rhovec: 21.4232	Rvec (n-k-1): 21.45
+654	k: 17	rhovec: 21.6344	Rvec (n-k-1): 23.4
+655	k: 16	rhovec: 23.9095	Rvec (n-k-1): 23.4
+656	k: 17	rhovec: 33.7551	Rvec (n-k-1): 23.4
+657	k: 18	rhovec: 32.5528	Rvec (n-k-1): 21.45
+658	k: 19	rhovec: 47.2984	Rvec (n-k-1): 21.45
+659	k: 20	rhovec: 30.7453	Rvec (n-k-1): 19.5
+660	k: 21	rhovec: 21.9006	Rvec (n-k-1): 19.5
+661	k: 22	rhovec: 22.8169	Rvec (n-k-1): 17.55
+662	k: 23	rhovec: 24.4341	Rvec (n-k-1): 17.55
+663	k: 24	rhovec: 14.9511	Rvec (n-k-1): 15.6
+664	k: 23	rhovec: 16.8555	Rvec (n-k-1): 17.55
+665	k: 22	rhovec: 18.2134	Rvec (n-k-1): 17.55
+666	k: 23	rhovec: 21.4339	Rvec (n-k-1): 17.55
+667	k: 24	rhovec: 36.7146	Rvec (n-k-1): 15.6
+668	k: 25	rhovec: 17.6184	Rvec (n-k-1): 15.6
+669	k: 26	rhovec: 14.4621	Rvec (n-k-1): 13.65
+670	k: 27	rhovec: 15.3102	Rvec (n-k-1): 13.65
+671	k: 28	rhovec: 11.0628	Rvec (n-k-1): 11.7
+672	k: 27	rhovec: 11.7344	Rvec (n-k-1): 13.65
+673	k: 26	rhovec: 12.3939	Rvec (n-k-1): 13.65
+674	k: 25	rhovec: 13.8023	Rvec (n-k-1): 15.6
+675	k: 24	rhovec: 14.0247	Rvec (n-k-1): 15.6
+676	k: 23	rhovec: 15.3726	Rvec (n-k-1): 17.55
+677	k: 22	rhovec: 15.6933	Rvec (n-k-1): 17.55
+678	k: 21	rhovec: 16.1572	Rvec (n-k-1): 19.5
+679	k: 20	rhovec: 16.2023	Rvec (n-k-1): 19.5
+680	k: 19	rhovec: 19.4622	Rvec (n-k-1): 21.45
+681	k: 18	rhovec: 20.3566	Rvec (n-k-1): 21.45
+682	k: 17	rhovec: 22.4048	Rvec (n-k-1): 23.4
+683	k: 16	rhovec: 25.776	Rvec (n-k-1): 23.4
+684	k: 17	rhovec: 26.809	Rvec (n-k-1): 23.4
+685	k: 18	rhovec: 28.8832	Rvec (n-k-1): 21.45
+686	k: 19	rhovec: 19.9001	Rvec (n-k-1): 21.45
+687	k: 18	rhovec: 21.196	Rvec (n-k-1): 21.45
+688	k: 17	rhovec: 23.855	Rvec (n-k-1): 23.4
+689	k: 18	rhovec: 28.1757	Rvec (n-k-1): 21.45
+690	k: 19	rhovec: 46.8275	Rvec (n-k-1): 21.45
+691	k: 20	rhovec: 29.223	Rvec (n-k-1): 19.5
+692	k: 21	rhovec: 25.7986	Rvec (n-k-1): 19.5
+693	k: 22	rhovec: 26.3703	Rvec (n-k-1): 17.55
+694	k: 23	rhovec: 21.6707	Rvec (n-k-1): 17.55
+695	k: 24	rhovec: 22.643	Rvec (n-k-1): 15.6
+696	k: 25	rhovec: 17.198	Rvec (n-k-1): 15.6
+697	k: 26	rhovec: 16.4235	Rvec (n-k-1): 13.65
+698	k: 27	rhovec: 16.2265	Rvec (n-k-1): 13.65
+699	k: 28	rhovec: 23.4224	Rvec (n-k-1): 11.7
+700	k: 29	rhovec: 10.2666	Rvec (n-k-1): 11.7
+701	k: 28	rhovec: 10.3307	Rvec (n-k-1): 11.7
+702	k: 27	rhovec: 10.8244	Rvec (n-k-1): 13.65
+703	k: 26	rhovec: 11.2356	Rvec (n-k-1): 13.65
+704	k: 25	rhovec: 12.8134	Rvec (n-k-1): 15.6
+705	k: 24	rhovec: 13.2944	Rvec (n-k-1): 15.6
+706	k: 23	rhovec: 14.5219	Rvec (n-k-1): 17.55
+707	k: 22	rhovec: 16.4292	Rvec (n-k-1): 17.55
+708	k: 21	rhovec: 17.941	Rvec (n-k-1): 19.5
+709	k: 20	rhovec: 19.3331	Rvec (n-k-1): 19.5
+710	k: 19	rhovec: 20.2785	Rvec (n-k-1): 21.45
+711	k: 18	rhovec: 20.4295	Rvec (n-k-1): 21.45
+712	k: 17	rhovec: 21.4427	Rvec (n-k-1): 23.4
+713	k: 16	rhovec: 21.9915	Rvec (n-k-1): 23.4
+714	k: 15	rhovec: 23.2862	Rvec (n-k-1): 25.35
+715	k: 14	rhovec: 25.0517	Rvec (n-k-1): 25.35
+716	k: 13	rhovec: 29.1078	Rvec (n-k-1): 27.3
+717	k: 14	rhovec: 34.6605	Rvec (n-k-1): 25.35
+718	k: 15	rhovec: 32.5813	Rvec (n-k-1): 25.35
+719	k: 16	rhovec: 35.4119	Rvec (n-k-1): 23.4
+720	k: 17	rhovec: 29.2191	Rvec (n-k-1): 23.4
+721	k: 18	rhovec: 33.4299	Rvec (n-k-1): 21.45
+722	k: 19	rhovec: 26.9294	Rvec (n-k-1): 21.45
+723	k: 20	rhovec: 24.9482	Rvec (n-k-1): 19.5
+724	k: 21	rhovec: 23.3488	Rvec (n-k-1): 19.5
+725	k: 22	rhovec: 20.7791	Rvec (n-k-1): 17.55
+726	k: 23	rhovec: 21.2368	Rvec (n-k-1): 17.55
+727	k: 24	rhovec: 20.3838	Rvec (n-k-1): 15.6
+728	k: 25	rhovec: 15.7404	Rvec (n-k-1): 15.6
+729	k: 26	rhovec: 16.2829	Rvec (n-k-1): 13.65
+730	k: 27	rhovec: 16.0388	Rvec (n-k-1): 13.65
+731	k: 28	rhovec: 16.582	Rvec (n-k-1): 11.7
+732	k: 29	rhovec: 20.5974	Rvec (n-k-1): 11.7
+733	k: 30	rhovec: 8.643	Rvec (n-k-1): 9.75
+734	k: 29	rhovec: 9.13435	Rvec (n-k-1): 11.7
+735	k: 28	rhovec: 9.57861	Rvec (n-k-1): 11.7
+736	k: 27	rhovec: 10.8684	Rvec (n-k-1): 13.65
+737	k: 26	rhovec: 11.4459	Rvec (n-k-1): 13.65
+738	k: 25	rhovec: 11.448	Rvec (n-k-1): 15.6
+739	k: 24	rhovec: 13.0649	Rvec (n-k-1): 15.6
+740	k: 23	rhovec: 13.0662	Rvec (n-k-1): 17.55
+741	k: 22	rhovec: 14.9997	Rvec (n-k-1): 17.55
+742	k: 21	rhovec: 15.13	Rvec (n-k-1): 19.5
+743	k: 20	rhovec: 15.1368	Rvec (n-k-1): 19.5
+744	k: 19	rhovec: 15.9253	Rvec (n-k-1): 21.45
+745	k: 18	rhovec: 18.6548	Rvec (n-k-1): 21.45
+746	k: 17	rhovec: 18.6564	Rvec (n-k-1): 23.4
+747	k: 16	rhovec: 18.6954	Rvec (n-k-1): 23.4
+748	k: 15	rhovec: 18.7801	Rvec (n-k-1): 25.35
+749	k: 14	rhovec: 22.52	Rvec (n-k-1): 25.35
+750	k: 13	rhovec: 29.1014	Rvec (n-k-1): 27.3
+751	k: 14	rhovec: 26.4387	Rvec (n-k-1): 25.35
+752	k: 15	rhovec: 35.5132	Rvec (n-k-1): 25.35
+753	k: 16	rhovec: 36.9834	Rvec (n-k-1): 23.4
+754	k: 17	rhovec: 34.1091	Rvec (n-k-1): 23.4
+755	k: 18	rhovec: 21.5091	Rvec (n-k-1): 21.45
+756	k: 19	rhovec: 23.2052	Rvec (n-k-1): 21.45
+757	k: 20	rhovec: 29.1517	Rvec (n-k-1): 19.5
+758	k: 21	rhovec: 27.2425	Rvec (n-k-1): 19.5
+759	k: 22	rhovec: 19.2764	Rvec (n-k-1): 17.55
+760	k: 23	rhovec: 28.1919	Rvec (n-k-1): 17.55
+761	k: 24	rhovec: 16.1717	Rvec (n-k-1): 15.6
+762	k: 25	rhovec: 22.5508	Rvec (n-k-1): 15.6
+763	k: 26	rhovec: 15.7863	Rvec (n-k-1): 13.65
+764	k: 27	rhovec: 13.4051	Rvec (n-k-1): 13.65
+765	k: 26	rhovec: 14.0561	Rvec (n-k-1): 13.65
+766	k: 27	rhovec: 27.4503	Rvec (n-k-1): 13.65
+767	k: 28	rhovec: 13.5432	Rvec (n-k-1): 11.7
+768	k: 29	rhovec: 12.4908	Rvec (n-k-1): 11.7
+769	k: 30	rhovec: 19.8672	Rvec (n-k-1): 9.75
+770	k: 31	rhovec: 25.0118	Rvec (n-k-1): 9.75
+771	k: 32	rhovec: 5.11488	Rvec (n-k-1): 7.8
+772	k: 31	rhovec: 6.33634	Rvec (n-k-1): 9.75
+773	k: 30	rhovec: 7.76712	Rvec (n-k-1): 9.75
+774	k: 29	rhovec: 7.78526	Rvec (n-k-1): 11.7
+775	k: 28	rhovec: 9.50679	Rvec (n-k-1): 11.7
+776	k: 27	rhovec: 10.8483	Rvec (n-k-1): 13.65
+777	k: 26	rhovec: 10.963	Rvec (n-k-1): 13.65
+778	k: 25	rhovec: 12.1547	Rvec (n-k-1): 15.6
+779	k: 24	rhovec: 12.2558	Rvec (n-k-1): 15.6
+780	k: 23	rhovec: 15.0315	Rvec (n-k-1): 17.55
+781	k: 22	rhovec: 17.2169	Rvec (n-k-1): 17.55
+782	k: 21	rhovec: 18.4855	Rvec (n-k-1): 19.5
+783	k: 20	rhovec: 18.4999	Rvec (n-k-1): 19.5
+784	k: 19	rhovec: 18.7122	Rvec (n-k-1): 21.45
+785	k: 18	rhovec: 21.8822	Rvec (n-k-1): 21.45
+786	k: 19	rhovec: 29.1781	Rvec (n-k-1): 21.45
+787	k: 20	rhovec: 32.2276	Rvec (n-k-1): 19.5
+788	k: 21	rhovec: 24.6901	Rvec (n-k-1): 19.5
+789	k: 22	rhovec: 20.8115	Rvec (n-k-1): 17.55
+790	k: 23	rhovec: 17.3638	Rvec (n-k-1): 17.55
+791	k: 22	rhovec: 17.469	Rvec (n-k-1): 17.55
+792	k: 21	rhovec: 17.9603	Rvec (n-k-1): 19.5
+793	k: 20	rhovec: 17.9892	Rvec (n-k-1): 19.5
+794	k: 19	rhovec: 19.1074	Rvec (n-k-1): 21.45
+795	k: 18	rhovec: 21.3842	Rvec (n-k-1): 21.45
+796	k: 17	rhovec: 24.7124	Rvec (n-k-1): 23.4
+797	k: 18	rhovec: 25.3885	Rvec (n-k-1): 21.45
+798	k: 19	rhovec: 25.1235	Rvec (n-k-1): 21.45
+799	k: 20	rhovec: 31.3333	Rvec (n-k-1): 19.5
+800	k: 21	rhovec: 27.4489	Rvec (n-k-1): 19.5
+801	k: 22	rhovec: 30.0253	Rvec (n-k-1): 17.55
+802	k: 23	rhovec: 43.5282	Rvec (n-k-1): 17.55
+803	k: 24	rhovec: 21.9334	Rvec (n-k-1): 15.6
+804	k: 25	rhovec: 16.1928	Rvec (n-k-1): 15.6
+805	k: 26	rhovec: 17.8118	Rvec (n-k-1): 13.65
+806	k: 27	rhovec: 13.2456	Rvec (n-k-1): 13.65
+807	k: 26	rhovec: 14.3949	Rvec (n-k-1): 13.65
+808	k: 27	rhovec: 27.5695	Rvec (n-k-1): 13.65
+809	k: 28	rhovec: 9.8999	Rvec (n-k-1): 11.7
+810	k: 27	rhovec: 10.0712	Rvec (n-k-1): 13.65
+811	k: 26	rhovec: 10.4612	Rvec (n-k-1): 13.65
+812	k: 25	rhovec: 10.6129	Rvec (n-k-1): 15.6
+813	k: 24	rhovec: 10.826	Rvec (n-k-1): 15.6
+814	k: 23	rhovec: 11.0004	Rvec (n-k-1): 17.55
+815	k: 22	rhovec: 12.1457	Rvec (n-k-1): 17.55
+816	k: 21	rhovec: 12.1463	Rvec (n-k-1): 19.5
+817	k: 20	rhovec: 12.8752	Rvec (n-k-1): 19.5
+818	k: 19	rhovec: 13.0083	Rvec (n-k-1): 21.45
+819	k: 18	rhovec: 13.7821	Rvec (n-k-1): 21.45
+820	k: 17	rhovec: 13.8077	Rvec (n-k-1): 23.4
+821	k: 16	rhovec: 16.0354	Rvec (n-k-1): 23.4
+822	k: 15	rhovec: 19.6479	Rvec (n-k-1): 25.35
+823	k: 14	rhovec: 21.6626	Rvec (n-k-1): 25.35
+824	k: 13	rhovec: 23.291	Rvec (n-k-1): 27.3
+825	k: 12	rhovec: 24.3299	Rvec (n-k-1): 27.3
+826	k: 11	rhovec: 26.9461	Rvec (n-k-1): 29.25
+827	k: 10	rhovec: 29.7225	Rvec (n-k-1): 29.25
+828	k: 11	rhovec: 41.3979	Rvec (n-k-1): 29.25
+829	k: 12	rhovec: 39.9585	Rvec (n-k-1): 27.3
+830	k: 13	rhovec: 36.8566	Rvec (n-k-1): 27.3
+831	k: 14	rhovec: 30.4188	Rvec (n-k-1): 25.35
+832	k: 15	rhovec: 22.2424	Rvec (n-k-1): 25.35
+833	k: 14	rhovec: 22.4734	Rvec (n-k-1): 25.35
+834	k: 13	rhovec: 23.0427	Rvec (n-k-1): 27.3
+835	k: 12	rhovec: 25.2044	Rvec (n-k-1): 27.3
+836	k: 11	rhovec: 32.8381	Rvec (n-k-1): 29.25
+837	k: 12	rhovec: 36.2313	Rvec (n-k-1): 27.3
+838	k: 13	rhovec: 42.0048	Rvec (n-k-1): 27.3
+839	k: 14	rhovec: 40.0565	Rvec (n-k-1): 25.35
+840	k: 15	rhovec: 55.6332	Rvec (n-k-1): 25.35
+841	k: 16	rhovec: 22.7227	Rvec (n-k-1): 23.4
+842	k: 15	rhovec: 23.206	Rvec (n-k-1): 25.35
+843	k: 14	rhovec: 23.8399	Rvec (n-k-1): 25.35
+844	k: 13	rhovec: 26.5805	Rvec (n-k-1): 27.3
+845	k: 12	rhovec: 30.4051	Rvec (n-k-1): 27.3
+846	k: 13	rhovec: 36.22	Rvec (n-k-1): 27.3
+847	k: 14	rhovec: 38.4563	Rvec (n-k-1): 25.35
+848	k: 15	rhovec: 36.3894	Rvec (n-k-1): 25.35
+849	k: 16	rhovec: 49.4594	Rvec (n-k-1): 23.4
+850	k: 17	rhovec: 28.308	Rvec (n-k-1): 23.4
+851	k: 18	rhovec: 22.8393	Rvec (n-k-1): 21.45
+852	k: 19	rhovec: 24.1888	Rvec (n-k-1): 21.45
+853	k: 20	rhovec: 20.9864	Rvec (n-k-1): 19.5
+854	k: 21	rhovec: 26.8648	Rvec (n-k-1): 19.5
+855	k: 22	rhovec: 18.9096	Rvec (n-k-1): 17.55
+856	k: 23	rhovec: 23.1353	Rvec (n-k-1): 17.55
+857	k: 24	rhovec: 19.5137	Rvec (n-k-1): 15.6
+858	k: 25	rhovec: 19.3955	Rvec (n-k-1): 15.6
+859	k: 26	rhovec: 15.6082	Rvec (n-k-1): 13.65
+860	k: 27	rhovec: 17.0711	Rvec (n-k-1): 13.65
+861	k: 28	rhovec: 24.418	Rvec (n-k-1): 11.7
+862	k: 29	rhovec: 14.1572	Rvec (n-k-1): 11.7
+863	k: 30	rhovec: 8.3576	Rvec (n-k-1): 9.75
+864	k: 29	rhovec: 9.09185	Rvec (n-k-1): 11.7
+865	k: 28	rhovec: 9.37748	Rvec (n-k-1): 11.7
+866	k: 27	rhovec: 11.4065	Rvec (n-k-1): 13.65
+867	k: 26	rhovec: 11.6623	Rvec (n-k-1): 13.65
+868	k: 25	rhovec: 12.4954	Rvec (n-k-1): 15.6
+869	k: 24	rhovec: 14.756	Rvec (n-k-1): 15.6
+870	k: 23	rhovec: 16.9725	Rvec (n-k-1): 17.55
+871	k: 22	rhovec: 18.0977	Rvec (n-k-1): 17.55
+872	k: 23	rhovec: 20.6967	Rvec (n-k-1): 17.55
+873	k: 24	rhovec: 16.2646	Rvec (n-k-1): 15.6
+874	k: 25	rhovec: 17.7426	Rvec (n-k-1): 15.6
+875	k: 26	rhovec: 17.5161	Rvec (n-k-1): 13.65
+876	k: 27	rhovec: 12.1576	Rvec (n-k-1): 13.65
+877	k: 26	rhovec: 12.9766	Rvec (n-k-1): 13.65
+878	k: 25	rhovec: 13.1	Rvec (n-k-1): 15.6
+879	k: 24	rhovec: 13.1636	Rvec (n-k-1): 15.6
+880	k: 23	rhovec: 13.2165	Rvec (n-k-1): 17.55
+881	k: 22	rhovec: 13.2388	Rvec (n-k-1): 17.55
+882	k: 21	rhovec: 13.7527	Rvec (n-k-1): 19.5
+883	k: 20	rhovec: 13.9831	Rvec (n-k-1): 19.5
+884	k: 19	rhovec: 15.5987	Rvec (n-k-1): 21.45
+885	k: 18	rhovec: 15.6224	Rvec (n-k-1): 21.45
+886	k: 17	rhovec: 16.0862	Rvec (n-k-1): 23.4
+887	k: 16	rhovec: 16.6675	Rvec (n-k-1): 23.4
+888	k: 15	rhovec: 20.002	Rvec (n-k-1): 25.35
+889	k: 14	rhovec: 24.3044	Rvec (n-k-1): 25.35
+890	k: 13	rhovec: 24.5845	Rvec (n-k-1): 27.3
+891	k: 12	rhovec: 27.4165	Rvec (n-k-1): 27.3
+892	k: 13	rhovec: 45.878	Rvec (n-k-1): 27.3
+893	k: 14	rhovec: 26.9037	Rvec (n-k-1): 25.35
+894	k: 15	rhovec: 23.2517	Rvec (n-k-1): 25.35
+895	k: 14	rhovec: 23.282	Rvec (n-k-1): 25.35
+896	k: 13	rhovec: 25.5361	Rvec (n-k-1): 27.3
+897	k: 12	rhovec: 26.1868	Rvec (n-k-1): 27.3
+898	k: 11	rhovec: 30.6462	Rvec (n-k-1): 29.25
+899	k: 12	rhovec: 43.9846	Rvec (n-k-1): 27.3
+900	k: 13	rhovec: 36.7704	Rvec (n-k-1): 27.3
+901	k: 14	rhovec: 43.747	Rvec (n-k-1): 25.35
+902	k: 15	rhovec: 55.3321	Rvec (n-k-1): 25.35
+903	k: 16	rhovec: 29.8941	Rvec (n-k-1): 23.4
+904	k: 17	rhovec: 26.4484	Rvec (n-k-1): 23.4
+905	k: 18	rhovec: 30.5064	Rvec (n-k-1): 21.45
+906	k: 19	rhovec: 20.0221	Rvec (n-k-1): 21.45
+907	k: 18	rhovec: 23.1796	Rvec (n-k-1): 21.45
+908	k: 19	rhovec: 38.9785	Rvec (n-k-1): 21.45
+909	k: 20	rhovec: 24.9545	Rvec (n-k-1): 19.5
+910	k: 21	rhovec: 23.1183	Rvec (n-k-1): 19.5
+911	k: 22	rhovec: 27.1552	Rvec (n-k-1): 17.55
+912	k: 23	rhovec: 26.8247	Rvec (n-k-1): 17.55
+913	k: 24	rhovec: 23.2943	Rvec (n-k-1): 15.6
+914	k: 25	rhovec: 22.1409	Rvec (n-k-1): 15.6
+915	k: 26	rhovec: 16.4533	Rvec (n-k-1): 13.65
+916	k: 27	rhovec: 29.7739	Rvec (n-k-1): 13.65
+917	k: 28	rhovec: 14.0728	Rvec (n-k-1): 11.7
+918	k: 29	rhovec: 11.618	Rvec (n-k-1): 11.7
+919	k: 28	rhovec: 11.7265	Rvec (n-k-1): 11.7
+920	k: 29	rhovec: 20.744	Rvec (n-k-1): 11.7
+921	k: 30	rhovec: 20.883	Rvec (n-k-1): 9.75
+922	k: 31	rhovec: 7.06201	Rvec (n-k-1): 9.75
+923	k: 30	rhovec: 7.07745	Rvec (n-k-1): 9.75
+924	k: 29	rhovec: 8.29782	Rvec (n-k-1): 11.7
+925	k: 28	rhovec: 8.41151	Rvec (n-k-1): 11.7
+926	k: 27	rhovec: 9.65283	Rvec (n-k-1): 13.65
+927	k: 26	rhovec: 9.72039	Rvec (n-k-1): 13.65
+928	k: 25	rhovec: 11.0869	Rvec (n-k-1): 15.6
+929	k: 24	rhovec: 13.0582	Rvec (n-k-1): 15.6
+930	k: 23	rhovec: 13.9843	Rvec (n-k-1): 17.55
+931	k: 22	rhovec: 16.697	Rvec (n-k-1): 17.55
+932	k: 21	rhovec: 18.2121	Rvec (n-k-1): 19.5
+933	k: 20	rhovec: 18.5131	Rvec (n-k-1): 19.5
+934	k: 19	rhovec: 21.1908	Rvec (n-k-1): 21.45
+935	k: 18	rhovec: 21.8908	Rvec (n-k-1): 21.45
+936	k: 19	rhovec: 22.89	Rvec (n-k-1): 21.45
+937	k: 20	rhovec: 28.9598	Rvec (n-k-1): 19.5
+938	k: 21	rhovec: 23.6095	Rvec (n-k-1): 19.5
+939	k: 22	rhovec: 18.9816	Rvec (n-k-1): 17.55
+940	k: 23	rhovec: 21.8424	Rvec (n-k-1): 17.55
+941	k: 24	rhovec: 15.2523	Rvec (n-k-1): 15.6
+942	k: 23	rhovec: 16.4804	Rvec (n-k-1): 17.55
+943	k: 22	rhovec: 19.8067	Rvec (n-k-1): 17.55
+944	k: 23	rhovec: 23.193	Rvec (n-k-1): 17.55
+945	k: 24	rhovec: 34.5998	Rvec (n-k-1): 15.6
+946	k: 25	rhovec: 14.6027	Rvec (n-k-1): 15.6
+947	k: 24	rhovec: 14.6151	Rvec (n-k-1): 15.6
+948	k: 23	rhovec: 15.8594	Rvec (n-k-1): 17.55
+949	k: 22	rhovec: 19.6276	Rvec (n-k-1): 17.55
+950	k: 23	rhovec: 22.5151	Rvec (n-k-1): 17.55
+951	k: 24	rhovec: 25.7137	Rvec (n-k-1): 15.6
+952	k: 25	rhovec: 30.4004	Rvec (n-k-1): 15.6
+953	k: 26	rhovec: 17.0384	Rvec (n-k-1): 13.65
+954	k: 27	rhovec: 12.3227	Rvec (n-k-1): 13.65
+955	k: 26	rhovec: 13.6472	Rvec (n-k-1): 13.65
+956	k: 25	rhovec: 13.6562	Rvec (n-k-1): 15.6
+957	k: 24	rhovec: 14.2796	Rvec (n-k-1): 15.6
+958	k: 23	rhovec: 15.4876	Rvec (n-k-1): 17.55
+959	k: 22	rhovec: 16.2804	Rvec (n-k-1): 17.55
+960	k: 21	rhovec: 18.1906	Rvec (n-k-1): 19.5
+961	k: 20	rhovec: 18.3369	Rvec (n-k-1): 19.5
+962	k: 19	rhovec: 19.0859	Rvec (n-k-1): 21.45
+963	k: 18	rhovec: 19.2232	Rvec (n-k-1): 21.45
+964	k: 17	rhovec: 19.4898	Rvec (n-k-1): 23.4
+965	k: 16	rhovec: 19.5221	Rvec (n-k-1): 23.4
+966	k: 15	rhovec: 19.5454	Rvec (n-k-1): 25.35
+967	k: 14	rhovec: 21.8936	Rvec (n-k-1): 25.35
+968	k: 13	rhovec: 27.7408	Rvec (n-k-1): 27.3
+969	k: 14	rhovec: 29.5875	Rvec (n-k-1): 25.35
+970	k: 15	rhovec: 37.4959	Rvec (n-k-1): 25.35
+971	k: 16	rhovec: 37.9671	Rvec (n-k-1): 23.4
+972	k: 17	rhovec: 31.1602	Rvec (n-k-1): 23.4
+973	k: 18	rhovec: 32.3688	Rvec (n-k-1): 21.45
+974	k: 19	rhovec: 26.5335	Rvec (n-k-1): 21.45
+975	k: 20	rhovec: 30.0558	Rvec (n-k-1): 19.5
+976	k: 21	rhovec: 22.4207	Rvec (n-k-1): 19.5
+977	k: 22	rhovec: 24.4401	Rvec (n-k-1): 17.55
+978	k: 23	rhovec: 22.2717	Rvec (n-k-1): 17.55
+979	k: 24	rhovec: 20.7076	Rvec (n-k-1): 15.6
+980	k: 25	rhovec: 24.4284	Rvec (n-k-1): 15.6
+981	k: 26	rhovec: 15.6596	Rvec (n-k-1): 13.65
+982	k: 27	rhovec: 26.1016	Rvec (n-k-1): 13.65
+983	k: 28	rhovec: 14.1982	Rvec (n-k-1): 11.7
+984	k: 29	rhovec: 9.50433	Rvec (n-k-1): 11.7
+985	k: 28	rhovec: 10.9467	Rvec (n-k-1): 11.7
+986	k: 27	rhovec: 11.03	Rvec (n-k-1): 13.65
+987	k: 26	rhovec: 12.6321	Rvec (n-k-1): 13.65
+988	k: 25	rhovec: 13.3831	Rvec (n-k-1): 15.6
+989	k: 24	rhovec: 13.4369	Rvec (n-k-1): 15.6
+990	k: 23	rhovec: 15.7643	Rvec (n-k-1): 17.55
+991	k: 22	rhovec: 17.8128	Rvec (n-k-1): 17.55
+992	k: 23	rhovec: 19.1996	Rvec (n-k-1): 17.55
+993	k: 24	rhovec: 23.7065	Rvec (n-k-1): 15.6
+994	k: 25	rhovec: 18.9421	Rvec (n-k-1): 15.6
+995	k: 26	rhovec: 13.9604	Rvec (n-k-1): 13.65
+996	k: 27	rhovec: 18.8038	Rvec (n-k-1): 13.65
+997	k: 28	rhovec: 11.9544	Rvec (n-k-1): 11.7
+998	k: 29	rhovec: 21.2696	Rvec (n-k-1): 11.7
+999	k: 30	rhovec: 13.28	Rvec (n-k-1): 9.75
+1000	k: 31	rhovec: 18.1166	Rvec (n-k-1): 9.75
+1001	k: 32	rhovec: 20.4595	Rvec (n-k-1): 7.8
+1002	k: 33	rhovec: 6.31443	Rvec (n-k-1): 7.8
+1003	k: 32	rhovec: 7.28045	Rvec (n-k-1): 7.8
+1004	k: 31	rhovec: 8.30101	Rvec (n-k-1): 9.75
+1005	k: 30	rhovec: 8.3121	Rvec (n-k-1): 9.75
+1006	k: 29	rhovec: 9.54933	Rvec (n-k-1): 11.7
+1007	k: 28	rhovec: 10.3007	Rvec (n-k-1): 11.7
+1008	k: 27	rhovec: 10.8515	Rvec (n-k-1): 13.65
+1009	k: 26	rhovec: 11.1443	Rvec (n-k-1): 13.65
+1010	k: 25	rhovec: 12.3644	Rvec (n-k-1): 15.6
+1011	k: 24	rhovec: 12.4883	Rvec (n-k-1): 15.6
+1012	k: 23	rhovec: 13.0531	Rvec (n-k-1): 17.55
+1013	k: 22	rhovec: 14.4214	Rvec (n-k-1): 17.55
+1014	k: 21	rhovec: 14.9909	Rvec (n-k-1): 19.5
+1015	k: 20	rhovec: 15.2307	Rvec (n-k-1): 19.5
+1016	k: 19	rhovec: 16.3571	Rvec (n-k-1): 21.45
+1017	k: 18	rhovec: 16.5577	Rvec (n-k-1): 21.45
+1018	k: 17	rhovec: 17.894	Rvec (n-k-1): 23.4
+1019	k: 16	rhovec: 22.7063	Rvec (n-k-1): 23.4
+1020	k: 15	rhovec: 24.0318	Rvec (n-k-1): 25.35
+1021	k: 14	rhovec: 24.5168	Rvec (n-k-1): 25.35
+1022	k: 13	rhovec: 29.0898	Rvec (n-k-1): 27.3
+1023	k: 14	rhovec: 40.0711	Rvec (n-k-1): 25.35
+1024	k: 15	rhovec: 33.2085	Rvec (n-k-1): 25.35
+1025	k: 16	rhovec: 23.1137	Rvec (n-k-1): 23.4
+1026	k: 15	rhovec: 27.256	Rvec (n-k-1): 25.35
+1027	k: 16	rhovec: 62.4101	Rvec (n-k-1): 23.4
+1028	k: 17	rhovec: 24.4836	Rvec (n-k-1): 23.4
+1029	k: 18	rhovec: 29.0823	Rvec (n-k-1): 21.45
+1030	k: 19	rhovec: 22.3446	Rvec (n-k-1): 21.45
+1031	k: 20	rhovec: 26.1282	Rvec (n-k-1): 19.5
+1032	k: 21	rhovec: 24.0651	Rvec (n-k-1): 19.5
+1033	k: 22	rhovec: 20.4121	Rvec (n-k-1): 17.55
+1034	k: 23	rhovec: 22.5664	Rvec (n-k-1): 17.55
+1035	k: 24	rhovec: 21.9313	Rvec (n-k-1): 15.6
+1036	k: 25	rhovec: 16.3151	Rvec (n-k-1): 15.6
+1037	k: 26	rhovec: 16.7882	Rvec (n-k-1): 13.65
+1038	k: 27	rhovec: 15.8213	Rvec (n-k-1): 13.65
+1039	k: 28	rhovec: 13.1573	Rvec (n-k-1): 11.7
+1040	k: 29	rhovec: 10.7153	Rvec (n-k-1): 11.7
+1041	k: 28	rhovec: 11.788	Rvec (n-k-1): 11.7
+1042	k: 29	rhovec: 22.5616	Rvec (n-k-1): 11.7
+1043	k: 30	rhovec: 14.6141	Rvec (n-k-1): 9.75
+1044	k: 31	rhovec: 9.50163	Rvec (n-k-1): 9.75
+1045	k: 30	rhovec: 10.436	Rvec (n-k-1): 9.75
+1046	k: 31	rhovec: 19.6063	Rvec (n-k-1): 9.75
+1047	k: 32	rhovec: 7.94962	Rvec (n-k-1): 7.8
+1048	k: 33	rhovec: 25.2577	Rvec (n-k-1): 7.8
+1049	k: 34	rhovec: 6.14791	Rvec (n-k-1): 5.85
+1050	k: 35	rhovec: 6.32131	Rvec (n-k-1): 5.85
+1051	k: 36	rhovec: 5.23532	Rvec (n-k-1): 3.9
+1052	k: 37	rhovec: 6.11224	Rvec (n-k-1): 3.9
+1053	k: 38	rhovec: 5.95265	Rvec (n-k-1): 1.95
+1054	k: 39	rhovec: 81	Rvec (n-k-1): 1.95
+Nodes processed: 1054
+Solution length: 0
+Simvol_0 = 1
+Polvol_0 = 1
+V_ball(1, 1.39642) = 2.79285
+|b^*_39| = 9
+V_1 = 2.79285
+denom_1 = 9
+N_1 = 0.310316
+
+Simvol_1 = 1
+Polvol_1 = 1
+V_ball(2, 1.39642) = 6.12611
+|b^*_38| = 2.43981
+V_2 = 6.12611
+denom_2 = 21.9582
+N_2 = 0.278989
+
+Simvol_1 = 1
+Polvol_1 = 1
+V_ball(3, 1.97484) = 32.2616
+|b^*_37| = 2.47229
+V_3 = 48.3924
+denom_3 = 54.2873
+N_3 = 0.891413
+
+Simvol_2 = 2
+Polvol_2 = 0.375
+V_ball(4, 1.97484) = 75.0583
+|b^*_36| = 2.28808
+V_4 = 56.2938
+denom_4 = 124.214
+N_4 = 0.453201
+
+Simvol_2 = 2
+Polvol_2 = 0.375
+V_ball(5, 2.41868) = 435.701
+|b^*_35| = 2.51422
+V_5 = 612.704
+denom_5 = 312.301
+N_5 = 1.9619
+
+Simvol_3 = 6
+Polvol_3 = 0.0987654
+V_ball(6, 2.41868) = 1034.58
+|b^*_34| = 2.4795
+V_6 = 613.087
+denom_6 = 774.35
+N_6 = 0.791745
+
+Simvol_3 = 6
+Polvol_3 = 0.0987654
+V_ball(7, 2.79285) = 6261.98
+|b^*_33| = 2.51285
+V_7 = 8117.38
+denom_7 = 1945.83
+N_7 = 4.17169
+
+Simvol_4 = 24
+Polvol_4 = 0.0203451
+V_ball(8, 2.79285) = 15023.3
+|b^*_32| = 2.26161
+V_8 = 7335.62
+denom_8 = 4400.7
+N_8 = 1.66692
+
+Simvol_4 = 24
+Polvol_4 = 0.0203451
+V_ball(9, 3.1225) = 93076.2
+|b^*_31| = 2.50059
+V_9 = 111843
+denom_9 = 11004.4
+N_9 = 10.1635
+
+Simvol_5 = 120
+Polvol_5 = 0.003456
+V_ball(10, 3.1225) = 224694
+|b^*_30| = 2.61786
+V_10 = 93185
+denom_10 = 28807.9
+N_10 = 3.23471
+
+Simvol_5 = 120
+Polvol_5 = 0.003456
+V_ball(11, 3.42053) = 1.41295e+06
+|b^*_29| = 2.66255
+V_11 = 1.58626e+06
+denom_11 = 76702.4
+N_11 = 20.6808
+
+Simvol_6 = 720
+Polvol_6 = 0.000500323
+V_ball(12, 3.42053) = 3.42517e+06
+|b^*_28| = 2.76625
+V_12 = 1.23386e+06
+denom_12 = 212178
+N_12 = 5.81519
+
+Simvol_6 = 720
+Polvol_6 = 0.000500323
+V_ball(13, 3.69459) = 2.17622e+07
+|b^*_27| = 3.09181
+V_13 = 2.29901e+07
+denom_13 = 656015
+N_13 = 35.0451
+
+Simvol_7 = 5040
+Polvol_7 = 6.31572e-05
+V_ball(14, 3.69459) = 5.29111e+07
+|b^*_26| = 2.97757
+V_14 = 1.68423e+07
+denom_14 = 1.95333e+06
+N_14 = 8.62234
+
+Simvol_7 = 5040
+Polvol_7 = 6.31572e-05
+V_ball(15, 3.94968) = 3.38738e+08
+|b^*_25| = 3.37855
+V_15 = 3.38795e+08
+denom_15 = 6.59943e+06
+N_15 = 51.337
+
+Simvol_8 = 40320
+Polvol_8 = 7.07061e-06
+V_ball(16, 3.94968) = 8.2542e+08
+|b^*_24| = 3.44498
+V_16 = 2.35317e+08
+denom_16 = 2.27349e+07
+N_16 = 10.3505
+
+Simvol_8 = 40320
+Polvol_8 = 7.07061e-06
+V_ball(17, 4.18927) = 5.31516e+09
+|b^*_23| = 3.92614
+V_17 = 5.05873e+09
+denom_17 = 8.92603e+07
+N_17 = 56.6739
+
+Simvol_9 = 362880
+Polvol_9 = 7.11303e-07
+V_ball(18, 4.18927) = 1.29742e+10
+|b^*_22| = 3.8825
+V_18 = 3.34886e+09
+denom_18 = 3.46553e+08
+N_18 = 9.66335
+
+Simvol_9 = 362880
+Polvol_9 = 7.11303e-07
+V_ball(19, 4.41588) = 8.39298e+10
+|b^*_21| = 3.86005
+V_19 = 7.63417e+10
+denom_19 = 1.33771e+09
+N_19 = 57.0689
+
+Simvol_10 = 3.6288e+06
+Polvol_10 = 6.49787e-08
+V_ball(20, 4.41588) = 2.05155e+11
+|b^*_20| = 3.82698
+V_20 = 4.83744e+10
+denom_20 = 5.1194e+09
+N_20 = 9.44924
+
+Simvol_10 = 3.6288e+06
+Polvol_10 = 6.49787e-08
+V_ball(21, 4.63141) = 1.33209e+12
+|b^*_19| = 3.72849
+V_21 = 1.16221e+12
+denom_21 = 1.90876e+10
+N_21 = 60.8884
+
+Simvol_11 = 3.99168e+07
+Polvol_11 = 5.43672e-09
+V_ball(22, 4.63141) = 3.25982e+12
+|b^*_18| = 4.0151
+V_22 = 7.07434e+11
+denom_22 = 7.66387e+10
+N_22 = 9.23077
+
+Simvol_11 = 3.99168e+07
+Polvol_11 = 5.43672e-09
+V_ball(23, 4.83735) = 2.12316e+13
+|b^*_17| = 3.97128
+V_23 = 1.78237e+13
+denom_23 = 3.04354e+11
+N_23 = 58.5625
+
+Simvol_12 = 4.79002e+08
+Polvol_12 = 4.19628e-10
+V_ball(24, 4.83735) = 5.20058e+13
+|b^*_16| = 4.47835
+V_24 = 1.04533e+13
+denom_24 = 1.363e+12
+N_24 = 7.66932
+
+Simvol_12 = 4.79002e+08
+Polvol_12 = 4.19628e-10
+V_ball(25, 5.03488) = 3.39597e+14
+|b^*_15| = 4.39202
+V_25 = 2.75054e+14
+denom_25 = 5.98634e+12
+N_25 = 45.9469
+
+Simvol_13 = 6.22702e+09
+Polvol_13 = 3.00602e-11
+V_ball(26, 5.03488) = 8.32495e+14
+|b^*_14| = 4.70132
+V_26 = 1.55831e+14
+denom_26 = 2.81437e+13
+N_26 = 5.53698
+
+Simvol_13 = 6.22702e+09
+Polvol_13 = 3.00602e-11
+V_ball(27, 5.22494) = 5.44818e+15
+|b^*_13| = 5.174
+V_27 = 4.26743e+15
+denom_27 = 1.45616e+14
+N_27 = 29.3061
+
+Simvol_14 = 8.71783e+10
+Polvol_14 = 2.00903e-12
+V_ball(28, 5.22494) = 1.33649e+16
+|b^*_12| = 5.10185
+V_28 = 2.34078e+15
+denom_28 = 7.4291e+14
+N_28 = 3.15083
+
+Simvol_14 = 8.71783e+10
+Polvol_14 = 2.00903e-12
+V_ball(29, 5.40833) = 8.7632e+16
+|b^*_11| = 5.74884
+V_29 = 6.65179e+16
+denom_29 = 4.27087e+15
+N_29 = 15.5748
+
+Simvol_15 = 1.30767e+12
+Polvol_15 = 1.25838e-13
+V_ball(30, 5.40833) = 2.15098e+17
+|b^*_10| = 6.04859
+V_30 = 3.53954e+16
+denom_30 = 2.58327e+16
+N_30 = 1.37018
+
+Simvol_15 = 1.30767e+12
+Polvol_15 = 1.25838e-13
+V_ball(31, 5.5857) = 1.41271e+18
+|b^*_9| = 5.86927
+V_31 = 1.04108e+18
+denom_31 = 1.51619e+17
+N_31 = 6.86644
+
+Simvol_16 = 2.09228e+13
+Polvol_16 = 7.41642e-15
+V_ball(32, 5.5857) = 3.46938e+18
+|b^*_8| = 5.96481
+V_32 = 5.38352e+17
+denom_32 = 9.04379e+17
+N_32 = 0.595272
+
+Simvol_16 = 2.09228e+13
+Polvol_16 = 7.41642e-15
+V_ball(33, 5.7576) = 2.28192e+19
+|b^*_7| = 6.26687
+V_33 = 1.63531e+19
+denom_33 = 5.66763e+18
+N_33 = 2.88536
+
+Simvol_17 = 3.55687e+14
+Polvol_17 = 4.12724e-16
+V_ball(34, 5.7576) = 5.6066e+19
+|b^*_6| = 6.29985
+V_34 = 8.23053e+18
+denom_34 = 3.57052e+19
+N_34 = 0.230514
+
+Simvol_17 = 3.55687e+14
+Polvol_17 = 4.12724e-16
+V_ball(35, 5.92453) = 3.69239e+20
+|b^*_5| = 6.49259
+V_35 = 2.57699e+20
+denom_35 = 2.31819e+20
+N_35 = 1.11164
+
+Simvol_18 = 6.40237e+15
+Polvol_18 = 2.17553e-17
+V_ball(36, 5.92453) = 9.0758e+20
+|b^*_4| = 6.57643
+V_36 = 1.26413e+20
+denom_36 = 1.52454e+21
+N_36 = 0.0829185
+
+Simvol_18 = 6.40237e+15
+Polvol_18 = 2.17553e-17
+V_ball(37, 6.08687) = 5.98403e+21
+|b^*_3| = 6.89928
+V_37 = 4.07263e+21
+denom_37 = 1.05182e+22
+N_37 = 0.387197
+
+Simvol_19 = 1.21645e+17
+Polvol_19 = 1.08925e-18
+V_ball(38, 6.08687) = 1.47139e+22
+|b^*_2| = 7.74597
+V_38 = 1.94962e+21
+denom_38 = 8.14739e+22
+N_38 = 0.0239294
+
+Simvol_19 = 1.21645e+17
+Polvol_19 = 1.08925e-18
+V_ball(39, 6.245) = 9.71151e+22
+|b^*_1| = 6.9282
+V_39 = 6.45304e+22
+denom_39 = 5.64468e+23
+N_39 = 0.114321
+
+Simvol_20 = 2.4329e+18
+Polvol_20 = 5.19328e-20
+V_ball(40, 6.245) = 2.38872e+23
+|b^*_0| = 8
+V_40 = 3.01809e+22
+denom_40 = 4.51574e+24
+N_40 = 0.00668348
+
+Predicted nodes: 269.086

@@ -23,18 +23,28 @@
 
 #include <NTL/RR.h>
 
+using namespace NTL;
+
 #define RR_PRECISION 200
 
 /** 	@file 
 	@brief Contains algorithms for finding the optimal bounding function for a lattice. */
 
 /**  Estimates the running time of pruned enumeration. It performs an exact computation based on the Dirichlet distribution as briefly explained in: Nicolas Gama, Phong Q. Nguyen and Oded Regev "Lattice Enumeration using Extreme Pruning", Advances in Cryptology – EUROCRYPT 2010 Lecture Notes in Computer Science Volume 6110, 2010, pp 257-278. */ 
-double t_extreme(
-	double R[],		 //!< The boundary function used for pruning. The odd entries have to be equal to the corresponding even entries (For example.: 1,1,2,2,5,5,... )  
-	double b_star_norm[],	 //!< The lengths of the vectors in the Gram-Schmidt basis
+RR t_extreme(
+	RR R[],		 	 //!< The boundary function used for pruning. The odd entries have to be equal to the corresponding even entries (For example.: 1,1,2,2,5,5,... )  
+	RR b_star_norm[],	 //!< The lengths of the vectors in the Gram-Schmidt basis
 	double t_node,		 //!< The time the enumeration spends with processing a single node 
 	double t_reduc,		 //!< The running time of the basis reduction algorithm used 
-	int n			 //!< The dimension of the lattice
+	int n,			 //!< The dimension of the lattice
+	long prec		 //!< The floating point precision of the computations
+	);
+
+/**  Estimates the success probability of pruned enumeration. It performs an exact computation based on the Dirichlet distribution as briefly explained in: Nicolas Gama, Phong Q. Nguyen and Oded Regev "Lattice Enumeration using Extreme Pruning", Advances in Cryptology – EUROCRYPT 2010 Lecture Notes in Computer Science Volume 6110, 2010, pp 257-278. */ 
+RR p_succ(
+	RR Rvec[],		 //!< The boundary function used for pruning. The odd entries have to be equal to the corresponding even entries (For example.: 1,1,2,2,5,5,... ) 
+	int n, 			 //!< The dimension of the lattice
+	int prec		 //!< The floating point precision of the computations
 	);
 
 /**  Generates an optimal boundary function for enumeration with extreme pruning. Uses numerical optimization with random changes as briefly explained in: Nicolas Gama, Phong Q. Nguyen and Oded Regev "Lattice Enumeration using Extreme Pruning", Advances in Cryptology – EUROCRYPT 2010 Lecture Notes in Computer Science Volume 6110, 2010, pp 257-278. */ 
@@ -48,7 +58,8 @@ void generate_boundary(
 	double delta,		//!< The step of the random modifications  
 	unsigned long iterations,	//!< The number of random modifications to test
 	double& p_succ,		//!< Container for the success probability of the resulting function
-	double& t_enum		//!< Container for the estimated running time of the resulting function
+	double& t_enum,		//!< Container for the estimated running time of the resulting function
+	bool quiet		//!< Set this false if you do not want this function to print on the standard output
 	); 
 
 #endif
