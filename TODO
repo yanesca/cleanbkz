@@ -1,27 +1,34 @@
 + Bounding function inputot implementálni, hogy gyorsabban lehessen tesztelni (kapcsoló, hogy milyen legyen a kimenet NTL vagy gnuplot)
 + A korlát gyökvonásánál biztositani, hogy felfelé kerekitse double-ra (RR-ben gyököt vonni és azt kerekiteni felfelé double-ra)
 	+ nem, illetve nem úgy működik az RR felfelé kerekités, kézzel kell implementálni double-el is rendesen működik dolog, nem kell kinlódni
-- tesztelni a bounding function-t (BKZ 30, dimenzió 80)
-	- tesztelni jól kerekitett R-el és kitalálni, hogy miért nem működik 
++ tesztelni a bounding function-t (BKZ 30, dimenzió 80)
+	+ tesztelni jól kerekitett R-el és kitalálni, hogy miért nem működik 
 		+ az egyik hiba az volt, hogy az algoritmus az R_i^2-eket várja én meg az R_i-ket adom meg neki.
-		- most viszont sokkal tovább fut mint igérte. Lehetséges okok:
+		+ most viszont sokkal tovább fut mint igérte. Lehetséges okok:
 			+ Végtelen ciklusba esett amiatt amit az NTL megpróbál kiküszübülni -nem ez a gond, az NTL-es változat is sokáig fut
-			- Rosszul számolja a node-ok számát
+			+ Rosszul számolja a node-ok számát
 				+ paramétereket keresni, ahol az LLL lineáris pruninggal mérhető ideig fut
 				+ tesztadatokat generálni vele és más alacsony success rate-űvel (hogy végig kelljen mennie) leszámolni a node-okat
 				+ összevetni a gyakorlatban tapasztalt node- számot az előrejelzettel
-				- R_k val kell normalizálni az egyes körökben, de én R_n-el normalizáltam
+				+ R_k val kell normalizálni az egyes körökben, de én R_n-el normalizáltam
 					- először egy robosztus referenciaimplementációt csinálni (pvolandscale függvénybe kitenni a skálázást és a volume számitást)	
 					- Nagyon lassit vele, meg kellene próbálni skálázásal kiváltani
-			- Valami el van cseszve az enumeration algoritmusban
+			+ Valami el van cseszve az enumeration algoritmusban -nem volt
 	- Implementálni a bázis randomizálást
-- debugolni a node predikálót:
-	+ olyan cjloss lattice-t konstruálni ahol nagyjából egybeesik a gauss heurisztika és a tényleges legrövidebb vektor és azzal letesztelni - továbbra is alulbecsül függetlenül a gaus heuristika pontosságától.
++ debugolni a node predikálót:
+	+ olyan cjloss lattice-t konstruálni ahol nagyjából egybeesik a gauss heurisztika és a tényleges legrövidebb vektor és azzal letesztelni - továbbra is alulbecsül függetlenül a gaus heuristika pontosságától. - a cjloss lattice-kre valamiért nem megy
 	+ letesztelni random lattice-okkal - azokat is alulbecsli a leszámlálás vége meg elszáll
-	- utánanézni a gauss heurisztikának, hogy mit írnak róla és annak alapján finomítani a teszteket
-	- Alaposabban megérteni az enumeration algoritmusát és debugolni
-	- Ellenőrizni és debugolni a gauss heurisztika számítását (a cjloss lattice-re a grafikonom laposabb volt mint Phongé)
-- a cjlossos tesztprogramból automatikus tesztet irni,  
+		+ tévedés, rosszul implementáltam a random lattice-ket
+	+ utánanézni a gauss heurisztikának, hogy mit írnak róla és annak alapján finomítani a teszteket
+	+ Alaposabban megérteni az enumeration algoritmusát és debugolni
+	+ Ellenőrizni és debugolni a gauss heurisztika számítását (a cjloss lattice-re a grafikonom laposabb volt mint Phongé)
++ a cjlossos tesztprogramból automatikus tesztet irni,  - a cjlossossal nem működik és nem is tudom, hogyan lehetne működésre birni (lásd GH)
+- a random lattice-s tesztprogramból automatikus teszteket irni
+	- node számlálás full (double)
+	- extreme pruning tesztet külön lefuttatni, hogy ha van még valami gond, akkor az itt kiderüljön
+	- node számlálás pruned (double)
+	- node számlálás full
+	- node számlálás pruned
 - elküldeni a többieknek a linket a github projektre
 - implementálni az adaptiv a keresést: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább (betenni a unit tesztbe)
 - Megnézni az early termination-ös cikkeket, hogy milyen blokkméretet lenne érdemes használni egy 128 dimenziós bázis előfeldolgozásához 

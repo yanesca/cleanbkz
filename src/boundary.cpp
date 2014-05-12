@@ -22,8 +22,10 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <fstream>
 #include <NTL/RR.h>
 #include <cleanbkz/boundary.hpp>
+#include <cleanbkz/gsa.hpp>
 
 using namespace std;
 
@@ -245,21 +247,31 @@ double n_full(double R, double b_star_norm[], int n) {
 	return N; 
 	}
 
+inline double get_gsa(double scale, int dim, int bsize, int i) {
+	cout << "# get " << i << " exponent= " <<   (scale + gsa_slope[bsize]*(i-(dim+1)/2.0) + gsa_convexity[bsize]*(i*i-(dim+1)*i+(dim+1)*(dim+2)/6.0))  << endl;
+	return exp( (scale + gsa_slope[bsize]*(i-(dim+1)/2.0) + gsa_convexity[bsize]*(i*i-(dim+1)*i+(dim+1)*(dim+2)/6.0))  );
+}
 
-double n_full_gsa(double R, double b1_norm, double alpha, int n) {
+double n_full_gsa(double R, double scale, int bsize, int n) {
 	double N, V_act, denom;
+
+	cout << "# " << "scale: " << scale << endl;
+	cout << "# " << "slope: " <<   gsa_slope[bsize] << endl;
+	cout << "# " << "convexity: " <<   gsa_convexity[bsize] << endl;
+	cout << "\"GSA\"" << endl << endl;
 
 	N= 0;
 	denom= 1;
 	for(int i= 1; i<= n; i++) {
 		V_act= ball_vol(i, R); 
 
-		//cout << n-i << "gsa: " <<  b1_norm*pow(alpha,n-i) << endl;
-		//cout << n-i << "alpha: " <<  alpha << " pow: " << pow(alpha,n-i) << endl;
-		denom*= b1_norm*pow(alpha,n-i);
+		denom*= sqrt(get_gsa(scale, n, bsize, n-i+1));
 		N+= V_act/denom;
+
+		cout << "# " << n-i << " gsa: " <<  sqrt(get_gsa(scale, n, bsize, n-i+1)) << endl;
+		cout << i-1 << " " << V_act/denom << endl;
 	}
-	//cout << endl;
+	cout << endl << "# " << N/2 << endl;
 
 	N/= 2;
 	return N; 
@@ -311,6 +323,10 @@ double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, d
 
 	cout << "\"Predicted\"" << endl << endl;
 
+	ifstream myfile ("ratio.tmp");
+	unsigned long nodes;
+	unsigned long sum= 0;
+
 //	N_next= 0;
 //	N_prev= 1/b_star_norm[n-1];
 	for(int k= 1; k<= n; k++) {
@@ -348,18 +364,28 @@ double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, d
 
 		N+= V_act/denom/2;
 
-		/*cout << "# Simvol_" << psd << " = " <<  fact(psd) << endl;
+		cout << "# Simvol_" << psd << " = " <<  fact(psd) << endl;
 		cout << "# Polvol_" << psd << " = " <<  pvol_and_scale(Rvec, k) << endl;
 		cout << "# V_ball(" << k << ", " << Rvec[k-1] << ") = " << ball_vol(k, Rvec[k-1]) << endl;
 		cout << "# |b^*_" << n-k << "| = " << b_star_norm[n-k] << endl;
 		cout << "# V_" << k << " = " << V_act << endl;
 		cout << "# denom_" << k << " = " << denom << endl;
-		cout << "# N_" << k << " = " << V_act/denom/2 << endl; */
+		cout << "# N_" << k << " = " << V_act/denom/2 << endl; 
+		myfile >> nodes; sum+= nodes; 
+		cout << "# Measured nodes: " << nodes << endl;
+		cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
+		cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
+
+		//cout << k-1 << " " << nodes/(V_act/denom/2) << endl;
+		//cout << k-1 << " " << nodes - V_act/denom/2 << endl;		
 		cout << k-1 << " " << V_act/denom/2 << endl; 
 	}
+	
+	myfile.close();
 
 	//N/= 2;
 	cout << "# Predicted nodes: " << N << endl;
+	cout << "# Measured nodes: " << sum << endl;
 	return (t_reduc+t_node*N)/(pvol_and_scale(Rvec, n/2)*fact(n/2)); 
 }
 

@@ -8,11 +8,48 @@ Puha érvek:
 - Ellene: Rengetegszer ellenőriztem és tényleg nagyon egyszerű a képlet
 
 Ha mégis az enumerationben van a hiba akkor:
-- Az valami alapvető, ami már a módositás előtt is élt
+- Az valami alapvető, ami már a módositás előtt is élt én vezettem bele és mindkettőben sikerült elkövetnem.
 
 Ötletek:
-- megnézni, hogy milyen sugár kellene, hogy jól működjön
++ megnézni, hogy milyen sugár kellene, hogy jól működjön
+	+ 40 dimenzióban egy 1.0935 -ös szorzó viszonylag jól közelit
+		+ ez az LLL bázisok Hermite faktorára emlékeztet - nem az, mert az nagyjából 1.02 és 1.022 között van
+		+ de akkor lehet, hogy a GSA konstans lesz az - nem mert az 0.99 körül van, az inverze meg 1.042
+		+ megnézni, hogy alacsony dimenzióban hogy viselkedik 
+			+ ott nem elég az 1.0935 -ös faktor, ott már nagyobb kellene
+			+ a jobbra eltolódás viszont változatlanul jelentkezik
+		- ugyanakkor kicsit el van tolódva jobbra a heurisztika
++ mi történik, ha nagyobb sugarat adok meg? - a gráf vége megemelkedik, de a különbség változatlan
+	+ ha a gauss heurisztikát adom meg a legrövidebb helyett akkor a végén az anomália megszűnik
++ Phong azt irja, hogy a GH-nak CJLOSS esetben közel kellene lennie a tényleges értékhez 
+	+ igy is van. az arány 1.1 körül van 40 dimenziónál és a dimenzió emelésével csak csökken
++ kideriteni, hogy miért nem jár többször az első szinten
+	+ heurisztikusan abszolut érthető: az első szint egy szokatlanul hosszú (az utsó GS vektor egy random lattice-ban jóval rövidebb) GS vektorhoz tartozik és ezért meglehetősen ritka
+- megismételni a Phong-féle kisérletet (random lattices mint a 13-as  referenciában)
++ kiszámolni és ábrázolni a mért és előrejelzett értékek arányát
+	+ az arány folyamatosan nő (az első pár szinten még a heurisztika vezet)
+	+ 40 dimenzióban az arány 4-5 körül-ig is elmegy
++ összehasonlitani a leszámlálást Po-Chun algoritmusával - a phong féle változatot csinálta, és ugyanúgy csinálta a számlálást, ahogy én
++ egy naiv leszámláló algoritmust irni és összehasonlitani a kisérleteimmel - az eredeti egy másik fát jár be és ezt meg nem nagyon lehet máshogy leszámolni
+- megnézni, hogy alacsony dimenzióban hogy viselkedik
 - megnézni, hogy milyen bázisvektorok kellenének, hogy passzoljon
 - kiíratni és grafikonon megnézni a full enumeration útvonalát
-- megnézni az Ajtai féle Gauss heurisztikás cikket
 - matlabban vagy sage-ben implementálni a számitásokat
+- megnézni az Ajtai féle Gauss heurisztikás cikket
+- átismételni és pontosan megnézni a hermite faktor, hermite konstans és gauss heurisztika fogalmát és kapcsolatukat
+
+Talált hibák:
+- Bejárt node-ok != fában lévő node-ok (csak reméljük/feltételezzük, hogy arányos vele)
+	- kérdés, hogy miért néz ki furán az igy kapott gráf vége
+	- az is kérdés, hogy aszimptotikusan van-e jelentősége
+- Random latticeken jól működik és a két érték nagyjából egybeesik
+- Viszont azt állitják, hogy cjloss lattice-eken is megy
+	- az a tippem, hogy a GSA függvényeikkel csinálták a közelitést
+	- viszont nem birtam utánuk csinálni, a függvényük nem adott jó közelitést, nem tudom hogy miért és ez aggaszt
+
+Gyakori gondoltmenetek:
+- az algoritmus módositásával valamit elcsesztem és azért számol többet
+- az algoritmus eleve többször is feldolgozhat egy elemet
+- még mindig hozzászámolok olyan elemeket is amiket nem kellene
+- rossz a paraméterezés
+- a cjloss lattice-kre nem olyan jó a becslés 

@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
 
 	vec_RR solution;	
 	//enumerate_ntl(l.basis, bsize, act, solution);
-	enumerate_epr(basis, bsize, act, solution);
+	//enumerate_epr(basis, bsize, act, solution);
 	cout << "# Solution length: " << solution.length() << endl << endl << endl;
 
 
@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
 	for(int i= 0; i < mu1.NumRows(); i++) 
 		alpha*= c[i];
 	alpha= log(pow(alpha,2.0/dim));
-//	n_full_gsa(gh, alpha, bsize, dim); 
+	n_full_gsa(gh, alpha, bsize, dim); 
 
 /*	
 	cout << "# Rank: " << BKZ_QP1(l.basis, 0.99, 2) << endl; 

@@ -163,12 +163,12 @@ void enumerate_ntl(mat_ZZ& basis, int beta, double* prune, vec_RR& result) {
 
 void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, unsigned long &termination, double &time) {
 
-	cout << "# Enumerate: " << endl << "# GS-squares: [ ";
+	cout << "# Enumerate: " << endl << "# GS lengths: [ ";
 	for(int i= 0; i < n; i++)
-		cout << b[i] << " ";	
-	cout << "]" << endl << "# Bound squares: [ ";
+		cout << sqrt(b[i]) << " ";	
+	cout << "]" << endl << "# Bounds: [ ";
 	for(int i= 0; i < n; i++)
-		cout << Rvec[i] << " ";	
+		cout << sqrt(Rvec[i]) << " ";	
 	cout << "]" << endl << "#" << endl;
 
 	bool pruning= true; 
@@ -222,16 +222,21 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 	while((termination==0)||(nodes < termination)) {
 		rhovec[k]= rhovec[k+1]+(vvec[k]-cvec[k])*(vvec[k]-cvec[k])*b[k];	
 
-		nodes++;
-		prof[n-k-1]++;
 		//cout << nodes << "\tk: " << k << "\trhovec: " << rhovec[k] << "\tRvec (n-k-1): " << Rvec[n-k-1] << endl; 
 		/*cout << "vvec: " << endl;
 		for(int i= 0; i < n; i++)
 			cout << vvec[i] << " ";
 		cout << endl;*/
 
+		//nodes++;
+		//prof[n-k-1]++;
+
 		//if(rhovec[k] <= Rvec[n-k-1]) {
 		if((k!=0) && (rhovec[k] <= Rvec[n-k-1])) {
+
+			nodes++;
+			prof[n-k-1]++;
+
 			/*if(k==0) 
 				break;
 			else {*/
@@ -246,6 +251,11 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 
 			//}
 		} else {
+			if((k==0) && (rhovec[0] <= Rvec[n-1])) {
+				nodes++;
+				prof[n-k-1]++;
+			}
+
 			k++;
 			if(k==n)
 				break;
@@ -271,8 +281,16 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 	//if(termination!=0)
 		termination-= nodes;
 
+	ofstream myfile;
+	myfile.open ("ratio.tmp",ios::trunc);
+	for(int i= 0; i < n; i++)
+		myfile << prof[i] << " ";
+	myfile.close();
+	
+	
 	for(int i= 0; i < n; i++)
 		cout << i << " " << prof[i] << endl;
+	
 
 	if(k==0) {
 		result.SetLength(n);

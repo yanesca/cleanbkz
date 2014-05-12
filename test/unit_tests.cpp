@@ -146,15 +146,14 @@ int main(int argc, char** argv) {
 			ball_test= false;
 			cout << "\tBall test failed in dimension " << i << endl;
 		}
-		/*cout << "Ball vol " << i << ": " << ball_vol_RR(i, r, prec) << endl;
-		cout << "Ball vol " << i << ": " << ball_vol(i, r_d) << endl;
-		cout << "dif: " << abs(ball_vol_RR(i, r, prec)-ball_vol(i, r_d)) << endl;*/
 	}
 
 	if(ball_test)
 		cout << "\tBall test PASSED." << endl;
 
-	// Unit tests for the enumeration running time estimator function
+	// Unit tests for node number estimation
+
+	/* Unit tests for the enumeration running time estimator function
 	//TODO: cjloss destruktort megirni és itt meghivni
 	//TODO: setupot és teardownt irni a teszthez
 
@@ -194,15 +193,15 @@ int main(int argc, char** argv) {
 
 	double t_node= 3.47193e-08;
 	double t_reduc= 0.101471;
-/*	if(t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows())-t_extreme_reference(boundary, c, t_node, t_reduc, mu1.NumRows()) < 1e-10)
+	if(t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows())-t_extreme_reference(boundary, c, t_node, t_reduc, mu1.NumRows()) < 1e-10)
 		cout << "PASSED" << endl;
-	else cout << "FAILED" << endl;*/
+	else cout << "FAILED" << endl;
 
 	//cout << "Production (double): " << t_extreme(boundary_d, c_d, t_node, t_reduc, mu1.NumRows()) << endl;
 	cout << "Reference: " << t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl; 
 	cout << "Reference (double): " << t_extreme_reference(boundary_d, c_d, t_node, t_reduc, mu1.NumRows()) << endl; 
 	cout << "Production: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl;
-	cout << "Diff: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) - t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl;
+	cout << "Diff: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) - t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl; */
 
 	return 0;
 }
