@@ -1,3 +1,13 @@
+Utána nézni, hogy eddig milyen eredmények vannak a gauss heurisztikáról?
+Alapos kisérleteket végezni, hogy mitől függ, hogy mekkora sugár kell, hogy működjön:
+- random lattice-kkel full enumerationt csinálni (olyan alacsony dimenzióban, ahol még működik a dolog)
+- fix determináns, véletlen lattice
+- kisérletek:
+	- fix sugár, változó lattice, mekkora a hiba (hiba előjelét is nézni)
+	- több különböző sugárral elvégezni és hisztogrammokat késziteni
+	- Hermite faktorok mennyire különböznek? Mennyire függ a hiba a hermite faktortól? 
+
+-------------------------------------------
 Érvek amik amellett szólnak, hogy a heurisztika számitással van a gond:
 - Mindkét enumeration algoritmus ugyanazt az eredményt adja.
 - Már a pruned esetben is ugyanazt adták és hasonló volt az eltérés mint a teljes esetben

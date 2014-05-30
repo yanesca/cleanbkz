@@ -46,7 +46,63 @@ extern RR ball_vol_RR(int k, RR r, int prec);
 extern RR RR_PI;
 extern double ball_vol(int k, double r); 
 
+extern double integral_even(int ltilde, int l, double tvec[], double vvec[]);
+
+void genbounds(int l, double* tvec);
+
 int main(int argc, char** argv) {
+
+	double* vols_d= new double[40];
+
+	bool vinci_test= true;
+	double vinci_vol_d;
+	double* bounds_d= new double[40]; 
+
+	/*srand ( 0 );
+	for(int i= 0; i< 1000; i++) {
+		genbounds( 30, bounds_d);
+		if (abs(integral_even(30,30,bounds_d,vols_d)- polytope_volume(vols_d, bounds_d, 30)) > 1e-100)
+			cout << integral_even(30,30,bounds_d,vols_d)- polytope_volume(vols_d, bounds_d, 30) << endl;
+		}*/
+
+	bounds_d[0]= 0.1; bounds_d[1]= 0.2; bounds_d[2]= 0.3;  bounds_d[3]= 0.4;  bounds_d[4]= 0.5;
+	vinci_vol_d= 1.08e-04;
+	if (abs(integral_even(5,5,bounds_d,vols_d)-vinci_vol_d) > 1e-19) {
+		vinci_test= false;
+		cout << "\tVinci test FAILED in dimension 5" << endl;
+		cout << integral_even(5,5,bounds_d,vols_d) << endl; 
+		cout << vinci_vol_d << endl; 
+	}
+
+	bounds_d[0]= 0.1; bounds_d[1]= 0.2; bounds_d[2]= 0.3;  bounds_d[3]= 0.4;  bounds_d[4]= 0.5; bounds_d[5]= 0.6;
+	vinci_vol_d= 2.334305555556e-05;
+	if (abs(integral_even(6,6,bounds_d,vols_d)-vinci_vol_d) > 1e-17) {
+		vinci_test= false;
+		cout << "\tVinci test FAILED in dimension 6" << endl;
+		cout << integral_even(6,6,bounds_d,vols_d) << endl; 
+		cout << vinci_vol_d << endl; 
+	}
+
+	bounds_d[0]= 0.1; bounds_d[1]= 0.2; bounds_d[2]= 0.3;  bounds_d[3]= 0.4;  bounds_d[4]= 0.5; bounds_d[5]= 0.6;
+	bounds_d[6]= 0.7; bounds_d[7]= 0.8; bounds_d[8]= 0.9;
+	vinci_vol_d= 2.755731922399e-07;
+	if (abs(integral_even(9,9,bounds_d,vols_d)-vinci_vol_d) > 1e-19) {
+		vinci_test= false;
+		cout << "\tVinci test FAILED in dimension 9" << endl;
+		cout << integral_even(9,9,bounds_d,vols_d) << endl; 
+		cout << vinci_vol_d << endl; 
+	}
+
+	bounds_d[0]= 0.1; bounds_d[1]= 0.2; bounds_d[2]= 0.3;  bounds_d[3]= 0.4;  bounds_d[4]= 0.5; bounds_d[5]= 0.6;
+	bounds_d[6]= 0.7; bounds_d[7]= 0.8; bounds_d[8]= 0.9; bounds_d[9]= 0.95;
+	vinci_vol_d= 5.120005762235e-08;
+	if (abs(integral_even(10,10,bounds_d,vols_d)-vinci_vol_d) > 1e-20) {
+		vinci_test= false;
+		cout << "\tVinci test FAILED in dimension 10" << endl;
+		cout << integral_even(10,10,bounds_d,vols_d) << endl; 
+		cout << vinci_vol_d << endl; 
+	}
+
 	RR* vols= new RR[71];
 
 	int prec= RR_PRECISION;	
@@ -55,7 +111,7 @@ int main(int argc, char** argv) {
 
 	cout << "Testing polytope volume computation:" << endl;
 
-	bool vinci_test= true;
+	vinci_test= true;
 	RR vinci_vol;
 	vinci_vol.SetPrecision(prec);
 	RR* bounds= new RR[15]; 
@@ -204,4 +260,18 @@ int main(int argc, char** argv) {
 	cout << "Diff: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) - t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl; */
 
 	return 0;
+}
+
+void genbounds(int l, double* tvec){
+	for(int i= 0; i < l; i++)
+		tvec[i]= 1.0/(rand()%1000);
+
+	double swap;
+	for(int i= 0; i < l-1; i++)
+		for(int j= 0; j < l-i-1; j++) 
+			if (tvec[j] > tvec[j+1]) {
+				swap= tvec[j];
+				tvec[j]= tvec[j+1];
+				tvec[j+1]= swap;
+				}
 }

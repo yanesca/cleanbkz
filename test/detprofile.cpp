@@ -50,23 +50,17 @@ int main(int argc, char** argv) {
 
 
 //	cjloss l(dim, 0.94, 10);
-	cjloss l(dim, 0.94, time(NULL));
-	BKZ_QP1(l.basis, 0.99, bsize); 
+//	cjloss l(dim, 0.94, time(NULL));
 
-	l.basis.SetDims(dim-1,dim);
+//	cout << "# " << l.basis << endl;
 
-//	cout << l.basis << endl;
-//	return 0;
-
-	dim--;
-
-//	ZZ determinant;
+	ZZ determinant;
 //	GenPrime(determinant,dim);
-//	GenPrime(determinant,floor(2*dim));
+	GenPrime(determinant,floor(dim));
 	mat_ZZ basis;
-//	gen_randlat(basis,determinant,dim); 
+	gen_randlat(basis,determinant,dim); 
 
-	basis= l.basis;
+	//basis= l.basis;
 
 	mat_RR mu1;
 	vec_RR c1;
@@ -128,15 +122,6 @@ int main(int argc, char** argv) {
 	for(int i= 0; i < dim/2; i++) 
 		min[2*i]= min[2*i+1]= pow(gsghs[2*i+1],2);
 
-	double* hmin= new double[dim];
-	hmin[0]= c[dim-1]*c[dim-1]*0.5;
-	for(int i= 1; i < dim; i++) {
-		hmin[i]= hmin[i-1]*(1+1.0/(i+1));	
-		hmin[i]= MIN(hmin[i], R);	
-		if(i%2==1)
-			hmin[i-1]= hmin[i];
-	}
-	
 	double* act= linear;
 
 	//cout << "# Scale: " << autoscale(basis, act) << endl;
@@ -160,7 +145,6 @@ int main(int argc, char** argv) {
 		step[i]= sqrt(step[i]);
 		linear[i]= sqrt(linear[i]);
 		min[i]= sqrt(min[i]);
-		hmin[i]= sqrt(hmin[i]);
 		}
 
 	t_extreme_reference(act, c, 1, 1, dim);
@@ -229,7 +213,7 @@ int main(int argc, char** argv) {
 ZZ autoscale(mat_ZZ& basis, double Rvec[]){
 	ZZ scale;
 
-	/*scale= 1;
+	scale= 1;
 	for(int i= 0; i < basis.NumRows(); i++)
 		if(sqrt(i+1)/Rvec[i]>scale)
 			conv(scale, sqrt((i+1)/Rvec[i]));
@@ -237,9 +221,7 @@ ZZ autoscale(mat_ZZ& basis, double Rvec[]){
 	// conversion computes floor and ceil is needed
 	scale+= 1;
 	if(scale == 1)
-		return scale;*/
-
-	power2(scale, basis.NumRows());
+		return scale;
 
 	for(int i= 0; i <  basis.NumRows(); i++)
 		for(int j= 0; j < basis.NumCols(); j++)
@@ -257,9 +239,6 @@ ZZ autoscale(mat_ZZ& basis, double Rvec[]){
 void gen_randlat(mat_ZZ& basis, ZZ determinant, int dim) {
 	basis.SetDims(dim, dim);
 	
-	ZZ s;
-	s= time(NULL);
-	SetSeed(s);
 	for(int i= 0; i < dim; i++) {
 		basis[i][0]= RandomBnd(determinant);
 		basis[i][i]= 1;

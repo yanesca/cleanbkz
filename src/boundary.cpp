@@ -105,6 +105,38 @@ double ball_vol(int k, double r) {
 		return 2 * pow(4*M_PI, k/2) * fact(k/2) / fact(k) * pow(r, k);
 }
 
+double integral_odd(int ltilde, int l, double tvec[], double vvec[]) {
+	double ret= 0;
+
+	if(ltilde==0) 
+		return 1;
+
+	vvec[ltilde-1]= integral_odd(ltilde-1, l, tvec, vvec);
+
+	ret-= pow(1-tvec[l-ltilde], (2*ltilde+1)/2.0)*pow(2,2*ltilde+1)*fact(ltilde+1)/fact(2*ltilde+2);
+	for(int i= 1; i < ltilde; i++)
+		ret+= pow(tvec[l-ltilde],ltilde-i)*vvec[i]/fact(ltilde-i)*((ltilde-i-1)%2==0?1:-1);
+
+	if(ltilde!=l)		
+		return ret;
+
+	return ret + pow(2,2*ltilde+1)*fact(ltilde+1)/fact(2*ltilde+2);
+}
+
+double integral_even(int ltilde, int l, double tvec[], double vvec[]) {
+	double ret= 0;
+
+	if(ltilde==0) 
+		return 1;
+
+	vvec[ltilde-1]= integral_even(ltilde-1, l, tvec, vvec);
+
+	for(int i= 0; i < ltilde; i++)
+		ret+= pow(tvec[l-ltilde],ltilde-i)*vvec[i]/fact(ltilde-i)*((ltilde-i-1)%2==0?1:-1);
+		
+	return ret;
+}
+
 double polytope_volume(double vols[], double bounds[], int dim) {
 	double ret= 0;
 
@@ -277,31 +309,34 @@ double n_full_gsa(double R, double scale, int bsize, int n) {
 	return N; 
 }
 
-double pvol_and_scale(double Rvec[], int k) {
+double ci_prob(double Rvec[], int k) {
 	double ret;
-	int l= (k+1)/2-1;
+	int l= k/2;
 	double* bounds= new double[l];
-	double* polytope_vols= new double[l];
+	double* vvec= new double[l];
 
 
-/*	cout << "khalf: " << khalf << endl;
-	cout << "Rvec: [ ";
-	for(int i= 0; i< 2*khalf; i++)
+	/*cout << "# khalf: " << l << endl;
+	cout << "# Rvec: [ ";
+	for(int i= 0; i< 2*l; i++)
 		cout << Rvec[i] << " ";	
 	cout << "] "<< endl;*/
 
 	for(int i= 0; i< l; i++)
 		bounds[i]= Rvec[2*i]*Rvec[2*i]/(Rvec[k-1]*Rvec[k-1]);
 
-	/*cout << "bounds: [ ";
-	for(int i= 0; i< khalf; i++)
+	/*cout << "# bounds: [ ";
+	for(int i= 0; i< l; i++)
 		cout << bounds[i] << " ";	
-	cout << "] "<< endl << endl;*/
+	cout << "] "<< endl << "# " << endl;*/
 
-	ret= polytope_volume(polytope_vols, bounds, l);
+	if(k%2==0)
+		ret= integral_even(l, l, bounds, vvec)*fact(l);
+	else
+		ret= integral_odd(l, l, bounds, vvec)*fact(2*l+2)/(pow(2,2*l+1)*fact(l+1));
 
 	delete [] bounds;
-	delete [] polytope_vols;
+	delete [] vvec;
 
 	return ret;
 }
@@ -359,22 +394,28 @@ double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, d
 		for(int i= n-k; i < n; i++) 
 			denom*= b_star_norm[i]; 
 
-		int psd= (k+1)/2-1;
-		V_act= ball_vol(k, Rvec[k-1]) * pvol_and_scale(Rvec, k) * fact(psd); 
+		V_act= ball_vol(k, Rvec[k-1]) * ci_prob(Rvec, k); 
 
 		N+= V_act/denom/2;
 
-		cout << "# Simvol_" << psd << " = " <<  fact(psd) << endl;
-		cout << "# Polvol_" << psd << " = " <<  pvol_and_scale(Rvec, k) << endl;
+		//cout << "# Simvol_" << psd << " = " <<  fact(psd) << endl;
+		//cout << "# Polvol_" << psd << " = " <<  pvol_and_scale(Rvec, k) << endl;
+		//cout << "# Polprob_" << k/2 << " = " <<  polprob_even(Rvec, k) << endl;
 		cout << "# V_ball(" << k << ", " << Rvec[k-1] << ") = " << ball_vol(k, Rvec[k-1]) << endl;
-		cout << "# |b^*_" << n-k << "| = " << b_star_norm[n-k] << endl;
-		cout << "# V_" << k << " = " << V_act << endl;
+		//cout << "# |b^*_" << n-k << "| = " << b_star_norm[n-k] << endl;
+		//cout << "# V_" << k << " = " << V_act << endl;
 		cout << "# denom_" << k << " = " << denom << endl;
-		cout << "# N_" << k << " = " << V_act/denom/2 << endl; 
+		cout << "# ratio_" << k << " = " << pow(ball_vol(k, Rvec[k-1])/denom,1.0/k) << endl;
+		//cout << "# N_" << k << " = " << V_act/denom/2 << endl; 
 		myfile >> nodes; sum+= nodes; 
 		cout << "# Measured nodes: " << nodes << endl;
-		cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
-		cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
+		//cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
+		//cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
+		//cout << "# GH_" << k << " = " << pow(denom/ball_vol(k, 1),1.0/k) << endl;
+		cout << "# R_" << k << " = " << Rvec[k-1] << endl;
+		if( Rvec[k-1] < sqrt(k))
+			cout << "# WARNING! Gaussian Heuristics violation: " << k << "^(1/2) = " << sqrt(k) << endl;
+		//cout << "# R/GH in dim " << k << " = " << Rvec[k-1]/ pow(denom/ball_vol(k, 1),1.0/k) << endl;
 
 		//cout << k-1 << " " << nodes/(V_act/denom/2) << endl;
 		//cout << k-1 << " " << nodes - V_act/denom/2 << endl;		
@@ -386,7 +427,7 @@ double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, d
 	//N/= 2;
 	cout << "# Predicted nodes: " << N << endl;
 	cout << "# Measured nodes: " << sum << endl;
-	return (t_reduc+t_node*N)/(pvol_and_scale(Rvec, n/2)*fact(n/2)); 
+	return (t_reduc+t_node*N)/ci_prob(Rvec, n/2); 
 }
 
 double t_extreme(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n) {

@@ -46,12 +46,12 @@ cjloss::cjloss(long dimension, double density, long seed) {
 
 	ZZ N;
 	conv(N,ceil(sqrt(dimension-1)));
-	for(int i= 1; i<dimension; i++){
-		basis[i-1][i]= 2;
-		basis[i-1][0]= 2*values[i-1]*N;
+	for(int i= 0; i<dimension-1; i++){
+		basis[i][i]= 2;
+		basis[i][dimension-1]= 2*values[i]*N;
 		basis[dimension-1][i]= 1;
 		}
-	basis[dimension-1][0]= 2*sum*N;
+	basis[dimension-1][dimension-1]= 2*sum*N;
 	}
 
 /* generates a random knapsack problem with equally many zeroes and ones in the solution (condition applied in the extreme pruning article) */ 
