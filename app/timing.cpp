@@ -21,20 +21,24 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
-#include <cleanbkz/boundtools.hpp>
+#include <NTL/LLL.h>
+#include <cleanbkz/cjloss.hpp>
+#include <cleanbkz/tools.hpp>
 #include <cleanbkz/version.hpp>
 
 using namespace std;
+using namespace NTL;
 
-// Defined in tools.cpp
-char* get_cmd_option(char** begin, char** end, const string& option); 
-bool cmd_option_exists(char** begin, char** end, const string& option);
+//TODO: random lattices
+
+void measure_epr(int dimension, int beta, unsigned long samples, unsigned long termination, 
+		double& t_node, double& t_reduc, unsigned long& zeroes, unsigned long& bias);
 
 int main(int argc, char** argv) {
   	int dimension= 0;
 	int bkz_blocksize= 2;
 	int nodes= 1000000;
-	int samples= 1000; 
+	int samples= 100; 
 	int start= 0; 
 	int end= 0;
 	stringstream ss;
@@ -42,15 +46,15 @@ int main(int argc, char** argv) {
 	clock_t begin, finish;
 
 	if (argc==1 || cmd_option_exists(argv, argv+argc, "-h")) {
-		cout << "This program measures the parameters t_node and t_reduc required for the computation of boundary functions. These are the running time of the enumeration and reduction algorithms on the current platform. Program options:" << endl
+		cout << "This program uses cjloss lattices to measure the parameters t_node and t_reduc required for the computation of boundary functions. These are the running time of the enumeration and reduction algorithms on the current platform (in the case the cjloss lattices the dimension of the preprocessing is one higher than the enumeration). Program options:" << endl
  			<< "\t-h \t\tPrint this help." << endl
  			<< "\t-d n\t\tMeasure running times in dimension n." << endl
  			<< "\t-s n\t\tStart the measurements in dimension n. It is ignored when -d is given." << endl
  			<< "\t-e n\t\tContinue measuring in all dimensions until dimension n with a step five. It is ignored when -d is given." << endl
 			<< "\t-b n\t\tAbort enumeration after processing n nodes. (default: 10,000,000)" << endl
-			<< "\t-n n\t\tNumber of experiments to make. (default: 1000)" << endl
+			<< "\t-n n\t\tNumber of experiments to make. (default: 100)" << endl
 			<< "\t-k n\t\tThe blocksize of BKZ used for preprocessing. (default: 2)" << endl
-			<< "\t-t n\t\tPredict the running time of the experiments." << endl;
+			<< "\t-t\t\tPredict the running time of the experiments." << endl;
 		return 0;
 	}
 
@@ -153,7 +157,8 @@ int main(int argc, char** argv) {
 				cout << ((double)(finish - begin) / CLOCKS_PER_SEC)/10*samples << "s" << endl;
 				total+= (unsigned long int) (((double)(finish - begin) / CLOCKS_PER_SEC)/10*samples);
 				}
-			cout << "Expected total running time of the experiments: " << total/3600 << "h" << (total%3600)/60 << "m" << (total%36000)%60 << "s" << endl << endl;
+			cout << "Expected total running time of the experiments: " << total/3600 << "h" 
+					<< (total%3600)/60 << "m" << (total%36000)%60 << "s" << endl << endl;
 			}
 
 		for(int i= start; i <= end; i+=5) {
@@ -165,7 +170,76 @@ int main(int argc, char** argv) {
 			}
 		}
 
-	cout << "(Sometimes the enumeration doesn't have to inspect the prescribed number of nodes or even nodes enough to make the runing time measureable, the number of these cases are in the \"biased/zeroes\" line. The first number measures only the biased cases with nonzero running time.)" << endl << endl;
+	cout << "(Sometimes the enumeration doesn't have to inspect the prescribed number of nodes or even nodes enough " 
+			<< "to make the runing time measureable, the number of these cases are in the \"biased/zeroes\" line." 
+			<< "The first number measures only the biased cases with nonzero running time.)" << endl << endl;
 
 	return 0;
 }
+
+extern void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
+		unsigned long &termination, double &time); 
+
+void measure_epr(int dimension, int beta, unsigned long samples, unsigned long termination, 
+		double& t_node, double& t_reduc, unsigned long& zeroes, unsigned long& bias) {
+	double enu_time= 0;
+	cjloss* lattice;
+	mat_ZZ tmp,basis;
+	mat_RR mu1;
+	vec_RR c1;
+	clock_t begin, end;
+	vec_RR result;
+	unsigned long nodes;
+
+	t_node= t_reduc= 0;
+	zeroes= bias= 0;
+
+	double** mu= new double*[dimension];
+	for(int i= 0; i < dimension; i++)
+		mu[i]= new double[dimension]; 
+
+	double* c= new double[dimension];
+
+	double* Rvec= new double[dimension];
+	for(int i= 0; i < dimension; i++)
+		Rvec[i]= dimension;
+
+	for(unsigned long i= 0; i < samples; i++) {	
+		lattice= new cjloss(dimension,0.94,i);	
+
+		tmp= lattice->get_basis(0);		
+		begin= clock();
+		BKZ_QP1(tmp, 0.99, beta);		
+		end= clock();
+		t_reduc+= (double)(end - begin) / CLOCKS_PER_SEC;
+
+		basis.SetDims(tmp.NumRows()-1, tmp.NumRows()-1);
+		for(int i= 0; i<basis.NumRows(); i++)
+			for(int j= 0; j<basis.NumCols(); j++)
+				basis[i][j]= tmp[i][j];
+
+		ComputeGS(basis,mu1,c1);
+
+		for(int i= 0; i < dimension; i++)
+			for(int j= 0; j < dimension; j++)
+				conv(mu[i][j], mu1[i][j]);
+
+		for(int i= 0; i < dimension; i++)
+			conv(c[i], c1[i]);
+
+		nodes= termination;
+		enumerate_epr(mu, c, Rvec, dimension, result, nodes, enu_time);
+
+		if(enu_time < 1.0/CLOCKS_PER_SEC/termination) 
+			zeroes++;
+		else if (nodes!=0)
+			bias++;
+		t_node+= enu_time;
+
+		delete lattice;
+	}
+
+	t_node/= samples;
+	t_reduc/= samples;
+}
+

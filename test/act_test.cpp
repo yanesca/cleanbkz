@@ -31,51 +31,49 @@
 
 using namespace std;
 
-double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n); 
-double t_extreme(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n); 
-double n_full(double R, double b_star_norm[], int n);
-double n_full_gsa(double R, double scale, int bsize, int n);
-double ball_vol(int k, double r);
+extern void predict_nodes_RR(RR  Rvec[], double b_star_norm[], int n); 
+
+extern void predict_nodes(double Rvec[], double b_star_norm[], int n); 
+extern double ball_vol(int k, double r);
+extern void profile_enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result); 
 
 void gen_randlat(mat_ZZ& basis, ZZ determinant, int dim);
-ZZ autoscale(mat_ZZ& basis, double Rvec[]);
 
 int main(int argc, char** argv) {
 	int dim, bsize= 20;
 	stringstream ss;
+	bool l_cjloss= true;
+	mat_ZZ basis;
 
 	ss << argv[1];
 	ss >> dim;
 	ss.clear();
 
-
-//	cjloss l(dim, 0.94, 10);
-	cjloss l(dim, 0.94, time(NULL));
-	BKZ_QP1(l.basis, 0.99, bsize); 
-
-	l.basis.SetDims(dim-1,dim);
-
-//	cout << l.basis << endl;
-//	return 0;
-
-	dim--;
-
-//	ZZ determinant;
-//	GenPrime(determinant,dim);
-//	GenPrime(determinant,floor(2*dim));
-	mat_ZZ basis;
-//	gen_randlat(basis,determinant,dim); 
-
-	basis= l.basis;
+	if (l_cjloss) {
+		cjloss l(dim, 0.94, time(NULL));
+		basis= l.get_basis(bsize);
+	} else {
+		ZZ determinant;
+		GenPrime(determinant,dim);
+		gen_randlat(basis,determinant,dim); 
+		BKZ_QP1(basis, 0.99, bsize); 
+	}
 
 	mat_RR mu1;
 	vec_RR c1;
-	BKZ_QP1(basis, 0.99, bsize); 
 	ComputeGS(basis,mu1,c1);
 
 	double* c= new double[mu1.NumRows()];
 	for(int i= 0; i < mu1.NumRows(); i++) 
-		conv(c[i], sqrt(c1[i]));
+		conv(c[i], c1[i]);
+
+	
+	double** mu= new double*[mu1.NumRows()];
+	for(int i= 0; i < mu1.NumRows(); i++)
+		mu[i]= new double[mu1.NumCols()]; 
+	for(int i= 0; i < mu1.NumRows(); i++)
+		for(int j= 0; j < mu1.NumCols(); j++)
+			conv(mu[i][j], mu1[i][j]);
 
 // Gaussian heuristic
 	double gh= 1;
@@ -85,13 +83,16 @@ int main(int argc, char** argv) {
 		gsghs[i]= pow(gh/ball_vol(i+1, 1),1.0/(i+1));
 		}
 	gh= pow(gh/ball_vol(dim, 1),1.0/dim);
-	//cout << "# Shortest vector length: " << sqrt(dim-1) << endl;
-	//cout << "# Gaussian heuristic: " << gh << endl;
-	//cout << "# GH/lambda Ratio: " << gh/sqrt(dim-1) << endl;
+	if(l_cjloss)
+		cout << "# Shortest vector length: " << sqrt(dim) << endl;
+	cout << "# Gaussian heuristic: " << gh << endl;
 
 // Bounding functions
-	//double R= dim-1;
-	double R= gh*gh;
+	double R;
+	if(l_cjloss)	
+		R= dim;
+	else
+		R= gh*gh;
 
 	double* full= new double[dim];
 	for(int i= 0; i < dim; i++) 
@@ -115,7 +116,7 @@ int main(int argc, char** argv) {
 
 	double* step= new double[dim];
 	for(int i= 0; i < dim/2; i++) 
-		if(i<dim/3)
+		if(i<dim/4)
 			step[2*i]= step[2*i+1]= R/2;
 		else
 			step[2*i]= step[2*i+1]= R;	
@@ -137,21 +138,14 @@ int main(int argc, char** argv) {
 			hmin[i-1]= hmin[i];
 	}
 	
-	double* act= linear;
-
-	//cout << "# Scale: " << autoscale(basis, act) << endl;
+	double* act= step;
 
 // Enumeration
 	vec_RR solution;	
-	//enumerate_ntl(l.basis, bsize, full, solution);
-	enumerate_epr(basis, bsize, act, solution);
-	cout << "# Solution length: " << solution.length() << endl << endl << endl;
-
+	profile_enumerate_epr(mu, c, act, dim, solution); 
 
 // Prediction	
-
-	ComputeGS(basis,mu1,c1);
-
+//
 	for(int i= 0; i < mu1.NumRows(); i++) 
 		conv(c[i], sqrt(c1[i]));
 
@@ -163,95 +157,21 @@ int main(int argc, char** argv) {
 		hmin[i]= sqrt(hmin[i]);
 		}
 
-	t_extreme_reference(act, c, 1, 1, dim);
+	//predict_nodes(act, c, dim);
+	RR* act_RR= new RR[dim];
+	for(int i= 0; i < dim; i++)
+		act_RR[i]= act[i];
+	predict_nodes_RR(act_RR, c, dim);
 
 
-// GSA	
+/* GSA	
 	cout << endl << endl;
 	double alpha=1;
 	for(int i= 0; i < mu1.NumRows(); i++) 
 		alpha*= c[i];
 	alpha= log(pow(alpha,2.0/dim));
-//	n_full_gsa(gh, alpha, bsize, dim); 
+	n_full_gsa(gh, alpha, bsize, dim);*/ 
 
-
-/*	
-	cout << "# Rank: " << BKZ_QP1(l.basis, 0.99, 2) << endl; 
-
-	mat_RR mu1;
-	vec_RR c1;
-	ComputeGS(l.basis,mu1,c1);
-
-	//cout << l.basis << endl;
-
-	
-	conv(R, sqrt(c1[0]));
-	for(int i= 0; i < dim; i++) 
-		full[i]= R ;
-
-	//t_extreme_reference(full, c, t_node, t_reduc, dim); 
-	//t_extreme(full, c, 1, 1, dim); 
-	t_extreme_reference(full, c, 1, 1, dim); 
-
-
-	//Full test
-//	cout << "# Performing full test" << endl;
-
-	cout << "# nfull: " << n_full(full[dim-1], c, dim) << endl << endl << endl; 
-//	cout << "# nfull (gsa): " << n_full_gsa(full[dim-1], c[0], 1/(1.0219*1.0219), dim) << endl; 
-
-//	t_extreme_reference(full, c, 1, 1, dim);
-	
-	cout << "# BKZ 30 rank: " << BKZ_QP1(l.basis, 0.99, 30) << endl; 
-	
-	ComputeGS(l.basis,mu1,c1);
-
-	//cout << l.basis << endl;
-
-	for(int i= 0; i < dim; i++) 
-		full[i]= sqrt(full[i]);
-
-	for(int i= 0; i < mu1.NumRows(); i++) {
-		conv(c[i], sqrt(c1[i]));
-		//cout << i << " " << c[i] << endl;
-		}
-
-	t_extreme_reference(full, c, 1, 1, dim);*/
-
-/*	conv(R, c1[0]);
-	for(int i= 0; i < dim; i++) 
-		full[i]= R;
-
-	enumerate_epr(l.basis, 2, full, solution);
-	cout << "# Solution length: " << solution.length() << endl << endl << endl;*/
-}
-
-ZZ autoscale(mat_ZZ& basis, double Rvec[]){
-	ZZ scale;
-
-	/*scale= 1;
-	for(int i= 0; i < basis.NumRows(); i++)
-		if(sqrt(i+1)/Rvec[i]>scale)
-			conv(scale, sqrt((i+1)/Rvec[i]));
-
-	// conversion computes floor and ceil is needed
-	scale+= 1;
-	if(scale == 1)
-		return scale;*/
-
-	power2(scale, basis.NumRows());
-
-	for(int i= 0; i <  basis.NumRows(); i++)
-		for(int j= 0; j < basis.NumCols(); j++)
-			basis[i][j]*= scale;
-
-	double rscale;
-	conv(rscale, scale);
-	rscale*= rscale;
-	for(int i= 0; i <  basis.NumRows(); i++)
-		Rvec[i]*= rscale;
-	
-	return scale;
 }
 
 void gen_randlat(mat_ZZ& basis, ZZ determinant, int dim) {

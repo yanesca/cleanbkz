@@ -24,7 +24,6 @@
 #include <NTL/new.h>
 #include <iostream>
 #include <cleanbkz/enumeration.hpp>
-#include <limits>
 
 using namespace std;
 
@@ -213,7 +212,7 @@ void profile_enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& 
 	unsigned long nodes= 0;
 	unsigned long* prof= new unsigned long[n];
 	for(int i= 0; i < n; i++)
-		prof[i]= 1;
+		prof[i]= 0;
 
 	int k= 0;
 
@@ -285,7 +284,7 @@ void profile_enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& 
 	
 	for(int i= 0; i < n; i++)
 		cout << i << " " << prof[i] << endl;
-	cout << endl << endl;	
+	
 
 	if(k==0) {
 		result.SetLength(n);
@@ -353,13 +352,10 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 	int k= 0;
 	clock_t end,begin= clock();	
 
-	// C++ uses processor (float) precision even when comparing doubles 
-	double epsilon= std::numeric_limits<float>::epsilon();
-
 	while((termination==0)||(nodes < termination)) {
 		rhovec[k]= rhovec[k+1]+(vvec[k]-cvec[k])*(vvec[k]-cvec[k])*b[k];	
 
-		if(rhovec[k] < Rvec[n-k-1]+epsilon) {
+		if(rhovec[k] <= Rvec[n-k-1]) {
 			nodes++;			
 
 			if(k==0) 

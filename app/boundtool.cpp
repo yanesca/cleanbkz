@@ -30,8 +30,7 @@
 using namespace std;
 
 // Defined in boundary.cpp
-// TODO: ehelyett majd egy get_p_succ nevűt irni, ami megcsinálja amit kell
-double polytope_volume(double vols[], double bounds[], int dim);
+extern double ball_vol(int k, double r);
 
 // Defined in tools.cpp
 char* get_cmd_option(char** begin, char** end, const string& option); 
@@ -39,7 +38,7 @@ bool cmd_option_exists(char** begin, char** end, const string& option);
 
 
 int main(int argc, char** argv) {
-
+	double v= 0;
 	double t_node= 0; 
 	double t_reduc= 0;
 	double delta= 1e-1;
@@ -56,8 +55,8 @@ int main(int argc, char** argv) {
  			<< "\t-n n\t\tThe (avarage) time the enumeration algorithm takes to process a single node. (required)" << endl
 			<< "\t-r n\t\tThe (avarege) running time of the preprocessing reduction algorithm. (required)" << endl
 			<< "\t-c n\t\tNumber of random changes to make during the numerical optimization. (default: 1000)" << endl
-			<< "\t-t n\t\tThe number of unchanged rounds to require before exiting. It is ignored when -c is given." << endl
-			<< "\t-d n\t\tThe size of the single random changes to meke during the optimization. (default: 0.1)" << endl;
+			<< "\t-d n\t\tThe size of the single random changes to meke during the optimization. (default: 0.1)" << endl
+ 			<< "\t-l n\t\tOptimize for shortest vector with length square root of n. (the Gaussian heuristic is default)" << endl;
 		return 0;
 	}
 
@@ -120,6 +119,18 @@ int main(int argc, char** argv) {
 			}
 		}
 
+	act_arg= get_cmd_option(argv, argv + argc, "-l");	
+	if (act_arg) {
+		ss << act_arg;
+		ss >> v;
+		ss.clear();
+		if(v <= 0) {
+			cerr << "ERROR: invalid shortest vector length. The shortest vector length should be greater than zero. Aborting." << endl;
+			return 1;
+			}
+		}
+
+
 	act_arg= get_cmd_option(argv, argv + argc, "-f");	
 	if (act_arg) {
 		ifstream basis_file(act_arg);
@@ -145,32 +156,49 @@ int main(int argc, char** argv) {
 	int dim= mu1.NumRows();
 	double* boundary= new double[dim];	
 	
-	//length of the shortest vector in the cjloss latticr
-	double R= sqrt(dim-1);
+	cout << "# Generated with cleanbkz " << CBKZ_VERSION << endl 
+	<< "# Copyright (C) 2014 Janos Follath" << endl 
+	<< "# This is free software with ABSOLUTELY NO WARRANTY." << endl << "#" << endl; 
+
+	//length of the shortest vector in the cjloss lattice
+	if(v>0) {
+		v= sqrt(v);
+		cout << "# Using supplied lambda : " << v << endl;
+		}
+	else {
+		double tmp,gh= 1;
+		double* gsghs= new double[dim]; 
+		for(int i= 0; i < mu1.NumRows(); i++) {
+			conv(tmp, c1[i]);
+			gh*= tmp;
+			gsghs[i]= pow(gh/ball_vol(i+1, 1),1.0/(i+1));
+		}
+		delete gsghs;
+		gh= pow(gh/ball_vol(dim, 1),1.0/dim);
+		cout << "# No lambda supplied, using Gaussian heuristic: " << gh << endl;
+	}
+		
+
 
 	// TODO: csinálni egy változatot, ahol nem iterationt hanem thressholdot adunk meg
 	double p_succ;
 	double t_enum;	
-	generate_boundary(c, t_node, t_reduc, dim, boundary, R, delta, iterations, p_succ, t_enum, false); 
+	generate_boundary(c, t_node, t_reduc, dim, boundary, v, delta, iterations, p_succ, t_enum, false); 
 
-		cout << "# Generated with cleanbkz " << CBKZ_VERSION << endl 
-		<< "# Copyright (C) 2014 Janos Follath" << endl 
-		<< "# This is free software with ABSOLUTELY NO WARRANTY." << endl << "#" << endl; 
+	cout << "# basis: '" << act_arg << "' " << endl
+	<< "# estimated enumeration time: " << t_enum << endl  
+	<< "# success probability: " << p_succ << endl  
+	<< "# boudary function: " << endl;
 
-		cout << "# basis: '" << act_arg << "' " << endl
-		<< "# estimated enumeration time: " << t_enum << endl  
-		<< "# success probability: " << p_succ << endl  
-		<< "# boudary function: " << endl;
+	vec_RR out;
+	out.SetLength(dim);
+	for(int i= 0; i < dim; i++)
+		out[i]= boundary[i];		
+	cout << "# " << out << endl << endl;
 
-		vec_RR out;
-		out.SetLength(dim);
-		for(int i= 0; i < dim; i++)
-			out[i]= boundary[i];		
-		cout << "# " << out << endl << endl;
-
-		for(int i= 0; i < dim; i++)
-			cout << i << " " << boundary[i] << endl;
-		cout << endl;
+	for(int i= 0; i < dim; i++)
+		cout << i << " " << boundary[i] << endl;
+	cout << endl;
 
 	return 0;
 }

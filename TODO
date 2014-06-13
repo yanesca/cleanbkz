@@ -1,65 +1,29 @@
-- Minimális pruning function keresését kikisérletezni:
-	- tesztelni a gyakorlatban a képletemet állitható kezdőértékkel (dupla és sima random lattice-el is)
-	- konstans pruninggal megkeresni a megfelelő arányokat az egyes dimenziókban (dupla és sima random lattice-el is)
-		- több különböző lattice-ra és összehasonlitani
-	
-- a random lattice-s tesztprogramból automatikus teszteket irni
-	- node számlálás full (double)
-	- extreme pruning tesztet külön lefuttatni, hogy ha van még valami gond, akkor az itt kiderüljön
-	- node számlálás pruned (double)
-	- node számlálás full
-	- node számlálás pruned
-- elküldeni a többieknek a linket a github projektre
-- implementálni az adaptiv a keresést: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább (betenni a unit tesztbe)
+
+- elküldeni a többieknek a linket a github projektre és a generált teszt-adatokat
+	- Közvetlenül előtte persze commitolni
+
+************ Szünet *******************
+- optimalizálni a számitásokat:
+	- a négyzetreemeléseket kihozni amennyire csak lehet
+	- előre számitani és táblázatból olvasni
+		- az egységgömbök térfogatát
+		- a faktoriálisokat
+		- a normalizáló konstansokat
+	- kikisérletezni, hogy mi az a legkisebb RR pontosság amire a 120-150 dimenziós számitás stabil
+	- letekerni a pontosságot amennyire csak lehet 
+- implementálni az adaptiv a keresést: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább 
+- print scriptet egyesiteni és paraméterezhetőre megirni
+
+******** Itt lesz kész az extreme pruning *****
 - Megnézni az early termination-ös cikkeket, hogy milyen blokkméretet lenne érdemes használni egy 128 dimenziós bázis előfeldolgozásához 
 - Megirni a pruningos BKZ-t, enumerationt külön függvénybe tenni
 - Minden enumeration hivást és a vonatkozó unit teszteket átirni az új enumeration-re 
 - kikisérletezni a paramétereket a bkz automatikus bounding function keresőjéhez
 - Implementálni a radius reductiont és az early terminationt 
 - Implementálni az unexpected early terminationt (mindig kiirja lemezre, hogy hanyadik iterációnál jár és hogy mi az aktuális bázis)
-Kérdések:
-- miért használt a bkz 2.0-nál 10%-os sikeresélyűt, amikor nekem 95% körüliek sikerülnek és az is baromi gyorsra igéri magát?
-- miért más a formája az én boundary functionjeimnek?
-Opcionálisan:
-- Megnézni, hogy milyen hatással van a mu korrigálása az enumerationra 
-	- valszeg semmilyen, mert a főátlót eleve 1-nek veszi. Megkeresni a vonatkozó részt az algoritmusban
-+ átirni, hogy mindig az R_i négyzetekkel dolgozzon és ne kelljen gyököt vonogatni. - Nem éri meg: ugyanolyan macerás, mert a gömbök sugaránál R_i kell.
-- hermite faktoros optimalizálást implementálni  
-- refaktorálni a toolok paraméterfeldolgozását
-- letisztázni és kibőviteni a unit teszteket
-- a unit tesztekhez használt referenciaimplementációkat kiszedni a libből a teszt könyvtárba
-- a boundtool.cpp -ek és a boundary.cpp -nek értelmesebb neveket találni
-- Tesztet irni, hogy a double sqrt négyzete egyezik-e az eredetivel (különbség 0)
+
 ******** Itt lesz kész a BKZ1.5 **********
 - a rekurzive hivás paramétereit kikisérletezni :
 	- Hermite faktorokat lemérni (early terminatiönnel és anélkül)
 	- várható futási időket a bounding function számolóval összevetni
-- random lattice-ekre is elvégezni a méréseket és összehasonlitani a cjlossosokkal (ehhez előtte megnézni Gama-Nguyent)
-- saját namespace-t csinálni hasonlón dinamikusan mint az NTL-ben
-- polytopvol unit tesztet kiegésziteni 15 dimenzióra
 - megirni a cikket és a megjelenés után átirni a dokumentációban a hivatkozásokat amiket lehet a saját cikkemre
-- Általános BKZ-t implementálni: LLL -el redukálni bkz helyett és úgy lemérni az időket (10000000 node kell a viszonylagos stabilitáshoz és 45-nél már elég gyakran nem éri ezt el, szóval az az eredmény nem lesz olyan pontos)
-	+ paraméterezni a programot a sample mérettel (hogy tudjam becsülni a magas mintás futási időt alacsony mintamérettel), futási időket megbecsülni
-	- 50 dimenzióval kikisérletezni a sample méretet ami kell a 3 stabil tizedesjegyhez
-	- lemérni 50, 55, 60, 65, 70, 75, 80 -ra  (automatizálva)
-	- extrapolálni 40, 45 -re (automatizálni) 
-- Általános bounding function-öket találni (erősen opcionális: lehet róla irni, de kicsi a siker valószinűsége és nem egy nagy eredmény)
-	- GSA feltételes bounding function keresőt implementálni
-	- tesztelni, hogy hogyan változik a bounding function a gs hossz változtatásával
-	- tesztelni, hogy hogyan változik a futási idők változtatásával
-
-Problémák:
-- az NTL szabványos függvényeit használva külön kell kiszámolni a GS együtthatókat, pedig azokat már a redukcióhoz kiszámolja. Lehetséges megoldások:
-	- igy hagyni és a számitásokat úgy végezni mintha nem lenne ott (ugyanis magas dimenziókban tényleg elhanyagolható a költsége)
-	- duplikálni és módositani a szükséges NTL függvényeket
-- a cjloss bázisát publikussá kellett tennem, hogy működjenek a dolgok, lehet, hogy át kéne szerveznem, hogy a bázis ne csak adattag legyen, hanem a mat_ZZ kiterjesztése - vagy nem: az egész csak egy teszt, nem is kell a libbe, át fogom tenni a tests könyvtárba
-- a méréshez egyéb utasitásokat is bele kell tennem az algoritmusba. Ez  tényleges futás esetén lassithatja és olyan paramétereket is megkövetel, amik egy sima enumeration hiváskor nem kellenek. Lehetőségek
-	- bevállalom az ezzel járó lassulást (mennyivel is lesz ettől lassabb? (méréshez rögziteni a cjloss seedet))
-	- duplikálom a kódot 
-- alacsony dimenzióban többnyire csak nagyon kevés node-ot kell megvizsgálnia, igy olyan kevés időt tölt vele, hogy nem tudja mérni. Lehetséges megoldások:
-	- ha megtalálta a legrövidebb vektort akkor resetelem és futtatom amig elég idő nem lesz -nagyon torzit
-	- magasabb dimenziós mérésekből approximálom 
-- bármilyen dimenzióban változó és bázistól függő a futási idő, kérdés, hogy hogyan rendeljek egy adott dimenzióhoz egy konkrét értéket. Tapasztalati várható érték (átlag tűnik a legjobbnak), de kérdés, 
-		- hogy mennyi mintát vegyek alapul
-		- milyen (cjloss vagy teljesen random) lattice-t vegyek alapul (majdnem mindegy, mert az LLL redukció úgyis hasonló formára hozza)
-- eddig b_0^* hosszát használtam kezdő sugárnak. Mi az amit a BKZ használ és mi az amit Phong használt a BKZ 2.0-ában? A méréseknek is úgy lenne értelme, ha onnan inditanám (és akkor a kicsik is lehet hogy végigmennek)

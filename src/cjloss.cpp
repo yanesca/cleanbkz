@@ -22,37 +22,59 @@
 #include <ctime>
 #include <iostream>
 #include <cleanbkz/cjloss.hpp>
+#include <NTL/LLL.h>
 
 using namespace std;
 
 cjloss::cjloss(long dimension, double density, long seed) {
-	basis.SetDims(dimension, dimension);	
-	values.SetLength(dimension-1);
-	solution.SetLength(dimension-1);
+	values.SetLength(dimension);
+	solution.SetLength(dimension);
 	// computing the maximal value to reach the prescribed density
 	ZZ max;
-	conv(max,floor(pow(2, (dimension-1)/density)));
+	conv(max,floor(pow(2, dimension/density)));
 
 	ZZ s;
 	conv(s,seed); 
 	SetSeed(s);
-	randomize(dimension-1,max);
+	randomize(dimension,max);
 	while(!check())
-		randomize(dimension-1,max);
+		randomize(dimension,max);
 
-	for(int i= 0; i<dimension; i++)
-		for(int j= 0; j<dimension-1; j++)
+}
+
+mat_ZZ cjloss::get_basis(int k) {
+	mat_ZZ basis, ret;
+	
+	basis.SetDims(values.length()+1, values.length()+1);
+	for(int i= 0; i<basis.NumRows(); i++)
+		for(int j= 0; j<basis.NumCols(); j++)
 			basis[i][j]= 0;
 
 	ZZ N;
-	conv(N,ceil(sqrt(dimension-1)));
-	for(int i= 0; i<dimension-1; i++){
+	conv(N,ceil(sqrt(basis.NumRows()-1)));
+	for(int i= 0; i<basis.NumRows()-1; i++){
 		basis[i][i]= 2;
-		basis[i][dimension-1]= 2*values[i]*N;
-		basis[dimension-1][i]= 1;
+		basis[i][basis.NumRows()-1]= 2*values[i]*N;
+		basis[basis.NumCols()-1][i]= 1;
 		}
-	basis[dimension-1][dimension-1]= 2*sum*N;
+		
+	basis[basis.NumRows()-1][basis.NumCols()-1]= 2*sum*N;
+	
+	if(k<2)
+		ret= basis;
+	else {
+		BKZ_QP1(basis, 0.99, k); 
+
+		ret.SetDims(basis.NumRows()-1, basis.NumRows()-1);
+
+		for(int i= 0; i<ret.NumRows(); i++)
+			for(int j= 0; j<ret.NumCols(); j++)
+				ret[i][j]= basis[i][j];
 	}
+
+	return ret;
+}
+
 
 /* generates a random knapsack problem with equally many zeroes and ones in the solution (condition applied in the extreme pruning article) */ 
 void cjloss::randomize(long dimension, ZZ max){
@@ -115,7 +137,7 @@ double cjloss::get_density() const {
 }
 
 ostream& operator<<(ostream& os, const cjloss& obj) {
-	os << obj.basis << endl << endl;
+	//os << obj.basis << endl << endl;
 
 	cout << "Density: " << obj.get_density() << endl;
 	cout << "Values: " << obj.values << endl;
@@ -124,7 +146,7 @@ ostream& operator<<(ostream& os, const cjloss& obj) {
 	return os;
 }
 
-void cjloss::print_solution(const vec_RR& shortest){
+/*void cjloss::print_solution(const vec_RR& shortest){
 	double* sol= new double[basis.NumCols()];
 	double dbase, dsol;
 
@@ -163,5 +185,5 @@ void cjloss::print_solution(const vec_RR& shortest){
 	for(int i= 0; i< basis.NumCols()-2 ; i++) 
 		cout << sol[i] << " "; 	
 	cout << sol[basis.NumCols()-2] << "]" << endl; 
-}
+}*/
 

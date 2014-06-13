@@ -21,14 +21,17 @@
 #ifndef CLEANBKZ_TOOLS_H_
 #define CLEANBKZ_TOOLS_H_
 
-#include <NTL/RR.h>
-
-using namespace NTL;
-
 /** 	@file 
-	@brief Contains a ceiling function that was somehow missing from my NTL library. */
+	@brief Contains a functions for parsing the command line, used by the applications. */
 
-/** Funcion for ceiling NTL::RR values */
-void ceilPrec(RR& x, const RR& a, long p);
+#include <string>
+
+using namespace std;
+
+//TODO: documentation
+
+char* get_cmd_option(char** begin, char** end, const string& option);
+
+bool cmd_option_exists(char** begin, char** end, const string& option);
 
 #endif

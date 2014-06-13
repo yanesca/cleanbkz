@@ -23,15 +23,26 @@
 #include <cleanbkz/boundary.hpp>
 #include <cleanbkz/cjloss.hpp>
 #include <cleanbkz/version.hpp>
+#include <cleanbkz/tools.hpp>
 #include <NTL/LLL.h>
 
 using namespace std;
 
-// Defined in tools.cpp
-char* get_cmd_option(char** begin, char** end, const string& option); 
-bool cmd_option_exists(char** begin, char** end, const string& option);
-
 //TODO: refaktorálni a paraméterfeldolgozást: csinálni hozzá int és double változatot, hibaüzenetekkel és kivételkezeléssel
+
+void gen_randlat(mat_ZZ& basis, ZZ determinant, int dim) {
+	basis.SetDims(dim, dim);
+	
+	ZZ s;
+	s= time(NULL);
+	SetSeed(s);
+	for(int i= 0; i < dim; i++) {
+		basis[i][0]= RandomBnd(determinant);
+		basis[i][i]= 1;
+	}
+
+	basis[0][0]= determinant;
+}
 
 int main(int argc, char** argv) {
 
@@ -143,19 +154,18 @@ int main(int argc, char** argv) {
 	mat_ZZ m;
 	if (cmd_option_exists(argv, argv+argc, "-c")) {	
 		cjloss l(dim, density, seed);
-		m= l.basis;
+		m= l.get_basis(beta);
 		} 
 	else if (cmd_option_exists(argv, argv+argc, "-m")) {
-		m.SetDims(dim, dim);
-		for(int i= 0; i < dim; i++)
-			for(int j= 0; j < dim; j++)
-				RandomBits(m[i][j], maxsize); 
+		ZZ determinant;
+		GenPrime(determinant,maxsize);
+		gen_randlat(m,determinant,dim); 
 		}
 	
-	if(beta > 1)	
+	if(beta > 1 && !(cmd_option_exists(argv, argv+argc, "-c")))	
 		BKZ_QP1(m, 0.99, beta);		
 
-	cout << m;
+	cout << m << endl << beta;
 
 	return 0;
 }

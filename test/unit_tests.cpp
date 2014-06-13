@@ -39,31 +39,30 @@ inline double fact(double x) {
 
 extern RR polytope_volume_RR(RR vols[], RR bounds[], int dim, int prec);
 
-extern RR fact_RR(int x, int prec);
+extern RR fact_RR(int x);
 
-extern RR ball_vol_RR(int k, RR r, int prec);
+extern RR ball_vol_RR(int k, RR r);
 
 extern RR RR_PI;
 extern double ball_vol(int k, double r); 
 
 extern double integral_even(int ltilde, int l, double tvec[], double vvec[]);
+extern RR integral_even_RR(int h, int l, RR tvec[], RR vvec[]); 
+
+extern double integral_odd(int ltilde, int l, double tvec[], double vvec[]);
+extern RR integral_odd_RR(int h, int l, RR tvec[], RR vvec[]); 
 
 void genbounds(int l, double* tvec);
 
 int main(int argc, char** argv) {
 
-	double* vols_d= new double[40];
+	/* Unit tests for the polytope volume computation. Reference values are simplices or computed with vinci. */
+
+	double* vols_d= new double[70];
 
 	bool vinci_test= true;
 	double vinci_vol_d;
 	double* bounds_d= new double[40]; 
-
-	/*srand ( 0 );
-	for(int i= 0; i< 1000; i++) {
-		genbounds( 30, bounds_d);
-		if (abs(integral_even(30,30,bounds_d,vols_d)- polytope_volume(vols_d, bounds_d, 30)) > 1e-100)
-			cout << integral_even(30,30,bounds_d,vols_d)- polytope_volume(vols_d, bounds_d, 30) << endl;
-		}*/
 
 	bounds_d[0]= 0.1; bounds_d[1]= 0.2; bounds_d[2]= 0.3;  bounds_d[3]= 0.4;  bounds_d[4]= 0.5;
 	vinci_vol_d= 1.08e-04;
@@ -103,53 +102,12 @@ int main(int argc, char** argv) {
 		cout << vinci_vol_d << endl; 
 	}
 
+	if(vinci_test)
+		cout << "\tVinci test PASSED." << endl;
+
 	RR* vols= new RR[71];
 
 	int prec= RR_PRECISION;	
-
-	/* Unit tests for the polytope volume computation. Reference values are simplices or computed with vinci. */
-
-	cout << "Testing polytope volume computation:" << endl;
-
-	vinci_test= true;
-	RR vinci_vol;
-	vinci_vol.SetPrecision(prec);
-	RR* bounds= new RR[15]; 
-
-	bounds[0]= 0.1; bounds[1]= 0.2; bounds[2]= 0.3;  bounds[3]= 0.4;  bounds[4]= 0.5;
-	vinci_vol= 1.08e-04;
-	if (abs(polytope_volume_RR(vols, bounds, 5, prec)-vinci_vol) > 1e-19) {
-		vinci_test= false;
-		cout << "\tVinci test FAILED in dimension 5" << endl;
-	}	
-	
-	bounds[0]= 0.1; bounds[1]= 0.2; bounds[2]= 0.3;  bounds[3]= 0.4;  bounds[4]= 0.5; bounds[5]= 0.6;
-	vinci_vol= 2.334305555556e-05;
-	if (abs(polytope_volume_RR(vols, bounds, 6, prec)-vinci_vol) > 1e-17) {
-		vinci_test= false;
-		cout << "\tVinci test FAILED in dimension 6" << endl;
-	}	
-	
-	bounds[0]= 0.1; bounds[1]= 0.2; bounds[2]= 0.3;  bounds[3]= 0.4;  bounds[4]= 0.5; bounds[5]= 0.6; 
-	bounds[6]= 0.7; bounds[7]= 0.8; bounds[8]= 0.9;
-	vinci_vol= 2.755731922399e-07;
-	if (abs(polytope_volume_RR(vols, bounds, 9, prec)-vinci_vol) > 1e-19) {
-		vinci_test= false;
-		cout << "\tVinci test FAILED in dimension 9" << endl;
-	}	
-
-	bounds[0]= 0.1; bounds[1]= 0.2; bounds[2]= 0.3;  bounds[3]= 0.4;  bounds[4]= 0.5; bounds[5]= 0.6; 
-	bounds[6]= 0.7; bounds[7]= 0.8; bounds[8]= 0.9; bounds[9]= 0.95;
-	vinci_vol= 5.120005762235e-08;
-	if (abs(polytope_volume_RR(vols, bounds, 10, prec)-vinci_vol) > 1e-20) {
-		vinci_test= false;
-		cout << "\tVinci test FAILED in dimension 10" << endl;
-	}	
-
-	//TODO: dimension 15 multiple
-
-	if(vinci_test)
-		cout << "\tVinci test PASSED." << endl;
 
 	RR epsilon, x, y;
 	epsilon.SetPrecision(prec);
@@ -166,8 +124,8 @@ int main(int argc, char** argv) {
 	RR pv, sv;	
 	bool simplex_test= true;
 	for(int i= 1; i < 71; i++) {
-		pv= polytope_volume_RR(vols, simplex, i, prec);
-		sv= 1/fact_RR(i, prec);
+		pv= integral_even_RR(i, i, simplex, vols);
+		sv= 1/fact_RR(i);
 		y= pv.exponent()+95;
 		pow(epsilon, x, y);
 		// Checking if relative error is greater than prec-95 binary digits
@@ -185,6 +143,55 @@ int main(int argc, char** argv) {
 	if(simplex_test)
 		cout << "\tSimplex test PASSED." << endl;
 
+	RR* linear= new RR[70];
+	double* linear_d= new double[70];
+	for(int i= 0; i < 70; i++)
+		linear[i]= linear_d[i]= (i+1)/70.0;
+
+	RR rv, dv;	
+	bool double_test= true;
+	for(int i= 1; i < 40; i++) {
+		rv= integral_even_RR(i, i, linear, vols);
+		dv= integral_even(i, i, linear_d, vols_d);
+		y= rv.exponent()+175;
+		pow(epsilon, x, y);
+		// Checking if relative error is greater than prec-175 binary digits
+		if( abs(rv - dv) > epsilon) {
+			double_test= false;
+			cout << "\tDouble test (even) failed in dimension " << i << endl;
+			}
+		/*cout << "Dimension " << i << endl;
+		cout << "\t RR: " << rv << endl;
+		cout << "\t double: " << dv << endl;
+		cout << "\t diff: " << abs(rv-dv) << endl;
+		cout << "\t epsilon: " << epsilon << endl << endl;*/
+		}
+	
+	if(double_test)
+		cout << "\tDouble test (even) PASSED." << endl;
+
+	double_test= true;
+	for(int i= 1; i < 40; i++) {
+		rv= integral_odd_RR(i, i, linear, vols);
+		dv= integral_odd(i, i, linear_d, vols_d);
+		y= rv.exponent()+155;
+		pow(epsilon, x, y);
+		// Checking if relative error is greater than prec-155 binary digits
+		if( abs(rv - dv) > epsilon) {
+			double_test= false;
+			cout << "\tDouble test (odd) failed in dimension " << i << endl;
+			}
+		/*cout << "Dimension " << i << endl;
+		cout << "\t RR: " << rv << endl;
+		cout << "\t double: " << dv << endl;
+		cout << "\t diff: " << abs(rv-dv) << endl;
+		cout << "\t epsilon: " << epsilon << endl << endl;*/
+		}
+	
+	if(double_test)
+		cout << "\tDouble test (odd) PASSED." << endl;
+
+
 	// Unit tests for the n dimensional ball volume computation
 	cout << "Testing ball volume computation:" << endl;
 
@@ -198,7 +205,7 @@ int main(int argc, char** argv) {
 	y= -50;
 	pow(epsilon, x, y);
 	for(int i= 1; i < 71; i++) {
-		if( abs(ball_vol_RR(i, r, prec)-ball_vol(i, r_d)) > epsilon) {
+		if( abs(ball_vol_RR(i, r)-ball_vol(i, r_d)) > epsilon) {
 			ball_test= false;
 			cout << "\tBall test failed in dimension " << i << endl;
 		}
@@ -207,71 +214,6 @@ int main(int argc, char** argv) {
 	if(ball_test)
 		cout << "\tBall test PASSED." << endl;
 
-	// Unit tests for node number estimation
-
-	/* Unit tests for the enumeration running time estimator function
-	//TODO: cjloss destruktort megirni és itt meghivni
-	//TODO: setupot és teardownt irni a teszthez
-
-		
-	cjloss l(80, 0.94, 0);
-	BKZ_QP1(l.basis, 0.99, 2);		
-
-	mat_RR mu1;
-	vec_RR c1;
-	ComputeGS(l.basis,mu1,c1);
-
-	double* c_d= new double[mu1.NumRows()];
-	for(int i= 0; i < mu1.NumRows(); i++)
-		conv(c_d[i], SqrRoot(c1[i]));
-
-	double* boundary_d= new double[mu1.NumRows()];	
-	boundary_d[0]= boundary_d[1]= 2;
-	for(int i= 2; i < mu1.NumRows()-1; i+=2)
-		boundary_d[i]= boundary_d[i+1]= boundary_d[i-1]+boundary_d[0];
-	boundary_d[mu1.NumRows()-1]= mu1.NumRows();
-
-	RR* c= new RR[mu1.NumRows()];
-	for(int i= 0; i < mu1.NumRows(); i++) {
-		c[i].SetPrecision(prec);
-		c[i]= SqrRoot(c1[i]);
-	}
-
-	RR* boundary= new RR[mu1.NumRows()];	
-	boundary[0].SetPrecision(prec);
-	boundary[1].SetPrecision(prec);
-	boundary[0]= boundary[1]= 2;
-	for(int i= 2; i < mu1.NumRows()-1; i+=2) {
-		boundary[i].SetPrecision(prec);
-		boundary[i]= boundary[i+1]= boundary[i-1]+boundary[0];
-	}
-	boundary[mu1.NumRows()-1]= mu1.NumRows();
-
-	double t_node= 3.47193e-08;
-	double t_reduc= 0.101471;
-	if(t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows())-t_extreme_reference(boundary, c, t_node, t_reduc, mu1.NumRows()) < 1e-10)
-		cout << "PASSED" << endl;
-	else cout << "FAILED" << endl;
-
-	//cout << "Production (double): " << t_extreme(boundary_d, c_d, t_node, t_reduc, mu1.NumRows()) << endl;
-	cout << "Reference: " << t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl; 
-	cout << "Reference (double): " << t_extreme_reference(boundary_d, c_d, t_node, t_reduc, mu1.NumRows()) << endl; 
-	cout << "Production: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl;
-	cout << "Diff: " << t_extreme(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) - t_extreme_reference_RR(boundary, c, t_node, t_reduc, mu1.NumRows(), prec) << endl; */
-
 	return 0;
 }
 
-void genbounds(int l, double* tvec){
-	for(int i= 0; i < l; i++)
-		tvec[i]= 1.0/(rand()%1000);
-
-	double swap;
-	for(int i= 0; i < l-1; i++)
-		for(int j= 0; j < l-i-1; j++) 
-			if (tvec[j] > tvec[j+1]) {
-				swap= tvec[j];
-				tvec[j]= tvec[j+1];
-				tvec[j+1]= swap;
-				}
-}

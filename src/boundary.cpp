@@ -25,7 +25,6 @@
 #include <fstream>
 #include <NTL/RR.h>
 #include <cleanbkz/boundary.hpp>
-#include <cleanbkz/gsa.hpp>
 
 using namespace std;
 
@@ -33,9 +32,9 @@ inline double fact(double x) {
 	return (x < 2 ? 1 : x * fact(x - 1));
 }
 
-RR fact_RR(int x, int prec) {
+RR fact_RR(int x) {
 	RR ret;
-	ret.SetPrecision(prec);
+	ret.SetPrecision(RR_PRECISION);
 	ret= 1;
 
 	for(int i= 2; i <= x; i++) 
@@ -44,37 +43,21 @@ RR fact_RR(int x, int prec) {
 	return ret;
 	}
 
-RR polytope_volume_RR(RR vols[], RR bounds[], int dim, int prec) {
-	RR tmp, pwr, ret;
 
-	tmp.SetPrecision(prec);
-	pwr.SetPrecision(prec);
-	ret.SetPrecision(prec);
-
-	ret= 1;
-	if(dim==0) 
-		return ret;
-
-	ret= 0;
-
-	vols[dim-1]= polytope_volume_RR(vols, bounds, dim-1, prec);
-
-	for(int i= 0; i < dim; i++) {
-		tmp= dim-i;
-		pow(pwr, bounds[i], tmp); 
-		ret+= pwr*vols[i]/fact_RR(dim-i,prec)*((dim-i+1)%2==0?1:-1);
-	}
-		
-	return ret;
+double ball_vol(int k, double r) {
+	if (k%2==0) 
+		return pow(M_PI, k/2) / fact(k/2) * pow(r, k);
+	else
+		return 2 * pow(4*M_PI, k/2) * fact(k/2) / fact(k) * pow(r, k);
 }
 
 RR RR_PI;
 
-RR ball_vol_RR(int k, RR r, int prec) {
+RR ball_vol_RR(int k, RR r) {
 	RR pwr, exp, pipow;
-	pwr.SetPrecision(prec);
-	exp.SetPrecision(prec);
-	pipow.SetPrecision(prec);
+	pwr.SetPrecision(RR_PRECISION);
+	exp.SetPrecision(RR_PRECISION);
+	pipow.SetPrecision(RR_PRECISION);
 	
 	exp= k;
 	pow(pwr, r, exp);
@@ -82,73 +65,106 @@ RR ball_vol_RR(int k, RR r, int prec) {
 	if (k%2==0) { 
 		exp= k/2;
 		pow(pipow, RR_PI, exp); 
-		return pipow / fact_RR(k/2, prec) * pwr;
+		return pipow / fact_RR(k/2) * pwr;
 	} else {
 		exp= k/2;
 		pow(pipow, 4*RR_PI, exp);
-		return 2 * pipow * fact_RR(k/2, prec) / fact_RR(k, prec) * pwr;
+		return 2 * pipow * fact_RR(k/2) / fact_RR(k) * pwr;
 	}
 }
 
-double ball_vol(int k, double r) {
+RR integral_even_RR(int h, int l, RR tvec[], RR vvec[]) {
+	RR tmp, pwr, ret;
 
-	/*cout << "#" << endl << "# ball_vol: R= " << r << " dim= " << k << endl;	
-	cout << "# Gamma: " << pow(M_PI, k/2.0) / tgamma(k/2.0+1) * pow(r, k) << endl;
-	if (k%2==0) 
-		cout << "# Form: " << pow(M_PI, k/2) / fact(k/2) * pow(r, k) << endl;
-	else
-		cout << "# Form: " << 2 * pow(4*M_PI, k/2) * fact(k/2) / fact(k) * pow(r, k) << endl << "#" << endl;*/ 
+	tmp.SetPrecision(RR_PRECISION);
+	pwr.SetPrecision(RR_PRECISION);
+	ret.SetPrecision(RR_PRECISION);
 
-	if (k%2==0) 
-		return pow(M_PI, k/2) / fact(k/2) * pow(r, k);
-	else
-		return 2 * pow(4*M_PI, k/2) * fact(k/2) / fact(k) * pow(r, k);
-}
-
-double integral_odd(int ltilde, int l, double tvec[], double vvec[]) {
-	double ret= 0;
-
-	if(ltilde==0) 
-		return 1;
-
-	vvec[ltilde-1]= integral_odd(ltilde-1, l, tvec, vvec);
-
-	ret-= pow(1-tvec[l-ltilde], (2*ltilde+1)/2.0)*pow(2,2*ltilde+1)*fact(ltilde+1)/fact(2*ltilde+2);
-	for(int i= 1; i < ltilde; i++)
-		ret+= pow(tvec[l-ltilde],ltilde-i)*vvec[i]/fact(ltilde-i)*((ltilde-i-1)%2==0?1:-1);
-
-	if(ltilde!=l)		
+	ret= 1;
+	if(h==0) 
 		return ret;
 
-	return ret + pow(2,2*ltilde+1)*fact(ltilde+1)/fact(2*ltilde+2);
-}
+	ret= 0;
 
-double integral_even(int ltilde, int l, double tvec[], double vvec[]) {
-	double ret= 0;
+	vvec[h-1]= integral_even_RR(h-1, l, tvec, vvec);
 
-	if(ltilde==0) 
-		return 1;
-
-	vvec[ltilde-1]= integral_even(ltilde-1, l, tvec, vvec);
-
-	for(int i= 0; i < ltilde; i++)
-		ret+= pow(tvec[l-ltilde],ltilde-i)*vvec[i]/fact(ltilde-i)*((ltilde-i-1)%2==0?1:-1);
+	for(int i= 0; i < h; i++) {
+		tmp= h-i;
+		pow(pwr, tvec[l-h], tmp); 
+		ret+= pwr*vvec[i]/fact_RR(h-i)*((h-i-1)%2==0?1:-1);
+	}
 		
 	return ret;
 }
 
-double polytope_volume(double vols[], double bounds[], int dim) {
+
+double integral_even(int h, int l, double tvec[], double vvec[]) {
 	double ret= 0;
 
-	if(dim==0) 
+	if(h==0) 
 		return 1;
 
-	vols[dim-1]= polytope_volume(vols, bounds, dim-1);
+	vvec[h-1]= integral_even(h-1, l, tvec, vvec);
 
-	for(int i= 0; i < dim; i++)
-		ret+= pow(bounds[i], dim-i)*vols[i]/fact(dim-i)*((dim-i+1)%2==0?1:-1);
+	for(int i= 0; i < h; i++)
+		ret+= pow(tvec[l-h],h-i)*vvec[i]/fact(h-i)*((h-i-1)%2==0?1:-1);
 		
 	return ret;
+}
+
+RR integral_odd_RR(int h, int l, RR tvec[], RR vvec[]) {
+	RR tmp, pwr, ret, pow2, two;
+
+	tmp.SetPrecision(RR_PRECISION);
+	pwr.SetPrecision(RR_PRECISION);
+	pow2.SetPrecision(RR_PRECISION);
+	ret.SetPrecision(RR_PRECISION);
+	two.SetPrecision(RR_PRECISION);
+
+	two= 2;
+	ret= 1;
+	if(h==0) 
+		return ret;
+
+	ret= 0;
+
+	vvec[h-1]= integral_odd_RR(h-1, l, tvec, vvec);
+
+	tmp= (2*h+1)/2.0;
+	pow(pwr, 1-tvec[l-h], tmp); 
+	tmp= 2*h+1;
+	pow(pow2, two, tmp); 
+
+	ret-= (pwr*pow2/fact_RR(2*h+2))*fact_RR(h+1);
+	for(int i= 1; i < h; i++) {
+		tmp= h-i;
+		pow(pwr, tvec[l-h], tmp); 
+		ret+= pwr*vvec[i]/fact_RR(h-i)*((h-i-1)%2==0?1:-1);
+	}
+		
+	if(h!=l)		
+		return ret;
+
+	return ret + pow2/fact_RR(2*h+2)*fact_RR(h+1);
+}
+
+
+double integral_odd(int h, int l, double tvec[], double vvec[]) {
+	double ret= 0;
+
+	if(h==0) 
+		return 1;
+
+	vvec[h-1]= integral_odd(h-1, l, tvec, vvec);
+
+	ret-= pow(1-tvec[l-h], (2*h+1)/2.0)*pow(2,2*h+1)*fact(h+1)/fact(2*h+2);
+	for(int i= 1; i < h; i++)
+		ret+= pow(tvec[l-h],h-i)*vvec[i]/fact(h-i)*((h-i-1)%2==0?1:-1);
+
+	if(h!=l)		
+		return ret;
+
+	return ret + pow(2,2*h+1)*fact(h+1)/fact(2*h+2);
 }
 
 RR t_full_RR(RR R, RR b_star_norm[], double t_node, double t_reduc, int n, int prec) {
@@ -158,7 +174,7 @@ RR t_full_RR(RR R, RR b_star_norm[], double t_node, double t_reduc, int n, int p
 	denom.SetPrecision(prec);
 	denom= 1;
 	for(int i= 1; i<= n; i++) {
-		V_act= ball_vol_RR(i, R, prec); 
+		V_act= ball_vol_RR(i, R); 
 
 		denom*= b_star_norm[n-i];
 		N+= V_act/denom;
@@ -167,98 +183,6 @@ RR t_full_RR(RR R, RR b_star_norm[], double t_node, double t_reduc, int n, int p
 	N/= 2;
 	return t_reduc+t_node*N; 
 	}
-
-RR t_extreme_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, long prec) {
-	int pdim= (n%2==0)?n/2:n/2+1;
-	RR p_succ;
-	p_succ.SetPrecision(prec);
-	
-	RR* polytope_vols= new RR[pdim+1];
-	RR* bounds= new RR[pdim];
-
-	for(int i= 0; i< n; i+=2) {
-		bounds[i/2].SetPrecision(prec);	
-		bounds[i/2]= Rvec[i]*Rvec[i]/(Rvec[n-1]*Rvec[n-1]);
-	}
-
-	RR N, V_act, denom;
-	N.SetPrecision(prec);
-	V_act.SetPrecision(prec);
-	denom.SetPrecision(prec);
-	denom= 1;
-	polytope_vols[pdim]= polytope_volume_RR(polytope_vols, bounds, pdim, prec);
-	for(int i= 1; i<= n; i++) {
-		if(i%2==0)
-			V_act= ball_vol_RR(i, Rvec[i-1], prec) * polytope_vols[i/2] * fact_RR(i/2, prec); 
-		else
-			V_act= ball_vol_RR(i, Rvec[i-1], prec) * (polytope_vols[i/2] * fact_RR(i/2,prec) + polytope_vols[i/2+1]*fact_RR(i/2+1,prec)) / 2; 
-
-		//cout << "#  denom_" << i-1 << " = " << denom << endl;
-
-		denom*= b_star_norm[n-i];
-
-	/*	cout << "#  denom_" << i << " = " << denom << endl;
-		cout << "#  bstarnorm_" << n-i << " = " << b_star_norm[n-i] << endl;
-		cout << "#  V_" << i << " = " << V_act/denom << endl;
-		cout << "#  Vball_" << i << "(" << Rvec[i-1] << ") = " << ball_vol_RR(i, Rvec[i-1], prec) << endl << endl;*/
-
-
-		N+= V_act/denom;
-	}
-
-	p_succ= polytope_vols[pdim-1]*fact_RR(pdim-1, prec);
-
-	delete [] bounds;
-	delete [] polytope_vols;
-
-	N/= 2;
-	return (t_reduc+t_node*N)/p_succ; 
-}
-
-RR t_extreme(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, long prec){ 
-	return t_extreme_RR(Rvec, b_star_norm, t_node, t_reduc, n, prec);
-	}
-
-RR t_extreme_reference_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, int prec) {
-	int pdim= (n%2==0)?n/2:n/2+1;
-	RR p_succ;
-	p_succ.SetPrecision(prec);
-	
-	RR* polytope_vols= new RR[pdim+1];
-	RR* bounds= new RR[pdim];
-
-	for(int i= 0; i< n; i+=2) {
-		bounds[i/2].SetPrecision(prec);	
-		bounds[i/2]= Rvec[i]*Rvec[i]/(Rvec[n-1]*Rvec[n-1]);
-	}
-
-	RR N, V_act, denom;
-	N.SetPrecision(prec);
-	V_act.SetPrecision(prec);
-	denom.SetPrecision(prec);
-	polytope_vols[pdim]= polytope_volume_RR(polytope_vols, bounds, pdim, prec);
-	for(int i= 1; i<= n; i++) {
-		if(i%2==0)
-			V_act= ball_vol_RR(i, Rvec[i-1], prec) * polytope_vols[i/2] * fact_RR(i/2, prec); 
-		else
-			V_act= ball_vol_RR(i, Rvec[i-1], prec) * (polytope_vols[i/2] * fact_RR(i/2,prec) + polytope_vols[i/2+1]*fact_RR(i/2+1,prec)) / 2; 
-
-		denom= 1;
-		for(int j= n-i; j < n; j++) 
-			denom*= b_star_norm[j];
-
-		N+= V_act/denom;
-	}
-
-	p_succ= polytope_vols[pdim-1]*fact_RR(pdim-1, prec);
-
-	delete [] bounds;
-	delete [] polytope_vols;
-
-	N/= 2;
-	return (t_reduc+t_node*N)/p_succ; 
-}
-
 
 double n_full(double R, double b_star_norm[], int n) {
 	double N, V_act, denom;
@@ -279,42 +203,32 @@ double n_full(double R, double b_star_norm[], int n) {
 	return N; 
 	}
 
-inline double get_gsa(double scale, int dim, int bsize, int i) {
-	cout << "# get " << i << " exponent= " <<   (scale + gsa_slope[bsize]*(i-(dim+1)/2.0) + gsa_convexity[bsize]*(i*i-(dim+1)*i+(dim+1)*(dim+2)/6.0))  << endl;
-	return exp( (scale + gsa_slope[bsize]*(i-(dim+1)/2.0) + gsa_convexity[bsize]*(i*i-(dim+1)*i+(dim+1)*(dim+2)/6.0))  );
-}
+RR ci_prob_RR(RR Rvec[], int k) {
+	RR ret;
+	int l= k/2;
+	RR* bounds= new RR[l];
+	RR* vvec= new RR[l];
 
-double n_full_gsa(double R, double scale, int bsize, int n) {
-	double N, V_act, denom;
+	for(int i= 0; i< l; i++)
+		bounds[i]= Rvec[2*i]*Rvec[2*i]/(Rvec[k-1]*Rvec[k-1]);
 
-	cout << "# " << "scale: " << scale << endl;
-	cout << "# " << "slope: " <<   gsa_slope[bsize] << endl;
-	cout << "# " << "convexity: " <<   gsa_convexity[bsize] << endl;
-	cout << "\"GSA\"" << endl << endl;
+	if(k%2==0)
+		ret= integral_even_RR(l, l, bounds, vvec)*fact_RR(l);
+	else
+		ret= integral_odd_RR(l, l, bounds, vvec)*fact_RR(2*l+2)/(power2_RR(2*l+1)*fact_RR(l+1));
 
-	N= 0;
-	denom= 1;
-	for(int i= 1; i<= n; i++) {
-		V_act= ball_vol(i, R); 
+	delete [] bounds;
+	delete [] vvec;
 
-		denom*= sqrt(get_gsa(scale, n, bsize, n-i+1));
-		N+= V_act/denom;
-
-		cout << "# " << n-i << " gsa: " <<  sqrt(get_gsa(scale, n, bsize, n-i+1)) << endl;
-		cout << i-1 << " " << V_act/denom << endl;
-	}
-	cout << endl << "# " << N/2 << endl;
-
-	N/= 2;
-	return N; 
+	return ret;
 }
 
 double ci_prob(double Rvec[], int k) {
+	//TODO: ez a jó, a másikat is igy kijavitani
 	double ret;
 	int l= k/2;
 	double* bounds= new double[l];
 	double* vvec= new double[l];
-
 
 	/*cout << "# khalf: " << l << endl;
 	cout << "# Rvec: [ ";
@@ -341,12 +255,73 @@ double ci_prob(double Rvec[], int k) {
 	return ret;
 }
 
-// The case where n is even
-double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n) {
+RR p_succ(RR Rvec[], int n){
+	RR ret;
+	int l= (n%2==1)?n/2:n/2-1;
+	RR* bounds= new RR[l];
+	RR* vvec= new RR[l];
+
+	for(int i= 0; i< l; i++)
+		bounds[i]= Rvec[2*i]*Rvec[2*i]/(Rvec[n-1]*Rvec[n-1]);
+
+	if(n%2==0)
+		ret= integral_even_RR(l, l, bounds, vvec)*fact_RR(l);
+	else
+		ret= integral_odd_RR(l, l, bounds, vvec)*fact_RR(2*l+2)/(power2_RR(2*l+1)*fact_RR(l+1));
+
+	delete [] bounds;
+	delete [] vvec;
+
+	return ret;
+}
+
+RR t_extreme_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n) {
+	RR N;
+	RR V_act; 	
+	RR denom;
+
+	N= 0;
+	for(int k= 1; k<= n; k++) {
+		denom= 1;
+
+		for(int i= n-k; i < n; i++) 
+			denom*= b_star_norm[i]; 
+
+		V_act= ball_vol_RR(k, Rvec[k-1]) * ci_prob_RR(Rvec, k); 
+
+		N+= V_act/denom;
+	}
+	
+
+	N/= 2;
+	return (t_reduc+t_node*N)/p_succ(Rvec, n); 
+}
+
+/*double t_extreme(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n) {
 	double N= 0;
 	double V_act; 	
 	double denom;
-	//double N_next, N_prev;
+
+	for(int k= 1; k<= n; k++) {
+		denom= 1;
+
+		for(int i= n-k; i < n; i++) 
+			denom*= b_star_norm[i]; 
+
+		V_act= ball_vol(k, Rvec[k-1]) * ci_prob(Rvec, k); 
+
+		N+= V_act/denom;
+	}
+	
+
+	N/= 2;
+	return (t_reduc+t_node*N)/ci_prob(Rvec, n/2); 
+}*/
+
+void predict_nodes(double Rvec[], double b_star_norm[], int n) {
+	double N= 0;
+	double V_act; 	
+	double denom;
 
 	cout << "# T_extreme: " << endl << "# GS-lengths: [ ";
 	for(int i= 0; i < n; i++)
@@ -362,35 +337,8 @@ double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, d
 	unsigned long nodes;
 	unsigned long sum= 0;
 
-//	N_next= 0;
-//	N_prev= 1/b_star_norm[n-1];
 	for(int k= 1; k<= n; k++) {
-		/*if(k%2==0) {
-			//V_act= ball_vol(k, Rvec[k-1]) * pvol_and_scale(Rvec, k/2) * fact(k/2); 
-			N_prev= N_next;
-			N+= N_prev;
-			cout << k-1 << " " << N_prev << endl; 
-		} else {
-			denom= 1;
-			for(int i= n-k-1; i < n; i++) 
-				denom*= b_star_norm[i];
-
-			N_next= ball_vol(k+1, Rvec[k]) * pvol_and_scale(Rvec, k/2+1) * fact(k/2+1) / denom;  
-			N+= (N_prev+N_next)/2;
-			cout << k-1 << " " << (N_prev+N_next)/2 << endl; 
-
-			//V_act= ball_vol(k-1, Rvec[k-2]) * pvol_and_scale(Rvec, k/2)*fact(k/2) * 2 * Rvec[k]; // upper bound: V_{k-1}*2*R_k 
-			//V_act= ball_vol(k, Rvec[k-1]) * ( pvol_and_scale(Rvec, k/2)*fact(k/2) +  pvol_and_scale(Rvec, k/2+1)*fact(k/2+1)) / 2; 
-
-			cout << "# Simvol_" << k/2+1 << " = " <<  fact(k/2+1) << endl;
-			cout << "# Polvol_" << k/2+1 << " = " <<  pvol_and_scale(Rvec, k/2+1) << endl;
-			cout << "# V_ball(" << k+1 << ", " << Rvec[k] << ") = " << ball_vol(k+1, Rvec[k]) << endl;
-			cout << "# |b^*_" << n-k-1 << "| = " << b_star_norm[n-k-1] << endl;
-			cout << "# V_" << k+1 << " = " << ball_vol(k+1, Rvec[k]) * pvol_and_scale(Rvec, k/2+1) * fact(k/2+1) << endl;
-			cout << "# denom_" << k << " = " << denom << endl;
-//		}*/
 		denom= 1;
-		//for(int i= 0; i < k; i++) 
 		for(int i= n-k; i < n; i++) 
 			denom*= b_star_norm[i]; 
 
@@ -398,103 +346,74 @@ double t_extreme_reference(double Rvec[], double b_star_norm[], double t_node, d
 
 		N+= V_act/denom/2;
 
-		//cout << "# Simvol_" << psd << " = " <<  fact(psd) << endl;
-		//cout << "# Polvol_" << psd << " = " <<  pvol_and_scale(Rvec, k) << endl;
-		//cout << "# Polprob_" << k/2 << " = " <<  polprob_even(Rvec, k) << endl;
-		cout << "# V_ball(" << k << ", " << Rvec[k-1] << ") = " << ball_vol(k, Rvec[k-1]) << endl;
-		//cout << "# |b^*_" << n-k << "| = " << b_star_norm[n-k] << endl;
-		//cout << "# V_" << k << " = " << V_act << endl;
-		cout << "# denom_" << k << " = " << denom << endl;
-		cout << "# ratio_" << k << " = " << pow(ball_vol(k, Rvec[k-1])/denom,1.0/k) << endl;
-		//cout << "# N_" << k << " = " << V_act/denom/2 << endl; 
+		cout << "# N_" << k << " = " << V_act/denom/2 << endl; 
 		myfile >> nodes; sum+= nodes; 
 		cout << "# Measured nodes: " << nodes << endl;
-		//cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
-		//cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
-		//cout << "# GH_" << k << " = " << pow(denom/ball_vol(k, 1),1.0/k) << endl;
-		cout << "# R_" << k << " = " << Rvec[k-1] << endl;
-		if( Rvec[k-1] < sqrt(k))
-			cout << "# WARNING! Gaussian Heuristics violation: " << k << "^(1/2) = " << sqrt(k) << endl;
-		//cout << "# R/GH in dim " << k << " = " << Rvec[k-1]/ pow(denom/ball_vol(k, 1),1.0/k) << endl;
+		cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
+		cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
+		cout << "# GH_" << k << " = " << pow(denom/ball_vol(k, 1),1.0/k) << endl;
+		cout << "# R/GH in dim " << k << " = " << Rvec[k-1]/ pow(denom/ball_vol(k, 1),1.0/k) << endl;
 
-		//cout << k-1 << " " << nodes/(V_act/denom/2) << endl;
-		//cout << k-1 << " " << nodes - V_act/denom/2 << endl;		
 		cout << k-1 << " " << V_act/denom/2 << endl; 
 	}
 	
 	myfile.close();
 
-	//N/= 2;
 	cout << "# Predicted nodes: " << N << endl;
 	cout << "# Measured nodes: " << sum << endl;
-	return (t_reduc+t_node*N)/ci_prob(Rvec, n/2); 
 }
 
-double t_extreme(double Rvec[], double b_star_norm[], double t_node, double t_reduc, int n) {
-	int pdim= (n%2==0)?n/2:n/2+1;
-	
-	double* polytope_vols= new double[pdim+1];
-	double* bounds= new double[pdim];
+void predict_nodes_RR(RR Rvec[], double b_star_norm[], int n) {
+	RR N;
+	N= 0;
+	RR V_act; 	
+	RR denom;
 
-	for(int i= 0; i< n; i+=2)
-		bounds[i/2]= Rvec[i]*Rvec[i]/(Rvec[n-1]*Rvec[n-1]);
+	RR_PI.SetPrecision(RR_PRECISION);
+	RR_PI= ComputePi_RR();	
 
-	double N= 0;
-	double V_act, denom= 1;
-	polytope_vols[pdim]= polytope_volume(polytope_vols, bounds, pdim);
-	for(int i= 1; i<= n; i++) {
-		if(polytope_vols[i/2] * fact(i/2) > 1)
-			cout << " # " << polytope_vols[i/2] * fact(i/2) << endl;
+	cout << "# T_extreme: " << endl << "# GS-lengths: [ ";
+	for(int i= 0; i < n; i++)
+		cout << b_star_norm[i] << " ";	
+	cout << "]" << endl << "# Bounds: [ ";
+	for(int i= 0; i < n; i++)
+		cout << Rvec[i] << " ";	
+	cout << "]" << endl << "#" << endl;
 
-		if(i%2==0)
-			V_act= ball_vol(i, Rvec[i-1]) * polytope_vols[i/2] * fact(i/2); 
-		else
-			V_act= ball_vol(i, Rvec[i-1]) * (polytope_vols[i/2] + polytope_vols[i/2+1])*fact(i/2+1) / 2; 
-			//V_act= ball_vol(i, Rvec[i-1]) * (polytope_vols[i/2] + polytope_vols[i/2+1])*fact(i/2+1) / 2; 
+	cout << "\"Predicted\"" << endl << endl;
 
-		denom*= b_star_norm[n-i];
-		N+= V_act/denom;
-		/*cout << "Simvol_" << i/2 << " = " <<  fact(i/2) << endl;
-		cout << "Polvol_" << i/2 << " = " <<  polytope_vols[i/2] << endl;
-		cout << "V_ball(" << i << ", " << Rvec[i-1] << ") = " << ball_vol(i, Rvec[i-1])<< endl;
-		cout << "|b^*_" << n-i << "| = " << b_star_norm[n-i] << endl;
-		cout << "V_" << i << " = " << V_act << endl;
-		cout << "denom_" << i << " = " << denom << endl;
-		cout << "N_" << i << " = " << V_act/denom << endl << endl;*/
+	ifstream myfile ("ratio.tmp");
+	unsigned long nodes;
+	unsigned long sum= 0;
+
+	for(int k= 1; k<= n; k++) {
+		denom= 1;
+		for(int i= n-k; i < n; i++) 
+			denom*= b_star_norm[i]; 
+
+		V_act= ball_vol_RR(k, Rvec[k-1]) * ci_prob_RR(Rvec, k); 
+
+		N+= V_act/denom/2;
+
+		cout << "# Ball_" << k << " = " << ball_vol_RR(k, Rvec[k-1]) << endl;
+		cout << "# P_" << k << " = " << ci_prob_RR(Rvec, k) << endl;
+		cout << "# N_" << k << " = " << V_act/denom/2 << endl; 
+		myfile >> nodes; sum+= nodes; 
+		cout << "# Measured nodes: " << nodes << endl;
+		cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
+		//cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
+		//cout << "# GH_" << k << " = " << pow(denom/ball_vol(k, 1),1.0/k) << endl;
+		//cout << "# R/GH in dim " << k << " = " << Rvec[k-1]/ pow(denom/ball_vol(k, 1),1.0/k) << endl;
+
+		cout << k-1 << " " << V_act/denom/2 << endl; 
 	}
 	
-	N/= 2;
+	myfile.close();
 
-	cout << "Predicted nodes: " << N << endl;
-	return (t_reduc+t_node*N)/(polytope_vols[pdim-1]*fact(pdim-1)); 
+	cout << "# Predicted nodes: " << N << endl;
+	cout << "# Measured nodes: " << sum << endl; 
 }
 
-RR compute_p_succ(RR Rvec[], int n, int prec){
-	int pdim= (n%2==0)?n/2:n/2+1;
-	RR p_succ;
-	p_succ.SetPrecision(prec);
-	
-	RR* polytope_vols= new RR[pdim+1];
-	RR* bounds= new RR[pdim];
-
-	for(int i= 0; i< n; i+=2) {
-		bounds[i/2].SetPrecision(prec);	
-		bounds[i/2]= Rvec[i]*Rvec[i]/(Rvec[n-1]*Rvec[n-1]);
-	}
-
-	polytope_vols[pdim]= polytope_volume_RR(polytope_vols, bounds, pdim, prec);
-
-	p_succ= polytope_vols[pdim-1]*fact_RR(pdim-1, prec);
-
-	delete [] bounds;
-	delete [] polytope_vols;
-
-	return p_succ;
-}
-
-RR p_succ(RR Rvec[], int n, int prec){
-	return compute_p_succ(Rvec, n, prec);
-	}
 
 static 
 void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int n, RR* act, double delta, unsigned long iterations, RR& t_enum, int& changes) {
@@ -540,7 +459,7 @@ void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int
 					break;
 					 
 
-		time= t_extreme_RR(mod, b_star_norm, t_node, t_reduc, n, RR_PRECISION);
+		time= t_extreme_RR(mod, b_star_norm, t_node, t_reduc, n);
 
 		if(time < t_enum) {
 			t_enum= time;
@@ -558,7 +477,7 @@ void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int
 	delete [] mod;
 }
 
-void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, double Rvec[], double R, double delta, unsigned long iterations, double& p_succ, double& t_enum_d, bool quiet) {
+void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, double Rvec[], double R, double delta, unsigned long iterations, double& p_succ_v, double& t_enum_d, bool quiet) {
 	int changes;
 	RR* act= new RR[n];
 	
@@ -577,7 +496,7 @@ void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, d
 	}
 	act[n-1].SetPrecision(RR_PRECISION);
 	act[n-1]= R;
-	t_enum= t_extreme_RR(act, b_star_norm, t_node, t_reduc, n, RR_PRECISION);
+	t_enum= t_extreme_RR(act, b_star_norm, t_node, t_reduc, n);
 
 	if(!quiet) {
 		RR tmp;
@@ -596,7 +515,7 @@ void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, d
 	if(!quiet) 
 		cout << "# Changes: " << changes << endl;
 
-	conv(p_succ, compute_p_succ(act, n, RR_PRECISION));
+	conv(p_succ_v, p_succ(act, n));
 	conv(t_enum_d, t_enum);
 
 	delete [] act;
