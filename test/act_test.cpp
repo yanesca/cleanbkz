@@ -40,7 +40,7 @@ extern void profile_enumerate_epr(double** mu, double *b, double* Rvec, int n, v
 void gen_randlat(mat_ZZ& basis, ZZ determinant, int dim);
 
 int main(int argc, char** argv) {
-	int dim, bsize= 20;
+	int dim, bsize= 2;
 	stringstream ss;
 	bool l_cjloss= true;
 	mat_ZZ basis;
@@ -50,7 +50,8 @@ int main(int argc, char** argv) {
 	ss.clear();
 
 	if (l_cjloss) {
-		cjloss l(dim, 0.94, time(NULL));
+		//cjloss l(dim, 0.94, time(NULL));
+		cjloss l(dim, 0.94, 678);
 		basis= l.get_basis(bsize);
 	} else {
 		ZZ determinant;
@@ -137,8 +138,18 @@ int main(int argc, char** argv) {
 		if(i%2==1)
 			hmin[i-1]= hmin[i];
 	}
+
+	double* manual= new double[dim];
+	for(int i= 0; i < dim; i++) 
+		manual[i]= R;
+
+	for(int i= 2; i< argc; i++) {
+		ss << argv[i];
+		ss >> manual[i-2];
+		ss.clear();
+		}
 	
-	double* act= step;
+	double* act= manual;
 
 // Enumeration
 	vec_RR solution;	
@@ -155,6 +166,7 @@ int main(int argc, char** argv) {
 		linear[i]= sqrt(linear[i]);
 		min[i]= sqrt(min[i]);
 		hmin[i]= sqrt(hmin[i]);
+		manual[i]= sqrt(manual[i]);
 		}
 
 	//predict_nodes(act, c, dim);

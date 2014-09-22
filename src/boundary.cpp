@@ -395,15 +395,15 @@ void predict_nodes_RR(RR Rvec[], double b_star_norm[], int n) {
 
 		N+= V_act/denom/2;
 
-		cout << "# Ball_" << k << " = " << ball_vol_RR(k, Rvec[k-1]) << endl;
-		cout << "# P_" << k << " = " << ci_prob_RR(Rvec, k) << endl;
+		//cout << "# Ball_" << k << " = " << ball_vol_RR(k, Rvec[k-1]) << endl;
+		//out << "# P_" << k << " = " << ci_prob_RR(Rvec, k) << endl;
 		cout << "# N_" << k << " = " << V_act/denom/2 << endl; 
 		myfile >> nodes; sum+= nodes; 
 		cout << "# Measured nodes: " << nodes << endl;
-		cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
-		//cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
-		//cout << "# GH_" << k << " = " << pow(denom/ball_vol(k, 1),1.0/k) << endl;
-		//cout << "# R/GH in dim " << k << " = " << Rvec[k-1]/ pow(denom/ball_vol(k, 1),1.0/k) << endl;
+		//cout << "# Difference: " << nodes - V_act/denom/2 << endl;		
+		cout << "# Ratio: " << nodes/(V_act/denom/2) << endl;
+		cout << "# GH_" << k << " = " << pow(to_double(denom/ball_vol(k, 1)),1.0/k) << endl;
+		cout << "# R/GH in dim " << k << " = " << Rvec[k-1]/ pow(to_double(denom/ball_vol(k, 1)),1.0/k) << endl;
 
 		cout << k-1 << " " << V_act/denom/2 << endl; 
 	}
