@@ -47,16 +47,57 @@ extern RR RR_PI;
 extern double ball_vol(int k, double r); 
 
 extern double integral_even(int ltilde, int l, double tvec[], double vvec[]);
+extern RR integral_even_RR_old(int h, int l, RR tvec[], RR vvec[]); 
 extern RR integral_even_RR(int h, int l, RR tvec[], RR vvec[]); 
 
 extern double integral_odd(int ltilde, int l, double tvec[], double vvec[]);
+extern RR integral_odd_RR_old(int h, int l, RR tvec[], RR vvec[]); 
 extern RR integral_odd_RR(int h, int l, RR tvec[], RR vvec[]); 
 
 void genbounds(int l, double* tvec);
 
+void rand_boundary(int dim, RR* boundary);
+
 int main(int argc, char** argv) {
 
-	/* Unit tests for the polytope volume computation. Reference values are simplices or computed with vinci. */
+	int prec= RR_PRECISION;	
+
+	RR* vols= new RR[81];
+
+	RR epsilon, x, y;
+	epsilon.SetPrecision(prec);
+	x= 2; 
+
+	RR one;
+	one.SetPrecision(prec);
+	one= 1;
+	
+
+	/* Unit tests for the n dimensional ball volume computation
+	cout << "Testing ball volume computation:" << endl;
+
+	bool ball_test= true;
+	double r_d= 1;
+	RR r;	
+	r= r_d;
+	RR_PI.SetPrecision(prec);
+	RR_PI= ComputePi_RR();
+
+	y= -50;
+	pow(epsilon, x, y);
+	for(int i= 1; i < 71; i++) {
+		if( abs(ball_vol_RR(i, r)-ball_vol(i, r_d)) > epsilon) {
+			ball_test= false;
+			cout << "\tBall test failed in dimension " << i << endl;
+		}
+	}
+
+	if(ball_test)
+		cout << "\tBall test PASSED." << endl;
+	*/
+
+	/* Unit tests for the polytope volume computation. Reference values are simplices or computed with vinci. 
+	cout << "Testing polytope volume computation:" << endl;
 
 	double* vols_d= new double[70];
 
@@ -105,18 +146,6 @@ int main(int argc, char** argv) {
 	if(vinci_test)
 		cout << "\tVinci test PASSED." << endl;
 
-	RR* vols= new RR[71];
-
-	int prec= RR_PRECISION;	
-
-	RR epsilon, x, y;
-	epsilon.SetPrecision(prec);
-	x= 2; 
-
-	RR one;
-	one.SetPrecision(prec);
-	one= 1;
-	
 	RR* simplex= new RR[70];
 	for(int i= 0; i < 70; i++)
 		simplex[i]= one;
@@ -133,11 +162,11 @@ int main(int argc, char** argv) {
 			simplex_test= false;
 			cout << "\tSimplex test failed in dimension " << i << endl;
 			}
-		/*cout << "Dimension " << i << endl;
+		/ *cout << "Dimension " << i << endl;
 		cout << "\t pol_vol: " << polytope_volume_RR(vols, simplex, i, prec) << endl;
 		cout << "\t simplex formula: " << 1/fact_RR(i, prec) << endl << endl;
 		cout << "\t diff: " << abs(polytope_volume_RR(vols, simplex, i, prec) - 1/fact_RR(i, prec)) << endl;
-		cout << "\t epsilon: " << epsilon << endl;*/
+		cout << "\t epsilon: " << epsilon << endl;* /
 		}
 
 	if(simplex_test)
@@ -160,11 +189,11 @@ int main(int argc, char** argv) {
 			double_test= false;
 			cout << "\tDouble test (even) failed in dimension " << i << endl;
 			}
-		/*cout << "Dimension " << i << endl;
+		/ *cout << "Dimension " << i << endl;
 		cout << "\t RR: " << rv << endl;
 		cout << "\t double: " << dv << endl;
 		cout << "\t diff: " << abs(rv-dv) << endl;
-		cout << "\t epsilon: " << epsilon << endl << endl;*/
+		cout << "\t epsilon: " << epsilon << endl << endl;* /
 		}
 	
 	if(double_test)
@@ -181,39 +210,44 @@ int main(int argc, char** argv) {
 			double_test= false;
 			cout << "\tDouble test (odd) failed in dimension " << i << endl;
 			}
-		/*cout << "Dimension " << i << endl;
+		/ *cout << "Dimension " << i << endl;
 		cout << "\t RR: " << rv << endl;
 		cout << "\t double: " << dv << endl;
 		cout << "\t diff: " << abs(rv-dv) << endl;
-		cout << "\t epsilon: " << epsilon << endl << endl;*/
+		cout << "\t epsilon: " << epsilon << endl << endl;* /
 		}
 	
 	if(double_test)
-		cout << "\tDouble test (odd) PASSED." << endl;
+		cout << "\tDouble test (odd) PASSED." << endl; */
 
+	RR* rand= new RR[80];
+	rand_boundary(80, rand);
 
-	// Unit tests for the n dimensional ball volume computation
-	cout << "Testing ball volume computation:" << endl;
+	cout << "\tOdd: " << endl;
+	cout << integral_odd_RR(79, 79, rand, vols) << endl;	
+	cout << integral_odd_RR_old(79, 79, rand, vols) << endl;	
 
-	bool ball_test= true;
-	double r_d= 1;
-	RR r;	
-	r= r_d;
-	RR_PI.SetPrecision(prec);
-	RR_PI= ComputePi_RR();
-
-	y= -50;
-	pow(epsilon, x, y);
-	for(int i= 1; i < 71; i++) {
-		if( abs(ball_vol_RR(i, r)-ball_vol(i, r_d)) > epsilon) {
-			ball_test= false;
-			cout << "\tBall test failed in dimension " << i << endl;
-		}
-	}
-
-	if(ball_test)
-		cout << "\tBall test PASSED." << endl;
+	cout << "\tEven: " << endl;
+	cout << integral_even_RR(80, 80, rand, vols) << endl;	
+	cout << integral_even_RR_old(80, 80, rand, vols) << endl;	
 
 	return 0;
+}
+
+void rand_boundary(int dim, RR* boundary) {
+	RR tmp;
+
+	for(int i= 0; i< dim; i++)
+		random(boundary[i]);
+
+
+	for (int c = 0 ; c < ( dim - 1 ); c++) 
+    		for (int d = 0 ; d < dim - c - 1; d++) 
+      			if (boundary[d] > boundary[d+1]) {
+        			tmp = boundary[d];
+        			boundary[d] = boundary[d+1];
+        			boundary[d+1] = tmp;
+      			}
+    
 }
 

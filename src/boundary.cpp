@@ -97,6 +97,31 @@ RR integral_even_RR(int h, int l, RR tvec[], RR vvec[]) {
 	return ret;
 }
 
+RR integral_even_RR_old(int h, int l, RR tvec[], RR vvec[]) {
+	RR tmp, pwr, ret;
+
+	tmp.SetPrecision(RR_PRECISION);
+	pwr.SetPrecision(RR_PRECISION);
+	ret.SetPrecision(RR_PRECISION);
+
+	ret= 1;
+	if(h==0) 
+		return ret;
+
+	ret= 0;
+
+	vvec[h-1]= integral_even_RR(h-1, l, tvec, vvec);
+
+	for(int i= 0; i < h; i++) {
+		tmp= h-i;
+		pow(pwr, tvec[l-h], tmp); 
+		ret+= pwr*vvec[i]/fact_RR(h-i)*((h-i-1)%2==0?1:-1);
+	}
+		
+	return ret;
+}
+
+
 
 double integral_even(int h, int l, double tvec[], double vvec[]) {
 	double ret= 0;
@@ -147,6 +172,43 @@ RR integral_odd_RR(int h, int l, RR tvec[], RR vvec[]) {
 
 	return ret + pow2/fact_RR(2*h+2)*fact_RR(h+1);
 }
+
+RR integral_odd_RR_old(int h, int l, RR tvec[], RR vvec[]) {
+	RR tmp, pwr, ret, pow2, two;
+
+	tmp.SetPrecision(RR_PRECISION);
+	pwr.SetPrecision(RR_PRECISION);
+	pow2.SetPrecision(RR_PRECISION);
+	ret.SetPrecision(RR_PRECISION);
+	two.SetPrecision(RR_PRECISION);
+
+	two= 2;
+	ret= 1;
+	if(h==0) 
+		return ret;
+
+	ret= 0;
+
+	vvec[h-1]= integral_odd_RR(h-1, l, tvec, vvec);
+
+	tmp= (2*h+1)/2.0;
+	pow(pwr, 1-tvec[l-h], tmp); 
+	tmp= 2*h+1;
+	pow(pow2, two, tmp); 
+
+	ret-= (pwr*pow2/fact_RR(2*h+2))*fact_RR(h+1);
+	for(int i= 1; i < h; i++) {
+		tmp= h-i;
+		pow(pwr, tvec[l-h], tmp); 
+		ret+= pwr*vvec[i]/fact_RR(h-i)*((h-i-1)%2==0?1:-1);
+	}
+		
+	if(h!=l)		
+		return ret;
+
+	return ret + pow2/fact_RR(2*h+2)*fact_RR(h+1);
+}
+
 
 
 double integral_odd(int h, int l, double tvec[], double vvec[]) {
@@ -224,7 +286,7 @@ RR ci_prob_RR(RR Rvec[], int k) {
 }
 
 double ci_prob(double Rvec[], int k) {
-	//TODO: ez a jó, a másikat is igy kijavitani
+	// extodo: a jó, a másikat is igy kijavitani ?????
 	double ret;
 	int l= k/2;
 	double* bounds= new double[l];
@@ -493,6 +555,7 @@ void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, d
 		act[i].SetPrecision(RR_PRECISION);
 		act[i+1].SetPrecision(RR_PRECISION);
 		act[i]= act[i+1]= act[i-1]+act[0];
+		//cout << act[i] << endl;
 	}
 	act[n-1].SetPrecision(RR_PRECISION);
 	act[n-1]= R;

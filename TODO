@@ -1,7 +1,7 @@
-************ Gauss heurisztika és safe pruning ******************
-
-************ Szünet *******************
-- optimalizálni a számitásokat:
++ bounding function randomizálót irni
++ unit testet irni
+- timing testet irni és lemérni gproffal
+- optimalizálni a számitásokat (mindegyik után unit és timing test):
 	- a négyzetreemeléseket kihozni amennyire csak lehet
 	- előre számitani és táblázatból olvasni
 		- az egységgömbök térfogatát
@@ -9,8 +9,7 @@
 		- a normalizáló konstansokat
 	- kikisérletezni, hogy mi az a legkisebb RR pontosság amire a 120-150 dimenziós számitás stabil
 	- letekerni a pontosságot amennyire csak lehet 
-- implementálni az adaptiv a keresést: kezd egy viszonylag nagy deltával, megy amig nem tud javitani, osztja a deltát 10-el majd szintén megy amig nem tud javitani és igy tovább 
-- print scriptet egyesiteni és paraméterezhetőre megirni
+	- átállitani integer programozásra az optimalizálást 
 
 ******** Itt lesz kész az extreme pruning *****
 - Megnézni az early termination-ös cikkeket, hogy milyen blokkméretet lenne érdemes használni egy 128 dimenziós bázis előfeldolgozásához 
@@ -19,9 +18,7 @@
 - kikisérletezni a paramétereket a bkz automatikus bounding function keresőjéhez
 - Implementálni a radius reductiont és az early terminationt 
 - Implementálni az unexpected early terminationt (mindig kiirja lemezre, hogy hanyadik iterációnál jár és hogy mi az aktuális bázis)
+- Kiszámolni a rögzitett sikerű illetve a javitott Schneider univerzális függvényeket és beépiteni az algoritmusba
 
-******** Itt lesz kész a BKZ1.5 **********
-- a rekurzive hivás paramétereit kikisérletezni :
-	- Hermite faktorokat lemérni (early terminatiönnel és anélkül)
-	- várható futási időket a bounding function számolóval összevetni
-- megirni a cikket és a megjelenés után átirni a dokumentációban a hivatkozásokat amiket lehet a saját cikkemre
+******** Itt lesz kész a BKZ2.0 **********
+

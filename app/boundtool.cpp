@@ -169,20 +169,21 @@ int main(int argc, char** argv) {
 		double tmp,gh= 1;
 		double* gsghs= new double[dim]; 
 		for(int i= 0; i < mu1.NumRows(); i++) {
-			conv(tmp, c1[i]);
+			conv(tmp, c[i]);
 			gh*= tmp;
 			gsghs[i]= pow(gh/ball_vol(i+1, 1),1.0/(i+1));
 		}
 		delete gsghs;
 		gh= pow(gh/ball_vol(dim, 1),1.0/dim);
-		cout << "# No lambda supplied, using Gaussian heuristic: " << gh << endl;
+		cout << "# No lambda supplied, using Gaussian heuristic (+5\%) : " << gh*1.05 << endl;
+		v= gh*1.05;
 	}
 		
 
 
-	// TODO: csinálni egy változatot, ahol nem iterationt hanem thressholdot adunk meg
 	double p_succ;
 	double t_enum;	
+	//NOTE: gs vector lengths and wanted vector length given
 	generate_boundary(c, t_node, t_reduc, dim, boundary, v, delta, iterations, p_succ, t_enum, false); 
 
 	cout << "# basis: '" << act_arg << "' " << endl
