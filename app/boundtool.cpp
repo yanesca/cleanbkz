@@ -38,12 +38,13 @@ bool cmd_option_exists(char** begin, char** end, const string& option);
 
 
 int main(int argc, char** argv) {
-	double v= 0;
 	double t_node= 0; 
 	double t_reduc= 0;
 	double delta= 1e-1;
 	unsigned long iterations= 1000;
 	mat_ZZ basis;
+	ZZ v;
+	v= 0;
 
 	stringstream ss;
 	char* act_arg;
@@ -162,8 +163,8 @@ int main(int argc, char** argv) {
 
 	//length of the shortest vector in the cjloss lattice
 	if(v>0) {
-		v= sqrt(v);
-		cout << "# Using supplied lambda : " << v << endl;
+		//v= sqrt(v);
+		cout << "# Using supplied lambda square: " << v << endl;
 		}
 	else {
 		double tmp,gh= 1;
@@ -175,8 +176,8 @@ int main(int argc, char** argv) {
 		}
 		delete gsghs;
 		gh= pow(gh/ball_vol(dim, 1),1.0/dim);
-		cout << "# No lambda supplied, using Gaussian heuristic (+5\%) : " << gh*1.05 << endl;
-		v= gh*1.05;
+		v= gh*gh;
+		cout << "# No lambda square supplied, using Gaussian heuristic: " << v << endl;
 	}
 		
 

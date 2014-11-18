@@ -39,6 +39,9 @@ doc/
 # Ignore generated polytope files
 *.ine
 
+# Ignore profiling info
+*.out
+
 # Ignore generated lattices and boundary functions
 *.dat
 *.lat

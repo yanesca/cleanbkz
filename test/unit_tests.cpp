@@ -25,21 +25,21 @@
 
 using namespace std;
 
+extern RR* factorials;
+
+extern void init_factorials(int up_to);
+
+extern RR fact_RR(int x); 
+
 extern RR t_extreme_reference_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, int prec);
 extern RR t_extreme_RR(RR Rvec[], RR b_star_norm[], double t_node, double t_reduc, int n, int prec);
 
 extern double t_extreme_reference(double boundary[], double b_star_norm[], double t_node, double t_reduc, int n); 
 extern double t_extreme(double boundary[], double b_star_norm[], double t_node, double t_reduc, int n); 
 
-extern double polytope_volume(double vols[], double bounds[], int dim);
-
 inline double fact(double x) {
 	return (x < 2 ? 1 : x * fact(x - 1));
 }
-
-extern RR polytope_volume_RR(RR vols[], RR bounds[], int dim, int prec);
-
-extern RR fact_RR(int x);
 
 extern RR ball_vol_RR(int k, RR r);
 
@@ -62,6 +62,8 @@ int main(int argc, char** argv) {
 
 	int prec= RR_PRECISION;	
 
+	init_factorials(200);
+
 	RR* vols= new RR[81];
 
 	RR epsilon, x, y;
@@ -73,7 +75,7 @@ int main(int argc, char** argv) {
 	one= 1;
 	
 
-	/* Unit tests for the n dimensional ball volume computation
+	/* Unit tests for the n dimensional ball volume computation */
 	cout << "Testing ball volume computation:" << endl;
 
 	bool ball_test= true;
@@ -94,9 +96,9 @@ int main(int argc, char** argv) {
 
 	if(ball_test)
 		cout << "\tBall test PASSED." << endl;
-	*/
+	
 
-	/* Unit tests for the polytope volume computation. Reference values are simplices or computed with vinci. 
+	/* Unit tests for the polytope volume computation. Reference values are simplices or computed with vinci. */ 
 	cout << "Testing polytope volume computation:" << endl;
 
 	double* vols_d= new double[70];
@@ -162,11 +164,11 @@ int main(int argc, char** argv) {
 			simplex_test= false;
 			cout << "\tSimplex test failed in dimension " << i << endl;
 			}
-		/ *cout << "Dimension " << i << endl;
-		cout << "\t pol_vol: " << polytope_volume_RR(vols, simplex, i, prec) << endl;
-		cout << "\t simplex formula: " << 1/fact_RR(i, prec) << endl << endl;
-		cout << "\t diff: " << abs(polytope_volume_RR(vols, simplex, i, prec) - 1/fact_RR(i, prec)) << endl;
-		cout << "\t epsilon: " << epsilon << endl;* /
+		/*cout << "Dimension " << i << endl;
+		cout << "\t pol_vol: " << integral_even_RR(i, i, simplex, vols) << endl;
+		cout << "\t simplex formula: " << 1/fact_RR(i) << endl << endl;
+		cout << "\t diff: " << abs( integral_even_RR(i, i, simplex, vols) - 1/fact_RR(i)) << endl;
+		cout << "\t epsilon: " << epsilon << endl;*/
 		}
 
 	if(simplex_test)
@@ -189,11 +191,11 @@ int main(int argc, char** argv) {
 			double_test= false;
 			cout << "\tDouble test (even) failed in dimension " << i << endl;
 			}
-		/ *cout << "Dimension " << i << endl;
+		/*cout << "Dimension " << i << endl;
 		cout << "\t RR: " << rv << endl;
 		cout << "\t double: " << dv << endl;
 		cout << "\t diff: " << abs(rv-dv) << endl;
-		cout << "\t epsilon: " << epsilon << endl << endl;* /
+		cout << "\t epsilon: " << epsilon << endl << endl;*/
 		}
 	
 	if(double_test)
@@ -210,15 +212,15 @@ int main(int argc, char** argv) {
 			double_test= false;
 			cout << "\tDouble test (odd) failed in dimension " << i << endl;
 			}
-		/ *cout << "Dimension " << i << endl;
+		/*cout << "Dimension " << i << endl;
 		cout << "\t RR: " << rv << endl;
 		cout << "\t double: " << dv << endl;
 		cout << "\t diff: " << abs(rv-dv) << endl;
-		cout << "\t epsilon: " << epsilon << endl << endl;* /
+		cout << "\t epsilon: " << epsilon << endl << endl;*/
 		}
 	
 	if(double_test)
-		cout << "\tDouble test (odd) PASSED." << endl; */
+		cout << "\tDouble test (odd) PASSED." << endl; 
 
 	RR* rand= new RR[80];
 	rand_boundary(80, rand);

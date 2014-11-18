@@ -1,15 +1,18 @@
 + bounding function randomizálót irni
 + unit testet irni
-- timing testet irni és lemérni gproffal
-- optimalizálni a számitásokat (mindegyik után unit és timing test):
-	- a négyzetreemeléseket kihozni amennyire csak lehet
-	- előre számitani és táblázatból olvasni
-		- az egységgömbök térfogatát
-		- a faktoriálisokat
-		- a normalizáló konstansokat
-	- kikisérletezni, hogy mi az a legkisebb RR pontosság amire a 120-150 dimenziós számitás stabil
-	- letekerni a pontosságot amennyire csak lehet 
-	- átállitani integer programozásra az optimalizálást 
++ timing testet irni és lemérni gproffal
++ optimalizálni a számitásokat (mindegyik után unit és timing test):
+	+ a négyzetreemeléseket kihozni amennyire csak lehet - szkippeltem mert nem érdemes, igyis úgyis gyököt kell vonni a sugárhoz
+	+ előre számitani és táblázatból olvasni
+		+ a faktoriálisokat (nem működött)
+		+ a normalizáló konstansokat (cancelled - ha a faktorizálásnál nem használt akkor itt sem fog...)
+		+ az egységgömbök térfogatát (cancelled - ha a faktorizálásnál nem használt akkor itt sem fog...)
+	+ kikisérletezni, hogy mi az a legkisebb RR pontosság amire a 120-150 dimenziós számitás stabil (120 bit szemre annak látszik)
+	+ letekerni a pontosságot amennyire csak lehet 
+	+ átállitani integer programozásra az optimalizálást 
++ induláskor mérjen le 10-et és az alapján irja ki a várható befejezési időt és a végén meg a teljes futái időt (elég egyet is)
++ grafikonokat készíteni a célfüggvény értékéről illetve a változások arányáról a megtett lépések függvényében
+- tudjon a progi megszakítás után elmentett állapotból folytatni
 
 ******** Itt lesz kész az extreme pruning *****
 - Megnézni az early termination-ös cikkeket, hogy milyen blokkméretet lenne érdemes használni egy 128 dimenziós bázis előfeldolgozásához 
@@ -21,4 +24,5 @@
 - Kiszámolni a rögzitett sikerű illetve a javitott Schneider univerzális függvényeket és beépiteni az algoritmusba
 
 ******** Itt lesz kész a BKZ2.0 **********
+
 

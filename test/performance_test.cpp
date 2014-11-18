@@ -34,6 +34,10 @@ extern RR ball_vol_RR(int k, RR r);
 
 extern RR RR_PI;
 
+extern RR* factorials;
+
+extern void init_factorials(int up_to);
+
 void rand_boundary(int dim, RR* boundary, double R);
 
 int main(int argc, char** argv) {
@@ -53,6 +57,8 @@ int main(int argc, char** argv) {
 		ss.clear();		
 		}
 
+	init_factorials(2*dim+2);
+
 	cjloss lattice(dim, 0.94, 2330);
 
 	mat_RR mu1;
@@ -68,10 +74,15 @@ int main(int argc, char** argv) {
         
 	RR* rand= new RR[dim];
 
+	using namespace std;
+  	clock_t begin = clock();
 	for(int i= 0; i< count; i++) {
 		rand_boundary(dim, rand, sqrt(dim));
-		cout << t_extreme_RR(rand, c, 7.35e-08, 47.603, dim) << endl;
+		t_extreme_RR(rand, c, 7.35e-08, 47.603, dim);
 	}
+
+	clock_t end = clock();
+  	cout << ((end - begin) / CLOCKS_PER_SEC) << endl;
 
 	return 0;
 }

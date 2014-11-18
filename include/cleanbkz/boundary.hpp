@@ -25,7 +25,7 @@
 
 using namespace NTL;
 
-#define RR_PRECISION 200
+#define RR_PRECISION 120
 
 /** 	@file 
 	@brief Contains algorithms for finding the optimal bounding function for a lattice. */
@@ -54,7 +54,7 @@ void generate_boundary(
 	double t_reduc, 	//!< The running time of the basis reduction algorithm used
 	int n, 			//!< The dimension of the lattice
 	double Rvec[], 		//!< Container with enough space reserved for the result (n double values) 
-	double R,		//!< The length of the vector the enumeration is looking for 
+	NTL::ZZ R,		//!< The square length of the vector the enumeration is looking for 
 	double delta,		//!< The step of the random modifications  
 	unsigned long iterations,	//!< The number of random modifications to test
 	double& p_succ,		//!< Container for the success probability of the resulting function

@@ -31,6 +31,8 @@
 
 using namespace std;
 
+extern void init_factorials(int);
+
 extern void predict_nodes_RR(RR  Rvec[], double b_star_norm[], int n); 
 
 extern void predict_nodes(double Rvec[], double b_star_norm[], int n); 
@@ -48,6 +50,8 @@ int main(int argc, char** argv) {
 	ss << argv[1];
 	ss >> dim;
 	ss.clear();
+
+	init_factorials(2*dim+2);
 
 	if (l_cjloss) {
 		//cjloss l(dim, 0.94, time(NULL));
@@ -152,11 +156,10 @@ int main(int argc, char** argv) {
 	double* act= manual;
 
 // Enumeration
-	vec_RR solution;	
-	profile_enumerate_epr(mu, c, act, dim, solution); 
+//	vec_RR solution;	
+//	profile_enumerate_epr(mu, c, act, dim, solution); 
 
 // Prediction	
-//
 	for(int i= 0; i < mu1.NumRows(); i++) 
 		conv(c[i], sqrt(c1[i]));
 
