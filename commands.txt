@@ -1,0 +1,5 @@
+./bin/genlattice -p data/svpchallengedim80seed0.lat -k 20 > data/svpchallengedim80seed0red20.lat
+./bin/timing -l data/svpchallengedim80seed0.lat -k 20
+./bin/boundtool -f data/svpchallengedim80seed0red20.lat -n 8e-08 -r 9.74 -c 300 -d 100000
+
+

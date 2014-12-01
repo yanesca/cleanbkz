@@ -362,9 +362,9 @@ void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result, 
 		if(rhovec[k] < Rvec[n-k-1]+epsilon) {
 			nodes++;			
 
-			if(k==0) 
+			if(k==0) { 
 				break;
-			else {
+			} else {
 				k--;
 				rvec[k]= rvec[k]>rvec[k+1]?rvec[k]:rvec[k+1];		
 				for(int i= rvec[k+1]; i>k; i--)

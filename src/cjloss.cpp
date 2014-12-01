@@ -63,7 +63,8 @@ mat_ZZ cjloss::get_basis(int k) {
 	if(k<2)
 		ret= basis;
 	else {
-		BKZ_QP1(basis, 0.99, k); 
+		LLL_XD(basis, 0.99); 
+		BKZ_FP(basis, 0.99, k); 
 
 		ret.SetDims(basis.NumRows()-1, basis.NumRows()-1);
 

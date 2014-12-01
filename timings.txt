@@ -1,0 +1,37 @@
+Measuring timing for: data/svpchallengedim60seed0.lat
+Using Darmstadt bound: 2100.84
+t_node= 8e-08
+t_reduc= 3.26
+
+./bin/boundtool -f data/svpchallengedim60seed0red20.lat -n 8e-08 -r 3.26 -c 100 -d 1000
+************************************************************************
+Measuring timing for: data/svpchallengedim80seed0.lat
+Using Darmstadt bound: 2396.46
+t_node= 8e-08
+t_reduc= 9.74
+************************************************************************
+Measuring timing for: data/svpchallengedim100seed0.lat
+Using Darmstadt bound: 2666.502669
+t_node= 8e-08
+t_reduc= 36.39
+
+Measuring timing for: data/svpchallengedim100seed0.lat
+Using Darmstadt bound: 2666.502669
+t_node= 8e-08
+t_reduc= 1801.19
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+**************************************************************************
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+yanesca@peace:~/workspace/cleanbkz$ ./bin/boundtool -f data/svpchallengedim100seed0red20.lat -n 8e-08 -r 36.39 -c 300 -d 100000
+Starting time: Mon Nov 24 13:35:22 2014
+Estimated end of computation: Mon Nov 24 13:52:01 2014
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+d80k20 		-> 	20 min
+d100k20 	->	2 years (lehet, hogy nem volt rendesen optimalizálva sem)
+d100k30		->	24 days 

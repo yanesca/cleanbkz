@@ -79,6 +79,8 @@ RR ball_vol_RR(int k, RR r) {
 	exp.SetPrecision(RR_PRECISION);
 	pipow.SetPrecision(RR_PRECISION);
 	
+	//cout << "Ball vol: k= " << k << ", r= " << r << endl;
+
 	exp= k;
 	pow(pwr, r, exp);
  
@@ -179,7 +181,7 @@ RR integral_odd_RR(int h, int l, RR tvec[], RR vvec[]) {
 
 	tmp= (2*h+1)/2.0;
 
-	/******** Debug ***************
+	//******** Debug ***************
 	
 	if(1-tvec[l-h]<0) {
 		cout << "tvec[" << (l-h) << "]== " << tvec[l-h] << endl;
@@ -310,7 +312,7 @@ RR ci_prob_RR(RR Rvec[], int k) {
 		bounds[i]= Rvec[2*i]*Rvec[2*i]/(Rvec[k-1]*Rvec[k-1]);
 		//bounds[i]= Rvec[2*i]*Rvec[2*i]/(Rvec[k-1]*Rvec[k-1]);
 
-		/******** Debug ***************
+		//******** Debug ***************
 		
 	        if(bounds[i]>1) {
 		        cout << "k: " << k << "\ti: " << i << "\tl: " << l << endl;
@@ -529,9 +531,8 @@ void predict_nodes_RR(RR Rvec[], double b_star_norm[], int n) {
 	cout << "# Measured nodes: " << sum << endl; 
 }
 
-
 static 
-void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int n, ZZ* act, double delta, unsigned long iterations, RR& t_enum, int& changes) {
+void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int n, ZZ* act, ZZ delta, unsigned long iterations, RR& t_enum, int& changes, RR* values_init, double* ratios_init, unsigned int oldits) {
 	ZZ* mod= new ZZ[n];
 	RR* mod_f= new RR[n];
 	time_t currentTime;
@@ -559,13 +560,6 @@ void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int
 			cerr << "Estimated end of computation: " <<  asctime(localTime); 
 		}
 
-		if(i%10==0) {
-			values[stat_ctr]= t_enum; 
-			ratios[stat_ctr]= ((float) (changes-oldchanges))/10;
-			stat_ctr++;
-			oldchanges= changes;
-		}
-
 		do {
 			if(n%2==0) 
 				change= 2*(rand()%(n/2-1));
@@ -586,9 +580,13 @@ void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int
 			/*if((change==0) && (mod[change]+sign*delta<=0))
 				flag= true;*/
 
-		} while((mod[change]+sign < 1) || (mod[change]+sign > mod[n-1])); 
+		} while( ((sign<0) && (mod[change] == 1)) || ((sign>0) && (mod[change] == mod[n-1])) ); 
 
-		mod[change]= mod[change+1]+= sign;
+		mod[change]= mod[change+1]+= sign*delta;
+		if(mod[change]<1)
+			mod[change]= mod[change+1]= 1;
+		if(mod[change]>mod[n-1])
+			mod[change]= mod[change+1]= mod[n-1];
 
 		// Ensuring monotonity
 		//if((change < n-2) && mod[change] > mod[change+2])
@@ -603,7 +601,7 @@ void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int
 				if(mod[j] < mod[change])
 					mod[j]= mod[change];
 			 
-		if(t_enum == -1) {
+		if(i == 0) {
 			for(int j= 0; j < n; j++) {
 				conv(mod_f[j], act[j]); 
 				mod_f[j]= sqrt(mod_f[j]);
@@ -632,27 +630,97 @@ void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int
 		} else
 			for(int j= 0; j < n; j++)
 				mod[j]= act[j]; 
-			
+	
+		if(i%10==0) {
+			values[stat_ctr]= t_enum; 
+			ratios[stat_ctr]= ((float) (changes-oldchanges))/10;
+			stat_ctr++;
+			oldchanges= changes;
+		}
+
+		
 	}
 
 	time( &currentTime );
 	localTime = localtime( &currentTime );
 	cerr << "Computation finished: " <<  asctime(localTime) <<  endl; 
 
-	// Output statistics
-	
+	// Output dump data
+
 	ofstream stat_out;
   	stat_out.open ("optistat.dat");
 
-	stat_out << "\"Function values\"" << endl;
-	for(unsigned int i= 1; i<iterations/10; i++)
-		stat_out << i << " " << values[i] << endl;	
+	// timing and delta 
+	stat_out << "# " << t_node << " " << t_reduc << " " << delta << endl;
+
+	// dimension
+	stat_out << "# " << n << endl;
+
+	// GS vectors
+	stat_out << "# ";
+	for(int j= 0; j < n; j++) {
+		b_star_norm[j].SetOutputPrecision(RR_PRECISION); 
+		stat_out << b_star_norm[j] << " ";
+		}
+	stat_out << endl;
+
+	// last boundary
+	stat_out << "# ";
+	for(int j= 0; j < n; j++) 
+		stat_out << act[j] << " ";
+	stat_out << endl;
+
+	// statistics
+	int s1= 0;
+	unsigned int s2= 1;
+	/*unsigned int s2= 0;
+	if(oldits==0)  
+		s2= 1;*/
+
+	stat_out << "# " << oldits + iterations/10-1 << endl << "# ";
+	for(unsigned int i= s1; i<oldits; i++) {
+		values_init[i].SetOutputPrecision(RR_PRECISION);
+		stat_out << values_init[i] << " ";	
+		}
+	for(unsigned int i= s2; i<iterations/10; i++) {
+		values[i].SetOutputPrecision(RR_PRECISION);
+		stat_out << values[i] << " ";	
+		}
+	stat_out << endl;
+
+	stat_out << "# ";
+	for(unsigned int i= s1; i<oldits; i++)
+		stat_out << ratios_init[i] << " ";	
+	for(unsigned int i= s2; i<iterations/10; i++)
+		stat_out << ratios[i] << " ";	
 	stat_out << endl << endl;
 
+	// Output statistics for gnuplot
+	stat_out << "\"Function values\"" << endl;
+
+	for(unsigned int i= s1; i<oldits; i++)
+		stat_out << i << " " << values_init[i] << endl;	
+	for(unsigned int i= s2; i<iterations/10; i++)
+		stat_out << i + oldits << " " << values[i] << endl;	
+	stat_out << endl << endl;
+
+	RR scale;
+	if(oldits>0)
+		scale= values_init[0];
+	else if (iterations/10>0)
+		scale= values[0];
+	else 
+		scale= 1;
+		
+
 	stat_out << "\"Change ratios\"" << endl;
-	for(unsigned int i= 1; i<iterations/10; i++) {
+	for(unsigned int i= s1; i<oldits; i++) {
+		stat_out << "# " << ratios_init[i]*100 << "%" << endl;
+		stat_out << i << " " << ratios_init[i]*scale << endl;	
+		}
+	for(unsigned int i= s2; i<iterations/10; i++) {
 		stat_out << "# " << ratios[i]*100 << "%" << endl;
-		stat_out << i << " " << ratios[i]*values[1] << endl;	
+		stat_out << i + oldits << " " << ratios[i]*scale << endl;	
 		}
 
 	stat_out.close();
@@ -661,7 +729,113 @@ void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int
 	delete [] mod_f;
 }
 
-void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, double Rvec[], ZZ R2, double delta, unsigned long iterations, double& p_succ_v, double& t_enum_d, bool quiet) {
+void continue_boundary_gen(ifstream& infile, unsigned long iterations, double** Rvec, int& n) {
+	RR t_enum; 
+	RR* b_star_norm; 
+	double t_node; 
+	double t_reduc; 
+	ZZ* act;
+	int changes= 0;
+	RR* values_init; 
+	double* ratios_init; 
+	unsigned int oldits;
+	char tmp;
+	ZZ delta;
+	delta= 1;
+	
+	infile >> tmp;
+	infile >> t_node; 
+	infile >> t_reduc;
+	infile >> delta;
+
+	infile >> tmp;
+	infile >> n; 
+	
+	b_star_norm= new RR[n];	
+	infile >> tmp;
+	for(int i= 0; i<n; i++){
+		b_star_norm[i].SetPrecision(RR_PRECISION);
+		infile >> b_star_norm[i];
+		}
+	
+	act= new ZZ[n];
+	infile >> tmp;
+	for(int i= 0; i<n; i++)
+		infile >> act[i];
+		
+	infile >> tmp;
+	infile >> oldits;
+
+	values_init= new RR[oldits];
+	infile >> tmp;
+	for(unsigned int i= 0; i<oldits; i++) {
+		values_init[i].SetPrecision(RR_PRECISION);
+		infile >> values_init[i];
+		}
+
+	ratios_init= new double[oldits];
+	infile >> tmp;
+	/*string line;
+	while ( getline (infile,line) ) {
+      		cout << line << '\n';
+    	}
+    	infile.close();
+	exit(0);*/
+	for(unsigned int i= 0; i<oldits; i++) 
+		infile >> ratios_init[i];
+
+
+	/* Debug/ellenőrzés
+	cout << n << " " << t_node << " " << t_reduc << endl;
+	for(int j= 0; j < n; j++) {
+		b_star_norm[j].SetOutputPrecision(RR_PRECISION); 
+		cout << b_star_norm[j] << " ";
+		}
+	cout << endl;
+	cout << oldits << endl;
+	for(unsigned int i= 0; i<oldits-1; i++) {
+		values_init[i].SetOutputPrecision(RR_PRECISION);
+		cout << values_init[i] << " ";	
+		}
+	cout << endl;
+	for(unsigned int i= 0; i<oldits-1; i++)
+		cout << ratios_init[i] << " ";	
+	
+	cout << endl << "act: " << endl; 
+	for(int i= 0; i<n; i++)
+		cout << act[i] << " ";
+	cout << endl << "actend" << endl;
+	*/	
+	
+
+	RR_PI.SetPrecision(RR_PRECISION);
+	RR_PI= ComputePi_RR();	
+	init_factorials(2*n+2);
+
+	generate_boundary_step(b_star_norm, t_node, t_reduc, n, act, delta, iterations, t_enum, changes, values_init, ratios_init, oldits); 
+
+	(*Rvec)= new double[n];
+	for(int j= 0; j < n; j++)
+		conv((*Rvec)[j], act[j]); 
+				
+
+	RR* mod_f= new RR[n];
+	for(int j= 0; j < n; j++) {
+		conv(mod_f[j], act[j]); 
+		mod_f[j]= sqrt(mod_f[j]);
+	}
+
+	cout << "# Success probability: " << p_succ(mod_f, n) << endl;
+	cout << "# Estimated enumeration time: " << t_enum << endl;
+	
+}
+
+static 
+void generate_boundary_step(RR b_star_norm[], double t_node, double t_reduc, int n, ZZ* act, ZZ delta, unsigned long iterations, RR& t_enum, int& changes) {
+	generate_boundary_step(b_star_norm, t_node, t_reduc, n, act, delta, iterations, t_enum, changes, NULL, NULL, 0); 
+}
+
+void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, double Rvec[], ZZ R2, ZZ delta, unsigned long iterations, double& p_succ_v, double& t_enum_d, bool quiet) {
 	int changes;
 	ZZ* act= new ZZ[n];
 	
@@ -711,10 +885,10 @@ void generate_boundary(RR b_star_norm[], double t_node, double t_reduc, int n, d
 	conv(p_succ_v, p_succ(mod_f, n));
 	conv(t_enum_d, t_enum);
 
-	if(!quiet){ 
+/*	if(!quiet){ 
 		cout << "# Success probability: " << p_succ_v << endl;
 		cout << "# Estimated enumeration time: " << t_enum_d << endl;
-	}
+	}*/
 
 	delete [] act;
 }

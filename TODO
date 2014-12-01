@@ -12,8 +12,36 @@
 	+ átállitani integer programozásra az optimalizálást 
 + induláskor mérjen le 10-et és az alapján irja ki a várható befejezési időt és a végén meg a teljes futái időt (elég egyet is)
 + grafikonokat készíteni a célfüggvény értékéről illetve a változások arányáról a megtett lépések függvényében
-- tudjon a progi megszakítás után elmentett állapotból folytatni
++ tudjon a progi megszakítás után elmentett állapotból folytatni
++ megnézni, hogy a BKZ_QP1 mennyivel gyorsabb mint a BKZ_XD és kipróbálni, hogy lehet-e csak az első körben XD-t használni a többiben meg QP-t (már egy LLL is szépen lecsökkenti a számokat) - viszont ha ez működik, akkor már biztos benne van az NTL-ben (BKZ-t futtattam és LLL hibaüzenetet kaptam), ha meg nem akkor nem akarok ezzel kockáztatni 3 hónapnyi számitást)
++ hogyan lehet helyesen és statisztikailag relevánsan mérni az időket? (magas dimenzióban nincs sok lehetőség a BKZ-t lemérni úgyhogy halottnak tűnik az ötlet)
++ a timingben darmstadt challange-s latticekkel teszteljen ne pedig cjloss-al (a generátor viszonylag egyszerű NTL-es cuccokat használ), mégsem, magas dimenzióban sokkal jobb ha a konkrét lattice-t kezdi el darálni
++ boundtoolba betenni a darmstadt challange-es alapértelmezett korlátot
++ implementálni a konkrét lattice-s timing-ot
++ boundary kimenetet pontosságát maximumra venni
++ lépésközt állithatóra venni
++ valamelyikbe ellenőrzést implementálni: számolja teljesen végig a pruned enumerationt és dobjon egy grafikonfilet az összehasonlitásról
++ végiggondolni hogyan kell helyesen randomizálni a bázist, kell-e javitani rajta
++ az aritmetikát mindenhol ahol kell átirni RR-re (pl gh számitás gyanús, hogy kelleni fog) (100-as challange-el tesztelni)
++ kis progi ami kigenerálja 
+	+ full
+	+ linear
+	+ a schneider 
++ boundtoolba új funkció: bemeneti fájlban kapott boundary-ról kiirja a várható időtartamot és a sikeresélyt
++ letesztelni, hogy LLL-XD followed by BKZ-FP blocksize 40 mennyivel gyorsabb mint a BKZ-XD simán... (kezdve valamilyen alacsonyabb blokkmérettel pl 30)
++ összevonni a timing-ot és a preprocesst
+- egy 110 dimenziós boundary-t számolni és összevetni phong-éval (vagy a Schneider félével, mert ebben e dimenzióban mindkettő ugyanaz)
+- átirni a psuccexpet randomra
+- megnézni, hogy az psuccexp-ben jó lambdát adok-e meg neki vagy egyel nagyobbat
 
+- a verify-ba olyan opciót, hogy csak a predictiont csinálja meg, ne kelljen várni az enumeration-re
+- a végén kiirni az eredmény hermite faktorát (végiggondolni, hogy az utsó sorban valóban a hermite faktorok vannak-e
+- állitható gh approx faktort irni a boundary keresőhöz
+- a boundary generatort kiegésziteni a schnorr- hörnerrel
+
+
+Majd egyszer:
+- a verify programot integrálni az eprune-ba 
 ******** Itt lesz kész az extreme pruning *****
 - Megnézni az early termination-ös cikkeket, hogy milyen blokkméretet lenne érdemes használni egy 128 dimenziós bázis előfeldolgozásához 
 - Megirni a pruningos BKZ-t, enumerationt külön függvénybe tenni

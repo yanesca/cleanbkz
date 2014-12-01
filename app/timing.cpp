@@ -19,10 +19,12 @@
 */
 
 #include <sstream>
+#include <fstream>
 #include <iostream>
 #include <algorithm>
 #include <NTL/LLL.h>
 #include <cleanbkz/cjloss.hpp>
+#include <cleanbkz/boundary.hpp>
 #include <cleanbkz/tools.hpp>
 #include <cleanbkz/version.hpp>
 
@@ -33,6 +35,13 @@ using namespace NTL;
 
 void measure_epr(int dimension, int beta, unsigned long samples, unsigned long termination, 
 		double& t_node, double& t_reduc, unsigned long& zeroes, unsigned long& bias);
+
+void measure_epr(mat_ZZ basis, int beta, unsigned long termination, double& t_node, double& t_reduc);
+
+// Defined in boundary.cpp
+extern RR ball_vol_RR(int k, RR r);
+extern void init_factorials(int up_to);
+extern RR RR_PI;
 
 int main(int argc, char** argv) {
   	int dimension= 0;
@@ -48,6 +57,7 @@ int main(int argc, char** argv) {
 	if (argc==1 || cmd_option_exists(argv, argv+argc, "-h")) {
 		cout << "This program uses cjloss lattices to measure the parameters t_node and t_reduc required for the computation of boundary functions. These are the running time of the enumeration and reduction algorithms on the current platform (in the case the cjloss lattices the dimension of the preprocessing is one higher than the enumeration). Program options:" << endl
  			<< "\t-h \t\tPrint this help." << endl
+ 			<< "\t-l filename\tPerform tests on the given lattice. (no other switch is allowed just the -b and the -k)" << endl
  			<< "\t-d n\t\tMeasure running times in dimension n." << endl
  			<< "\t-s n\t\tStart the measurements in dimension n. It is ignored when -d is given." << endl
  			<< "\t-e n\t\tContinue measuring in all dimensions until dimension n with a step five. It is ignored when -d is given." << endl
@@ -72,6 +82,10 @@ int main(int argc, char** argv) {
 
 	act_arg= get_cmd_option(argv, argv + argc, "-d");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-l")){
+			cerr << "ERROR: invalid switch. In the presence of the -l switch the only other switch allowed is the -b and the -k" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> dimension;
 		ss.clear();
@@ -83,6 +97,10 @@ int main(int argc, char** argv) {
 
 	act_arg= get_cmd_option(argv, argv + argc, "-n");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-l")){
+			cerr << "ERROR: invalid switch. In the presence of the -l switch the only other switch allowed is the -b and the -k" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> samples;
 		ss.clear();
@@ -105,6 +123,10 @@ int main(int argc, char** argv) {
 
 	act_arg= get_cmd_option(argv, argv + argc, "-s");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-l")){
+			cerr << "ERROR: invalid switch. In the presence of the -l switch the only other switch allowed is the -b and the -k" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> start;
 		ss.clear();
@@ -116,11 +138,27 @@ int main(int argc, char** argv) {
 
 	act_arg= get_cmd_option(argv, argv + argc, "-e");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-l")){
+			cerr << "ERROR: invalid switch. In the presence of the -l switch the only other switch allowed is the -b and the -k" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> end;
 		ss.clear();
 		if(end < start) {
 			cerr << "ERROR: End dimension lower than start dimension. Aborting" << endl;
+			return 1;
+			}
+		}
+
+	mat_ZZ basis;
+	act_arg= get_cmd_option(argv, argv + argc, "-l");	
+	if (act_arg) {
+		ifstream basis_file(act_arg);
+		if (basis_file.is_open())
+			basis_file >> basis;	
+		else {
+			cerr << "ERROR: can't open input file: '" << act_arg << "'. Aborting." << endl;
 			return 1;
 			}
 		}
@@ -145,8 +183,14 @@ int main(int argc, char** argv) {
 		cout << "t_node= " << t_node << endl;
 		cout << "t_reduc= " << t_reduc << endl;
 		cout << "biased/zeroes: " << bias << "/" << zeroes << endl << endl;
-		}
-	else {
+	} else if(cmd_option_exists(argv, argv+argc, "-l")){
+		cout << "Measuring timing for: " << get_cmd_option(argv, argv + argc, "-l") << endl;
+
+		measure_epr(basis, bkz_blocksize, nodes, t_node, t_reduc);
+
+		cout << "t_node= " << t_node << endl;
+		cout << "t_reduc= " << t_reduc << endl;
+	} else {
 		if (cmd_option_exists(argv, argv+argc, "-t")) {
 			unsigned long int total= 0;
 			for(int i= start; i <= end; i+=5) {
@@ -168,11 +212,11 @@ int main(int argc, char** argv) {
 			cout << "t_reduc= " << t_reduc << endl;
 			cout << "biased/zeroes: " << bias << "/" << zeroes << endl << endl;
 			}
-		}
 
-	cout << "(Sometimes the enumeration doesn't have to inspect the prescribed number of nodes or even nodes enough " 
+		cout << "(Sometimes the enumeration doesn't have to inspect the prescribed number of nodes or even nodes enough " 
 			<< "to make the runing time measureable, the number of these cases are in the \"biased/zeroes\" line." 
 			<< "The first number measures only the biased cases with nonzero running time.)" << endl << endl;
+	}
 
 	return 0;
 }
@@ -209,7 +253,8 @@ void measure_epr(int dimension, int beta, unsigned long samples, unsigned long t
 
 		tmp= lattice->get_basis(0);		
 		begin= clock();
-		BKZ_QP1(tmp, 0.99, beta);		
+		LLL_XD(tmp, 0.99);		
+		BKZ_FP(tmp, 0.99, beta);		
 		end= clock();
 		t_reduc+= (double)(end - begin) / CLOCKS_PER_SEC;
 
@@ -241,5 +286,71 @@ void measure_epr(int dimension, int beta, unsigned long samples, unsigned long t
 
 	t_node/= samples;
 	t_reduc/= samples;
+}
+
+void measure_epr(mat_ZZ basis, int beta, unsigned long termination, double& t_node, double& t_reduc) {
+	double enu_time= 0;
+	mat_RR mu1;
+	vec_RR c1;
+	clock_t begin, end;
+	vec_RR result;
+	unsigned long nodes;
+
+	t_node= t_reduc= 0;
+
+	int dimension= basis.NumRows();
+
+	double** mu= new double*[dimension];
+	for(int i= 0; i < dimension; i++)
+		mu[i]= new double[dimension]; 
+
+	double* c= new double[dimension];
+
+	begin= clock();
+	LLL_XD(basis, 0.99);		
+	BKZ_FP(basis, 0.99, beta);		
+	end= clock();
+
+	ComputeGS(basis,mu1,c1);
+
+	for(int i= 0; i < dimension; i++)
+		for(int j= 0; j < dimension; j++)
+			conv(mu[i][j], mu1[i][j]);
+
+	for(int i= 0; i < dimension; i++)
+		conv(c[i], c1[i]);
+
+
+	RR_PI.SetPrecision(RR_PRECISION);
+	RR_PI= ComputePi_RR();	
+	init_factorials(2*dimension+1);
+	RR one,gh,exp;
+	one.SetPrecision(RR_PRECISION);
+	gh.SetPrecision(RR_PRECISION);
+	exp.SetPrecision(RR_PRECISION);
+	gh= one= 1;	
+	for(int i= 0; i < mu1.NumRows(); i++) {
+		gh*= sqrt(c1[i]);
+		}
+	exp= 1.0/dimension; 	
+	pow(gh, gh/ball_vol_RR(dimension, one), exp);
+	gh*= 1.05;
+
+	cout << "Using Darmstadt bound: " << gh << endl;
+
+	double* Rvec= new double[dimension];
+	for(int i= 0; i < dimension; i++)
+		conv(Rvec[i], gh*gh);
+
+	t_reduc= (double)(end - begin) / CLOCKS_PER_SEC;
+	nodes= termination;
+	enumerate_epr(mu, c, Rvec, dimension, result, nodes, enu_time);
+
+	if(enu_time < 1.0/CLOCKS_PER_SEC/termination) 
+		cerr << "Warning! Zero enumeration time!" << endl;
+	else if (nodes!=0)
+		cerr << "Warning! Nodes traversed: " << (termination-nodes) << endl;
+	t_node= enu_time;
+
 }
 

@@ -33,6 +33,8 @@ extern void enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& r
 
 extern void profile_enumerate_epr(double** mu, double *b, double* Rvec, int n, vec_RR& result); 
 
+// The maximum of the coefficients of the random unimodular matrix
+#define UNIMOD_SIZE 100 
 mat_ZZ unimod(int dim){
 	mat_ZZ L, U;
 	L.SetDims(dim, dim);
@@ -43,8 +45,8 @@ mat_ZZ unimod(int dim){
 
 	for(int i= 0; i < dim; i++)
 		for(int j= i+1; j < dim; j++) {
-			U[i][j]= RandomBnd(2);
-			L[j][i]= RandomBnd(2);
+			U[i][j]= RandomBnd(UNIMOD_SIZE);
+			L[j][i]= RandomBnd(UNIMOD_SIZE);
 			}
 
 	return L*U;
@@ -60,7 +62,7 @@ int main(int argc, char** argv) {
 	if (argc==1 || cmd_option_exists(argv, argv+argc, "-h")) {
 		cout << "This program performs lattice enumeration with extreme pruning:" << endl
  			<< "\t-h \t\tPrint this help." << endl
- 			<< "\t-v \t\tPerforms a single enumeration round and compares the nodes to the prediction." << endl
+ 			//<< "\t-v \t\tPerforms a single enumeration round and compares the nodes to the prediction." << endl
  			<< "\t-l filename\tReads the lattice from the file filename. (This option is mandatory)" << endl
  			<< "\t-b filename\tReads the boundary function from the file filename. (This option is mandatory)" << endl;
 		return 0;
@@ -119,7 +121,7 @@ int main(int argc, char** argv) {
 	double* boundary= new double[basis.NumRows()];
 	for(int i= 0; i < basis.NumRows(); i++){
 		conv(boundary[i], bnd[i]);	
-		boundary[i]*= boundary[i];
+		//boundary[i]*= boundary[i];
 		}
 
 	vec_RR solution;	
@@ -147,7 +149,8 @@ int main(int argc, char** argv) {
 
 		begin= clock();	
 		basis= basis*unimod(basis.NumRows());
-		BKZ_QP1(basis, 0.99, beta); 
+		LLL_XD(basis, 0.99);
+		BKZ_FP(basis, 0.99, beta); 
 
 		ComputeGS(basis,mu1,c1);
 
@@ -192,7 +195,7 @@ int main(int argc, char** argv) {
 	for(int i= 0; i< basis.NumRows(); i++) 
 		sqrdLength+= sol[i]*sol[i];
 
-	cout << "Squared length of the shortest vector: " << sqrdLength << endl << endl; 
+	cout << "Length of the shortest vector: " << sqrt(sqrdLength) << endl << endl; 
 
 	cout << "Time spent with enumeration: " << t_all/CLOCKS_PER_SEC << endl;
 	cout << "Time spent with reduction: " << t_reduc/CLOCKS_PER_SEC << endl;

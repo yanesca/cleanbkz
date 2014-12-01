@@ -1,0 +1,17 @@
+http://www.cpubenchmark.net/high_end_cpus.html
+Intel Core i7-4790K @ 4.00GHz 	- 300USD (11,290)
+Intel Core i7-5820K @ 3.30GHz	- 375USD (12,952)
+Intel Core i7-5930K @ 3.50GHz	- 550USD (13,493)
+
+Intel Xeon E5-1650 v2 @ 3.20GHz	- 560USD (12,495)
+
+
+----------------------------------------------------------------------------
+Xeon vs i7
+
+The current line of Xeons are based on the same architecture as the i7. The difference is usually that the Xeons are the cream of the crop. They run cooler and at lower voltages and are spec'd for 24/7 continuous usage. Otherwise, performance is usually identical. Xeons are able to be used in multi-socket motherboards, where i7s are not (which is why the Mac Pros use them).
+
+Xeons are also usually the first to be updated. There are 6-core Xeons, but not i7s yet, though they are still based on the same architecture.
+
+The additional reliability of the Xeons is very important in servers, especially rackmount and blade-enclosed servers where the lower heat dissipation and power consumption are essential. These benefits usually don't mean too much to all but the most extreme overclockers though, so people in the desktop segment usually ignore it due to the enormous difference in the price of both the CPU and the motherboards needed to support them.
+

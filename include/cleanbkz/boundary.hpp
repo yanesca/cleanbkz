@@ -55,11 +55,19 @@ void generate_boundary(
 	int n, 			//!< The dimension of the lattice
 	double Rvec[], 		//!< Container with enough space reserved for the result (n double values) 
 	NTL::ZZ R,		//!< The square length of the vector the enumeration is looking for 
-	double delta,		//!< The step of the random modifications  
+	ZZ delta,		//!< The step of the random modifications  
 	unsigned long iterations,	//!< The number of random modifications to test
 	double& p_succ,		//!< Container for the success probability of the resulting function
 	double& t_enum,		//!< Container for the estimated running time of the resulting function
 	bool quiet		//!< Set this false if you do not want this function to print on the standard output
+	); 
+
+/**  Continues a previously started boundary function optimization for enumeration with extreme pruning. Uses numerical optimization with random changes as briefly explained in: Nicolas Gama, Phong Q. Nguyen and Oded Regev "Lattice Enumeration using Extreme Pruning", Advances in Cryptology – EUROCRYPT 2010 Lecture Notes in Computer Science Volume 6110, 2010, pp 257-278. */ 
+void continue_boundary_gen(
+	std::ifstream& infile,	//!< Reference to the input file stream containing the information about the previous computation 
+	unsigned long iterations, 	//!< The number of random modifications to test
+	double** Rvec,		//!< This parameter will hold the result 
+	int& dim		//!< This parameter will hold the length of the result 
 	); 
 
 #endif

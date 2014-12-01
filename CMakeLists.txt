@@ -7,6 +7,7 @@ SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 SUBDIRS(src test app)
 
 set(CMAKE_CXX_FLAGS "-O9 -Wall")
+#set(CMAKE_CXX_FLAGS "-g -O0 -Wall")
 
 # add a target to generate API documentation with Doxygen
 find_package(Doxygen)

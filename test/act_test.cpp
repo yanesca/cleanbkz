@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
 		gh*= c[i];
 		gsghs[i]= pow(gh/ball_vol(i+1, 1),1.0/(i+1));
 		}
-	gh= pow(gh/ball_vol(dim, 1),1.0/dim);
+	gh= 1.05* pow(gh/ball_vol(dim, 1),1.0/dim);
 	if(l_cjloss)
 		cout << "# Shortest vector length: " << sqrt(dim) << endl;
 	cout << "# Gaussian heuristic: " << gh << endl;

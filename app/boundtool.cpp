@@ -30,7 +30,9 @@
 using namespace std;
 
 // Defined in boundary.cpp
-extern double ball_vol(int k, double r);
+extern RR ball_vol_RR(int k, RR r);
+extern void init_factorials(int up_to);
+extern RR RR_PI;
 
 // Defined in tools.cpp
 char* get_cmd_option(char** begin, char** end, const string& option); 
@@ -40,11 +42,14 @@ bool cmd_option_exists(char** begin, char** end, const string& option);
 int main(int argc, char** argv) {
 	double t_node= 0; 
 	double t_reduc= 0;
-	double delta= 1e-1;
 	unsigned long iterations= 1000;
 	mat_ZZ basis;
+	int dim;
+	double* boundary;	
 	ZZ v;
 	v= 0;
+	ZZ delta;
+	delta= 1;
 
 	stringstream ss;
 	char* act_arg;
@@ -56,28 +61,33 @@ int main(int argc, char** argv) {
  			<< "\t-n n\t\tThe (avarage) time the enumeration algorithm takes to process a single node. (required)" << endl
 			<< "\t-r n\t\tThe (avarege) running time of the preprocessing reduction algorithm. (required)" << endl
 			<< "\t-c n\t\tNumber of random changes to make during the numerical optimization. (default: 1000)" << endl
-			<< "\t-d n\t\tThe size of the single random changes to meke during the optimization. (default: 0.1)" << endl
- 			<< "\t-l n\t\tOptimize for shortest vector with length square root of n. (the Gaussian heuristic is default)" << endl;
+			<< "\t-d n\t\tThe size of the single random changes to meke during the optimization. (default: 1)" << endl
+ 			<< "\t-l n\t\tOptimize for shortest vector with length square root of n. (the Gaussian heuristic is default)" << endl
+ 			<< "\t-o n\t\tThe name of the file containing the information about previous computation that has to be continued. Just the -c switch can be used in this case." << endl;
 		return 0;
 	}
 
-	if (!cmd_option_exists(argv, argv+argc, "-f")) {
-		cout << "Input basis is missing. Run again with -h for help." << endl;
+	if (!cmd_option_exists(argv, argv+argc, "-f") && !cmd_option_exists(argv, argv+argc, "-o")) {
+		cout << "Input basis information is missing. Run again with -h for help." << endl;
 		return 0;
 		}
 
-	if (!cmd_option_exists(argv, argv+argc, "-n")) {
+	if (!cmd_option_exists(argv, argv+argc, "-n") && !cmd_option_exists(argv, argv+argc, "-o")) {
 		cout << "Parameter t_node is missing. Run again with -h for help." << endl;
 		return 0;
 		}
 
-	if (!cmd_option_exists(argv, argv+argc, "-r")) {
+	if (!cmd_option_exists(argv, argv+argc, "-r") && !cmd_option_exists(argv, argv+argc, "-o")) {
 		cout << "Parameter t_reduc is missing. Run again with -h for help." << endl;
 		return 0;
 		}
 
 	act_arg= get_cmd_option(argv, argv + argc, "-n");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-o")){
+			cerr << "ERROR: invalid switch. In the presence of the -o switch the only other switch allowed is the -c" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> t_node;
 		ss.clear();
@@ -89,6 +99,10 @@ int main(int argc, char** argv) {
 
 	act_arg= get_cmd_option(argv, argv + argc, "-r");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-o")){
+			cerr << "ERROR: invalid switch. In the presence of the -o switch the only other switch allowed is the -c" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> t_reduc;
 		ss.clear();
@@ -100,10 +114,14 @@ int main(int argc, char** argv) {
 
 	act_arg= get_cmd_option(argv, argv + argc, "-d");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-o")){
+			cerr << "ERROR: invalid switch. In the presence of the -o switch the only other switch allowed is the -c" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> delta;
 		ss.clear();
-		if(delta <= 0) {
+		if(delta < 1) {
 			cerr << "ERROR: invalid delta. The optimization step should be greater than zero. Aborting." << endl;
 			return 1;
 			}
@@ -122,6 +140,10 @@ int main(int argc, char** argv) {
 
 	act_arg= get_cmd_option(argv, argv + argc, "-l");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-o")){
+			cerr << "ERROR: invalid switch. In the presence of the -o switch the only other switch allowed is the -c" << endl;
+			return 1;
+			}
 		ss << act_arg;
 		ss >> v;
 		ss.clear();
@@ -131,9 +153,23 @@ int main(int argc, char** argv) {
 			}
 		}
 
+	act_arg= get_cmd_option(argv, argv + argc, "-o");	
+	if (act_arg) {
+		ifstream infile(act_arg);
+		if (infile.is_open()) { 
+			continue_boundary_gen(infile, iterations, &boundary, dim); 
+		} else {
+			cerr << "ERROR: can't open input file: '" << act_arg << "'. Aborting." << endl;
+			return 1;
+			}
+		}
 
 	act_arg= get_cmd_option(argv, argv + argc, "-f");	
 	if (act_arg) {
+		if(cmd_option_exists(argv, argv+argc, "-o")){
+			cerr << "ERROR: invalid switch. In the presence of the -o switch the only other switch allowed is the -c" << endl;
+			return 1;
+			}
 		ifstream basis_file(act_arg);
 		if (basis_file.is_open())
 			basis_file >> basis;	
@@ -143,54 +179,64 @@ int main(int argc, char** argv) {
 			}
 		}
 
-	mat_RR mu1;
-	vec_RR c1;
-	ComputeGS(basis,mu1,c1);
 
-	//lengths of the GS basis vectors
-	RR* c= new RR[mu1.NumRows()];
-	for(int i= 0; i < mu1.NumRows(); i++) {
-		c[i]= SqrRoot(c1[i]);
-		c[i].SetPrecision(RR_PRECISION);
-	}
-
-	int dim= mu1.NumRows();
-	double* boundary= new double[dim];	
-	
 	cout << "# Generated with cleanbkz " << CBKZ_VERSION << endl 
 	<< "# Copyright (C) 2014 Janos Follath" << endl 
 	<< "# This is free software with ABSOLUTELY NO WARRANTY." << endl << "#" << endl; 
 
-	//length of the shortest vector in the cjloss lattice
-	if(v>0) {
-		//v= sqrt(v);
-		cout << "# Using supplied lambda square: " << v << endl;
-		}
-	else {
-		double tmp,gh= 1;
-		double* gsghs= new double[dim]; 
+	if(!cmd_option_exists(argv, argv+argc, "-o")){
+		mat_RR mu1;
+		vec_RR c1;
+		ComputeGS(basis,mu1,c1);
+
+		//lengths of the GS basis vectors
+		RR* c= new RR[mu1.NumRows()];
 		for(int i= 0; i < mu1.NumRows(); i++) {
-			conv(tmp, c[i]);
-			gh*= tmp;
-			gsghs[i]= pow(gh/ball_vol(i+1, 1),1.0/(i+1));
+			c[i].SetPrecision(RR_PRECISION);
+			c[i]= SqrRoot(c1[i]);
 		}
-		delete gsghs;
-		gh= pow(gh/ball_vol(dim, 1),1.0/dim);
-		v= gh*gh;
-		cout << "# No lambda square supplied, using Gaussian heuristic: " << v << endl;
-	}
+
+		dim= mu1.NumRows();
+		boundary= new double[dim];	
+	
+		//length of the shortest vector in the cjloss lattice
+		if(v>0) {
+			//v= sqrt(v);
+			cout << "# Using supplied lambda square: " << v << endl;
+			}
+		else {
+			RR_PI.SetPrecision(RR_PRECISION);
+			RR_PI= ComputePi_RR();	
+			init_factorials(2*dim+1);
+			RR one,gh,exp;
+			one.SetPrecision(RR_PRECISION);
+			gh.SetPrecision(RR_PRECISION);
+			exp.SetPrecision(RR_PRECISION);
+			gh= one= 1;	
+			for(int i= 0; i < mu1.NumRows(); i++) {
+				gh*= sqrt(c1[i]);
+			}
+			exp= 1.0/dim; 	
+			pow(gh, gh/ball_vol_RR(dim, one), exp);
+			gh*= 1.05;
+			conv(v, gh*gh);
+			cout << "# No lambda square supplied, using Gaussian heuristic: " << gh << endl;
+		}
 		
 
+		double p_succ;
+		double t_enum;	
+		//NOTE: gs vector lengths and wanted vector length given
+	
+		generate_boundary(c, t_node, t_reduc, dim, boundary, v, delta, iterations, p_succ, t_enum, false); 
 
-	double p_succ;
-	double t_enum;	
-	//NOTE: gs vector lengths and wanted vector length given
-	generate_boundary(c, t_node, t_reduc, dim, boundary, v, delta, iterations, p_succ, t_enum, false); 
+		cout << "# basis: '" << act_arg << "' " << endl
+		<< "# estimated enumeration time: " << t_enum << endl  
+		<< "# success probability: " << p_succ << endl; 
+	}
 
-	cout << "# basis: '" << act_arg << "' " << endl
-	<< "# estimated enumeration time: " << t_enum << endl  
-	<< "# success probability: " << p_succ << endl  
-	<< "# boudary function: " << endl;
+	cout << "# boudary function: " << endl;
+	
 
 	vec_RR out;
 	out.SetLength(dim);
@@ -198,8 +244,10 @@ int main(int argc, char** argv) {
 		out[i]= boundary[i];		
 	cout << "# " << out << endl << endl;
 
-	for(int i= 0; i < dim; i++)
-		cout << i << " " << boundary[i] << endl;
+	for(int i= 0; i < dim; i++) {
+		out[i].SetOutputPrecision(RR_PRECISION);
+		cout << i << " " << out[i] << endl;
+	}
 	cout << endl;
 
 	return 0;
